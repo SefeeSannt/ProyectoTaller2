@@ -17,6 +17,5 @@ namespace CapaPresentacion.Vistas.Vendedor
             InitializeComponent();
         }
 
-
     }
 }

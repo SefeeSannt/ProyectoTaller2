@@ -105,7 +105,5 @@ namespace CapaPresentacion.Vistas.Administrador.Productos {
                 this.Close();
             }
         }
-
-       
     }
 }

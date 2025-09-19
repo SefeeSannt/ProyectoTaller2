@@ -111,7 +111,7 @@
             // tsmiComprar
             // 
             this.tsmiComprar.Name = "tsmiComprar";
-            this.tsmiComprar.Size = new System.Drawing.Size(170, 22);
+            this.tsmiComprar.Size = new System.Drawing.Size(180, 22);
             this.tsmiComprar.Text = "Consultar stock";
             this.tsmiComprar.Click += new System.EventHandler(this.tsmiComprar_Click);
             // 

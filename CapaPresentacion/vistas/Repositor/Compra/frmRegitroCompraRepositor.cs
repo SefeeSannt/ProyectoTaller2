@@ -49,9 +49,9 @@ namespace CapaPresentacion.Vistas.Repositor
                 return;
             }
 
-            if (string.IsNullOrEmpty(txtProductos.Text))
+            if (cboProducto.SelectedIndex == -1)
             {
-                errIngresoDatos.SetError(txtProductos, "Ingrese un producto");
+                errIngresoDatos.SetError(cboProducto, "Ingrese un producto");
                 return;
             }
 

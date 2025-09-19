@@ -90,7 +90,7 @@ namespace CapaPresentacion.Vistas.Vendedor
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Error al registrar el cliente: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Cliente ya registrado. ", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 

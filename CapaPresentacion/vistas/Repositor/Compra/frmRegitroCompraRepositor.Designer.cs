@@ -40,20 +40,18 @@
             this.subTotal = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.btnAgregar = new FontAwesome.Sharp.IconButton();
             this.gbInfProducto = new System.Windows.Forms.GroupBox();
-            this.iconBtnLupa = new FontAwesome.Sharp.IconButton();
+            this.cboProducto = new System.Windows.Forms.ComboBox();
             this.numUpDCantidad = new System.Windows.Forms.NumericUpDown();
             this.lblCantidad = new System.Windows.Forms.Label();
             this.txtPrecioCompra = new System.Windows.Forms.TextBox();
             this.lblPrecioCompra = new System.Windows.Forms.Label();
-            this.txtProductos = new System.Windows.Forms.TextBox();
             this.txtCodProducto = new System.Windows.Forms.TextBox();
             this.lblProductos = new System.Windows.Forms.Label();
             this.lblCodProducto = new System.Windows.Forms.Label();
             this.gbInforProveedor = new System.Windows.Forms.GroupBox();
-            this.iconButtonLupa = new FontAwesome.Sharp.IconButton();
-            this.cbRazonSocial = new System.Windows.Forms.ComboBox();
+            this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.lblNombreProveedor = new System.Windows.Forms.Label();
             this.txtNumDoc = new System.Windows.Forms.TextBox();
-            this.lblRazonSocial = new System.Windows.Forms.Label();
             this.lblNumDoc = new System.Windows.Forms.Label();
             this.lblTutulo = new System.Windows.Forms.Label();
             this.gbInfCompra = new System.Windows.Forms.GroupBox();
@@ -177,12 +175,11 @@
             // 
             // gbInfProducto
             // 
-            this.gbInfProducto.Controls.Add(this.iconBtnLupa);
+            this.gbInfProducto.Controls.Add(this.cboProducto);
             this.gbInfProducto.Controls.Add(this.numUpDCantidad);
             this.gbInfProducto.Controls.Add(this.lblCantidad);
             this.gbInfProducto.Controls.Add(this.txtPrecioCompra);
             this.gbInfProducto.Controls.Add(this.lblPrecioCompra);
-            this.gbInfProducto.Controls.Add(this.txtProductos);
             this.gbInfProducto.Controls.Add(this.txtCodProducto);
             this.gbInfProducto.Controls.Add(this.lblProductos);
             this.gbInfProducto.Controls.Add(this.lblCodProducto);
@@ -194,24 +191,17 @@
             this.gbInfProducto.TabStop = false;
             this.gbInfProducto.Text = "Información de Producto";
             // 
-            // iconBtnLupa
+            // cboProducto
             // 
-            this.iconBtnLupa.BackColor = System.Drawing.Color.Silver;
-            this.iconBtnLupa.FlatAppearance.BorderSize = 0;
-            this.iconBtnLupa.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.iconBtnLupa.IconChar = FontAwesome.Sharp.IconChar.MagnifyingGlass;
-            this.iconBtnLupa.IconColor = System.Drawing.Color.Black;
-            this.iconBtnLupa.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            this.iconBtnLupa.IconSize = 15;
-            this.iconBtnLupa.Location = new System.Drawing.Point(125, 57);
-            this.iconBtnLupa.Name = "iconBtnLupa";
-            this.iconBtnLupa.Size = new System.Drawing.Size(42, 23);
-            this.iconBtnLupa.TabIndex = 5;
-            this.iconBtnLupa.UseVisualStyleBackColor = false;
+            this.cboProducto.FormattingEnabled = true;
+            this.cboProducto.Location = new System.Drawing.Point(134, 55);
+            this.cboProducto.Name = "cboProducto";
+            this.cboProducto.Size = new System.Drawing.Size(221, 25);
+            this.cboProducto.TabIndex = 10;
             // 
             // numUpDCantidad
             // 
-            this.numUpDCantidad.Location = new System.Drawing.Point(576, 58);
+            this.numUpDCantidad.Location = new System.Drawing.Point(576, 55);
             this.numUpDCantidad.Name = "numUpDCantidad";
             this.numUpDCantidad.Size = new System.Drawing.Size(120, 22);
             this.numUpDCantidad.TabIndex = 9;
@@ -221,15 +211,15 @@
             // 
             this.lblCantidad.AutoSize = true;
             this.lblCantidad.Font = new System.Drawing.Font("Franklin Gothic Medium", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblCantidad.Location = new System.Drawing.Point(573, 42);
+            this.lblCantidad.Location = new System.Drawing.Point(573, 37);
             this.lblCantidad.Name = "lblCantidad";
-            this.lblCantidad.Size = new System.Drawing.Size(61, 17);
+            this.lblCantidad.Size = new System.Drawing.Size(63, 17);
             this.lblCantidad.TabIndex = 8;
-            this.lblCantidad.Text = "Cantidad:";
+            this.lblCantidad.Text = "Unidades:";
             // 
             // txtPrecioCompra
             // 
-            this.txtPrecioCompra.Location = new System.Drawing.Point(412, 59);
+            this.txtPrecioCompra.Location = new System.Drawing.Point(412, 55);
             this.txtPrecioCompra.Name = "txtPrecioCompra";
             this.txtPrecioCompra.Size = new System.Drawing.Size(133, 22);
             this.txtPrecioCompra.TabIndex = 5;
@@ -239,18 +229,11 @@
             // 
             this.lblPrecioCompra.AutoSize = true;
             this.lblPrecioCompra.Font = new System.Drawing.Font("Franklin Gothic Medium", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblPrecioCompra.Location = new System.Drawing.Point(409, 43);
+            this.lblPrecioCompra.Location = new System.Drawing.Point(409, 37);
             this.lblPrecioCompra.Name = "lblPrecioCompra";
             this.lblPrecioCompra.Size = new System.Drawing.Size(93, 17);
             this.lblPrecioCompra.TabIndex = 4;
             this.lblPrecioCompra.Text = "Precio Compra:";
-            // 
-            // txtProductos
-            // 
-            this.txtProductos.Location = new System.Drawing.Point(182, 57);
-            this.txtProductos.Name = "txtProductos";
-            this.txtProductos.Size = new System.Drawing.Size(221, 22);
-            this.txtProductos.TabIndex = 3;
             // 
             // txtCodProducto
             // 
@@ -264,7 +247,7 @@
             // 
             this.lblProductos.AutoSize = true;
             this.lblProductos.Font = new System.Drawing.Font("Franklin Gothic Medium", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblProductos.Location = new System.Drawing.Point(179, 37);
+            this.lblProductos.Location = new System.Drawing.Point(131, 37);
             this.lblProductos.Name = "lblProductos";
             this.lblProductos.Size = new System.Drawing.Size(58, 17);
             this.lblProductos.TabIndex = 1;
@@ -282,10 +265,9 @@
             // 
             // gbInforProveedor
             // 
-            this.gbInforProveedor.Controls.Add(this.iconButtonLupa);
-            this.gbInforProveedor.Controls.Add(this.cbRazonSocial);
+            this.gbInforProveedor.Controls.Add(this.comboBox1);
+            this.gbInforProveedor.Controls.Add(this.lblNombreProveedor);
             this.gbInforProveedor.Controls.Add(this.txtNumDoc);
-            this.gbInforProveedor.Controls.Add(this.lblRazonSocial);
             this.gbInforProveedor.Controls.Add(this.lblNumDoc);
             this.gbInforProveedor.Font = new System.Drawing.Font("Franklin Gothic Medium", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.gbInforProveedor.Location = new System.Drawing.Point(377, 50);
@@ -295,51 +277,32 @@
             this.gbInforProveedor.TabStop = false;
             this.gbInforProveedor.Text = "Información Proveedor";
             // 
-            // iconButtonLupa
+            // comboBox1
             // 
-            this.iconButtonLupa.BackColor = System.Drawing.Color.Silver;
-            this.iconButtonLupa.FlatAppearance.BorderSize = 0;
-            this.iconButtonLupa.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.iconButtonLupa.IconChar = FontAwesome.Sharp.IconChar.MagnifyingGlass;
-            this.iconButtonLupa.IconColor = System.Drawing.Color.Black;
-            this.iconButtonLupa.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            this.iconButtonLupa.IconSize = 15;
-            this.iconButtonLupa.Location = new System.Drawing.Point(192, 53);
-            this.iconButtonLupa.Name = "iconButtonLupa";
-            this.iconButtonLupa.Size = new System.Drawing.Size(42, 27);
-            this.iconButtonLupa.TabIndex = 4;
-            this.iconButtonLupa.UseVisualStyleBackColor = false;
+            this.comboBox1.FormattingEnabled = true;
+            this.comboBox1.Location = new System.Drawing.Point(173, 53);
+            this.comboBox1.Name = "comboBox1";
+            this.comboBox1.Size = new System.Drawing.Size(221, 25);
+            this.comboBox1.TabIndex = 11;
             // 
-            // cbRazonSocial
+            // lblNombreProveedor
             // 
-            this.cbRazonSocial.FormattingEnabled = true;
-            this.cbRazonSocial.Items.AddRange(new object[] {
-            "opcion1",
-            "opcion2"});
-            this.cbRazonSocial.Location = new System.Drawing.Point(240, 55);
-            this.cbRazonSocial.Name = "cbRazonSocial";
-            this.cbRazonSocial.Size = new System.Drawing.Size(154, 25);
-            this.cbRazonSocial.TabIndex = 3;
-            this.cbRazonSocial.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.noWrite_KeyPress);
+            this.lblNombreProveedor.AutoSize = true;
+            this.lblNombreProveedor.Font = new System.Drawing.Font("Franklin Gothic Medium", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblNombreProveedor.Location = new System.Drawing.Point(170, 35);
+            this.lblNombreProveedor.Name = "lblNombreProveedor";
+            this.lblNombreProveedor.Size = new System.Drawing.Size(55, 17);
+            this.lblNombreProveedor.TabIndex = 3;
+            this.lblNombreProveedor.Text = "Nombre:";
             // 
             // txtNumDoc
             // 
             this.txtNumDoc.Location = new System.Drawing.Point(19, 55);
             this.txtNumDoc.Multiline = true;
             this.txtNumDoc.Name = "txtNumDoc";
-            this.txtNumDoc.Size = new System.Drawing.Size(151, 23);
+            this.txtNumDoc.Size = new System.Drawing.Size(129, 23);
             this.txtNumDoc.TabIndex = 2;
             this.txtNumDoc.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.onlyInteger_KeyPress);
-            // 
-            // lblRazonSocial
-            // 
-            this.lblRazonSocial.AutoSize = true;
-            this.lblRazonSocial.Font = new System.Drawing.Font("Franklin Gothic Medium", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblRazonSocial.Location = new System.Drawing.Point(237, 35);
-            this.lblRazonSocial.Name = "lblRazonSocial";
-            this.lblRazonSocial.Size = new System.Drawing.Size(77, 17);
-            this.lblRazonSocial.TabIndex = 1;
-            this.lblRazonSocial.Text = "Razón social";
             // 
             // lblNumDoc
             // 
@@ -438,25 +401,23 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn subTotal;
         private FontAwesome.Sharp.IconButton btnAgregar;
         private System.Windows.Forms.GroupBox gbInfProducto;
-        private FontAwesome.Sharp.IconButton iconBtnLupa;
         private System.Windows.Forms.NumericUpDown numUpDCantidad;
         private System.Windows.Forms.Label lblCantidad;
         private System.Windows.Forms.TextBox txtPrecioCompra;
         private System.Windows.Forms.Label lblPrecioCompra;
-        private System.Windows.Forms.TextBox txtProductos;
         private System.Windows.Forms.TextBox txtCodProducto;
         private System.Windows.Forms.Label lblProductos;
         private System.Windows.Forms.Label lblCodProducto;
         private System.Windows.Forms.GroupBox gbInforProveedor;
-        private FontAwesome.Sharp.IconButton iconButtonLupa;
-        private System.Windows.Forms.ComboBox cbRazonSocial;
         private System.Windows.Forms.TextBox txtNumDoc;
-        private System.Windows.Forms.Label lblRazonSocial;
         private System.Windows.Forms.Label lblNumDoc;
         private System.Windows.Forms.Label lblTutulo;
         private System.Windows.Forms.GroupBox gbInfCompra;
         private System.Windows.Forms.Label lblFecha;
         private System.Windows.Forms.ErrorProvider errIngresoDatos;
         private System.Windows.Forms.DateTimePicker dateTimePicker1;
+        private System.Windows.Forms.ComboBox cboProducto;
+        private System.Windows.Forms.ComboBox comboBox1;
+        private System.Windows.Forms.Label lblNombreProveedor;
     }
 }

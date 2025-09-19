@@ -10,11 +10,21 @@ using System.Windows.Forms;
 
 namespace CapaPresentacion.Vistas.Repositor
 {
-    public partial class frmDetalleCompraRepositor : Form
+    public partial class frmDetalleCompra : Form
     {
-        public frmDetalleCompraRepositor()
+        public frmDetalleCompra()
         {
             InitializeComponent();
+        }
+
+        private void textBox2_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void textBox1_TextChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }

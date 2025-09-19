@@ -30,16 +30,7 @@ namespace CapaPresentacion.Vistas.Vendedor
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            // Solución para CS0234:
-            // Debes agregar la referencia al ensamblado "System.Windows.Forms.DataVisualization" en tu proyecto.
-            // En Visual Studio: Haz clic derecho en "Referencias" > "Agregar referencia..." > "Assemblies" > "Framework" > Marca "System.Windows.Forms.DataVisualization" > Aceptar.
-
-            // Además, asegúrate de tener la siguiente directiva using al inicio del archivo:
-
-            System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.panel1 = new System.Windows.Forms.Panel();
             this.dateTimePicker2 = new System.Windows.Forms.DateTimePicker();
             this.lblfechaHasta = new System.Windows.Forms.Label();
@@ -55,12 +46,21 @@ namespace CapaPresentacion.Vistas.Vendedor
             this.dgvConsultaVentas = new System.Windows.Forms.DataGridView();
             this.clienteConsVentas = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.formaPagoConsVenta = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.productoConsVentas = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.chart1 = new System.Windows.Forms.DataVisualization.Charting.Chart();
+            this.ventaTotal = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.pnlConsultaVentas2 = new System.Windows.Forms.Panel();
+            this.label2 = new System.Windows.Forms.Label();
+            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.lblDetalleVenta = new System.Windows.Forms.Label();
+            this.clmProducto = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.clmCant = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Subtotal = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.label3 = new System.Windows.Forms.Label();
+            this.textBox2 = new System.Windows.Forms.TextBox();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvConsultaVentas)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.chart1)).BeginInit();
+            this.pnlConsultaVentas2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
             // panel1
@@ -191,23 +191,26 @@ namespace CapaPresentacion.Vistas.Vendedor
             // 
             // dgvConsultaVentas
             // 
+            this.dgvConsultaVentas.AllowUserToAddRows = false;
+            this.dgvConsultaVentas.AllowUserToDeleteRows = false;
             this.dgvConsultaVentas.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dgvConsultaVentas.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Franklin Gothic Medium", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvConsultaVentas.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Franklin Gothic Medium", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvConsultaVentas.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
             this.dgvConsultaVentas.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvConsultaVentas.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.clienteConsVentas,
             this.formaPagoConsVenta,
-            this.productoConsVentas});
+            this.ventaTotal});
             this.dgvConsultaVentas.Location = new System.Drawing.Point(12, 230);
             this.dgvConsultaVentas.Name = "dgvConsultaVentas";
+            this.dgvConsultaVentas.ReadOnly = true;
             this.dgvConsultaVentas.RowHeadersVisible = false;
             this.dgvConsultaVentas.Size = new System.Drawing.Size(404, 226);
             this.dgvConsultaVentas.TabIndex = 15;
@@ -216,40 +219,112 @@ namespace CapaPresentacion.Vistas.Vendedor
             // 
             this.clienteConsVentas.HeaderText = "Cliente";
             this.clienteConsVentas.Name = "clienteConsVentas";
+            this.clienteConsVentas.ReadOnly = true;
             // 
             // formaPagoConsVenta
             // 
             this.formaPagoConsVenta.HeaderText = "Forma de Pago";
             this.formaPagoConsVenta.Name = "formaPagoConsVenta";
+            this.formaPagoConsVenta.ReadOnly = true;
             // 
-            // productoConsVentas
+            // ventaTotal
             // 
-            this.productoConsVentas.HeaderText = "Productos";
-            this.productoConsVentas.Name = "productoConsVentas";
-            // 
-            // chart1
-            // 
-            chartArea1.Name = "ChartArea1";
-            this.chart1.ChartAreas.Add(chartArea1);
-            legend1.Name = "Legend1";
-            this.chart1.Legends.Add(legend1);
-            this.chart1.Location = new System.Drawing.Point(448, 45);
-            this.chart1.Name = "chart1";
-            series1.ChartArea = "ChartArea1";
-            series1.Legend = "Legend1";
-            series1.Name = "Series1";
-            this.chart1.Series.Add(series1);
-            this.chart1.Size = new System.Drawing.Size(463, 452);
-            this.chart1.TabIndex = 16;
-            this.chart1.Text = "chart1";
+            this.ventaTotal.HeaderText = "Total";
+            this.ventaTotal.Name = "ventaTotal";
+            this.ventaTotal.ReadOnly = true;
             // 
             // pnlConsultaVentas2
             // 
             this.pnlConsultaVentas2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.pnlConsultaVentas2.Controls.Add(this.textBox2);
+            this.pnlConsultaVentas2.Controls.Add(this.label3);
+            this.pnlConsultaVentas2.Controls.Add(this.label2);
+            this.pnlConsultaVentas2.Controls.Add(this.textBox1);
+            this.pnlConsultaVentas2.Controls.Add(this.dataGridView1);
             this.pnlConsultaVentas2.Location = new System.Drawing.Point(445, 41);
             this.pnlConsultaVentas2.Name = "pnlConsultaVentas2";
-            this.pnlConsultaVentas2.Size = new System.Drawing.Size(469, 459);
+            this.pnlConsultaVentas2.Size = new System.Drawing.Size(503, 459);
             this.pnlConsultaVentas2.TabIndex = 17;
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.BackColor = System.Drawing.Color.White;
+            this.label2.Font = new System.Drawing.Font("Franklin Gothic Medium", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.Location = new System.Drawing.Point(322, 123);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(33, 17);
+            this.label2.TabIndex = 17;
+            this.label2.Text = "total";
+            // 
+            // textBox1
+            // 
+            this.textBox1.Location = new System.Drawing.Point(307, 143);
+            this.textBox1.Name = "textBox1";
+            this.textBox1.Size = new System.Drawing.Size(132, 20);
+            this.textBox1.TabIndex = 17;
+            // 
+            // dataGridView1
+            // 
+            this.dataGridView1.AllowUserToAddRows = false;
+            this.dataGridView1.AllowUserToDeleteRows = false;
+            this.dataGridView1.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.clmProducto,
+            this.clmCant,
+            this.Subtotal});
+            this.dataGridView1.Location = new System.Drawing.Point(-1, 179);
+            this.dataGridView1.Name = "dataGridView1";
+            this.dataGridView1.ReadOnly = true;
+            this.dataGridView1.Size = new System.Drawing.Size(499, 279);
+            this.dataGridView1.TabIndex = 0;
+            // 
+            // lblDetalleVenta
+            // 
+            this.lblDetalleVenta.AutoSize = true;
+            this.lblDetalleVenta.Font = new System.Drawing.Font("Franklin Gothic Medium", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblDetalleVenta.Location = new System.Drawing.Point(440, 9);
+            this.lblDetalleVenta.Name = "lblDetalleVenta";
+            this.lblDetalleVenta.Size = new System.Drawing.Size(140, 28);
+            this.lblDetalleVenta.TabIndex = 18;
+            this.lblDetalleVenta.Text = "Detalle Venta";
+            // 
+            // clmProducto
+            // 
+            this.clmProducto.HeaderText = "Producto";
+            this.clmProducto.Name = "clmProducto";
+            this.clmProducto.ReadOnly = true;
+            // 
+            // clmCant
+            // 
+            this.clmCant.HeaderText = "Cantidad";
+            this.clmCant.Name = "clmCant";
+            this.clmCant.ReadOnly = true;
+            // 
+            // Subtotal
+            // 
+            this.Subtotal.HeaderText = "Subtotal";
+            this.Subtotal.Name = "Subtotal";
+            this.Subtotal.ReadOnly = true;
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.BackColor = System.Drawing.Color.White;
+            this.label3.Font = new System.Drawing.Font("Franklin Gothic Medium", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.Location = new System.Drawing.Point(12, 11);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(47, 17);
+            this.label3.TabIndex = 18;
+            this.label3.Text = "Cliente";
+            // 
+            // textBox2
+            // 
+            this.textBox2.Location = new System.Drawing.Point(15, 31);
+            this.textBox2.Name = "textBox2";
+            this.textBox2.Size = new System.Drawing.Size(159, 20);
+            this.textBox2.TabIndex = 19;
             // 
             // frmConsultaVenta
             // 
@@ -257,7 +332,7 @@ namespace CapaPresentacion.Vistas.Vendedor
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(960, 538);
-            this.Controls.Add(this.chart1);
+            this.Controls.Add(this.lblDetalleVenta);
             this.Controls.Add(this.lblTotalVentaFilt);
             this.Controls.Add(this.lblTituloTotalVentas);
             this.Controls.Add(this.label1);
@@ -271,7 +346,9 @@ namespace CapaPresentacion.Vistas.Vendedor
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvConsultaVentas)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.chart1)).EndInit();
+            this.pnlConsultaVentas2.ResumeLayout(false);
+            this.pnlConsultaVentas2.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -292,10 +369,18 @@ namespace CapaPresentacion.Vistas.Vendedor
         private System.Windows.Forms.DataGridView dgvConsultaVentas;
         private System.Windows.Forms.DateTimePicker dateTimePicker2;
         private System.Windows.Forms.Label lblfechaHasta;
+        private System.Windows.Forms.Panel pnlConsultaVentas2;
         private System.Windows.Forms.DataGridViewTextBoxColumn clienteConsVentas;
         private System.Windows.Forms.DataGridViewTextBoxColumn formaPagoConsVenta;
-        private System.Windows.Forms.DataGridViewTextBoxColumn productoConsVentas;
-        private System.Windows.Forms.DataVisualization.Charting.Chart chart1;
-        private System.Windows.Forms.Panel pnlConsultaVentas2;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ventaTotal;
+        private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.Label lblDetalleVenta;
+        private System.Windows.Forms.DataGridViewTextBoxColumn clmProducto;
+        private System.Windows.Forms.DataGridViewTextBoxColumn clmCant;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Subtotal;
+        private System.Windows.Forms.TextBox textBox2;
+        private System.Windows.Forms.Label label3;
     }
 }

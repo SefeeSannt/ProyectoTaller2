@@ -37,6 +37,13 @@ namespace CapaPresentacion.Vistas.Administrador.Productos
             this.label11 = new System.Windows.Forms.Label();
             this.lblTituloListaProd = new System.Windows.Forms.Label();
             this.dgvRegistrarProducto = new System.Windows.Forms.DataGridView();
+            this.nombreProducto = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.codigoListProd = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.categoria = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.descripcionRegProd = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.precioVenta = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colCosto = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.stockRegProd = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.lblRegistroProducto = new System.Windows.Forms.Label();
             this.lblNombreProducto = new System.Windows.Forms.Label();
             this.lblCategoria = new System.Windows.Forms.Label();
@@ -54,20 +61,11 @@ namespace CapaPresentacion.Vistas.Administrador.Productos
             this.errIngresoDatos = new System.Windows.Forms.ErrorProvider(this.components);
             this.txtDescripcionProd = new System.Windows.Forms.TextBox();
             this.txtCostoProd = new System.Windows.Forms.TextBox();
-            this.cbFiltrarListProd = new System.Windows.Forms.ComboBox();
             this.txtProdList = new System.Windows.Forms.TextBox();
-            this.lblFiltroListProd = new System.Windows.Forms.Label();
             this.lblBuscarListProd = new System.Windows.Forms.Label();
             this.iconBtnLupaDetalleUser = new FontAwesome.Sharp.IconButton();
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.lblCodigoProdRegistro = new System.Windows.Forms.Label();
-            this.nombreProducto = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.codigoListProd = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.categoria = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.descripcionRegProd = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.precioVenta = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colCosto = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.stockRegProd = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dgvRegistrarProducto)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.errIngresoDatos)).BeginInit();
             this.SuspendLayout();
@@ -130,6 +128,48 @@ namespace CapaPresentacion.Vistas.Administrador.Productos
             this.dgvRegistrarProducto.RowTemplate.Height = 28;
             this.dgvRegistrarProducto.Size = new System.Drawing.Size(687, 414);
             this.dgvRegistrarProducto.TabIndex = 25;
+            // 
+            // nombreProducto
+            // 
+            this.nombreProducto.HeaderText = "Nombre";
+            this.nombreProducto.Name = "nombreProducto";
+            this.nombreProducto.ReadOnly = true;
+            // 
+            // codigoListProd
+            // 
+            this.codigoListProd.HeaderText = "Código";
+            this.codigoListProd.Name = "codigoListProd";
+            this.codigoListProd.ReadOnly = true;
+            // 
+            // categoria
+            // 
+            this.categoria.HeaderText = "Categoria";
+            this.categoria.Name = "categoria";
+            this.categoria.ReadOnly = true;
+            // 
+            // descripcionRegProd
+            // 
+            this.descripcionRegProd.HeaderText = "Descripcion";
+            this.descripcionRegProd.Name = "descripcionRegProd";
+            this.descripcionRegProd.ReadOnly = true;
+            // 
+            // precioVenta
+            // 
+            this.precioVenta.HeaderText = "Precio Venta";
+            this.precioVenta.Name = "precioVenta";
+            this.precioVenta.ReadOnly = true;
+            // 
+            // colCosto
+            // 
+            this.colCosto.HeaderText = "Costo";
+            this.colCosto.Name = "colCosto";
+            this.colCosto.ReadOnly = true;
+            // 
+            // stockRegProd
+            // 
+            this.stockRegProd.HeaderText = "Stock";
+            this.stockRegProd.Name = "stockRegProd";
+            this.stockRegProd.ReadOnly = true;
             // 
             // lblRegistroProducto
             // 
@@ -321,37 +361,19 @@ namespace CapaPresentacion.Vistas.Administrador.Productos
             this.txtCostoProd.TabIndex = 45;
             this.txtCostoProd.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.onlyNumbers_KeyPress);
             // 
-            // cbFiltrarListProd
-            // 
-            this.cbFiltrarListProd.FormattingEnabled = true;
-            this.cbFiltrarListProd.Location = new System.Drawing.Point(709, 69);
-            this.cbFiltrarListProd.Name = "cbFiltrarListProd";
-            this.cbFiltrarListProd.Size = new System.Drawing.Size(239, 21);
-            this.cbFiltrarListProd.TabIndex = 51;
-            // 
             // txtProdList
             // 
-            this.txtProdList.Location = new System.Drawing.Point(406, 71);
+            this.txtProdList.Location = new System.Drawing.Point(261, 82);
             this.txtProdList.Multiline = true;
             this.txtProdList.Name = "txtProdList";
             this.txtProdList.Size = new System.Drawing.Size(197, 19);
             this.txtProdList.TabIndex = 50;
             // 
-            // lblFiltroListProd
-            // 
-            this.lblFiltroListProd.AutoSize = true;
-            this.lblFiltroListProd.Font = new System.Drawing.Font("Franklin Gothic Medium", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblFiltroListProd.Location = new System.Drawing.Point(706, 52);
-            this.lblFiltroListProd.Name = "lblFiltroListProd";
-            this.lblFiltroListProd.Size = new System.Drawing.Size(43, 17);
-            this.lblFiltroListProd.TabIndex = 49;
-            this.lblFiltroListProd.Text = "Filtrar:";
-            // 
             // lblBuscarListProd
             // 
             this.lblBuscarListProd.AutoSize = true;
             this.lblBuscarListProd.Font = new System.Drawing.Font("Franklin Gothic Medium", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblBuscarListProd.Location = new System.Drawing.Point(403, 55);
+            this.lblBuscarListProd.Location = new System.Drawing.Point(258, 66);
             this.lblBuscarListProd.Name = "lblBuscarListProd";
             this.lblBuscarListProd.Size = new System.Drawing.Size(49, 17);
             this.lblBuscarListProd.TabIndex = 48;
@@ -366,7 +388,7 @@ namespace CapaPresentacion.Vistas.Administrador.Productos
             this.iconBtnLupaDetalleUser.IconColor = System.Drawing.Color.White;
             this.iconBtnLupaDetalleUser.IconFont = FontAwesome.Sharp.IconFont.Auto;
             this.iconBtnLupaDetalleUser.IconSize = 19;
-            this.iconBtnLupaDetalleUser.Location = new System.Drawing.Point(609, 71);
+            this.iconBtnLupaDetalleUser.Location = new System.Drawing.Point(464, 82);
             this.iconBtnLupaDetalleUser.Name = "iconBtnLupaDetalleUser";
             this.iconBtnLupaDetalleUser.Size = new System.Drawing.Size(41, 21);
             this.iconBtnLupaDetalleUser.TabIndex = 47;
@@ -390,48 +412,6 @@ namespace CapaPresentacion.Vistas.Administrador.Productos
             this.lblCodigoProdRegistro.TabIndex = 52;
             this.lblCodigoProdRegistro.Text = "Codigo";
             // 
-            // nombreProducto
-            // 
-            this.nombreProducto.HeaderText = "Nombre";
-            this.nombreProducto.Name = "nombreProducto";
-            this.nombreProducto.ReadOnly = true;
-            // 
-            // codigoListProd
-            // 
-            this.codigoListProd.HeaderText = "Código";
-            this.codigoListProd.Name = "codigoListProd";
-            this.codigoListProd.ReadOnly = true;
-            // 
-            // categoria
-            // 
-            this.categoria.HeaderText = "Categoria";
-            this.categoria.Name = "categoria";
-            this.categoria.ReadOnly = true;
-            // 
-            // descripcionRegProd
-            // 
-            this.descripcionRegProd.HeaderText = "Descripcion";
-            this.descripcionRegProd.Name = "descripcionRegProd";
-            this.descripcionRegProd.ReadOnly = true;
-            // 
-            // precioVenta
-            // 
-            this.precioVenta.HeaderText = "Precio Venta";
-            this.precioVenta.Name = "precioVenta";
-            this.precioVenta.ReadOnly = true;
-            // 
-            // colCosto
-            // 
-            this.colCosto.HeaderText = "Costo";
-            this.colCosto.Name = "colCosto";
-            this.colCosto.ReadOnly = true;
-            // 
-            // stockRegProd
-            // 
-            this.stockRegProd.HeaderText = "Stock";
-            this.stockRegProd.Name = "stockRegProd";
-            this.stockRegProd.ReadOnly = true;
-            // 
             // frmAltaProducto
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -440,9 +420,7 @@ namespace CapaPresentacion.Vistas.Administrador.Productos
             this.ClientSize = new System.Drawing.Size(960, 538);
             this.Controls.Add(this.textBox1);
             this.Controls.Add(this.lblCodigoProdRegistro);
-            this.Controls.Add(this.cbFiltrarListProd);
             this.Controls.Add(this.txtProdList);
-            this.Controls.Add(this.lblFiltroListProd);
             this.Controls.Add(this.lblBuscarListProd);
             this.Controls.Add(this.iconBtnLupaDetalleUser);
             this.Controls.Add(this.txtCostoProd);
@@ -496,9 +474,7 @@ namespace CapaPresentacion.Vistas.Administrador.Productos
         private ErrorProvider errIngresoDatos;
         private TextBox txtCostoProd;
         private TextBox txtDescripcionProd;
-        private ComboBox cbFiltrarListProd;
         private TextBox txtProdList;
-        private Label lblFiltroListProd;
         private Label lblBuscarListProd;
         private FontAwesome.Sharp.IconButton iconBtnLupaDetalleUser;
         private DataGridViewTextBoxColumn nombreProducto;

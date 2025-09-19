@@ -1,6 +1,6 @@
 ﻿namespace CapaPresentacion.Vistas.Repositor
 {
-    partial class frmDetalleInventario
+    partial class frmDetalleCompra
     {
         /// <summary>
         /// Required designer variable.
@@ -252,7 +252,7 @@
             this.Controls.Add(this.label1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "frmDetalleInventario";
-            this.Text = "frmDetalleInventario";
+            this.Text = "frmDetalleCompra";
             ((System.ComponentModel.ISupportInitialize)(this.dgvRegistroCompraRepositor)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
