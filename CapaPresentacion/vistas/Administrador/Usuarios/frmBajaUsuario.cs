@@ -7,16 +7,23 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using CapaPresentacion.Vistas.Administrador.Usuarios;
 
-namespace CapaPresentacion.Vistas.Vendedor
+namespace CapaPresentacion.vistas.Administrador
 {
-    public partial class frmRegistrarVenta : Form
+    public partial class frmBajaUsuario : Form
     {
-        public frmRegistrarVenta()
+        public frmBajaUsuario()
         {
             InitializeComponent();
+
+
         }
 
-      
+
+
+
+
+
     }
 }

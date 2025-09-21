@@ -34,14 +34,23 @@
             this.Agregra = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.nuevoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.cbFiltrarListUser = new System.Windows.Forms.ComboBox();
             this.txtUserList = new System.Windows.Forms.TextBox();
-            this.lblFiltroListUser = new System.Windows.Forms.Label();
             this.lblBuscarListUser = new System.Windows.Forms.Label();
             this.iconBtnLupaDetalleUser = new FontAwesome.Sharp.IconButton();
             this.label11 = new System.Windows.Forms.Label();
             this.label10 = new System.Windows.Forms.Label();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.dgvAltaUsuario = new System.Windows.Forms.DataGridView();
+            this.btnSeleccionar = new System.Windows.Forms.DataGridViewButtonColumn();
+            this.idUsuaruio = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.documento = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.nombreCompleto = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.correo = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.telefonoRegUsuario = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.clave = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.idRol = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.rol = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.estado = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.estadoValor = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.panel2 = new System.Windows.Forms.Panel();
             this.btnCancelar = new FontAwesome.Sharp.IconButton();
             this.btnLimpiar = new FontAwesome.Sharp.IconButton();
@@ -59,20 +68,9 @@
             this.txtNombreCompleto = new System.Windows.Forms.TextBox();
             this.txtDocumento = new System.Windows.Forms.TextBox();
             this.errIngresoDatos = new System.Windows.Forms.ErrorProvider(this.components);
-            this.btnSeleccionar = new System.Windows.Forms.DataGridViewButtonColumn();
-            this.idUsuaruio = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.documento = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.nombreCompleto = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.correo = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.telefonoRegUsuario = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.clave = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.idRol = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.rol = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.estado = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.estadoValor = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Agregra.SuspendLayout();
             this.panel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvAltaUsuario)).BeginInit();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.errIngresoDatos)).BeginInit();
             this.SuspendLayout();
@@ -94,14 +92,13 @@
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.Color.White;
-            this.panel1.Controls.Add(this.cbFiltrarListUser);
+            this.panel1.Controls.Add(this.btnCancelar);
             this.panel1.Controls.Add(this.txtUserList);
-            this.panel1.Controls.Add(this.lblFiltroListUser);
             this.panel1.Controls.Add(this.lblBuscarListUser);
             this.panel1.Controls.Add(this.iconBtnLupaDetalleUser);
             this.panel1.Controls.Add(this.label11);
             this.panel1.Controls.Add(this.label10);
-            this.panel1.Controls.Add(this.dataGridView1);
+            this.panel1.Controls.Add(this.dgvAltaUsuario);
             this.panel1.Controls.Add(this.panel2);
             this.panel1.Cursor = System.Windows.Forms.Cursors.Hand;
             this.panel1.Font = new System.Drawing.Font("Franklin Gothic Medium", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -111,39 +108,20 @@
             this.panel1.Size = new System.Drawing.Size(960, 538);
             this.panel1.TabIndex = 4;
             // 
-            // cbFiltrarListUser
-            // 
-            this.cbFiltrarListUser.FormattingEnabled = true;
-            this.cbFiltrarListUser.Location = new System.Drawing.Point(710, 64);
-            this.cbFiltrarListUser.Name = "cbFiltrarListUser";
-            this.cbFiltrarListUser.Size = new System.Drawing.Size(239, 25);
-            this.cbFiltrarListUser.TabIndex = 56;
-            // 
             // txtUserList
             // 
-            this.txtUserList.Location = new System.Drawing.Point(407, 66);
+            this.txtUserList.Location = new System.Drawing.Point(261, 66);
             this.txtUserList.Multiline = true;
             this.txtUserList.Name = "txtUserList";
             this.txtUserList.Size = new System.Drawing.Size(197, 19);
             this.txtUserList.TabIndex = 55;
-            // 
-            // lblFiltroListUser
-            // 
-            this.lblFiltroListUser.AutoSize = true;
-            this.lblFiltroListUser.Font = new System.Drawing.Font("Franklin Gothic Medium", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblFiltroListUser.ForeColor = System.Drawing.Color.Black;
-            this.lblFiltroListUser.Location = new System.Drawing.Point(707, 47);
-            this.lblFiltroListUser.Name = "lblFiltroListUser";
-            this.lblFiltroListUser.Size = new System.Drawing.Size(43, 17);
-            this.lblFiltroListUser.TabIndex = 54;
-            this.lblFiltroListUser.Text = "Filtrar:";
             // 
             // lblBuscarListUser
             // 
             this.lblBuscarListUser.AutoSize = true;
             this.lblBuscarListUser.Font = new System.Drawing.Font("Franklin Gothic Medium", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblBuscarListUser.ForeColor = System.Drawing.Color.Black;
-            this.lblBuscarListUser.Location = new System.Drawing.Point(404, 50);
+            this.lblBuscarListUser.Location = new System.Drawing.Point(258, 50);
             this.lblBuscarListUser.Name = "lblBuscarListUser";
             this.lblBuscarListUser.Size = new System.Drawing.Size(49, 17);
             this.lblBuscarListUser.TabIndex = 53;
@@ -158,7 +136,7 @@
             this.iconBtnLupaDetalleUser.IconColor = System.Drawing.Color.White;
             this.iconBtnLupaDetalleUser.IconFont = FontAwesome.Sharp.IconFont.Auto;
             this.iconBtnLupaDetalleUser.IconSize = 19;
-            this.iconBtnLupaDetalleUser.Location = new System.Drawing.Point(610, 66);
+            this.iconBtnLupaDetalleUser.Location = new System.Drawing.Point(464, 66);
             this.iconBtnLupaDetalleUser.Name = "iconBtnLupaDetalleUser";
             this.iconBtnLupaDetalleUser.Size = new System.Drawing.Size(41, 21);
             this.iconBtnLupaDetalleUser.TabIndex = 52;
@@ -172,9 +150,9 @@
             this.label11.ForeColor = System.Drawing.Color.Black;
             this.label11.Location = new System.Drawing.Point(12, 22);
             this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(153, 25);
+            this.label11.Size = new System.Drawing.Size(116, 25);
             this.label11.TabIndex = 23;
-            this.label11.Text = "Registro usuario";
+            this.label11.Text = "Alta usuario";
             // 
             // label10
             // 
@@ -188,11 +166,11 @@
             this.label10.Text = "Lista de Usuarios";
             this.label10.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
-            // dataGridView1
+            // dgvAltaUsuario
             // 
-            this.dataGridView1.AllowUserToAddRows = false;
-            this.dataGridView1.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.dataGridView1.BackgroundColor = System.Drawing.Color.White;
+            this.dgvAltaUsuario.AllowUserToAddRows = false;
+            this.dgvAltaUsuario.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dgvAltaUsuario.BackgroundColor = System.Drawing.Color.White;
             dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
             dataGridViewCellStyle1.Font = new System.Drawing.Font("Franklin Gothic Medium", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -201,9 +179,9 @@
             dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
             dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
             dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridView1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.dgvAltaUsuario.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            this.dgvAltaUsuario.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvAltaUsuario.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.btnSeleccionar,
             this.idUsuaruio,
             this.documento,
@@ -215,22 +193,92 @@
             this.rol,
             this.estado,
             this.estadoValor});
-            this.dataGridView1.Location = new System.Drawing.Point(261, 112);
-            this.dataGridView1.MultiSelect = false;
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.ReadOnly = true;
-            this.dataGridView1.RowHeadersVisible = false;
+            this.dgvAltaUsuario.Location = new System.Drawing.Point(261, 112);
+            this.dgvAltaUsuario.MultiSelect = false;
+            this.dgvAltaUsuario.Name = "dgvAltaUsuario";
+            this.dgvAltaUsuario.ReadOnly = true;
+            this.dgvAltaUsuario.RowHeadersVisible = false;
             dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.White;
             dataGridViewCellStyle2.SelectionForeColor = System.Drawing.Color.Black;
-            this.dataGridView1.RowsDefaultCellStyle = dataGridViewCellStyle2;
-            this.dataGridView1.RowTemplate.Height = 28;
-            this.dataGridView1.Size = new System.Drawing.Size(687, 414);
-            this.dataGridView1.TabIndex = 20;
+            this.dgvAltaUsuario.RowsDefaultCellStyle = dataGridViewCellStyle2;
+            this.dgvAltaUsuario.RowTemplate.Height = 28;
+            this.dgvAltaUsuario.Size = new System.Drawing.Size(687, 344);
+            this.dgvAltaUsuario.TabIndex = 20;
+            // 
+            // btnSeleccionar
+            // 
+            this.btnSeleccionar.HeaderText = "";
+            this.btnSeleccionar.Name = "btnSeleccionar";
+            this.btnSeleccionar.ReadOnly = true;
+            this.btnSeleccionar.Visible = false;
+            // 
+            // idUsuaruio
+            // 
+            this.idUsuaruio.HeaderText = "ID usuario";
+            this.idUsuaruio.Name = "idUsuaruio";
+            this.idUsuaruio.ReadOnly = true;
+            this.idUsuaruio.Visible = false;
+            // 
+            // documento
+            // 
+            this.documento.HeaderText = "Nro Documento";
+            this.documento.Name = "documento";
+            this.documento.ReadOnly = true;
+            // 
+            // nombreCompleto
+            // 
+            this.nombreCompleto.HeaderText = "Nombre completo";
+            this.nombreCompleto.Name = "nombreCompleto";
+            this.nombreCompleto.ReadOnly = true;
+            // 
+            // correo
+            // 
+            this.correo.HeaderText = "Correo";
+            this.correo.Name = "correo";
+            this.correo.ReadOnly = true;
+            // 
+            // telefonoRegUsuario
+            // 
+            this.telefonoRegUsuario.HeaderText = "Telefono";
+            this.telefonoRegUsuario.Name = "telefonoRegUsuario";
+            this.telefonoRegUsuario.ReadOnly = true;
+            // 
+            // clave
+            // 
+            this.clave.HeaderText = "Clave";
+            this.clave.Name = "clave";
+            this.clave.ReadOnly = true;
+            this.clave.Visible = false;
+            // 
+            // idRol
+            // 
+            this.idRol.HeaderText = "ID rol";
+            this.idRol.Name = "idRol";
+            this.idRol.ReadOnly = true;
+            this.idRol.Visible = false;
+            // 
+            // rol
+            // 
+            this.rol.HeaderText = "Rol";
+            this.rol.Name = "rol";
+            this.rol.ReadOnly = true;
+            // 
+            // estado
+            // 
+            this.estado.HeaderText = "Estado";
+            this.estado.Name = "estado";
+            this.estado.ReadOnly = true;
+            // 
+            // estadoValor
+            // 
+            this.estadoValor.HeaderText = "Estado valor";
+            this.estadoValor.Name = "estadoValor";
+            this.estadoValor.ReadOnly = true;
+            this.estadoValor.Visible = false;
             // 
             // panel2
             // 
             this.panel2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.panel2.Controls.Add(this.btnCancelar);
             this.panel2.Controls.Add(this.btnLimpiar);
             this.panel2.Controls.Add(this.btnGuardar);
             this.panel2.Controls.Add(this.label2);
@@ -253,18 +301,19 @@
             // 
             // btnCancelar
             // 
-            this.btnCancelar.BackColor = System.Drawing.Color.Blue;
+            this.btnCancelar.BackColor = System.Drawing.Color.Red;
             this.btnCancelar.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnCancelar.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.btnCancelar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnCancelar.Font = new System.Drawing.Font("Segoe UI", 10F);
-            this.btnCancelar.IconChar = FontAwesome.Sharp.IconChar.Eraser;
+            this.btnCancelar.ForeColor = System.Drawing.Color.Black;
+            this.btnCancelar.IconChar = FontAwesome.Sharp.IconChar.ChevronLeft;
             this.btnCancelar.IconColor = System.Drawing.Color.Black;
             this.btnCancelar.IconFont = FontAwesome.Sharp.IconFont.Auto;
             this.btnCancelar.IconSize = 16;
-            this.btnCancelar.Location = new System.Drawing.Point(17, 489);
+            this.btnCancelar.Location = new System.Drawing.Point(844, 488);
             this.btnCancelar.Name = "btnCancelar";
-            this.btnCancelar.Size = new System.Drawing.Size(189, 37);
+            this.btnCancelar.Size = new System.Drawing.Size(104, 27);
             this.btnCancelar.TabIndex = 47;
             this.btnCancelar.Text = "Cancelar";
             this.btnCancelar.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -274,12 +323,13 @@
             // 
             // btnLimpiar
             // 
-            this.btnLimpiar.BackColor = System.Drawing.Color.Red;
+            this.btnLimpiar.BackColor = System.Drawing.Color.DarkOrange;
             this.btnLimpiar.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnLimpiar.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.btnLimpiar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnLimpiar.Font = new System.Drawing.Font("Segoe UI", 10F);
-            this.btnLimpiar.IconChar = FontAwesome.Sharp.IconChar.TrashAlt;
+            this.btnLimpiar.ForeColor = System.Drawing.Color.Black;
+            this.btnLimpiar.IconChar = FontAwesome.Sharp.IconChar.Broom;
             this.btnLimpiar.IconColor = System.Drawing.Color.Black;
             this.btnLimpiar.IconFont = FontAwesome.Sharp.IconFont.Auto;
             this.btnLimpiar.IconSize = 16;
@@ -300,6 +350,7 @@
             this.btnGuardar.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.btnGuardar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnGuardar.Font = new System.Drawing.Font("Segoe UI", 10F);
+            this.btnGuardar.ForeColor = System.Drawing.Color.Black;
             this.btnGuardar.IconChar = FontAwesome.Sharp.IconChar.FloppyDisk;
             this.btnGuardar.IconColor = System.Drawing.Color.Black;
             this.btnGuardar.IconFont = FontAwesome.Sharp.IconFont.Auto;
@@ -442,77 +493,6 @@
             // 
             this.errIngresoDatos.ContainerControl = this;
             // 
-            // btnSeleccionar
-            // 
-            this.btnSeleccionar.HeaderText = "";
-            this.btnSeleccionar.Name = "btnSeleccionar";
-            this.btnSeleccionar.ReadOnly = true;
-            this.btnSeleccionar.Visible = false;
-            // 
-            // idUsuaruio
-            // 
-            this.idUsuaruio.HeaderText = "ID usuario";
-            this.idUsuaruio.Name = "idUsuaruio";
-            this.idUsuaruio.ReadOnly = true;
-            this.idUsuaruio.Visible = false;
-            // 
-            // documento
-            // 
-            this.documento.HeaderText = "Nro Documento";
-            this.documento.Name = "documento";
-            this.documento.ReadOnly = true;
-            // 
-            // nombreCompleto
-            // 
-            this.nombreCompleto.HeaderText = "Nombre completo";
-            this.nombreCompleto.Name = "nombreCompleto";
-            this.nombreCompleto.ReadOnly = true;
-            // 
-            // correo
-            // 
-            this.correo.HeaderText = "Correo";
-            this.correo.Name = "correo";
-            this.correo.ReadOnly = true;
-            // 
-            // telefonoRegUsuario
-            // 
-            this.telefonoRegUsuario.HeaderText = "Telefono";
-            this.telefonoRegUsuario.Name = "telefonoRegUsuario";
-            this.telefonoRegUsuario.ReadOnly = true;
-            // 
-            // clave
-            // 
-            this.clave.HeaderText = "Clave";
-            this.clave.Name = "clave";
-            this.clave.ReadOnly = true;
-            this.clave.Visible = false;
-            // 
-            // idRol
-            // 
-            this.idRol.HeaderText = "ID rol";
-            this.idRol.Name = "idRol";
-            this.idRol.ReadOnly = true;
-            this.idRol.Visible = false;
-            // 
-            // rol
-            // 
-            this.rol.HeaderText = "Rol";
-            this.rol.Name = "rol";
-            this.rol.ReadOnly = true;
-            // 
-            // estado
-            // 
-            this.estado.HeaderText = "Estado";
-            this.estado.Name = "estado";
-            this.estado.ReadOnly = true;
-            // 
-            // estadoValor
-            // 
-            this.estadoValor.HeaderText = "Estado valor";
-            this.estadoValor.Name = "estadoValor";
-            this.estadoValor.ReadOnly = true;
-            this.estadoValor.Visible = false;
-            // 
             // frmAltaUsuario
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -526,7 +506,7 @@
             this.Agregra.ResumeLayout(false);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvAltaUsuario)).EndInit();
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.errIngresoDatos)).EndInit();
@@ -552,16 +532,14 @@
         private System.Windows.Forms.Label label6;
 
         private System.Windows.Forms.Label label10;
-        private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.DataGridView dgvAltaUsuario;
         private System.Windows.Forms.Label label11;
         private System.Windows.Forms.Panel panel2;
         private FontAwesome.Sharp.IconButton btnGuardar;
         private FontAwesome.Sharp.IconButton btnLimpiar;
         private FontAwesome.Sharp.IconButton btnCancelar;
         private System.Windows.Forms.ErrorProvider errIngresoDatos;
-        private System.Windows.Forms.ComboBox cbFiltrarListUser;
         private System.Windows.Forms.TextBox txtUserList;
-        private System.Windows.Forms.Label lblFiltroListUser;
         private System.Windows.Forms.Label lblBuscarListUser;
         private FontAwesome.Sharp.IconButton iconBtnLupaDetalleUser;
         public System.Windows.Forms.TextBox txtDocumento;

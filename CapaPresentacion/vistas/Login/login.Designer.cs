@@ -33,6 +33,7 @@ namespace CapaPresentacion.Vistas.Login
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmLogin));
             this.lblTitulo = new System.Windows.Forms.Label();
             this.btnSupervisor = new FontAwesome.Sharp.IconButton();
             this.btnAdmin = new FontAwesome.Sharp.IconButton();
@@ -45,10 +46,10 @@ namespace CapaPresentacion.Vistas.Login
             // lblTitulo
             // 
             this.lblTitulo.AutoSize = true;
-            this.lblTitulo.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(246)))), ((int)(((byte)(243)))), ((int)(((byte)(248)))));
+            this.lblTitulo.BackColor = System.Drawing.Color.Transparent;
             this.lblTitulo.Font = new System.Drawing.Font("Microsoft YaHei Light", 35F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblTitulo.ForeColor = System.Drawing.SystemColors.ButtonShadow;
-            this.lblTitulo.Location = new System.Drawing.Point(35, 27);
+            this.lblTitulo.Location = new System.Drawing.Point(39, 42);
             this.lblTitulo.Name = "lblTitulo";
             this.lblTitulo.Size = new System.Drawing.Size(339, 60);
             this.lblTitulo.TabIndex = 6;
@@ -115,6 +116,7 @@ namespace CapaPresentacion.Vistas.Login
             // 
             // pnlFondo
             // 
+            this.pnlFondo.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("pnlFondo.BackgroundImage")));
             this.pnlFondo.Controls.Add(this.btnSalir);
             this.pnlFondo.Controls.Add(this.lblTitulo);
             this.pnlFondo.Dock = System.Windows.Forms.DockStyle.Fill;

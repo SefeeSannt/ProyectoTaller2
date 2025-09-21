@@ -42,6 +42,7 @@
             this.lblNombreRegistro = new System.Windows.Forms.Label();
             this.lblTituloAdm = new System.Windows.Forms.Label();
             this.lblTitulo = new System.Windows.Forms.Label();
+            this.tsmiEditarCliente = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.pntCabecera.SuspendLayout();
             this.SuspendLayout();
@@ -96,7 +97,8 @@
             // 
             this.iconMenuItem2.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.tsmiAltaCliente,
-            this.tsmiListarCliente});
+            this.tsmiListarCliente,
+            this.tsmiEditarCliente});
             this.iconMenuItem2.Font = new System.Drawing.Font("Segoe UI Variable Text Semibold", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.iconMenuItem2.ForeColor = System.Drawing.Color.White;
             this.iconMenuItem2.IconChar = FontAwesome.Sharp.IconChar.User;
@@ -111,14 +113,14 @@
             // tsmiAltaCliente
             // 
             this.tsmiAltaCliente.Name = "tsmiAltaCliente";
-            this.tsmiAltaCliente.Size = new System.Drawing.Size(191, 22);
-            this.tsmiAltaCliente.Text = "Registrar/Modificar";
+            this.tsmiAltaCliente.Size = new System.Drawing.Size(180, 22);
+            this.tsmiAltaCliente.Text = "Registrar";
             this.tsmiAltaCliente.Click += new System.EventHandler(this.tsmiAltaCliente_Click);
             // 
             // tsmiListarCliente
             // 
             this.tsmiListarCliente.Name = "tsmiListarCliente";
-            this.tsmiListarCliente.Size = new System.Drawing.Size(191, 22);
+            this.tsmiListarCliente.Size = new System.Drawing.Size(180, 22);
             this.tsmiListarCliente.Text = "Consultar";
             this.tsmiListarCliente.Click += new System.EventHandler(this.tsmiListarCliente_Click);
             // 
@@ -215,6 +217,13 @@
             this.lblTitulo.TabIndex = 10;
             this.lblTitulo.Text = "Tienda zonafitt";
             // 
+            // tsmiEditarCliente
+            // 
+            this.tsmiEditarCliente.Name = "tsmiEditarCliente";
+            this.tsmiEditarCliente.Size = new System.Drawing.Size(180, 22);
+            this.tsmiEditarCliente.Text = "Editar";
+            this.tsmiEditarCliente.Click += new System.EventHandler(this.tsmiEditarCliente_Click);
+            // 
             // frmVistaVendedor
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -253,5 +262,6 @@
         private FontAwesome.Sharp.IconMenuItem iconMenuItem3;
         private System.Windows.Forms.ToolStripMenuItem tsmiConsultarProd;
         private FontAwesome.Sharp.IconButton iconBtnSalir;
+        private System.Windows.Forms.ToolStripMenuItem tsmiEditarCliente;
     }
 }

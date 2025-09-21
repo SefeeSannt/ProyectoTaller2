@@ -26,5 +26,40 @@ namespace CapaPresentacion.Vistas.Administrador.Reportes
         {
 
         }
+
+        private void lblVendedorConsVentas_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void lblfechaHasta_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void lblTitulo_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void lblDatoNombre_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void lblDatoApellido_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void lblFechaDesde_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void lblDatoDni_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

@@ -44,7 +44,6 @@
             this.apellidoCliente = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.telefono = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.domicilioCliente = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.estado = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dgvDetalleCliente)).BeginInit();
             this.SuspendLayout();
             // 
@@ -141,8 +140,7 @@
             this.nombreCliente,
             this.apellidoCliente,
             this.telefono,
-            this.domicilioCliente,
-            this.estado});
+            this.domicilioCliente});
             this.dgvDetalleCliente.Location = new System.Drawing.Point(12, 159);
             this.dgvDetalleCliente.Name = "dgvDetalleCliente";
             this.dgvDetalleCliente.ReadOnly = true;
@@ -198,12 +196,6 @@
             this.domicilioCliente.Name = "domicilioCliente";
             this.domicilioCliente.ReadOnly = true;
             // 
-            // estado
-            // 
-            this.estado.HeaderText = "Estado";
-            this.estado.Name = "estado";
-            this.estado.ReadOnly = true;
-            // 
             // frmClienteDetalle
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -248,6 +240,5 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn apellidoCliente;
         private System.Windows.Forms.DataGridViewTextBoxColumn telefono;
         private System.Windows.Forms.DataGridViewTextBoxColumn domicilioCliente;
-        private System.Windows.Forms.DataGridViewTextBoxColumn estado;
     }
 }

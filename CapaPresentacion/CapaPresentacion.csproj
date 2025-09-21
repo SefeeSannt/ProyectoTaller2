@@ -67,6 +67,48 @@
     <Compile Include="helpers\Validaciones.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="vistas\Administrador\frmInformeCompra.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="vistas\Administrador\frmInformeCompra.Designer.cs">
+      <DependentUpon>frmInformeCompra.cs</DependentUpon>
+    </Compile>
+    <Compile Include="vistas\Administrador\frmInformeProducto.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="vistas\Administrador\frmInformeProducto.Designer.cs">
+      <DependentUpon>frmInformeProducto.cs</DependentUpon>
+    </Compile>
+    <Compile Include="vistas\Administrador\frmInformeVentas.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="vistas\Administrador\frmInformeVentas.Designer.cs">
+      <DependentUpon>frmInformeVentas.cs</DependentUpon>
+    </Compile>
+    <Compile Include="vistas\Administrador\Productos\frmBajaProducto.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="vistas\Administrador\Productos\frmBajaProducto.Designer.cs">
+      <DependentUpon>frmBajaProducto.cs</DependentUpon>
+    </Compile>
+    <Compile Include="vistas\Administrador\Usuarios\frmBajaCliente.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="vistas\Administrador\Usuarios\frmBajaCliente.Designer.cs">
+      <DependentUpon>frmBajaCliente.cs</DependentUpon>
+    </Compile>
+    <Compile Include="vistas\Administrador\Usuarios\frmBajaProveedor.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="vistas\Administrador\Usuarios\frmBajaProveedor.Designer.cs">
+      <DependentUpon>frmBajaProveedor.cs</DependentUpon>
+    </Compile>
+    <Compile Include="vistas\Administrador\Usuarios\frmBajaUsuario.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="vistas\Administrador\Usuarios\frmBajaUsuario.Designer.cs">
+      <DependentUpon>frmBajaUsuario.cs</DependentUpon>
+    </Compile>
     <Compile Include="vistas\Administrador\Productos\altaProducto.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -102,6 +144,12 @@
     </Compile>
     <Compile Include="vistas\Administrador\Usuarios\frmDetalleUsuario.Designer.cs">
       <DependentUpon>frmDetalleUsuario.cs</DependentUpon>
+    </Compile>
+    <Compile Include="vistas\Administrador\Usuarios\frmEditarUsuario.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="vistas\Administrador\Usuarios\frmEditarUsuario.Designer.cs">
+      <DependentUpon>frmEditarUsuario.cs</DependentUpon>
     </Compile>
     <Compile Include="vistas\Administrador\vistaAdministrador.cs">
       <SubType>Form</SubType>
@@ -145,6 +193,12 @@
     <Compile Include="vistas\Repositor\Proveedor\frmConsultaProveedores.Designer.cs">
       <DependentUpon>frmConsultaProveedores.cs</DependentUpon>
     </Compile>
+    <Compile Include="vistas\Repositor\Proveedor\frmEditarProducto.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="vistas\Repositor\Proveedor\frmEditarProducto.Designer.cs">
+      <DependentUpon>frmEditarProducto.cs</DependentUpon>
+    </Compile>
     <Compile Include="vistas\Repositor\Stock\frmConsultaStock.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -168,6 +222,12 @@
     </Compile>
     <Compile Include="vistas\Vendedor\Cliente\frmClienteDetalle.Designer.cs">
       <DependentUpon>frmClienteDetalle.cs</DependentUpon>
+    </Compile>
+    <Compile Include="vistas\Vendedor\Cliente\frmEditarCliente.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="vistas\Vendedor\Cliente\frmEditarCliente.Designer.cs">
+      <DependentUpon>frmEditarCliente.cs</DependentUpon>
     </Compile>
     <Compile Include="vistas\Vendedor\Venta\frmVendedorFactura.cs">
       <SubType>Form</SubType>
@@ -208,6 +268,27 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="vistas\Administrador\frmInformeCompra.resx">
+      <DependentUpon>frmInformeCompra.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="vistas\Administrador\frmInformeProducto.resx">
+      <DependentUpon>frmInformeProducto.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="vistas\Administrador\frmInformeVentas.resx">
+      <DependentUpon>frmInformeVentas.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="vistas\Administrador\Productos\frmBajaProducto.resx">
+      <DependentUpon>frmBajaProducto.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="vistas\Administrador\Usuarios\frmBajaCliente.resx">
+      <DependentUpon>frmBajaCliente.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="vistas\Administrador\Usuarios\frmBajaProveedor.resx">
+      <DependentUpon>frmBajaProveedor.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="vistas\Administrador\Usuarios\frmBajaUsuario.resx">
+      <DependentUpon>frmBajaUsuario.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="vistas\Administrador\Productos\altaProducto.resx">
       <DependentUpon>altaProducto.cs</DependentUpon>
     </EmbeddedResource>
@@ -225,6 +306,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="vistas\Administrador\Usuarios\frmDetalleUsuario.resx">
       <DependentUpon>frmDetalleUsuario.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="vistas\Administrador\Usuarios\frmEditarUsuario.resx">
+      <DependentUpon>frmEditarUsuario.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="vistas\Administrador\vistaAdministrador.resx">
       <DependentUpon>vistaAdministrador.cs</DependentUpon>
@@ -247,6 +331,9 @@
     <EmbeddedResource Include="vistas\Repositor\Proveedor\frmConsultaProveedores.resx">
       <DependentUpon>frmConsultaProveedores.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="vistas\Repositor\Proveedor\frmEditarProducto.resx">
+      <DependentUpon>frmEditarProducto.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="vistas\Repositor\Stock\frmConsultaStock.resx">
       <DependentUpon>frmConsultaStock.cs</DependentUpon>
     </EmbeddedResource>
@@ -258,6 +345,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="vistas\Vendedor\Cliente\frmClienteDetalle.resx">
       <DependentUpon>frmClienteDetalle.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="vistas\Vendedor\Cliente\frmEditarCliente.resx">
+      <DependentUpon>frmEditarCliente.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="vistas\Vendedor\Venta\frmVendedorFactura.resx">
       <DependentUpon>frmVendedorFactura.cs</DependentUpon>

@@ -1,5 +1,6 @@
 ﻿using CapaPresentacion.Vistas.Administrador.Reportes;
 using CapaPresentacion.Vistas.Repositor.Proveedor;
+
 using CapaPresentacion.Vistas.Repositor;
 using System;
 using System.Collections.Generic;
@@ -41,7 +42,7 @@ namespace CapaPresentacion.Vistas.Repositor
                 form.Close();
             }
 
-            Form frm = new frmDetalleCompras();
+            Form frm = new frmConsultaCompra();
             frm.MdiParent = this;
             frm.Dock = DockStyle.Fill;
             frm.Show();

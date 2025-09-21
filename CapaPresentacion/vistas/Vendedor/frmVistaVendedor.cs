@@ -10,6 +10,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using CapaPresentacion.vistas.Vendedor.Cliente;
 
 namespace CapaPresentacion.Vistas.Vendedor
 {
@@ -99,6 +100,20 @@ namespace CapaPresentacion.Vistas.Vendedor
             }
 
             Form frm = new frmConsultarListadoProductos();
+
+            frm.MdiParent = this;
+            frm.Dock = DockStyle.Fill;
+            frm.Show();
+        }
+
+        private void tsmiEditarCliente_Click(object sender, EventArgs e)
+        {
+            foreach (Form form in this.MdiChildren)
+            {
+                form.Close();
+            }
+
+            Form frm = new frmEditarCliente();
 
             frm.MdiParent = this;
             frm.Dock = DockStyle.Fill;

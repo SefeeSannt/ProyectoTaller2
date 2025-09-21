@@ -143,5 +143,11 @@ namespace CapaPresentacion.Vistas.Vendedor
             dgvClientes.DataSource = lista;
         }
 
+        private void dgvClientes_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            dgvClientes.AutoGenerateColumns = false;
+     
+
+        }
     }
 }

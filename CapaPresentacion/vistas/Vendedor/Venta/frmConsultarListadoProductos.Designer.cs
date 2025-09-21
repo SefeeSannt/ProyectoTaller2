@@ -28,9 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.cbFiltrarEstadoProducto = new System.Windows.Forms.ComboBox();
             this.txtProductoBuscarPor = new System.Windows.Forms.TextBox();
-            this.lblFiltroEstadoProducto = new System.Windows.Forms.Label();
             this.lblBuscarNombre = new System.Windows.Forms.Label();
             this.lblClientesReegistrados = new System.Windows.Forms.Label();
             this.iconBtnLupaDetalleUser = new FontAwesome.Sharp.IconButton();
@@ -45,14 +43,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.dgvListaProductos)).BeginInit();
             this.SuspendLayout();
             // 
-            // cbFiltrarEstadoProducto
-            // 
-            this.cbFiltrarEstadoProducto.FormattingEnabled = true;
-            this.cbFiltrarEstadoProducto.Location = new System.Drawing.Point(315, 71);
-            this.cbFiltrarEstadoProducto.Name = "cbFiltrarEstadoProducto";
-            this.cbFiltrarEstadoProducto.Size = new System.Drawing.Size(239, 21);
-            this.cbFiltrarEstadoProducto.TabIndex = 37;
-            // 
             // txtProductoBuscarPor
             // 
             this.txtProductoBuscarPor.Location = new System.Drawing.Point(12, 73);
@@ -60,16 +50,6 @@
             this.txtProductoBuscarPor.Name = "txtProductoBuscarPor";
             this.txtProductoBuscarPor.Size = new System.Drawing.Size(197, 19);
             this.txtProductoBuscarPor.TabIndex = 36;
-            // 
-            // lblFiltroEstadoProducto
-            // 
-            this.lblFiltroEstadoProducto.AutoSize = true;
-            this.lblFiltroEstadoProducto.Font = new System.Drawing.Font("Franklin Gothic Medium", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblFiltroEstadoProducto.Location = new System.Drawing.Point(312, 54);
-            this.lblFiltroEstadoProducto.Name = "lblFiltroEstadoProducto";
-            this.lblFiltroEstadoProducto.Size = new System.Drawing.Size(43, 17);
-            this.lblFiltroEstadoProducto.TabIndex = 35;
-            this.lblFiltroEstadoProducto.Text = "Filtrar:";
             // 
             // lblBuscarNombre
             // 
@@ -168,9 +148,7 @@
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(944, 499);
             this.Controls.Add(this.dgvListaProductos);
-            this.Controls.Add(this.cbFiltrarEstadoProducto);
             this.Controls.Add(this.txtProductoBuscarPor);
-            this.Controls.Add(this.lblFiltroEstadoProducto);
             this.Controls.Add(this.lblBuscarNombre);
             this.Controls.Add(this.lblClientesReegistrados);
             this.Controls.Add(this.iconBtnLupaDetalleUser);
@@ -184,10 +162,7 @@
         }
 
         #endregion
-
-        private System.Windows.Forms.ComboBox cbFiltrarEstadoProducto;
         private System.Windows.Forms.TextBox txtProductoBuscarPor;
-        private System.Windows.Forms.Label lblFiltroEstadoProducto;
         private System.Windows.Forms.Label lblBuscarNombre;
         private System.Windows.Forms.Label lblClientesReegistrados;
         private FontAwesome.Sharp.IconButton iconBtnLupaDetalleUser;

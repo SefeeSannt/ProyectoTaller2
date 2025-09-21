@@ -76,6 +76,7 @@
             // 
             this.dgvClientes.AllowDrop = true;
             this.dgvClientes.AllowUserToAddRows = false;
+            this.dgvClientes.AllowUserToDeleteRows = false;
             this.dgvClientes.AllowUserToResizeRows = false;
             this.dgvClientes.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dgvClientes.BackgroundColor = System.Drawing.Color.White;
@@ -89,7 +90,7 @@
             dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
             this.dgvClientes.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.dgvClientes.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvClientes.Location = new System.Drawing.Point(261, 112);
+            this.dgvClientes.Location = new System.Drawing.Point(262, 137);
             this.dgvClientes.Margin = new System.Windows.Forms.Padding(4);
             this.dgvClientes.MultiSelect = false;
             this.dgvClientes.Name = "dgvClientes";
@@ -100,8 +101,9 @@
             dataGridViewCellStyle2.SelectionForeColor = System.Drawing.Color.Black;
             this.dgvClientes.RowsDefaultCellStyle = dataGridViewCellStyle2;
             this.dgvClientes.RowTemplate.Height = 28;
-            this.dgvClientes.Size = new System.Drawing.Size(685, 454);
+            this.dgvClientes.Size = new System.Drawing.Size(685, 433);
             this.dgvClientes.TabIndex = 50;
+            this.dgvClientes.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvClientes_CellContentClick);
             // 
             // txtNombre
             // 
@@ -339,7 +341,7 @@
             // 
             // txtBuscarDni
             // 
-            this.txtBuscarDni.Location = new System.Drawing.Point(404, 75);
+            this.txtBuscarDni.Location = new System.Drawing.Point(700, 85);
             this.txtBuscarDni.Multiline = true;
             this.txtBuscarDni.Name = "txtBuscarDni";
             this.txtBuscarDni.Size = new System.Drawing.Size(197, 19);
@@ -349,7 +351,7 @@
             // 
             this.lblBuscarListProd.AutoSize = true;
             this.lblBuscarListProd.Font = new System.Drawing.Font("Franklin Gothic Medium", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblBuscarListProd.Location = new System.Drawing.Point(401, 59);
+            this.lblBuscarListProd.Location = new System.Drawing.Point(697, 69);
             this.lblBuscarListProd.Name = "lblBuscarListProd";
             this.lblBuscarListProd.Size = new System.Drawing.Size(91, 17);
             this.lblBuscarListProd.TabIndex = 55;
@@ -364,7 +366,7 @@
             this.btnBuscar.IconColor = System.Drawing.Color.White;
             this.btnBuscar.IconFont = FontAwesome.Sharp.IconFont.Auto;
             this.btnBuscar.IconSize = 19;
-            this.btnBuscar.Location = new System.Drawing.Point(607, 75);
+            this.btnBuscar.Location = new System.Drawing.Point(903, 85);
             this.btnBuscar.Name = "btnBuscar";
             this.btnBuscar.Size = new System.Drawing.Size(41, 21);
             this.btnBuscar.TabIndex = 54;
@@ -399,7 +401,6 @@
         #endregion
 
         private System.Windows.Forms.Label label11;
-        private System.Windows.Forms.DataGridView dgvClientes;
         private System.Windows.Forms.TextBox txtNombre;
         private System.Windows.Forms.TextBox txtDocumento;
         private System.Windows.Forms.Label label3;
@@ -421,5 +422,6 @@
         private FontAwesome.Sharp.IconButton btnBuscar;
         private System.Windows.Forms.TextBox txtEmail;
         private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.DataGridView dgvClientes;
     }
 }

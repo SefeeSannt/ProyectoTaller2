@@ -1,4 +1,7 @@
-﻿using CapaPresentacion.Vistas.Administrador;
+﻿using CapaPresentacion.vistas.Administrador;
+using CapaPresentacion.vistas.Administrador.Usuarios;
+using CapaPresentacion.vistas.Repositor.Proveedor;
+using CapaPresentacion.Vistas.Administrador;
 using CapaPresentacion.Vistas.Administrador.Productos;
 using CapaPresentacion.Vistas.Administrador.Reportes;
 using CapaPresentacion.Vistas.Administrador.Usuarios;
@@ -51,33 +54,7 @@ namespace CapaPresentacion.Vistas.Administrador
             frm.Dock = DockStyle.Fill;
             frm.Show();
         } 
-
-        private void tsmiDetalleCompras_Click(object sender, EventArgs e)
-        {
-            foreach (Form form in this.MdiChildren)
-            {
-                form.Close();
-            }
-
-            Form frm = new frmDetalleCompras();
-            frm.MdiParent = this;
-            frm.Dock = DockStyle.Fill;
-            frm.Show();
-        }
-
-        private void tsmiDetalleVentas_Click(object sender, EventArgs e)
-        {
-            foreach (Form form in this.MdiChildren)
-            {
-                form.Close();
-            }
-
-            Form frm = new frmDetalleVentas();
-            frm.MdiParent = this;
-            frm.Dock = DockStyle.Fill;
-            frm.Show();
-        }
-
+       
         //Funcion load que añade un color backround en el formulario padre del Administrador
         private void FormMDI_Load(object sender, EventArgs e)
         {
@@ -117,6 +94,149 @@ namespace CapaPresentacion.Vistas.Administrador
             }
 
             Form frm = new frmDetalleUsuario();
+            frm.MdiParent = this;
+            frm.Dock = DockStyle.Fill;
+            frm.Show();
+        }
+
+        private void tsmiDetalleCompras_Click(object sender, EventArgs e)
+        {
+            foreach (Form form in this.MdiChildren)
+            {
+                form.Close();
+            }
+
+            Form frm = new frmDetalleCompras();
+            frm.MdiParent = this;
+            frm.Dock = DockStyle.Fill;
+            frm.Show();
+        }
+
+        private void tsmiDetalleVentas_Click(object sender, EventArgs e)
+        {
+            foreach (Form form in this.MdiChildren)
+            {
+                form.Close();
+            }
+
+            Form frm = new frmDetalleVentas();
+            frm.MdiParent = this;
+            frm.Dock = DockStyle.Fill;
+            frm.Show();
+        }
+
+        private void tsmiInfProd_Click(object sender, EventArgs e)
+        {
+            foreach (Form form in this.MdiChildren)
+            {
+                form.Close();
+            }
+
+            Form frm = new frmInformeProducto ();
+            frm.MdiParent = this;
+            frm.Dock = DockStyle.Fill;
+            frm.Show();
+        }
+
+        private void tsmiInfCompra_Click(object sender, EventArgs e)
+        {
+            foreach (Form form in this.MdiChildren)
+            {
+                form.Close();
+            }
+
+            Form frm = new frmInformeCompra();
+            frm.MdiParent = this;
+            frm.Dock = DockStyle.Fill;
+            frm.Show();
+        }
+
+        private void tsmiInfVenta_Click(object sender, EventArgs e)
+        {
+            foreach (Form form in this.MdiChildren)
+            {
+                form.Close();
+            }
+
+            Form frm = new frmInformeVentas();
+            frm.MdiParent = this;
+            frm.Dock = DockStyle.Fill;
+            frm.Show();
+        }
+
+        private void tsmiBajaUSuario_Click(object sender, EventArgs e)
+        {
+            foreach (Form form in this.MdiChildren)
+            {
+                form.Close();
+            }
+
+            Form frm = new frmBajaCliente();
+            frm.MdiParent = this;
+            frm.Dock = DockStyle.Fill;
+            frm.Show();
+        }
+
+        private void tsmiBajaProducto_Click(object sender, EventArgs e)
+        {
+            foreach (Form form in this.MdiChildren)
+            {
+                form.Close();
+            }
+
+            Form frm = new frmBajaUsuario();
+            frm.MdiParent = this;
+            frm.Dock = DockStyle.Fill;
+            frm.Show();
+        }
+
+        private void tsmiDarBajaProveedor_Click(object sender, EventArgs e)
+        {
+            foreach (Form form in this.MdiChildren)
+            {
+                form.Close();
+            }
+
+            Form frm = new frmBajaProveedor();
+            frm.MdiParent = this;
+            frm.Dock = DockStyle.Fill;
+            frm.Show();
+        }
+
+        private void tsmiBajaDeUsuario_Click(object sender, EventArgs e)
+        {
+            foreach (Form form in this.MdiChildren)
+            {
+                form.Close();
+            }
+
+            Form frm = new frmBajaUsuario();
+            frm.MdiParent = this;
+            frm.Dock = DockStyle.Fill;
+            frm.Show();
+        }
+
+        private void tsmiEditarUser_Click(object sender, EventArgs e)
+        {
+            foreach (Form form in this.MdiChildren)
+            {
+                form.Close();
+            }
+
+            Form frm = new frmEditarUsuario();
+            frm.MdiParent = this;
+            frm.Dock = DockStyle.Fill;
+            frm.Show();
+        }
+
+        private void tsmiEditarProd_Click(object sender, EventArgs e)
+        {
+            foreach (Form form in this.MdiChildren)
+            {
+                form.Close();
+            }
+
+            Form frm = new frmEditarProducto();
             frm.MdiParent = this;
             frm.Dock = DockStyle.Fill;
             frm.Show();

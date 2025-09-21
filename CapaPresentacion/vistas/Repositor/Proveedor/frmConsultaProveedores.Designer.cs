@@ -113,7 +113,6 @@
             // 
             this.dgvConsultaProveedores.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dgvConsultaProveedores.BackgroundColor = System.Drawing.Color.White;
-            this.dgvConsultaProveedores.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.dgvConsultaProveedores.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleHorizontal;
             this.dgvConsultaProveedores.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvConsultaProveedores.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {

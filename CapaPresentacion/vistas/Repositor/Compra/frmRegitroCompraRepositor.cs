@@ -72,5 +72,9 @@ namespace CapaPresentacion.Vistas.Repositor
             MessageBox.Show("Compra registrada con exito", "Registro Exitoso", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
 
+       
+
+
+       
     }
 }

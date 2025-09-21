@@ -8,15 +8,13 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace CapaPresentacion.Vistas.Vendedor
+namespace CapaPresentacion.vistas.Repositor.Proveedor
 {
-    public partial class frmRegistrarVenta : Form
+    public partial class frmEditarProducto : Form
     {
-        public frmRegistrarVenta()
+        public frmEditarProducto()
         {
             InitializeComponent();
         }
-
-      
     }
 }
