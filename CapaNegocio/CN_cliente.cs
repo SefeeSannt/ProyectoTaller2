@@ -84,6 +84,16 @@ namespace CapaNegocio
             }).ToList();
         }
 
+        public bool ClienteExiste(long dni)
+        {
+            return oCliente.ClienteExiste(dni);
+        }
+
+        public bool EmailExiste(string email)
+        {
+            return oCliente.EmailExiste(email);
+        }
+
         public void ActualizarCliente(ClienteModel clienteModel)
         {
             var clienteEntidad = new cliente

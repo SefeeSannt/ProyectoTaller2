@@ -62,6 +62,22 @@ namespace CapaDatos
             }
         }
 
+        public bool ClienteExiste(long dni)
+        {
+            using (var db = new ProyectoTaller2Entities())
+            {
+                return db.cliente.Any(c => c.dni == dni);
+            }
+        }
+
+        public bool EmailExiste(string email)
+        {
+            using (var db = new ProyectoTaller2Entities())
+            {
+                return db.cliente.Any(c => c.email == email);
+            }
+        }
+
         public void ActualizarCliente(cliente cliente)
         {
             using (var db = new ProyectoTaller2Entities())

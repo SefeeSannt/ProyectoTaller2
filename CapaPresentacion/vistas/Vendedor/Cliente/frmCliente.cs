@@ -31,6 +31,8 @@ namespace CapaPresentacion.Vistas.Vendedor
         
         private void btnGuardar_Click(object sender, EventArgs e)
         {
+            var CN_cliente = new CN_cliente();
+
             errIngresoDatos.Clear();
 
             if (string.IsNullOrEmpty(txtNombre.Text))
@@ -58,7 +60,7 @@ namespace CapaPresentacion.Vistas.Vendedor
 
             if (string.IsNullOrEmpty(txtTelefono.Text))
             {
-                errIngresoDatos.SetError(txtDomicilio, "El campo Telefono es obligatorio");
+                errIngresoDatos.SetError(txtTelefono, "El campo Telefono es obligatorio");
                 return;
             }
 
@@ -67,6 +69,24 @@ namespace CapaPresentacion.Vistas.Vendedor
                 !txtEmail.Text.Contains("."))
             {
                 errIngresoDatos.SetError(txtEmail, "El email debe tener un formato válido (ejemplo: usuario@dominio.com)");
+                return;
+            }
+
+            if (txtDocumento.Text.Length < 7 || txtDocumento.Text.Length > 8)
+            {
+                errIngresoDatos.SetError(txtDocumento, "El campo Documento debe tener entre 7 y 8 dígitos");
+                return;
+            }
+
+            if (CN_cliente.ClienteExiste(long.Parse(txtDocumento.Text)))
+            {
+                errIngresoDatos.SetError(txtDocumento, "Ya existe un cliente con este documento registrado");
+                return;
+            }
+
+            if (CN_cliente.EmailExiste(txtEmail.Text))
+            {
+                errIngresoDatos.SetError(txtEmail, "Ya existe un cliente con este email registrado");
                 return;
             }
 
@@ -128,6 +148,7 @@ namespace CapaPresentacion.Vistas.Vendedor
             var negocio = new CN_cliente();
             var lista = negocio.ObtenerClientesActivos();
             dgvClientes.DataSource = lista;
+            dgvClientes.Columns["estado"].Visible = false;
         }
         
         private void frmCliente_Load(object sender, EventArgs e)

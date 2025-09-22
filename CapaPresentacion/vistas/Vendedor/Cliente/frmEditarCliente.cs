@@ -77,6 +77,7 @@ namespace CapaPresentacion.vistas.Vendedor.Cliente
 
         private void btnGuardar_Click(object sender, EventArgs e)
         {
+            var CN_cliente = new CN_cliente();
             errIngresoDatos.Clear();
 
             if (string.IsNullOrEmpty(txtDocumento.Text))
@@ -112,6 +113,11 @@ namespace CapaPresentacion.vistas.Vendedor.Cliente
             if (!txtEmail.Text.Contains("@") || !txtEmail.Text.Contains("."))
             {
                 errIngresoDatos.SetError(txtEmail, "El campo Email no es válido");
+                return;
+            }
+            if (CN_cliente.EmailExiste(txtEmail.Text))
+            {
+                errIngresoDatos.SetError(txtEmail, "El email ya está registrado");
                 return;
             }
 
