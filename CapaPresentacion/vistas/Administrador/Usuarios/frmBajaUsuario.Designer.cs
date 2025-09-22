@@ -68,10 +68,10 @@
             // 
             // txtBuscar
             // 
-            this.txtBuscar.Location = new System.Drawing.Point(110, 54);
+            this.txtBuscar.Location = new System.Drawing.Point(110, 61);
             this.txtBuscar.Multiline = true;
             this.txtBuscar.Name = "txtBuscar";
-            this.txtBuscar.Size = new System.Drawing.Size(195, 31);
+            this.txtBuscar.Size = new System.Drawing.Size(195, 19);
             this.txtBuscar.TabIndex = 3;
             // 
             // cbRol

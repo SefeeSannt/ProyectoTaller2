@@ -414,14 +414,14 @@
             // cbFiltrarListProv
             // 
             this.cbFiltrarListProv.FormattingEnabled = true;
-            this.cbFiltrarListProv.Location = new System.Drawing.Point(709, 66);
+            this.cbFiltrarListProv.Location = new System.Drawing.Point(564, 62);
             this.cbFiltrarListProv.Name = "cbFiltrarListProv";
             this.cbFiltrarListProv.Size = new System.Drawing.Size(239, 21);
             this.cbFiltrarListProv.TabIndex = 61;
             // 
             // txtProvList
             // 
-            this.txtProvList.Location = new System.Drawing.Point(406, 68);
+            this.txtProvList.Location = new System.Drawing.Point(261, 64);
             this.txtProvList.Multiline = true;
             this.txtProvList.Name = "txtProvList";
             this.txtProvList.Size = new System.Drawing.Size(197, 19);
@@ -432,7 +432,7 @@
             this.lblFiltroListProv.AutoSize = true;
             this.lblFiltroListProv.Font = new System.Drawing.Font("Franklin Gothic Medium", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblFiltroListProv.ForeColor = System.Drawing.Color.Black;
-            this.lblFiltroListProv.Location = new System.Drawing.Point(706, 49);
+            this.lblFiltroListProv.Location = new System.Drawing.Point(561, 45);
             this.lblFiltroListProv.Name = "lblFiltroListProv";
             this.lblFiltroListProv.Size = new System.Drawing.Size(43, 17);
             this.lblFiltroListProv.TabIndex = 59;
@@ -443,7 +443,7 @@
             this.lblBuscarListProv.AutoSize = true;
             this.lblBuscarListProv.Font = new System.Drawing.Font("Franklin Gothic Medium", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblBuscarListProv.ForeColor = System.Drawing.Color.Black;
-            this.lblBuscarListProv.Location = new System.Drawing.Point(403, 52);
+            this.lblBuscarListProv.Location = new System.Drawing.Point(258, 48);
             this.lblBuscarListProv.Name = "lblBuscarListProv";
             this.lblBuscarListProv.Size = new System.Drawing.Size(49, 17);
             this.lblBuscarListProv.TabIndex = 58;
@@ -458,7 +458,7 @@
             this.iconBtnLupaDetalleUser.IconColor = System.Drawing.Color.White;
             this.iconBtnLupaDetalleUser.IconFont = FontAwesome.Sharp.IconFont.Auto;
             this.iconBtnLupaDetalleUser.IconSize = 19;
-            this.iconBtnLupaDetalleUser.Location = new System.Drawing.Point(609, 68);
+            this.iconBtnLupaDetalleUser.Location = new System.Drawing.Point(464, 64);
             this.iconBtnLupaDetalleUser.Name = "iconBtnLupaDetalleUser";
             this.iconBtnLupaDetalleUser.Size = new System.Drawing.Size(41, 21);
             this.iconBtnLupaDetalleUser.TabIndex = 57;

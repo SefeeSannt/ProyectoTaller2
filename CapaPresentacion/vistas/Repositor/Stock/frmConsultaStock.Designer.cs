@@ -69,7 +69,7 @@
             this.textBox1.Location = new System.Drawing.Point(71, 77);
             this.textBox1.Multiline = true;
             this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(166, 23);
+            this.textBox1.Size = new System.Drawing.Size(166, 17);
             this.textBox1.TabIndex = 3;
             // 
             // iconBtnBuscar
@@ -78,9 +78,9 @@
             this.iconBtnBuscar.IconColor = System.Drawing.Color.Black;
             this.iconBtnBuscar.IconFont = FontAwesome.Sharp.IconFont.Auto;
             this.iconBtnBuscar.IconSize = 15;
-            this.iconBtnBuscar.Location = new System.Drawing.Point(243, 73);
+            this.iconBtnBuscar.Location = new System.Drawing.Point(243, 72);
             this.iconBtnBuscar.Name = "iconBtnBuscar";
-            this.iconBtnBuscar.Size = new System.Drawing.Size(78, 27);
+            this.iconBtnBuscar.Size = new System.Drawing.Size(78, 26);
             this.iconBtnBuscar.TabIndex = 4;
             this.iconBtnBuscar.Text = "Buscar";
             this.iconBtnBuscar.TextAlign = System.Drawing.ContentAlignment.MiddleRight;

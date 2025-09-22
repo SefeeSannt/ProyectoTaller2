@@ -46,7 +46,7 @@
             // 
             this.lblTotalClientes.AutoSize = true;
             this.lblTotalClientes.Font = new System.Drawing.Font("Franklin Gothic Medium", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblTotalClientes.Location = new System.Drawing.Point(130, 512);
+            this.lblTotalClientes.Location = new System.Drawing.Point(120, 489);
             this.lblTotalClientes.Name = "lblTotalClientes";
             this.lblTotalClientes.Size = new System.Drawing.Size(16, 17);
             this.lblTotalClientes.TabIndex = 23;
@@ -56,7 +56,7 @@
             // 
             this.lblClienteRegistrados.AutoSize = true;
             this.lblClienteRegistrados.Font = new System.Drawing.Font("Franklin Gothic Medium", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblClienteRegistrados.Location = new System.Drawing.Point(23, 512);
+            this.lblClienteRegistrados.Location = new System.Drawing.Point(13, 489);
             this.lblClienteRegistrados.Name = "lblClienteRegistrados";
             this.lblClienteRegistrados.Size = new System.Drawing.Size(101, 17);
             this.lblClienteRegistrados.TabIndex = 22;
@@ -81,9 +81,9 @@
             this.iconBtnLupaDetalleUser.IconColor = System.Drawing.Color.White;
             this.iconBtnLupaDetalleUser.IconFont = FontAwesome.Sharp.IconFont.Auto;
             this.iconBtnLupaDetalleUser.IconSize = 19;
-            this.iconBtnLupaDetalleUser.Location = new System.Drawing.Point(183, 101);
+            this.iconBtnLupaDetalleUser.Location = new System.Drawing.Point(250, 61);
             this.iconBtnLupaDetalleUser.Name = "iconBtnLupaDetalleUser";
-            this.iconBtnLupaDetalleUser.Size = new System.Drawing.Size(32, 27);
+            this.iconBtnLupaDetalleUser.Size = new System.Drawing.Size(32, 19);
             this.iconBtnLupaDetalleUser.TabIndex = 14;
             this.iconBtnLupaDetalleUser.UseVisualStyleBackColor = false;
             this.iconBtnLupaDetalleUser.Click += new System.EventHandler(this.iconBtnLupaDetalleUser_Click);
@@ -92,19 +92,21 @@
             // 
             this.dgvClientes.AllowUserToAddRows = false;
             this.dgvClientes.AllowUserToDeleteRows = false;
+            this.dgvClientes.AllowUserToResizeColumns = false;
+            this.dgvClientes.AllowUserToResizeRows = false;
             this.dgvClientes.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dgvClientes.BackgroundColor = System.Drawing.Color.White;
             this.dgvClientes.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvClientes.Location = new System.Drawing.Point(12, 134);
+            this.dgvClientes.Location = new System.Drawing.Point(12, 102);
             this.dgvClientes.Name = "dgvClientes";
             this.dgvClientes.ReadOnly = true;
             this.dgvClientes.RowHeadersVisible = false;
-            this.dgvClientes.Size = new System.Drawing.Size(936, 375);
+            this.dgvClientes.Size = new System.Drawing.Size(936, 384);
             this.dgvClientes.TabIndex = 13;
             // 
             // txtBuscar
             // 
-            this.txtBuscar.Location = new System.Drawing.Point(12, 109);
+            this.txtBuscar.Location = new System.Drawing.Point(87, 61);
             this.txtBuscar.Multiline = true;
             this.txtBuscar.Name = "txtBuscar";
             this.txtBuscar.Size = new System.Drawing.Size(144, 19);
@@ -113,17 +115,17 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(12, 93);
+            this.label1.Location = new System.Drawing.Point(12, 64);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(81, 13);
+            this.label1.Size = new System.Drawing.Size(74, 13);
             this.label1.TabIndex = 26;
-            this.label1.Text = "Dato del cliente";
+            this.label1.Text = "Buscar cliente";
             // 
             // lblClientesActivos
             // 
             this.lblClientesActivos.AutoSize = true;
             this.lblClientesActivos.Font = new System.Drawing.Font("Franklin Gothic Medium", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblClientesActivos.Location = new System.Drawing.Point(237, 512);
+            this.lblClientesActivos.Location = new System.Drawing.Point(227, 489);
             this.lblClientesActivos.Name = "lblClientesActivos";
             this.lblClientesActivos.Size = new System.Drawing.Size(16, 17);
             this.lblClientesActivos.TabIndex = 28;
@@ -133,7 +135,7 @@
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Franklin Gothic Medium", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(180, 512);
+            this.label3.Location = new System.Drawing.Point(170, 489);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(51, 17);
             this.label3.TabIndex = 27;
@@ -143,7 +145,7 @@
             // 
             this.lblClientesInactivos.AutoSize = true;
             this.lblClientesInactivos.Font = new System.Drawing.Font("Franklin Gothic Medium", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblClientesInactivos.Location = new System.Drawing.Point(346, 512);
+            this.lblClientesInactivos.Location = new System.Drawing.Point(336, 489);
             this.lblClientesInactivos.Name = "lblClientesInactivos";
             this.lblClientesInactivos.Size = new System.Drawing.Size(16, 17);
             this.lblClientesInactivos.TabIndex = 30;
@@ -153,7 +155,7 @@
             // 
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Franklin Gothic Medium", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.Location = new System.Drawing.Point(289, 512);
+            this.label5.Location = new System.Drawing.Point(279, 489);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(60, 17);
             this.label5.TabIndex = 29;

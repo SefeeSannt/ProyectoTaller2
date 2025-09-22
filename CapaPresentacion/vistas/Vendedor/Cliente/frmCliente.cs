@@ -98,7 +98,7 @@ namespace CapaPresentacion.Vistas.Vendedor
         {
             errIngresoDatos.Clear();
 
-            var result = MessageBox.Show("¿Está seguro que desea cancelar el registro del cliente?", "Confirmar Cancelación", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            var result = MessageBox.Show("¿Está seguro que desea limpiar la informacion del cliente?", "Confirmar Cancelación", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
 
             if (result == DialogResult.Yes)
             {
