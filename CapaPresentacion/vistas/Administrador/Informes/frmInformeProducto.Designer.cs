@@ -35,10 +35,8 @@
             System.Windows.Forms.DataVisualization.Charting.Legend legend2 = new System.Windows.Forms.DataVisualization.Charting.Legend();
             System.Windows.Forms.DataVisualization.Charting.Series series2 = new System.Windows.Forms.DataVisualization.Charting.Series();
             this.lblInforme = new System.Windows.Forms.Label();
-            this.lblFecha = new System.Windows.Forms.Label();
-            this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
             this.lblCategoria = new System.Windows.Forms.Label();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.cboCategoria = new System.Windows.Forms.ComboBox();
             this.pnlInforme = new System.Windows.Forms.Panel();
             this.lblProducto = new System.Windows.Forms.Label();
             this.textBox1 = new System.Windows.Forms.TextBox();
@@ -59,6 +57,10 @@
             this.lblTitulo4 = new System.Windows.Forms.Label();
             this.iconPictureBox1 = new FontAwesome.Sharp.IconPictureBox();
             this.lblTitulo3 = new System.Windows.Forms.Label();
+            this.dtpFechaHasta = new System.Windows.Forms.DateTimePicker();
+            this.lblFechaHasta = new System.Windows.Forms.Label();
+            this.dtpFechaDesde = new System.Windows.Forms.DateTimePicker();
+            this.lblFecha = new System.Windows.Forms.Label();
             this.pnlInforme.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.chProductos)).BeginInit();
             this.pnlProdVent.SuspendLayout();
@@ -80,23 +82,6 @@
             this.lblInforme.TabIndex = 1;
             this.lblInforme.Text = "Informe de productos";
             // 
-            // lblFecha
-            // 
-            this.lblFecha.AutoSize = true;
-            this.lblFecha.Font = new System.Drawing.Font("Franklin Gothic Medium", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblFecha.Location = new System.Drawing.Point(16, 13);
-            this.lblFecha.Name = "lblFecha";
-            this.lblFecha.Size = new System.Drawing.Size(42, 17);
-            this.lblFecha.TabIndex = 2;
-            this.lblFecha.Text = "Fecha";
-            // 
-            // dateTimePicker1
-            // 
-            this.dateTimePicker1.Location = new System.Drawing.Point(19, 42);
-            this.dateTimePicker1.Name = "dateTimePicker1";
-            this.dateTimePicker1.Size = new System.Drawing.Size(200, 20);
-            this.dateTimePicker1.TabIndex = 3;
-            // 
             // lblCategoria
             // 
             this.lblCategoria.AutoSize = true;
@@ -107,21 +92,24 @@
             this.lblCategoria.TabIndex = 6;
             this.lblCategoria.Text = "Filtrar por categoria:";
             // 
-            // comboBox1
+            // cboCategoria
             // 
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(544, 41);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(238, 21);
-            this.comboBox1.TabIndex = 7;
+            this.cboCategoria.FormattingEnabled = true;
+            this.cboCategoria.Location = new System.Drawing.Point(544, 32);
+            this.cboCategoria.Name = "cboCategoria";
+            this.cboCategoria.Size = new System.Drawing.Size(238, 21);
+            this.cboCategoria.TabIndex = 7;
+            this.cboCategoria.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.cboCategoria_KeyPress);
             // 
             // pnlInforme
             // 
             this.pnlInforme.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.pnlInforme.Controls.Add(this.lblProducto);
-            this.pnlInforme.Controls.Add(this.dateTimePicker1);
+            this.pnlInforme.Controls.Add(this.dtpFechaHasta);
+            this.pnlInforme.Controls.Add(this.lblFechaHasta);
+            this.pnlInforme.Controls.Add(this.dtpFechaDesde);
             this.pnlInforme.Controls.Add(this.lblFecha);
-            this.pnlInforme.Controls.Add(this.comboBox1);
+            this.pnlInforme.Controls.Add(this.lblProducto);
+            this.pnlInforme.Controls.Add(this.cboCategoria);
             this.pnlInforme.Controls.Add(this.textBox1);
             this.pnlInforme.Controls.Add(this.lblCategoria);
             this.pnlInforme.Location = new System.Drawing.Point(17, 37);
@@ -141,7 +129,7 @@
             // 
             // textBox1
             // 
-            this.textBox1.Location = new System.Drawing.Point(278, 42);
+            this.textBox1.Location = new System.Drawing.Point(278, 33);
             this.textBox1.Name = "textBox1";
             this.textBox1.Size = new System.Drawing.Size(238, 20);
             this.textBox1.TabIndex = 10;
@@ -365,6 +353,42 @@
             this.lblTitulo3.TabIndex = 14;
             this.lblTitulo3.Text = "Resumen";
             // 
+            // dtpFechaHasta
+            // 
+            this.dtpFechaHasta.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.dtpFechaHasta.Location = new System.Drawing.Point(142, 33);
+            this.dtpFechaHasta.Name = "dtpFechaHasta";
+            this.dtpFechaHasta.Size = new System.Drawing.Size(117, 20);
+            this.dtpFechaHasta.TabIndex = 20;
+            // 
+            // lblFechaHasta
+            // 
+            this.lblFechaHasta.AutoSize = true;
+            this.lblFechaHasta.Font = new System.Drawing.Font("Franklin Gothic Medium", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblFechaHasta.Location = new System.Drawing.Point(139, 13);
+            this.lblFechaHasta.Name = "lblFechaHasta";
+            this.lblFechaHasta.Size = new System.Drawing.Size(76, 17);
+            this.lblFechaHasta.TabIndex = 19;
+            this.lblFechaHasta.Text = "Fecha hasta";
+            // 
+            // dtpFechaDesde
+            // 
+            this.dtpFechaDesde.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.dtpFechaDesde.Location = new System.Drawing.Point(19, 34);
+            this.dtpFechaDesde.Name = "dtpFechaDesde";
+            this.dtpFechaDesde.Size = new System.Drawing.Size(117, 20);
+            this.dtpFechaDesde.TabIndex = 18;
+            // 
+            // lblFecha
+            // 
+            this.lblFecha.AutoSize = true;
+            this.lblFecha.Font = new System.Drawing.Font("Franklin Gothic Medium", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblFecha.Location = new System.Drawing.Point(16, 13);
+            this.lblFecha.Name = "lblFecha";
+            this.lblFecha.Size = new System.Drawing.Size(79, 17);
+            this.lblFecha.TabIndex = 17;
+            this.lblFecha.Text = "Fecha desde";
+            // 
             // frmInformeProducto
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -399,10 +423,8 @@
 
         #endregion
         private System.Windows.Forms.Label lblInforme;
-        private System.Windows.Forms.Label lblFecha;
-        private System.Windows.Forms.DateTimePicker dateTimePicker1;
         private System.Windows.Forms.Label lblCategoria;
-        private System.Windows.Forms.ComboBox comboBox1;
+        private System.Windows.Forms.ComboBox cboCategoria;
         private System.Windows.Forms.Panel pnlInforme;
         private System.Windows.Forms.TextBox textBox1;
         private System.Windows.Forms.Label lblProducto;
@@ -423,5 +445,9 @@
         private System.Windows.Forms.Label lblTitulo4;
         private FontAwesome.Sharp.IconPictureBox iconPictureBox1;
         private System.Windows.Forms.DataVisualization.Charting.Chart chCategoria;
+        private System.Windows.Forms.DateTimePicker dtpFechaHasta;
+        private System.Windows.Forms.Label lblFechaHasta;
+        private System.Windows.Forms.DateTimePicker dtpFechaDesde;
+        private System.Windows.Forms.Label lblFecha;
     }
 }

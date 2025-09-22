@@ -164,19 +164,6 @@ namespace CapaPresentacion.Vistas.Administrador
             frm.Show();
         }
 
-        private void tsmiBajaUSuario_Click(object sender, EventArgs e)
-        {
-            foreach (Form form in this.MdiChildren)
-            {
-                form.Close();
-            }
-
-            Form frm = new frmBajaCliente();
-            frm.MdiParent = this;
-            frm.Dock = DockStyle.Fill;
-            frm.Show();
-        }
-
         private void tsmiBajaProducto_Click(object sender, EventArgs e)
         {
             foreach (Form form in this.MdiChildren)
@@ -185,19 +172,6 @@ namespace CapaPresentacion.Vistas.Administrador
             }
 
             Form frm = new frmBajaUsuario();
-            frm.MdiParent = this;
-            frm.Dock = DockStyle.Fill;
-            frm.Show();
-        }
-
-        private void tsmiDarBajaProveedor_Click(object sender, EventArgs e)
-        {
-            foreach (Form form in this.MdiChildren)
-            {
-                form.Close();
-            }
-
-            Form frm = new frmBajaProveedor();
             frm.MdiParent = this;
             frm.Dock = DockStyle.Fill;
             frm.Show();
@@ -237,6 +211,41 @@ namespace CapaPresentacion.Vistas.Administrador
             }
 
             Form frm = new frmEditarProducto();
+            frm.MdiParent = this;
+            frm.Dock = DockStyle.Fill;
+            frm.Show();
+        }
+
+        private void iconMenuItem3_Click(object sender, EventArgs e)
+        {
+            var result = MessageBox.Show("¿Está seguro que desea realizar un backup?", "Backup", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            if (result == DialogResult.Yes)
+            {
+                MessageBox.Show("Backup realizado con éxito", "Backup", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+        }
+
+        private void altaBajaToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            foreach (Form form in this.MdiChildren)
+            {
+                form.Close();
+            }
+
+            Form frm = new frmBajaCliente();
+            frm.MdiParent = this;
+            frm.Dock = DockStyle.Fill;
+            frm.Show();
+        }
+
+        private void altaBajaToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            foreach (Form form in this.MdiChildren)
+            {
+                form.Close();
+            }
+
+            Form frm = new frmBajaProveedor();
             frm.MdiParent = this;
             frm.Dock = DockStyle.Fill;
             frm.Show();

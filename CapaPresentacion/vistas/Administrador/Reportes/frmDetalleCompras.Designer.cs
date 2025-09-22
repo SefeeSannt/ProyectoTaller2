@@ -402,7 +402,7 @@ namespace CapaPresentacion.Vistas.Administrador.Reportes
             this.lblTitulo.AutoSize = true;
             this.lblTitulo.BackColor = System.Drawing.Color.White;
             this.lblTitulo.Font = new System.Drawing.Font("Franklin Gothic Medium", 13F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblTitulo.Location = new System.Drawing.Point(12, 11);
+            this.lblTitulo.Location = new System.Drawing.Point(11, 11);
             this.lblTitulo.Name = "lblTitulo";
             this.lblTitulo.Size = new System.Drawing.Size(136, 23);
             this.lblTitulo.TabIndex = 18;

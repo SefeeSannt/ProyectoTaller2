@@ -67,22 +67,22 @@
     <Compile Include="helpers\Validaciones.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="vistas\Administrador\frmInformeCompra.cs">
+    <Compile Include="vistas\Administrador\Informes\frmInformeCompra.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="vistas\Administrador\frmInformeCompra.Designer.cs">
+    <Compile Include="vistas\Administrador\Informes\frmInformeCompra.Designer.cs">
       <DependentUpon>frmInformeCompra.cs</DependentUpon>
     </Compile>
-    <Compile Include="vistas\Administrador\frmInformeProducto.cs">
+    <Compile Include="vistas\Administrador\Informes\frmInformeProducto.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="vistas\Administrador\frmInformeProducto.Designer.cs">
+    <Compile Include="vistas\Administrador\Informes\frmInformeProducto.Designer.cs">
       <DependentUpon>frmInformeProducto.cs</DependentUpon>
     </Compile>
-    <Compile Include="vistas\Administrador\frmInformeVentas.cs">
+    <Compile Include="vistas\Administrador\Informes\frmInformeVentas.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="vistas\Administrador\frmInformeVentas.Designer.cs">
+    <Compile Include="vistas\Administrador\Informes\frmInformeVentas.Designer.cs">
       <DependentUpon>frmInformeVentas.cs</DependentUpon>
     </Compile>
     <Compile Include="vistas\Administrador\Productos\frmBajaProducto.cs">
@@ -91,16 +91,16 @@
     <Compile Include="vistas\Administrador\Productos\frmBajaProducto.Designer.cs">
       <DependentUpon>frmBajaProducto.cs</DependentUpon>
     </Compile>
-    <Compile Include="vistas\Administrador\Usuarios\frmBajaCliente.cs">
+    <Compile Include="vistas\Administrador\Clientes\frmBajaCliente.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="vistas\Administrador\Usuarios\frmBajaCliente.Designer.cs">
+    <Compile Include="vistas\Administrador\Clientes\frmBajaCliente.Designer.cs">
       <DependentUpon>frmBajaCliente.cs</DependentUpon>
     </Compile>
-    <Compile Include="vistas\Administrador\Usuarios\frmBajaProveedor.cs">
+    <Compile Include="vistas\Administrador\Proveedores\frmBajaProveedor.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="vistas\Administrador\Usuarios\frmBajaProveedor.Designer.cs">
+    <Compile Include="vistas\Administrador\Proveedores\frmBajaProveedor.Designer.cs">
       <DependentUpon>frmBajaProveedor.cs</DependentUpon>
     </Compile>
     <Compile Include="vistas\Administrador\Usuarios\frmBajaUsuario.cs">
@@ -268,22 +268,22 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
-    <EmbeddedResource Include="vistas\Administrador\frmInformeCompra.resx">
+    <EmbeddedResource Include="vistas\Administrador\Informes\frmInformeCompra.resx">
       <DependentUpon>frmInformeCompra.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="vistas\Administrador\frmInformeProducto.resx">
+    <EmbeddedResource Include="vistas\Administrador\Informes\frmInformeProducto.resx">
       <DependentUpon>frmInformeProducto.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="vistas\Administrador\frmInformeVentas.resx">
+    <EmbeddedResource Include="vistas\Administrador\Informes\frmInformeVentas.resx">
       <DependentUpon>frmInformeVentas.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="vistas\Administrador\Productos\frmBajaProducto.resx">
       <DependentUpon>frmBajaProducto.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="vistas\Administrador\Usuarios\frmBajaCliente.resx">
+    <EmbeddedResource Include="vistas\Administrador\Clientes\frmBajaCliente.resx">
       <DependentUpon>frmBajaCliente.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="vistas\Administrador\Usuarios\frmBajaProveedor.resx">
+    <EmbeddedResource Include="vistas\Administrador\Proveedores\frmBajaProveedor.resx">
       <DependentUpon>frmBajaProveedor.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="vistas\Administrador\Usuarios\frmBajaUsuario.resx">
@@ -387,6 +387,7 @@
   <ItemGroup>
     <WCFMetadata Include="Connected Services\" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
     <PropertyGroup>

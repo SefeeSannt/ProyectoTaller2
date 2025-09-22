@@ -37,9 +37,11 @@ namespace CapaPresentacion.Vistas.Administrador.Reportes
             this.Agregra = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.nuevoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.button1 = new System.Windows.Forms.Button();
             this.lblTotalVentaFilt = new System.Windows.Forms.Label();
             this.lblDetalleVenta = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
+            this.lblTituloCosto = new System.Windows.Forms.Label();
             this.dgvConsultaVentas = new System.Windows.Forms.DataGridView();
             this.clienteConsVentas = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.fechaInicio = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -47,6 +49,7 @@ namespace CapaPresentacion.Vistas.Administrador.Reportes
             this.formaPagoConsVenta = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ventaTotal = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.verDetalle = new System.Windows.Forms.DataGridViewButtonColumn();
+            this.lblCostoTotal = new System.Windows.Forms.TextBox();
             this.lblTituloTotalVentas = new System.Windows.Forms.Label();
             this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
             this.pnlConsultaVentas2 = new System.Windows.Forms.Panel();
@@ -54,8 +57,6 @@ namespace CapaPresentacion.Vistas.Administrador.Reportes
             this.lblDatoApellido = new System.Windows.Forms.Label();
             this.lblDatoNombre = new System.Windows.Forms.Label();
             this.lblTitulo = new System.Windows.Forms.Label();
-            this.lblTituloCosto = new System.Windows.Forms.Label();
-            this.lblCostoTotal = new System.Windows.Forms.TextBox();
             this.dgvDetalleVenta = new System.Windows.Forms.DataGridView();
             this.clmProducto = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.clmCant = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -68,7 +69,7 @@ namespace CapaPresentacion.Vistas.Administrador.Reportes
             this.txtCliente_Ventas = new System.Windows.Forms.TextBox();
             this.btnBuscar = new System.Windows.Forms.Button();
             this.lblFechaDesde = new System.Windows.Forms.Label();
-            this.button1 = new System.Windows.Forms.Button();
+            this.label2 = new System.Windows.Forms.Label();
             this.Agregra.SuspendLayout();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvConsultaVentas)).BeginInit();
@@ -113,6 +114,18 @@ namespace CapaPresentacion.Vistas.Administrador.Reportes
             this.panel1.Size = new System.Drawing.Size(960, 538);
             this.panel1.TabIndex = 4;
             // 
+            // button1
+            // 
+            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button1.ForeColor = System.Drawing.Color.Black;
+            this.button1.Location = new System.Drawing.Point(486, 476);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(143, 39);
+            this.button1.TabIndex = 28;
+            this.button1.Text = "Imprimir detalle";
+            this.button1.UseVisualStyleBackColor = true;
+            // 
             // lblTotalVentaFilt
             // 
             this.lblTotalVentaFilt.AutoSize = true;
@@ -148,6 +161,18 @@ namespace CapaPresentacion.Vistas.Administrador.Reportes
             this.label1.Size = new System.Drawing.Size(151, 25);
             this.label1.TabIndex = 20;
             this.label1.Text = "Consulta Ventas";
+            // 
+            // lblTituloCosto
+            // 
+            this.lblTituloCosto.AutoSize = true;
+            this.lblTituloCosto.BackColor = System.Drawing.Color.White;
+            this.lblTituloCosto.Font = new System.Drawing.Font("Franklin Gothic Medium", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblTituloCosto.ForeColor = System.Drawing.Color.Black;
+            this.lblTituloCosto.Location = new System.Drawing.Point(709, 487);
+            this.lblTituloCosto.Name = "lblTituloCosto";
+            this.lblTituloCosto.Size = new System.Drawing.Size(102, 20);
+            this.lblTituloCosto.TabIndex = 17;
+            this.lblTituloCosto.Text = "COSTO TOTAL:";
             // 
             // dgvConsultaVentas
             // 
@@ -209,6 +234,19 @@ namespace CapaPresentacion.Vistas.Administrador.Reportes
             this.verDetalle.Resizable = System.Windows.Forms.DataGridViewTriState.True;
             this.verDetalle.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
             // 
+            // lblCostoTotal
+            // 
+            this.lblCostoTotal.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(0)))));
+            this.lblCostoTotal.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.lblCostoTotal.Font = new System.Drawing.Font("Franklin Gothic Medium", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblCostoTotal.Location = new System.Drawing.Point(817, 476);
+            this.lblCostoTotal.Multiline = true;
+            this.lblCostoTotal.Name = "lblCostoTotal";
+            this.lblCostoTotal.Size = new System.Drawing.Size(132, 40);
+            this.lblCostoTotal.TabIndex = 17;
+            this.lblCostoTotal.Text = "$0.00";
+            this.lblCostoTotal.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
             // lblTituloTotalVentas
             // 
             this.lblTituloTotalVentas.AutoSize = true;
@@ -234,6 +272,7 @@ namespace CapaPresentacion.Vistas.Administrador.Reportes
             // pnlConsultaVentas2
             // 
             this.pnlConsultaVentas2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.pnlConsultaVentas2.Controls.Add(this.label2);
             this.pnlConsultaVentas2.Controls.Add(this.lblDatoDni);
             this.pnlConsultaVentas2.Controls.Add(this.lblDatoApellido);
             this.pnlConsultaVentas2.Controls.Add(this.lblDatoNombre);
@@ -295,31 +334,6 @@ namespace CapaPresentacion.Vistas.Administrador.Reportes
             this.lblTitulo.TabIndex = 18;
             this.lblTitulo.Text = "Datos Vendedor";
             this.lblTitulo.Click += new System.EventHandler(this.lblTitulo_Click);
-            // 
-            // lblTituloCosto
-            // 
-            this.lblTituloCosto.AutoSize = true;
-            this.lblTituloCosto.BackColor = System.Drawing.Color.White;
-            this.lblTituloCosto.Font = new System.Drawing.Font("Franklin Gothic Medium", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblTituloCosto.ForeColor = System.Drawing.Color.Black;
-            this.lblTituloCosto.Location = new System.Drawing.Point(709, 487);
-            this.lblTituloCosto.Name = "lblTituloCosto";
-            this.lblTituloCosto.Size = new System.Drawing.Size(102, 20);
-            this.lblTituloCosto.TabIndex = 17;
-            this.lblTituloCosto.Text = "COSTO TOTAL:";
-            // 
-            // lblCostoTotal
-            // 
-            this.lblCostoTotal.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(0)))));
-            this.lblCostoTotal.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.lblCostoTotal.Font = new System.Drawing.Font("Franklin Gothic Medium", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblCostoTotal.Location = new System.Drawing.Point(817, 476);
-            this.lblCostoTotal.Multiline = true;
-            this.lblCostoTotal.Name = "lblCostoTotal";
-            this.lblCostoTotal.Size = new System.Drawing.Size(132, 40);
-            this.lblCostoTotal.TabIndex = 17;
-            this.lblCostoTotal.Text = "$0.00";
-            this.lblCostoTotal.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // dgvDetalleVenta
             // 
@@ -447,17 +461,17 @@ namespace CapaPresentacion.Vistas.Administrador.Reportes
             this.lblFechaDesde.Text = "Fecha desde:";
             this.lblFechaDesde.Click += new System.EventHandler(this.lblFechaDesde_Click);
             // 
-            // button1
+            // label2
             // 
-            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button1.ForeColor = System.Drawing.Color.Black;
-            this.button1.Location = new System.Drawing.Point(486, 476);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(143, 39);
-            this.button1.TabIndex = 28;
-            this.button1.Text = "Imprimir detalle";
-            this.button1.UseVisualStyleBackColor = true;
+            this.label2.AutoSize = true;
+            this.label2.BackColor = System.Drawing.Color.White;
+            this.label2.Font = new System.Drawing.Font("Franklin Gothic Medium", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.ForeColor = System.Drawing.Color.Black;
+            this.label2.Location = new System.Drawing.Point(352, 76);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(84, 17);
+            this.label2.TabIndex = 22;
+            this.label2.Text = "Codigo venta:";
             // 
             // frmDetalleVentas
             // 
@@ -519,6 +533,7 @@ namespace CapaPresentacion.Vistas.Administrador.Reportes
         private DataGridViewTextBoxColumn Subtotal;
         private Panel panel2;
         private Button button1;
+        private Label label2;
     }
 }
 

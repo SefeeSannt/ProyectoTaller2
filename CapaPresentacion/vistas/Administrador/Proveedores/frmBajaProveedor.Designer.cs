@@ -104,32 +104,36 @@
             this.email,
             this.accion});
             this.dgvBajaProveedores.Cursor = System.Windows.Forms.Cursors.Default;
-            this.dgvBajaProveedores.Location = new System.Drawing.Point(15, 117);
+            this.dgvBajaProveedores.Location = new System.Drawing.Point(5, 109);
             this.dgvBajaProveedores.Name = "dgvBajaProveedores";
             this.dgvBajaProveedores.ReadOnly = true;
             this.dgvBajaProveedores.RowHeadersVisible = false;
-            this.dgvBajaProveedores.Size = new System.Drawing.Size(933, 356);
+            this.dgvBajaProveedores.Size = new System.Drawing.Size(933, 417);
             this.dgvBajaProveedores.TabIndex = 32;
             // 
             // nombre
             // 
             this.nombre.HeaderText = "Nombre";
             this.nombre.Name = "nombre";
+            this.nombre.ReadOnly = true;
             // 
             // apellido
             // 
             this.apellido.HeaderText = "Apellido";
             this.apellido.Name = "apellido";
+            this.apellido.ReadOnly = true;
             // 
             // Documento
             // 
             this.Documento.HeaderText = "Documento";
             this.Documento.Name = "Documento";
+            this.Documento.ReadOnly = true;
             // 
             // email
             // 
             this.email.HeaderText = "Email";
             this.email.Name = "email";
+            this.email.ReadOnly = true;
             // 
             // accion
             // 

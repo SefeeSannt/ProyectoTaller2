@@ -7,6 +7,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using CapaPresentacion.Helpers;
+using CapaNegocio;
 
 namespace CapaPresentacion.Vistas.Vendedor
 {
@@ -16,5 +18,30 @@ namespace CapaPresentacion.Vistas.Vendedor
         {
             InitializeComponent();
         }
+
+        private void CargarClientesEnGrid()
+        {
+            var negocio = new CN_cliente();
+            var lista = negocio.ObtenerClientesActivos();
+            dgvClientes.DataSource = lista;
+
+            lblTotalClientes.Text = $"{negocio.TotalClientes()}";
+            lblClientesActivos.Text = $"{negocio.TotalClientesActivos()}";
+            lblClientesInactivos.Text = $"{negocio.TotalClientesInactivos()}";
+        }
+
+        private void iconBtnLupaDetalleUser_Click(object sender, EventArgs e)
+        {
+            var negocio = new CN_cliente();
+            var criterio = txtBuscar.Text;
+            var lista = negocio.BuscarClientesActivos(criterio);
+            dgvClientes.DataSource = lista;
+        }
+
+        private void frmClienteDetalle_Load(object sender, EventArgs e)
+        {
+            CargarClientesEnGrid();
+        }
+
     }
 }

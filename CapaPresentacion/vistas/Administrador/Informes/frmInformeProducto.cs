@@ -7,14 +7,20 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using CapaPresentacion.Helpers;
 
 namespace CapaPresentacion.vistas.Administrador
 {
-    public partial class frmInformeCompra : Form
+    public partial class frmInformeProducto : Form
     {
-        public frmInformeCompra()
+        public frmInformeProducto()
         {
             InitializeComponent();
+        }
+
+        private void cboCategoria_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            Validaciones.noWrite(sender,e);
         }
     }
 }

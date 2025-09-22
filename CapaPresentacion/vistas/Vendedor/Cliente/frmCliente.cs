@@ -126,7 +126,7 @@ namespace CapaPresentacion.Vistas.Vendedor
         private void CargarClientesEnGrid()
         {
             var negocio = new CN_cliente();
-            var lista = negocio.ObtenerClientes();
+            var lista = negocio.ObtenerClientesActivos();
             dgvClientes.DataSource = lista;
         }
         
@@ -139,15 +139,13 @@ namespace CapaPresentacion.Vistas.Vendedor
         {
             var negocio = new CN_cliente();
             var criterio = txtBuscarDni.Text;
-            var lista = negocio.BuscarClientes(criterio);
+            var lista = negocio.BuscarClientesActivos(criterio);
             dgvClientes.DataSource = lista;
         }
 
         private void dgvClientes_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
             dgvClientes.AutoGenerateColumns = false;
-     
-
         }
     }
 }
