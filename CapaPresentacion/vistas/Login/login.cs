@@ -1,4 +1,6 @@
-﻿using CapaPresentacion;
+﻿using CapaEntidad;
+using CapaNegocio;
+using CapaPresentacion;
 using CapaPresentacion.Helpers;
 using CapaPresentacion.Vistas.Administrador;
 using CapaPresentacion.Vistas.Repositor;
@@ -12,6 +14,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Xml.Linq;
+
 
 namespace CapaPresentacion.Vistas.Login
 {
@@ -53,5 +57,55 @@ namespace CapaPresentacion.Vistas.Login
         }
 
        
+        private void iconBtnCancelar_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
+
+
+
+
+
+
+        /*Nuevo:Muestra la vista del admin luego de logerame
+         SOLO ME DEJA MOSTRAR UNA VISTA, INTENTE USAR UN IF ANIDADO Y NO SE PUDO
+         
+         */
+        private void iconBtnIngresar_Click(object sender, EventArgs e)
+        {
+           
+            // Validar que los campos no estén vacíos
+            List<Usuario> TEST = new CN_usuario().Listar();
+
+            //busca un objeto dentro de una lista
+            Usuario ousuario = new CN_usuario().Listar().Where(u => u.documento == txtNroDoc.Text && u.clave == txtClave.Text).FirstOrDefault();
+
+
+            if (ousuario != null)
+            {
+                // Usuario encontrado → ingresar
+                var vistaAdmin = new frmVistaAdministrador();
+                vistaAdmin.Show();
+                this.Hide();
+
+                vistaAdmin.FormClosed += (s, args) => this.Show();
+            }
+            else
+            {
+                // Usuario no encontrado → documento o clave incorrectos
+                MessageBox.Show("El documento y/o la clave son incorrectos.",
+                                "Error de inicio de sesión",
+                                MessageBoxButtons.OK,
+                                MessageBoxIcon.Error);
+            }
+
+        }
+
+
+
+
     }
-}
+        
+ }
+
