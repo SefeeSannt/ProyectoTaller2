@@ -26,52 +26,16 @@ namespace CapaPresentacion.Vistas.Login
             InitializeComponent();
         }
 
-        private void btnAdmin_Click(object sender, EventArgs e)
-        {
-            var vistaAdmin = new frmVistaAdministrador();
-            vistaAdmin.Show();
-            this.Hide();
-            vistaAdmin.FormClosed += (s, args) => this.Show();
-        }
-        
-
         private void btnSalir_Click(object sender, EventArgs e)
         {
             this.Close();
         }
-
-        private void btnSupervisor_Click(object sender, EventArgs e)
-        {
-            var vistaRepositor = new frmVistaRepositor();
-            vistaRepositor.Show();
-            this.Hide();
-            vistaRepositor.FormClosed += (s, args) => this.Show();
-        }
-
-        private void btnVendedor_Click(object sender, EventArgs e)
-        {
-            var frmVendedor = new frmVistaVendedor();
-            frmVendedor.Show();
-            this.Hide();
-            frmVendedor.FormClosed += (s, args) => this.Show();
-        }
-
        
         private void iconBtnCancelar_Click(object sender, EventArgs e)
         {
             this.Close();
         }
 
-
-
-
-
-
-
-        /*Nuevo:Muestra la vista del admin luego de logerame
-         SOLO ME DEJA MOSTRAR UNA VISTA, INTENTE USAR UN IF ANIDADO Y NO SE PUDO
-         
-         */
         private void iconBtnIngresar_Click(object sender, EventArgs e)
         {
            
@@ -79,33 +43,49 @@ namespace CapaPresentacion.Vistas.Login
             List<Usuario> TEST = new CN_usuario().Listar();
 
             //busca un objeto dentro de una lista
-            Usuario ousuario = new CN_usuario().Listar().Where(u => u.documento == txtNroDoc.Text && u.clave == txtClave.Text).FirstOrDefault();
+            Usuario ousuario = new CN_usuario().Listar().Where(u => u.username  == txtUsername.Text && u.password == txtClave.Text).FirstOrDefault();
 
 
             if (ousuario != null)
             {
                 // Usuario encontrado → ingresar
-                var vistaAdmin = new frmVistaAdministrador();
-                vistaAdmin.Show();
-                this.Hide();
-
-                vistaAdmin.FormClosed += (s, args) => this.Show();
+                switch (ousuario.oRol.id_rol)
+                {
+                    case 1: // Admin
+                        var vistaAdmin = new frmVistaAdministrador(ousuario);
+                        vistaAdmin.Show();
+                        this.Hide();
+                        txtUsername.Clear();
+                        txtClave.Clear();
+                        vistaAdmin.FormClosed += (s, args) => this.Show();
+                        break;
+                    case 2: // Vendedor
+                        var frmVendedor = new frmVistaVendedor(ousuario);
+                        frmVendedor.Show();
+                        this.Hide();
+                        txtUsername.Clear();
+                        txtClave.Clear();
+                        frmVendedor.FormClosed += (s, args) => this.Show();
+                        break;
+                    case 3: // Repositor
+                        var vistaRepositor = new frmVistaRepositor(ousuario);
+                        vistaRepositor.Show();
+                        this.Hide();
+                        txtUsername.Clear();
+                        txtClave.Clear();
+                        vistaRepositor.FormClosed += (s, args) => this.Show();
+                        break;
+                    default:
+                        MessageBox.Show("Tipo de usuario no reconocido.", "Error de inicio de sesión", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        break;
+                }
             }
             else
             {
                 // Usuario no encontrado → documento o clave incorrectos
-                MessageBox.Show("El documento y/o la clave son incorrectos.",
-                                "Error de inicio de sesión",
-                                MessageBoxButtons.OK,
-                                MessageBoxIcon.Error);
+                MessageBox.Show("El documento y/o la clave son incorrectos.","Error de inicio de sesión",MessageBoxButtons.OK,MessageBoxIcon.Error);
             }
-
         }
-
-
-
-
-    }
-        
- }
+    }    
+}
 

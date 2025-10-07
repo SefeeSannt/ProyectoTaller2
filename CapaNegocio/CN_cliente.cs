@@ -14,11 +14,10 @@ namespace CapaNegocio
             {
                 nombre = clienteModel.nombre,
                 apellido = clienteModel.apellido,
-                dni = clienteModel.dni,
+                dni_cliente = clienteModel.dni,
                 domicilio = clienteModel.domicilio,
                 telefono = clienteModel.telefono,
-                email = clienteModel.email,
-                estado = clienteModel.estado
+                email_cliente = clienteModel.email
             };
 
             oCliente.AgregarCliente(clienteEntidad);
@@ -31,11 +30,11 @@ namespace CapaNegocio
             {
                 nombre = c.nombre,
                 apellido = c.apellido,
-                dni = c.dni,
+                dni = c.dni_cliente,
                 domicilio = c.domicilio,
                 telefono = c.telefono,
-                email = c.email,
-                estado = c.estado
+                email = c.email_cliente
+
             }).ToList();
         }
 
@@ -46,11 +45,10 @@ namespace CapaNegocio
             {
                 nombre = c.nombre,
                 apellido = c.apellido,
-                dni = c.dni,
+                dni = c.dni_cliente,
                 domicilio = c.domicilio,
                 telefono = c.telefono,
-                email = c.email,
-                estado = c.estado
+                email = c.email_cliente
             }).ToList();
         }
 
@@ -61,11 +59,10 @@ namespace CapaNegocio
             {
                 nombre = c.nombre,
                 apellido = c.apellido,
-                dni = c.dni,
+                dni = c.dni_cliente,
                 domicilio = c.domicilio,
                 telefono = c.telefono,
-                email = c.email,
-                estado = c.estado
+                email = c.email_cliente
             }).ToList();
         }
 
@@ -76,11 +73,10 @@ namespace CapaNegocio
             {
                 nombre = c.nombre,
                 apellido = c.apellido,
-                dni = c.dni,
+                dni = c.dni_cliente,
                 domicilio = c.domicilio,
                 telefono = c.telefono,
-                email = c.email,
-                estado = c.estado
+                email = c.email_cliente
             }).ToList();
         }
 
@@ -100,11 +96,10 @@ namespace CapaNegocio
             {
                 nombre = clienteModel.nombre,
                 apellido = clienteModel.apellido,
-                dni = clienteModel.dni,
+                dni_cliente = clienteModel.dni,
                 domicilio = clienteModel.domicilio,
                 telefono = clienteModel.telefono,
-                email = clienteModel.email,
-                estado = clienteModel.estado
+                email_cliente = clienteModel.email
             };
             oCliente.ActualizarCliente(clienteEntidad);
         }

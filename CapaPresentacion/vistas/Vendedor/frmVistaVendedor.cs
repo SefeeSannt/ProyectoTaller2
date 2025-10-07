@@ -11,14 +11,16 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using CapaPresentacion.vistas.Vendedor.Cliente;
+using CapaEntidad;
 
 namespace CapaPresentacion.Vistas.Vendedor
 {
     public partial class frmVistaVendedor : Form
     {
-        public frmVistaVendedor()
+        public frmVistaVendedor(Usuario oUsuario)
         {
             InitializeComponent();
+            lblNombre.Text = oUsuario.nombre + " " + oUsuario.apellido;
         }
 
         private void tsmiRegistrarVenta_Click(object sender, EventArgs e)

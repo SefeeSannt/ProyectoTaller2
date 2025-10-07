@@ -12,14 +12,16 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using CapaPresentacion.Helpers;
+using CapaEntidad;
 
 namespace CapaPresentacion.Vistas.Repositor
 {
     public partial class frmVistaRepositor : Form
     {
-        public frmVistaRepositor()
+        public frmVistaRepositor(Usuario oUsuario)
         {
             InitializeComponent();
+            lblNombre.Text = oUsuario.nombre + " " + oUsuario.apellido;
         }
 
         private void tsmiRegistrarCompra_Click(object sender, EventArgs e)

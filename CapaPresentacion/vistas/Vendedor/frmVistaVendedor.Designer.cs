@@ -35,14 +35,14 @@
             this.iconMenuItem2 = new FontAwesome.Sharp.IconMenuItem();
             this.tsmiAltaCliente = new System.Windows.Forms.ToolStripMenuItem();
             this.tsmiListarCliente = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsmiEditarCliente = new System.Windows.Forms.ToolStripMenuItem();
             this.iconMenuItem3 = new FontAwesome.Sharp.IconMenuItem();
             this.tsmiConsultarProd = new System.Windows.Forms.ToolStripMenuItem();
             this.pntCabecera = new System.Windows.Forms.Panel();
             this.iconBtnSalir = new FontAwesome.Sharp.IconButton();
-            this.lblNombreRegistro = new System.Windows.Forms.Label();
+            this.lblNombre = new System.Windows.Forms.Label();
             this.lblTituloAdm = new System.Windows.Forms.Label();
             this.lblTitulo = new System.Windows.Forms.Label();
-            this.tsmiEditarCliente = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.pntCabecera.SuspendLayout();
             this.SuspendLayout();
@@ -82,14 +82,14 @@
             // tsmiRegistrarVenta
             // 
             this.tsmiRegistrarVenta.Name = "tsmiRegistrarVenta";
-            this.tsmiRegistrarVenta.Size = new System.Drawing.Size(172, 22);
+            this.tsmiRegistrarVenta.Size = new System.Drawing.Size(180, 22);
             this.tsmiRegistrarVenta.Text = "Registrar venta";
             this.tsmiRegistrarVenta.Click += new System.EventHandler(this.tsmiRegistrarVenta_Click);
             // 
             // consultarVenta
             // 
             this.consultarVenta.Name = "consultarVenta";
-            this.consultarVenta.Size = new System.Drawing.Size(172, 22);
+            this.consultarVenta.Size = new System.Drawing.Size(180, 22);
             this.consultarVenta.Text = "Consultar venta";
             this.consultarVenta.Click += new System.EventHandler(this.consultarVenta_Click);
             // 
@@ -113,16 +113,23 @@
             // tsmiAltaCliente
             // 
             this.tsmiAltaCliente.Name = "tsmiAltaCliente";
-            this.tsmiAltaCliente.Size = new System.Drawing.Size(180, 22);
+            this.tsmiAltaCliente.Size = new System.Drawing.Size(134, 22);
             this.tsmiAltaCliente.Text = "Registrar";
             this.tsmiAltaCliente.Click += new System.EventHandler(this.tsmiAltaCliente_Click);
             // 
             // tsmiListarCliente
             // 
             this.tsmiListarCliente.Name = "tsmiListarCliente";
-            this.tsmiListarCliente.Size = new System.Drawing.Size(180, 22);
+            this.tsmiListarCliente.Size = new System.Drawing.Size(134, 22);
             this.tsmiListarCliente.Text = "Consultar";
             this.tsmiListarCliente.Click += new System.EventHandler(this.tsmiListarCliente_Click);
+            // 
+            // tsmiEditarCliente
+            // 
+            this.tsmiEditarCliente.Name = "tsmiEditarCliente";
+            this.tsmiEditarCliente.Size = new System.Drawing.Size(134, 22);
+            this.tsmiEditarCliente.Text = "Editar";
+            this.tsmiEditarCliente.Click += new System.EventHandler(this.tsmiEditarCliente_Click);
             // 
             // iconMenuItem3
             // 
@@ -150,7 +157,7 @@
             // 
             this.pntCabecera.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(248)))), ((int)(((byte)(98)))), ((int)(((byte)(37)))));
             this.pntCabecera.Controls.Add(this.iconBtnSalir);
-            this.pntCabecera.Controls.Add(this.lblNombreRegistro);
+            this.pntCabecera.Controls.Add(this.lblNombre);
             this.pntCabecera.Controls.Add(this.lblTituloAdm);
             this.pntCabecera.Controls.Add(this.lblTitulo);
             this.pntCabecera.Dock = System.Windows.Forms.DockStyle.Top;
@@ -172,7 +179,7 @@
             this.iconBtnSalir.IconFont = FontAwesome.Sharp.IconFont.Auto;
             this.iconBtnSalir.IconSize = 35;
             this.iconBtnSalir.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.iconBtnSalir.Location = new System.Drawing.Point(851, 20);
+            this.iconBtnSalir.Location = new System.Drawing.Point(855, 20);
             this.iconBtnSalir.Name = "iconBtnSalir";
             this.iconBtnSalir.Size = new System.Drawing.Size(93, 41);
             this.iconBtnSalir.TabIndex = 15;
@@ -181,29 +188,29 @@
             this.iconBtnSalir.UseVisualStyleBackColor = false;
             this.iconBtnSalir.Click += new System.EventHandler(this.iconBtnSalir_Click);
             // 
-            // lblNombreRegistro
+            // lblNombre
             // 
-            this.lblNombreRegistro.AutoSize = true;
-            this.lblNombreRegistro.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblNombreRegistro.ForeColor = System.Drawing.Color.White;
-            this.lblNombreRegistro.Location = new System.Drawing.Point(718, 30);
-            this.lblNombreRegistro.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.lblNombreRegistro.Name = "lblNombreRegistro";
-            this.lblNombreRegistro.Size = new System.Drawing.Size(129, 19);
-            this.lblNombreRegistro.TabIndex = 12;
-            this.lblNombreRegistro.Text = "nombreCompleto";
+            this.lblNombre.AutoSize = true;
+            this.lblNombre.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblNombre.ForeColor = System.Drawing.Color.White;
+            this.lblNombre.Location = new System.Drawing.Point(647, 30);
+            this.lblNombre.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblNombre.Name = "lblNombre";
+            this.lblNombre.Size = new System.Drawing.Size(129, 19);
+            this.lblNombre.TabIndex = 12;
+            this.lblNombre.Text = "nombreCompleto";
             // 
             // lblTituloAdm
             // 
             this.lblTituloAdm.AutoSize = true;
             this.lblTituloAdm.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblTituloAdm.ForeColor = System.Drawing.Color.White;
-            this.lblTituloAdm.Location = new System.Drawing.Point(635, 30);
+            this.lblTituloAdm.Location = new System.Drawing.Point(564, 30);
             this.lblTituloAdm.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblTituloAdm.Name = "lblTituloAdm";
-            this.lblTituloAdm.Size = new System.Drawing.Size(75, 19);
+            this.lblTituloAdm.Size = new System.Drawing.Size(79, 19);
             this.lblTituloAdm.TabIndex = 11;
-            this.lblTituloAdm.Text = "Vendedor";
+            this.lblTituloAdm.Text = "Vendedor:";
             // 
             // lblTitulo
             // 
@@ -216,13 +223,6 @@
             this.lblTitulo.Size = new System.Drawing.Size(183, 29);
             this.lblTitulo.TabIndex = 10;
             this.lblTitulo.Text = "Tienda zonafitt";
-            // 
-            // tsmiEditarCliente
-            // 
-            this.tsmiEditarCliente.Name = "tsmiEditarCliente";
-            this.tsmiEditarCliente.Size = new System.Drawing.Size(180, 22);
-            this.tsmiEditarCliente.Text = "Editar";
-            this.tsmiEditarCliente.Click += new System.EventHandler(this.tsmiEditarCliente_Click);
             // 
             // frmVistaVendedor
             // 
@@ -255,7 +255,7 @@
         private System.Windows.Forms.ToolStripMenuItem tsmiAltaCliente;
         private System.Windows.Forms.ToolStripMenuItem tsmiListarCliente;
         private System.Windows.Forms.Panel pntCabecera;
-        private System.Windows.Forms.Label lblNombreRegistro;
+        private System.Windows.Forms.Label lblNombre;
         private System.Windows.Forms.Label lblTituloAdm;
         private System.Windows.Forms.Label lblTitulo;
         private System.Windows.Forms.ToolStripMenuItem consultarVenta;

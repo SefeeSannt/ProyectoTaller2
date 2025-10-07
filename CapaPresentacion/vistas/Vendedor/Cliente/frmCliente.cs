@@ -98,7 +98,7 @@ namespace CapaPresentacion.Vistas.Vendedor
                 domicilio = txtDomicilio.Text,
                 telefono = long.Parse(txtTelefono.Text),
                 email = txtEmail.Text,
-                estado = "1"
+                id_estado = 1
             };
 
             try
@@ -148,7 +148,6 @@ namespace CapaPresentacion.Vistas.Vendedor
             var negocio = new CN_cliente();
             var lista = negocio.ObtenerClientesActivos();
             dgvClientes.DataSource = lista;
-            dgvClientes.Columns["estado"].Visible = false;
         }
         
         private void frmCliente_Load(object sender, EventArgs e)

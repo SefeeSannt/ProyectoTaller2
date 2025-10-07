@@ -1,9 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
 using System.Data;
 using System.Data.SqlClient;
 using CapaEntidad;
@@ -18,18 +14,13 @@ namespace CapaDatos
 
             using (SqlConnection oconexion = new SqlConnection(conexion.cadena))
             {
-
                 try
                 {
-                    //consulta sql
-                    string query = "select id_usuario, documento, nombre, apellido, correo, clave, estado from usuario";
-
+                    string query = "select * from usuario";
                     SqlCommand cmd = new SqlCommand(query, oconexion);
                     cmd.CommandType = CommandType.Text;
 
-
                     oconexion.Open();
-
 
                     using (SqlDataReader dr = cmd.ExecuteReader())
                     {
@@ -37,19 +28,20 @@ namespace CapaDatos
                         {
                             lista.Add(new Usuario()
                             {
-                                id_usuario = Convert.ToInt32(dr["id_usuario"]),
-                                documento = dr["documento"].ToString(),
+                                dni_usuario = dr["dni_usuario"].ToString(),
                                 nombre = dr["nombre"].ToString(),
                                 apellido = dr["apellido"].ToString(),
-                                correo = dr["correo"].ToString(),
-                                clave = dr["clave"].ToString(),
-                                estado = Convert.ToBoolean(dr["estado"]),
-                               
+                                username = dr["username"].ToString(),
+                                telefono = Convert.ToInt64(dr["telefono"].ToString()),
+                                password = dr["password"].ToString(),
+                                email_usuario = dr["email_usuario"].ToString(),
+                                oEstado = new Estado() { id_estado = Convert.ToInt32(dr["id_estado"].ToString()) },
+                                oRol = new Rol() { id_rol = Convert.ToInt32(dr["id_rol"].ToString()) }
                             });
                         }
                     }
                 }
-                catch (Exception ex)
+                catch (Exception)
                 {
                     lista = new List<Usuario>();
                 }
@@ -57,11 +49,9 @@ namespace CapaDatos
                 {
                     if (oconexion.State == ConnectionState.Open) oconexion.Close();
                 }
+            }
 
-
-                return lista;
+            return lista;
         }
-
     }
-}
 }

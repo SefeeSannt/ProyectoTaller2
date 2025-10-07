@@ -11,11 +11,11 @@ namespace CapaNegocio
 {
     public class CN_usuario
     {
-        private CD_usuario objcd_usuario = new CD_usuario();//instancia a nuestra clase usuario de la capa datos
+        private CD_usuario oUsuario = new CD_usuario();//instancia a nuestra clase usuario de la capa datos
 
         public List<Usuario> Listar()
         {
-            return objcd_usuario.Listar();
+            return oUsuario.Listar();
         }
 
     }

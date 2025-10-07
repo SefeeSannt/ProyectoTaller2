@@ -12,24 +12,18 @@ namespace CapaDatos
     using System;
     using System.Collections.Generic;
     
-    public partial class cliente
+    public partial class categoria
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public cliente()
+        public categoria()
         {
-            this.venta = new HashSet<venta>();
+            this.producto = new HashSet<producto>();
         }
     
-        public long dni_cliente { get; set; }
-        public string nombre { get; set; }
-        public string apellido { get; set; }
-        public string domicilio { get; set; }
-        public long telefono { get; set; }
-        public string email_cliente { get; set; }
-        public int id_estado { get; set; }
+        public int id_categoria { get; set; }
+        public string descripcion { get; set; }
     
-        public virtual estado estado { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<venta> venta { get; set; }
+        public virtual ICollection<producto> producto { get; set; }
     }
 }

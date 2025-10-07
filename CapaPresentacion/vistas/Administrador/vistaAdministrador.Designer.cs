@@ -36,7 +36,7 @@ namespace CapaPresentacion.Vistas.Administrador
             this.nuevoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.pntCabecera = new System.Windows.Forms.Panel();
             this.iconBtnSalir = new FontAwesome.Sharp.IconButton();
-            this.lblNombreRegistro = new System.Windows.Forms.Label();
+            this.lblNombre = new System.Windows.Forms.Label();
             this.lblTituloAdm = new System.Windows.Forms.Label();
             this.lblTitulo = new System.Windows.Forms.Label();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
@@ -50,6 +50,10 @@ namespace CapaPresentacion.Vistas.Administrador
             this.tsmiEditarUser = new System.Windows.Forms.ToolStripMenuItem();
             this.tsmiBajaDeUsuario = new System.Windows.Forms.ToolStripMenuItem();
             this.tsmiListarUsuarios_Click = new System.Windows.Forms.ToolStripMenuItem();
+            this.iconMenuItem6 = new FontAwesome.Sharp.IconMenuItem();
+            this.altaBajaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.iconMenuItem7 = new FontAwesome.Sharp.IconMenuItem();
+            this.altaBajaToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.iconMenuItem2 = new FontAwesome.Sharp.IconMenuItem();
             this.tsmiDetalleVentas = new System.Windows.Forms.ToolStripMenuItem();
             this.tsmiDetalleCompras = new System.Windows.Forms.ToolStripMenuItem();
@@ -58,10 +62,6 @@ namespace CapaPresentacion.Vistas.Administrador
             this.tsmiInfCompra = new System.Windows.Forms.ToolStripMenuItem();
             this.tsmiInfVenta = new System.Windows.Forms.ToolStripMenuItem();
             this.iconMenuItem3 = new FontAwesome.Sharp.IconMenuItem();
-            this.iconMenuItem6 = new FontAwesome.Sharp.IconMenuItem();
-            this.altaBajaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.iconMenuItem7 = new FontAwesome.Sharp.IconMenuItem();
-            this.altaBajaToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.Agregra.SuspendLayout();
             this.pntCabecera.SuspendLayout();
             this.menuStrip1.SuspendLayout();
@@ -85,7 +85,7 @@ namespace CapaPresentacion.Vistas.Administrador
             // 
             this.pntCabecera.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(248)))), ((int)(((byte)(98)))), ((int)(((byte)(37)))));
             this.pntCabecera.Controls.Add(this.iconBtnSalir);
-            this.pntCabecera.Controls.Add(this.lblNombreRegistro);
+            this.pntCabecera.Controls.Add(this.lblNombre);
             this.pntCabecera.Controls.Add(this.lblTituloAdm);
             this.pntCabecera.Controls.Add(this.lblTitulo);
             this.pntCabecera.Dock = System.Windows.Forms.DockStyle.Top;
@@ -116,17 +116,17 @@ namespace CapaPresentacion.Vistas.Administrador
             this.iconBtnSalir.UseVisualStyleBackColor = false;
             this.iconBtnSalir.Click += new System.EventHandler(this.iconBtnSalir_Click);
             // 
-            // lblNombreRegistro
+            // lblNombre
             // 
-            this.lblNombreRegistro.AutoSize = true;
-            this.lblNombreRegistro.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblNombreRegistro.ForeColor = System.Drawing.Color.White;
-            this.lblNombreRegistro.Location = new System.Drawing.Point(731, 24);
-            this.lblNombreRegistro.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.lblNombreRegistro.Name = "lblNombreRegistro";
-            this.lblNombreRegistro.Size = new System.Drawing.Size(129, 19);
-            this.lblNombreRegistro.TabIndex = 12;
-            this.lblNombreRegistro.Text = "nombreCompleto";
+            this.lblNombre.AutoSize = true;
+            this.lblNombre.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblNombre.ForeColor = System.Drawing.Color.White;
+            this.lblNombre.Location = new System.Drawing.Point(731, 24);
+            this.lblNombre.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblNombre.Name = "lblNombre";
+            this.lblNombre.Size = new System.Drawing.Size(129, 19);
+            this.lblNombre.TabIndex = 12;
+            this.lblNombre.Text = "nombreCompleto";
             // 
             // lblTituloAdm
             // 
@@ -136,9 +136,9 @@ namespace CapaPresentacion.Vistas.Administrador
             this.lblTituloAdm.Location = new System.Drawing.Point(624, 24);
             this.lblTituloAdm.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblTituloAdm.Name = "lblTituloAdm";
-            this.lblTituloAdm.Size = new System.Drawing.Size(108, 19);
+            this.lblTituloAdm.Size = new System.Drawing.Size(112, 19);
             this.lblTituloAdm.TabIndex = 11;
-            this.lblTituloAdm.Text = "Administrador";
+            this.lblTituloAdm.Text = "Administrador:";
             // 
             // lblTitulo
             // 
@@ -239,30 +239,72 @@ namespace CapaPresentacion.Vistas.Administrador
             // tsmiAltaUsuario_Click
             // 
             this.tsmiAltaUsuario_Click.Name = "tsmiAltaUsuario_Click";
-            this.tsmiAltaUsuario_Click.Size = new System.Drawing.Size(212, 22);
+            this.tsmiAltaUsuario_Click.Size = new System.Drawing.Size(194, 22);
             this.tsmiAltaUsuario_Click.Text = "Dar de alta";
             this.tsmiAltaUsuario_Click.Click += new System.EventHandler(this.tsmiAltaUsuario_Click_Click);
             // 
             // tsmiEditarUser
             // 
             this.tsmiEditarUser.Name = "tsmiEditarUser";
-            this.tsmiEditarUser.Size = new System.Drawing.Size(212, 22);
+            this.tsmiEditarUser.Size = new System.Drawing.Size(194, 22);
             this.tsmiEditarUser.Text = "Editar usuario";
             this.tsmiEditarUser.Click += new System.EventHandler(this.tsmiEditarUser_Click);
             // 
             // tsmiBajaDeUsuario
             // 
             this.tsmiBajaDeUsuario.Name = "tsmiBajaDeUsuario";
-            this.tsmiBajaDeUsuario.Size = new System.Drawing.Size(212, 22);
+            this.tsmiBajaDeUsuario.Size = new System.Drawing.Size(194, 22);
             this.tsmiBajaDeUsuario.Text = "Dar de baja usuario";
             this.tsmiBajaDeUsuario.Click += new System.EventHandler(this.tsmiBajaDeUsuario_Click);
             // 
             // tsmiListarUsuarios_Click
             // 
             this.tsmiListarUsuarios_Click.Name = "tsmiListarUsuarios_Click";
-            this.tsmiListarUsuarios_Click.Size = new System.Drawing.Size(212, 22);
+            this.tsmiListarUsuarios_Click.Size = new System.Drawing.Size(194, 22);
             this.tsmiListarUsuarios_Click.Text = "Listar";
             this.tsmiListarUsuarios_Click.Click += new System.EventHandler(this.tsmiListarUsuarios_Click_Click);
+            // 
+            // iconMenuItem6
+            // 
+            this.iconMenuItem6.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.altaBajaToolStripMenuItem});
+            this.iconMenuItem6.Font = new System.Drawing.Font("Segoe UI Variable Text Semibold", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.iconMenuItem6.ForeColor = System.Drawing.Color.White;
+            this.iconMenuItem6.IconChar = FontAwesome.Sharp.IconChar.Wallet;
+            this.iconMenuItem6.IconColor = System.Drawing.Color.White;
+            this.iconMenuItem6.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            this.iconMenuItem6.Margin = new System.Windows.Forms.Padding(0, 10, 0, 0);
+            this.iconMenuItem6.Name = "iconMenuItem6";
+            this.iconMenuItem6.Size = new System.Drawing.Size(83, 38);
+            this.iconMenuItem6.Text = "Clientes";
+            // 
+            // altaBajaToolStripMenuItem
+            // 
+            this.altaBajaToolStripMenuItem.Name = "altaBajaToolStripMenuItem";
+            this.altaBajaToolStripMenuItem.Size = new System.Drawing.Size(174, 22);
+            this.altaBajaToolStripMenuItem.Text = "Dar de Alta/Baja";
+            this.altaBajaToolStripMenuItem.Click += new System.EventHandler(this.altaBajaToolStripMenuItem_Click);
+            // 
+            // iconMenuItem7
+            // 
+            this.iconMenuItem7.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.altaBajaToolStripMenuItem1});
+            this.iconMenuItem7.Font = new System.Drawing.Font("Segoe UI Variable Text Semibold", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.iconMenuItem7.ForeColor = System.Drawing.Color.White;
+            this.iconMenuItem7.IconChar = FontAwesome.Sharp.IconChar.Trailer;
+            this.iconMenuItem7.IconColor = System.Drawing.Color.White;
+            this.iconMenuItem7.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            this.iconMenuItem7.Margin = new System.Windows.Forms.Padding(0, 10, 0, 0);
+            this.iconMenuItem7.Name = "iconMenuItem7";
+            this.iconMenuItem7.Size = new System.Drawing.Size(112, 38);
+            this.iconMenuItem7.Text = "Proveedores";
+            // 
+            // altaBajaToolStripMenuItem1
+            // 
+            this.altaBajaToolStripMenuItem1.Name = "altaBajaToolStripMenuItem1";
+            this.altaBajaToolStripMenuItem1.Size = new System.Drawing.Size(174, 22);
+            this.altaBajaToolStripMenuItem1.Text = "Dar de Alta/Baja";
+            this.altaBajaToolStripMenuItem1.Click += new System.EventHandler(this.altaBajaToolStripMenuItem1_Click);
             // 
             // iconMenuItem2
             // 
@@ -343,48 +385,6 @@ namespace CapaPresentacion.Vistas.Administrador
             this.iconMenuItem3.Text = "Backup";
             this.iconMenuItem3.Click += new System.EventHandler(this.iconMenuItem3_Click);
             // 
-            // iconMenuItem6
-            // 
-            this.iconMenuItem6.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.altaBajaToolStripMenuItem});
-            this.iconMenuItem6.Font = new System.Drawing.Font("Segoe UI Variable Text Semibold", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.iconMenuItem6.ForeColor = System.Drawing.Color.White;
-            this.iconMenuItem6.IconChar = FontAwesome.Sharp.IconChar.Wallet;
-            this.iconMenuItem6.IconColor = System.Drawing.Color.White;
-            this.iconMenuItem6.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            this.iconMenuItem6.Margin = new System.Windows.Forms.Padding(0, 10, 0, 0);
-            this.iconMenuItem6.Name = "iconMenuItem6";
-            this.iconMenuItem6.Size = new System.Drawing.Size(83, 38);
-            this.iconMenuItem6.Text = "Clientes";
-            // 
-            // altaBajaToolStripMenuItem
-            // 
-            this.altaBajaToolStripMenuItem.Name = "altaBajaToolStripMenuItem";
-            this.altaBajaToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.altaBajaToolStripMenuItem.Text = "Dar de Alta/Baja";
-            this.altaBajaToolStripMenuItem.Click += new System.EventHandler(this.altaBajaToolStripMenuItem_Click);
-            // 
-            // iconMenuItem7
-            // 
-            this.iconMenuItem7.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.altaBajaToolStripMenuItem1});
-            this.iconMenuItem7.Font = new System.Drawing.Font("Segoe UI Variable Text Semibold", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.iconMenuItem7.ForeColor = System.Drawing.Color.White;
-            this.iconMenuItem7.IconChar = FontAwesome.Sharp.IconChar.Trailer;
-            this.iconMenuItem7.IconColor = System.Drawing.Color.White;
-            this.iconMenuItem7.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            this.iconMenuItem7.Margin = new System.Windows.Forms.Padding(0, 10, 0, 0);
-            this.iconMenuItem7.Name = "iconMenuItem7";
-            this.iconMenuItem7.Size = new System.Drawing.Size(112, 38);
-            this.iconMenuItem7.Text = "Proveedores";
-            // 
-            // altaBajaToolStripMenuItem1
-            // 
-            this.altaBajaToolStripMenuItem1.Name = "altaBajaToolStripMenuItem1";
-            this.altaBajaToolStripMenuItem1.Size = new System.Drawing.Size(180, 22);
-            this.altaBajaToolStripMenuItem1.Text = "Dar de Alta/Baja";
-            this.altaBajaToolStripMenuItem1.Click += new System.EventHandler(this.altaBajaToolStripMenuItem1_Click);
-            // 
             // frmVistaAdministrador
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
@@ -414,7 +414,7 @@ namespace CapaPresentacion.Vistas.Administrador
         private System.Windows.Forms.ContextMenuStrip Agregra;
         private System.Windows.Forms.ToolStripMenuItem nuevoToolStripMenuItem;
         private Panel pntCabecera;
-        private Label lblNombreRegistro;
+        private Label lblNombre;
         private Label lblTituloAdm;
         private Label lblTitulo;
         private MenuStrip menuStrip1;

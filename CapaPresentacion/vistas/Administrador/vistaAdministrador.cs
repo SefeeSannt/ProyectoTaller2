@@ -14,14 +14,17 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using CapaEntidad;
+using CapaNegocio;
 
 namespace CapaPresentacion.Vistas.Administrador
 {
     public partial class frmVistaAdministrador : Form
     {
-        public frmVistaAdministrador()
+        public frmVistaAdministrador(Usuario oUsuario)
         {
             InitializeComponent();
+            lblNombre.Text = oUsuario.nombre + " " + oUsuario.apellido;
         }
 
         private void tsmiListarProd_Click(object sender, EventArgs e)
@@ -58,6 +61,7 @@ namespace CapaPresentacion.Vistas.Administrador
         //Funcion load que añade un color backround en el formulario padre del Administrador
         private void FormMDI_Load(object sender, EventArgs e)
         {
+
             foreach (Control ctrl in this.Controls)
             {
                 if (ctrl is MdiClient mdi)

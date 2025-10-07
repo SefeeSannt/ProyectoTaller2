@@ -34,7 +34,7 @@ namespace CapaPresentacion.vistas.Vendedor.Cliente
             var negocio = new CN_cliente();
             var lista = negocio.ObtenerClientesActivos();
             dgvClientes.DataSource = lista;
-            dgvClientes.Columns["estado"].Visible = false;
+
         }
 
         private void btnCancelar_Click(object sender, EventArgs e)
@@ -129,7 +129,7 @@ namespace CapaPresentacion.vistas.Vendedor.Cliente
                 domicilio = txtDomicilio.Text,
                 telefono = long.Parse(txtTelefono.Text),
                 email = txtEmail.Text,
-                estado = "1"
+                id_estado = 1
             };
 
             try

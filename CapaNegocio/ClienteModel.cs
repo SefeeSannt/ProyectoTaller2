@@ -11,6 +11,6 @@ namespace CapaNegocio
         public string domicilio { get; set; }
         public long telefono { get; set; }
         public string email { get; set; }
-        public string estado { get; set; }
+        public int id_estado { get; set; }
     }
 }

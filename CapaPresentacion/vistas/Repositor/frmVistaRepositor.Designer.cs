@@ -39,7 +39,7 @@
             this.tsmiConsultarProveedores = new System.Windows.Forms.ToolStripMenuItem();
             this.pntCabecera = new System.Windows.Forms.Panel();
             this.iconBtnSalir = new FontAwesome.Sharp.IconButton();
-            this.lblNombreRegistro = new System.Windows.Forms.Label();
+            this.lblNombre = new System.Windows.Forms.Label();
             this.lblTituloAdm = new System.Windows.Forms.Label();
             this.lblTitulo = new System.Windows.Forms.Label();
             this.menuStrip1.SuspendLayout();
@@ -111,7 +111,7 @@
             // tsmiComprar
             // 
             this.tsmiComprar.Name = "tsmiComprar";
-            this.tsmiComprar.Size = new System.Drawing.Size(180, 22);
+            this.tsmiComprar.Size = new System.Drawing.Size(170, 22);
             this.tsmiComprar.Text = "Consultar stock";
             this.tsmiComprar.Click += new System.EventHandler(this.tsmiComprar_Click);
             // 
@@ -150,7 +150,7 @@
             // 
             this.pntCabecera.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(248)))), ((int)(((byte)(98)))), ((int)(((byte)(37)))));
             this.pntCabecera.Controls.Add(this.iconBtnSalir);
-            this.pntCabecera.Controls.Add(this.lblNombreRegistro);
+            this.pntCabecera.Controls.Add(this.lblNombre);
             this.pntCabecera.Controls.Add(this.lblTituloAdm);
             this.pntCabecera.Controls.Add(this.lblTitulo);
             this.pntCabecera.Dock = System.Windows.Forms.DockStyle.Top;
@@ -181,29 +181,29 @@
             this.iconBtnSalir.UseVisualStyleBackColor = false;
             this.iconBtnSalir.Click += new System.EventHandler(this.iconBtnSalir_Click);
             // 
-            // lblNombreRegistro
+            // lblNombre
             // 
-            this.lblNombreRegistro.AutoSize = true;
-            this.lblNombreRegistro.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblNombreRegistro.ForeColor = System.Drawing.Color.White;
-            this.lblNombreRegistro.Location = new System.Drawing.Point(684, 24);
-            this.lblNombreRegistro.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.lblNombreRegistro.Name = "lblNombreRegistro";
-            this.lblNombreRegistro.Size = new System.Drawing.Size(129, 19);
-            this.lblNombreRegistro.TabIndex = 12;
-            this.lblNombreRegistro.Text = "nombreCompleto";
+            this.lblNombre.AutoSize = true;
+            this.lblNombre.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblNombre.ForeColor = System.Drawing.Color.White;
+            this.lblNombre.Location = new System.Drawing.Point(622, 24);
+            this.lblNombre.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblNombre.Name = "lblNombre";
+            this.lblNombre.Size = new System.Drawing.Size(129, 19);
+            this.lblNombre.TabIndex = 12;
+            this.lblNombre.Text = "nombreCompleto";
             // 
             // lblTituloAdm
             // 
             this.lblTituloAdm.AutoSize = true;
             this.lblTituloAdm.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblTituloAdm.ForeColor = System.Drawing.Color.White;
-            this.lblTituloAdm.Location = new System.Drawing.Point(601, 24);
+            this.lblTituloAdm.Location = new System.Drawing.Point(539, 24);
             this.lblTituloAdm.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblTituloAdm.Name = "lblTituloAdm";
-            this.lblTituloAdm.Size = new System.Drawing.Size(75, 19);
+            this.lblTituloAdm.Size = new System.Drawing.Size(79, 19);
             this.lblTituloAdm.TabIndex = 11;
-            this.lblTituloAdm.Text = "Repositor";
+            this.lblTituloAdm.Text = "Repositor:";
             // 
             // lblTitulo
             // 
@@ -247,7 +247,7 @@
         private FontAwesome.Sharp.IconMenuItem IcMenuItemCompra;
         private System.Windows.Forms.ToolStripMenuItem tsmiRegistrarCompra;
         private System.Windows.Forms.Panel pntCabecera;
-        private System.Windows.Forms.Label lblNombreRegistro;
+        private System.Windows.Forms.Label lblNombre;
         private System.Windows.Forms.Label lblTituloAdm;
         private System.Windows.Forms.Label lblTitulo;
         private FontAwesome.Sharp.IconMenuItem iconMenuItem3;
