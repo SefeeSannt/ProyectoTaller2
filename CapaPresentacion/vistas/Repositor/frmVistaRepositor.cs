@@ -1,6 +1,5 @@
 ﻿using CapaPresentacion.Vistas.Administrador.Reportes;
 using CapaPresentacion.Vistas.Repositor.Proveedor;
-
 using CapaPresentacion.Vistas.Repositor;
 using System;
 using System.Collections.Generic;
