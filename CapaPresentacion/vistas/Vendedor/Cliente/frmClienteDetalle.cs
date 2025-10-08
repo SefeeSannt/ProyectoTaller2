@@ -22,9 +22,13 @@ namespace CapaPresentacion.Vistas.Vendedor
         private void CargarClientesEnGrid()
         {
             var negocio = new CN_cliente();
-            var lista = negocio.ObtenerClientesActivos();
+            var lista = negocio.ObtenerClientesActivos() ?? new List<ClienteModel>();
             dgvClientes.DataSource = lista;
-            dgvClientes.Columns["estado"].Visible = false;
+
+            if (dgvClientes.Columns.Contains("id_estado"))
+            {
+                dgvClientes.Columns["id_estado"].Visible = false;
+            }
 
             lblTotalClientes.Text = $"{negocio.TotalClientes()}";
             lblClientesActivos.Text = $"{negocio.TotalClientesActivos()}";

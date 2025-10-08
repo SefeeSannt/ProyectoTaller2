@@ -53,7 +53,7 @@ namespace CapaDatos
             using (var db = new ProyectoTaller2Entities())
             {
                 return db.cliente
-                         .Where(c => c.estado.Equals(1) &&
+                         .Where(c => c.id_estado == 1 &&
                                      (c.nombre.Contains(criterio) ||
                                       c.apellido.Contains(criterio) ||
                                       c.dni_cliente.ToString().Contains(criterio) ||
@@ -91,7 +91,7 @@ namespace CapaDatos
                     clienteExistente.domicilio = cliente.domicilio;
                     clienteExistente.telefono = cliente.telefono;
                     clienteExistente.email_cliente = cliente.email_cliente;
-                    clienteExistente.estado = cliente.estado;
+                    clienteExistente.id_estado = cliente.id_estado;
                     db.SaveChanges();
                 }
             }

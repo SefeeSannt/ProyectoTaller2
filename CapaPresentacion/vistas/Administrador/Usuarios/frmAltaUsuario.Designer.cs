@@ -31,33 +31,24 @@
             this.components = new System.ComponentModel.Container();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             this.Agregra = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.nuevoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.btnCancelar = new FontAwesome.Sharp.IconButton();
             this.txtUserList = new System.Windows.Forms.TextBox();
             this.lblBuscarListUser = new System.Windows.Forms.Label();
             this.iconBtnLupaDetalleUser = new FontAwesome.Sharp.IconButton();
             this.label11 = new System.Windows.Forms.Label();
             this.label10 = new System.Windows.Forms.Label();
             this.dgvAltaUsuario = new System.Windows.Forms.DataGridView();
-            this.btnSeleccionar = new System.Windows.Forms.DataGridViewButtonColumn();
-            this.idUsuaruio = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.documento = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.nombreCompleto = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.correo = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.telefonoRegUsuario = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.clave = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.idRol = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.rol = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.estado = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.estadoValor = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.panel2 = new System.Windows.Forms.Panel();
-            this.btnCancelar = new FontAwesome.Sharp.IconButton();
             this.btnLimpiar = new FontAwesome.Sharp.IconButton();
             this.btnGuardar = new FontAwesome.Sharp.IconButton();
             this.label2 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
-            this.txtCorreo = new System.Windows.Forms.TextBox();
+            this.txtEmail = new System.Windows.Forms.TextBox();
             this.txtTelefono = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
@@ -65,14 +56,28 @@
             this.label8 = new System.Windows.Forms.Label();
             this.cboRol = new System.Windows.Forms.ComboBox();
             this.label3 = new System.Windows.Forms.Label();
-            this.txtNombreCompleto = new System.Windows.Forms.TextBox();
-            this.txtDocumento = new System.Windows.Forms.TextBox();
+            this.txtNombre = new System.Windows.Forms.TextBox();
+            this.txtDni_usuario = new System.Windows.Forms.TextBox();
             this.errIngresoDatos = new System.Windows.Forms.ErrorProvider(this.components);
+            this.label1 = new System.Windows.Forms.Label();
+            this.txtApellido = new System.Windows.Forms.TextBox();
+            this.label7 = new System.Windows.Forms.Label();
+            this.txtUsername = new System.Windows.Forms.TextBox();
+            this.proyectoTaller2DataSet = new CapaPresentacion.ProyectoTaller2DataSet();
+            this.rolBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.rolTableAdapter = new CapaPresentacion.ProyectoTaller2DataSetTableAdapters.rolTableAdapter();
+            this.proyectoTaller2DataSet1 = new CapaPresentacion.ProyectoTaller2DataSet1();
+            this.rolBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
+            this.rolTableAdapter1 = new CapaPresentacion.ProyectoTaller2DataSet1TableAdapters.rolTableAdapter();
             this.Agregra.SuspendLayout();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvAltaUsuario)).BeginInit();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.errIngresoDatos)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.proyectoTaller2DataSet)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.rolBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.proyectoTaller2DataSet1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.rolBindingSource1)).BeginInit();
             this.SuspendLayout();
             // 
             // Agregra
@@ -96,7 +101,6 @@
             this.panel1.Controls.Add(this.txtUserList);
             this.panel1.Controls.Add(this.lblBuscarListUser);
             this.panel1.Controls.Add(this.iconBtnLupaDetalleUser);
-            this.panel1.Controls.Add(this.label11);
             this.panel1.Controls.Add(this.label10);
             this.panel1.Controls.Add(this.dgvAltaUsuario);
             this.panel1.Controls.Add(this.panel2);
@@ -107,6 +111,28 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(960, 538);
             this.panel1.TabIndex = 4;
+            // 
+            // btnCancelar
+            // 
+            this.btnCancelar.BackColor = System.Drawing.Color.Red;
+            this.btnCancelar.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnCancelar.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.btnCancelar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnCancelar.Font = new System.Drawing.Font("Segoe UI", 10F);
+            this.btnCancelar.ForeColor = System.Drawing.Color.Black;
+            this.btnCancelar.IconChar = FontAwesome.Sharp.IconChar.ChevronLeft;
+            this.btnCancelar.IconColor = System.Drawing.Color.Black;
+            this.btnCancelar.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            this.btnCancelar.IconSize = 16;
+            this.btnCancelar.Location = new System.Drawing.Point(844, 488);
+            this.btnCancelar.Name = "btnCancelar";
+            this.btnCancelar.Size = new System.Drawing.Size(104, 27);
+            this.btnCancelar.TabIndex = 47;
+            this.btnCancelar.Text = "Cancelar";
+            this.btnCancelar.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnCancelar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnCancelar.UseVisualStyleBackColor = false;
+            this.btnCancelar.Click += new System.EventHandler(this.btnCancelar_Click);
             // 
             // txtUserList
             // 
@@ -148,7 +174,7 @@
             this.label11.BackColor = System.Drawing.Color.White;
             this.label11.Font = new System.Drawing.Font("Franklin Gothic Medium", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label11.ForeColor = System.Drawing.Color.Black;
-            this.label11.Location = new System.Drawing.Point(12, 22);
+            this.label11.Location = new System.Drawing.Point(10, 8);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(116, 25);
             this.label11.TabIndex = 23;
@@ -181,109 +207,48 @@
             dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
             this.dgvAltaUsuario.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.dgvAltaUsuario.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvAltaUsuario.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.btnSeleccionar,
-            this.idUsuaruio,
-            this.documento,
-            this.nombreCompleto,
-            this.correo,
-            this.telefonoRegUsuario,
-            this.clave,
-            this.idRol,
-            this.rol,
-            this.estado,
-            this.estadoValor});
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Franklin Gothic Medium", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgvAltaUsuario.DefaultCellStyle = dataGridViewCellStyle2;
+            this.dgvAltaUsuario.GridColor = System.Drawing.SystemColors.ScrollBar;
             this.dgvAltaUsuario.Location = new System.Drawing.Point(261, 112);
             this.dgvAltaUsuario.MultiSelect = false;
             this.dgvAltaUsuario.Name = "dgvAltaUsuario";
             this.dgvAltaUsuario.ReadOnly = true;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Franklin Gothic Medium", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvAltaUsuario.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
             this.dgvAltaUsuario.RowHeadersVisible = false;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.Color.Black;
-            this.dgvAltaUsuario.RowsDefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.Color.Black;
+            this.dgvAltaUsuario.RowsDefaultCellStyle = dataGridViewCellStyle4;
             this.dgvAltaUsuario.RowTemplate.Height = 28;
             this.dgvAltaUsuario.Size = new System.Drawing.Size(687, 344);
             this.dgvAltaUsuario.TabIndex = 20;
             // 
-            // btnSeleccionar
-            // 
-            this.btnSeleccionar.HeaderText = "";
-            this.btnSeleccionar.Name = "btnSeleccionar";
-            this.btnSeleccionar.ReadOnly = true;
-            this.btnSeleccionar.Visible = false;
-            // 
-            // idUsuaruio
-            // 
-            this.idUsuaruio.HeaderText = "ID usuario";
-            this.idUsuaruio.Name = "idUsuaruio";
-            this.idUsuaruio.ReadOnly = true;
-            this.idUsuaruio.Visible = false;
-            // 
-            // documento
-            // 
-            this.documento.HeaderText = "Nro Documento";
-            this.documento.Name = "documento";
-            this.documento.ReadOnly = true;
-            // 
-            // nombreCompleto
-            // 
-            this.nombreCompleto.HeaderText = "Nombre completo";
-            this.nombreCompleto.Name = "nombreCompleto";
-            this.nombreCompleto.ReadOnly = true;
-            // 
-            // correo
-            // 
-            this.correo.HeaderText = "Correo";
-            this.correo.Name = "correo";
-            this.correo.ReadOnly = true;
-            // 
-            // telefonoRegUsuario
-            // 
-            this.telefonoRegUsuario.HeaderText = "Telefono";
-            this.telefonoRegUsuario.Name = "telefonoRegUsuario";
-            this.telefonoRegUsuario.ReadOnly = true;
-            // 
-            // clave
-            // 
-            this.clave.HeaderText = "Clave";
-            this.clave.Name = "clave";
-            this.clave.ReadOnly = true;
-            this.clave.Visible = false;
-            // 
-            // idRol
-            // 
-            this.idRol.HeaderText = "ID rol";
-            this.idRol.Name = "idRol";
-            this.idRol.ReadOnly = true;
-            this.idRol.Visible = false;
-            // 
-            // rol
-            // 
-            this.rol.HeaderText = "Rol";
-            this.rol.Name = "rol";
-            this.rol.ReadOnly = true;
-            // 
-            // estado
-            // 
-            this.estado.HeaderText = "Estado";
-            this.estado.Name = "estado";
-            this.estado.ReadOnly = true;
-            // 
-            // estadoValor
-            // 
-            this.estadoValor.HeaderText = "Estado valor";
-            this.estadoValor.Name = "estadoValor";
-            this.estadoValor.ReadOnly = true;
-            this.estadoValor.Visible = false;
-            // 
             // panel2
             // 
             this.panel2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel2.Controls.Add(this.label7);
+            this.panel2.Controls.Add(this.txtUsername);
+            this.panel2.Controls.Add(this.label1);
+            this.panel2.Controls.Add(this.txtApellido);
             this.panel2.Controls.Add(this.btnLimpiar);
             this.panel2.Controls.Add(this.btnGuardar);
             this.panel2.Controls.Add(this.label2);
             this.panel2.Controls.Add(this.label4);
-            this.panel2.Controls.Add(this.txtCorreo);
+            this.panel2.Controls.Add(this.label11);
+            this.panel2.Controls.Add(this.txtEmail);
             this.panel2.Controls.Add(this.txtTelefono);
             this.panel2.Controls.Add(this.label5);
             this.panel2.Controls.Add(this.label6);
@@ -291,35 +256,13 @@
             this.panel2.Controls.Add(this.label8);
             this.panel2.Controls.Add(this.cboRol);
             this.panel2.Controls.Add(this.label3);
-            this.panel2.Controls.Add(this.txtNombreCompleto);
-            this.panel2.Controls.Add(this.txtDocumento);
+            this.panel2.Controls.Add(this.txtNombre);
+            this.panel2.Controls.Add(this.txtDni_usuario);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Left;
             this.panel2.Location = new System.Drawing.Point(0, 0);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(244, 538);
             this.panel2.TabIndex = 24;
-            // 
-            // btnCancelar
-            // 
-            this.btnCancelar.BackColor = System.Drawing.Color.Red;
-            this.btnCancelar.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnCancelar.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.btnCancelar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnCancelar.Font = new System.Drawing.Font("Segoe UI", 10F);
-            this.btnCancelar.ForeColor = System.Drawing.Color.Black;
-            this.btnCancelar.IconChar = FontAwesome.Sharp.IconChar.ChevronLeft;
-            this.btnCancelar.IconColor = System.Drawing.Color.Black;
-            this.btnCancelar.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            this.btnCancelar.IconSize = 16;
-            this.btnCancelar.Location = new System.Drawing.Point(844, 488);
-            this.btnCancelar.Name = "btnCancelar";
-            this.btnCancelar.Size = new System.Drawing.Size(104, 27);
-            this.btnCancelar.TabIndex = 47;
-            this.btnCancelar.Text = "Cancelar";
-            this.btnCancelar.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btnCancelar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.btnCancelar.UseVisualStyleBackColor = false;
-            this.btnCancelar.Click += new System.EventHandler(this.btnCancelar_Click);
             // 
             // btnLimpiar
             // 
@@ -333,7 +276,7 @@
             this.btnLimpiar.IconColor = System.Drawing.Color.Black;
             this.btnLimpiar.IconFont = FontAwesome.Sharp.IconFont.Auto;
             this.btnLimpiar.IconSize = 16;
-            this.btnLimpiar.Location = new System.Drawing.Point(17, 446);
+            this.btnLimpiar.Location = new System.Drawing.Point(18, 496);
             this.btnLimpiar.Name = "btnLimpiar";
             this.btnLimpiar.Size = new System.Drawing.Size(189, 37);
             this.btnLimpiar.TabIndex = 43;
@@ -355,7 +298,7 @@
             this.btnGuardar.IconColor = System.Drawing.Color.Black;
             this.btnGuardar.IconFont = FontAwesome.Sharp.IconFont.Auto;
             this.btnGuardar.IconSize = 16;
-            this.btnGuardar.Location = new System.Drawing.Point(17, 403);
+            this.btnGuardar.Location = new System.Drawing.Point(18, 453);
             this.btnGuardar.Name = "btnGuardar";
             this.btnGuardar.Size = new System.Drawing.Size(189, 37);
             this.btnGuardar.TabIndex = 41;
@@ -371,7 +314,7 @@
             this.label2.BackColor = System.Drawing.Color.White;
             this.label2.Font = new System.Drawing.Font("Franklin Gothic Medium", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.ForeColor = System.Drawing.Color.Black;
-            this.label2.Location = new System.Drawing.Point(12, 65);
+            this.label2.Location = new System.Drawing.Point(12, 38);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(104, 17);
             this.label2.TabIndex = 1;
@@ -383,22 +326,22 @@
             this.label4.BackColor = System.Drawing.Color.White;
             this.label4.Font = new System.Drawing.Font("Franklin Gothic Medium", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label4.ForeColor = System.Drawing.Color.Black;
-            this.label4.Location = new System.Drawing.Point(15, 175);
+            this.label4.Location = new System.Drawing.Point(15, 241);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(48, 17);
             this.label4.TabIndex = 3;
             this.label4.Text = "Correo:";
             // 
-            // txtCorreo
+            // txtEmail
             // 
-            this.txtCorreo.Location = new System.Drawing.Point(17, 195);
-            this.txtCorreo.Name = "txtCorreo";
-            this.txtCorreo.Size = new System.Drawing.Size(208, 22);
-            this.txtCorreo.TabIndex = 7;
+            this.txtEmail.Location = new System.Drawing.Point(17, 261);
+            this.txtEmail.Name = "txtEmail";
+            this.txtEmail.Size = new System.Drawing.Size(208, 22);
+            this.txtEmail.TabIndex = 7;
             // 
             // txtTelefono
             // 
-            this.txtTelefono.Location = new System.Drawing.Point(17, 240);
+            this.txtTelefono.Location = new System.Drawing.Point(17, 305);
             this.txtTelefono.Name = "txtTelefono";
             this.txtTelefono.Size = new System.Drawing.Size(208, 22);
             this.txtTelefono.TabIndex = 8;
@@ -410,7 +353,7 @@
             this.label5.BackColor = System.Drawing.Color.White;
             this.label5.Font = new System.Drawing.Font("Franklin Gothic Medium", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label5.ForeColor = System.Drawing.Color.Black;
-            this.label5.Location = new System.Drawing.Point(15, 220);
+            this.label5.Location = new System.Drawing.Point(15, 285);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(59, 17);
             this.label5.TabIndex = 4;
@@ -422,7 +365,7 @@
             this.label6.BackColor = System.Drawing.Color.White;
             this.label6.Font = new System.Drawing.Font("Franklin Gothic Medium", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label6.ForeColor = System.Drawing.Color.Black;
-            this.label6.Location = new System.Drawing.Point(14, 275);
+            this.label6.Location = new System.Drawing.Point(14, 336);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(75, 17);
             this.label6.TabIndex = 9;
@@ -430,7 +373,7 @@
             // 
             // txtPassword
             // 
-            this.txtPassword.Location = new System.Drawing.Point(17, 295);
+            this.txtPassword.Location = new System.Drawing.Point(17, 356);
             this.txtPassword.Name = "txtPassword";
             this.txtPassword.Size = new System.Drawing.Size(208, 22);
             this.txtPassword.TabIndex = 10;
@@ -441,7 +384,7 @@
             this.label8.BackColor = System.Drawing.Color.White;
             this.label8.Font = new System.Drawing.Font("Franklin Gothic Medium", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label8.ForeColor = System.Drawing.Color.Black;
-            this.label8.Location = new System.Drawing.Point(15, 329);
+            this.label8.Location = new System.Drawing.Point(15, 386);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(29, 17);
             this.label8.TabIndex = 15;
@@ -449,16 +392,15 @@
             // 
             // cboRol
             // 
+            this.cboRol.DataSource = this.rolBindingSource1;
+            this.cboRol.DisplayMember = "descripcion";
             this.cboRol.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cboRol.FormattingEnabled = true;
-            this.cboRol.Items.AddRange(new object[] {
-            "vendedor",
-            "repositor",
-            "administrador"});
-            this.cboRol.Location = new System.Drawing.Point(17, 349);
+            this.cboRol.Location = new System.Drawing.Point(17, 406);
             this.cboRol.Name = "cboRol";
             this.cboRol.Size = new System.Drawing.Size(208, 25);
             this.cboRol.TabIndex = 13;
+            this.cboRol.ValueMember = "id_rol";
             this.cboRol.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.noWrite_KeyPress);
             // 
             // label3
@@ -467,31 +409,97 @@
             this.label3.BackColor = System.Drawing.Color.White;
             this.label3.Font = new System.Drawing.Font("Franklin Gothic Medium", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label3.ForeColor = System.Drawing.Color.Black;
-            this.label3.Location = new System.Drawing.Point(15, 119);
+            this.label3.Location = new System.Drawing.Point(15, 89);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(110, 17);
+            this.label3.Size = new System.Drawing.Size(55, 17);
             this.label3.TabIndex = 2;
-            this.label3.Text = "Nombre completo:";
+            this.label3.Text = "Nombre:";
             // 
-            // txtNombreCompleto
+            // txtNombre
             // 
-            this.txtNombreCompleto.Location = new System.Drawing.Point(17, 139);
-            this.txtNombreCompleto.Name = "txtNombreCompleto";
-            this.txtNombreCompleto.Size = new System.Drawing.Size(208, 22);
-            this.txtNombreCompleto.TabIndex = 6;
-            this.txtNombreCompleto.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.onlyLetters_KeyPress);
+            this.txtNombre.Location = new System.Drawing.Point(17, 109);
+            this.txtNombre.Name = "txtNombre";
+            this.txtNombre.Size = new System.Drawing.Size(208, 22);
+            this.txtNombre.TabIndex = 6;
+            this.txtNombre.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.onlyLetters_KeyPress);
             // 
-            // txtDocumento
+            // txtDni_usuario
             // 
-            this.txtDocumento.Location = new System.Drawing.Point(15, 85);
-            this.txtDocumento.Name = "txtDocumento";
-            this.txtDocumento.Size = new System.Drawing.Size(210, 22);
-            this.txtDocumento.TabIndex = 5;
-            this.txtDocumento.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.onlyInteger_KeyPress);
+            this.txtDni_usuario.Location = new System.Drawing.Point(15, 58);
+            this.txtDni_usuario.Name = "txtDni_usuario";
+            this.txtDni_usuario.Size = new System.Drawing.Size(210, 22);
+            this.txtDni_usuario.TabIndex = 5;
+            this.txtDni_usuario.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.onlyInteger_KeyPress);
             // 
             // errIngresoDatos
             // 
             this.errIngresoDatos.ContainerControl = this;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.BackColor = System.Drawing.Color.White;
+            this.label1.Font = new System.Drawing.Font("Franklin Gothic Medium", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.ForeColor = System.Drawing.Color.Black;
+            this.label1.Location = new System.Drawing.Point(15, 137);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(56, 17);
+            this.label1.TabIndex = 44;
+            this.label1.Text = "Apellido:";
+            // 
+            // txtApellido
+            // 
+            this.txtApellido.Location = new System.Drawing.Point(17, 157);
+            this.txtApellido.Name = "txtApellido";
+            this.txtApellido.Size = new System.Drawing.Size(208, 22);
+            this.txtApellido.TabIndex = 45;
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.BackColor = System.Drawing.Color.White;
+            this.label7.Font = new System.Drawing.Font("Franklin Gothic Medium", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label7.ForeColor = System.Drawing.Color.Black;
+            this.label7.Location = new System.Drawing.Point(13, 191);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(116, 17);
+            this.label7.TabIndex = 46;
+            this.label7.Text = "Nombre de usuario:";
+            // 
+            // txtUsername
+            // 
+            this.txtUsername.Location = new System.Drawing.Point(15, 211);
+            this.txtUsername.Name = "txtUsername";
+            this.txtUsername.Size = new System.Drawing.Size(208, 22);
+            this.txtUsername.TabIndex = 47;
+            // 
+            // proyectoTaller2DataSet
+            // 
+            this.proyectoTaller2DataSet.DataSetName = "ProyectoTaller2DataSet";
+            this.proyectoTaller2DataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            // 
+            // rolBindingSource
+            // 
+            this.rolBindingSource.DataMember = "rol";
+            this.rolBindingSource.DataSource = this.proyectoTaller2DataSet;
+            // 
+            // rolTableAdapter
+            // 
+            this.rolTableAdapter.ClearBeforeFill = true;
+            // 
+            // proyectoTaller2DataSet1
+            // 
+            this.proyectoTaller2DataSet1.DataSetName = "ProyectoTaller2DataSet1";
+            this.proyectoTaller2DataSet1.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            // 
+            // rolBindingSource1
+            // 
+            this.rolBindingSource1.DataMember = "rol";
+            this.rolBindingSource1.DataSource = this.proyectoTaller2DataSet1;
+            // 
+            // rolTableAdapter1
+            // 
+            this.rolTableAdapter1.ClearBeforeFill = true;
             // 
             // frmAltaUsuario
             // 
@@ -503,6 +511,7 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "frmAltaUsuario";
             this.Text = "Usuario";
+            this.Load += new System.EventHandler(this.frmAltaUsuario_Load);
             this.Agregra.ResumeLayout(false);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
@@ -510,6 +519,10 @@
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.errIngresoDatos)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.proyectoTaller2DataSet)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.rolBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.proyectoTaller2DataSet1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.rolBindingSource1)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -524,8 +537,8 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.TextBox txtTelefono;
-        private System.Windows.Forms.TextBox txtCorreo;
-        private System.Windows.Forms.TextBox txtNombreCompleto;
+        private System.Windows.Forms.TextBox txtEmail;
+        private System.Windows.Forms.TextBox txtNombre;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.ComboBox cboRol;
         private System.Windows.Forms.TextBox txtPassword;
@@ -542,17 +555,16 @@
         private System.Windows.Forms.TextBox txtUserList;
         private System.Windows.Forms.Label lblBuscarListUser;
         private FontAwesome.Sharp.IconButton iconBtnLupaDetalleUser;
-        public System.Windows.Forms.TextBox txtDocumento;
-        private System.Windows.Forms.DataGridViewButtonColumn btnSeleccionar;
-        private System.Windows.Forms.DataGridViewTextBoxColumn idUsuaruio;
-        private System.Windows.Forms.DataGridViewTextBoxColumn documento;
-        private System.Windows.Forms.DataGridViewTextBoxColumn nombreCompleto;
-        private System.Windows.Forms.DataGridViewTextBoxColumn correo;
-        private System.Windows.Forms.DataGridViewTextBoxColumn telefonoRegUsuario;
-        private System.Windows.Forms.DataGridViewTextBoxColumn clave;
-        private System.Windows.Forms.DataGridViewTextBoxColumn idRol;
-        private System.Windows.Forms.DataGridViewTextBoxColumn rol;
-        private System.Windows.Forms.DataGridViewTextBoxColumn estado;
-        private System.Windows.Forms.DataGridViewTextBoxColumn estadoValor;
+        public System.Windows.Forms.TextBox txtDni_usuario;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.TextBox txtApellido;
+        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.TextBox txtUsername;
+        private ProyectoTaller2DataSet proyectoTaller2DataSet;
+        private System.Windows.Forms.BindingSource rolBindingSource;
+        private ProyectoTaller2DataSetTableAdapters.rolTableAdapter rolTableAdapter;
+        private ProyectoTaller2DataSet1 proyectoTaller2DataSet1;
+        private System.Windows.Forms.BindingSource rolBindingSource1;
+        private ProyectoTaller2DataSet1TableAdapters.rolTableAdapter rolTableAdapter1;
     }
 }

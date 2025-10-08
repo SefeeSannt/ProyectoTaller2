@@ -28,7 +28,7 @@ namespace CapaDatos
                         {
                             lista.Add(new Usuario()
                             {
-                                dni_usuario = dr["dni_usuario"].ToString(),
+                                dni_usuario = Convert.ToInt64(dr["dni_usuario"].ToString()),
                                 nombre = dr["nombre"].ToString(),
                                 apellido = dr["apellido"].ToString(),
                                 username = dr["username"].ToString(),
@@ -53,5 +53,16 @@ namespace CapaDatos
 
             return lista;
         }
+
+        public void agregarUsuario(usuario obj)
+        {
+            using (var db = new ProyectoTaller2Entities())
+            {
+                db.usuario.Add(obj);
+                db.SaveChanges();
+            }
+        }
+
+
     }
 }

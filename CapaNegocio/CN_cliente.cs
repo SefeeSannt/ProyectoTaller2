@@ -17,7 +17,8 @@ namespace CapaNegocio
                 dni_cliente = clienteModel.dni,
                 domicilio = clienteModel.domicilio,
                 telefono = clienteModel.telefono,
-                email_cliente = clienteModel.email
+                email_cliente = clienteModel.email,
+                id_estado = clienteModel.id_estado
             };
 
             oCliente.AgregarCliente(clienteEntidad);
@@ -33,8 +34,8 @@ namespace CapaNegocio
                 dni = c.dni_cliente,
                 domicilio = c.domicilio,
                 telefono = c.telefono,
-                email = c.email_cliente
-
+                email = c.email_cliente,
+                id_estado = c.id_estado
             }).ToList();
         }
 
@@ -48,7 +49,8 @@ namespace CapaNegocio
                 dni = c.dni_cliente,
                 domicilio = c.domicilio,
                 telefono = c.telefono,
-                email = c.email_cliente
+                email = c.email_cliente,
+                id_estado = c.id_estado
             }).ToList();
         }
 
@@ -62,7 +64,8 @@ namespace CapaNegocio
                 dni = c.dni_cliente,
                 domicilio = c.domicilio,
                 telefono = c.telefono,
-                email = c.email_cliente
+                email = c.email_cliente,
+                id_estado = c.id_estado
             }).ToList();
         }
 
@@ -76,7 +79,8 @@ namespace CapaNegocio
                 dni = c.dni_cliente,
                 domicilio = c.domicilio,
                 telefono = c.telefono,
-                email = c.email_cliente
+                email = c.email_cliente,
+                id_estado = c.id_estado
             }).ToList();
         }
 
@@ -99,7 +103,8 @@ namespace CapaNegocio
                 dni_cliente = clienteModel.dni,
                 domicilio = clienteModel.domicilio,
                 telefono = clienteModel.telefono,
-                email_cliente = clienteModel.email
+                email_cliente = clienteModel.email,
+                id_estado = clienteModel.id_estado
             };
             oCliente.ActualizarCliente(clienteEntidad);
         }

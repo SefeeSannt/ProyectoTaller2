@@ -11,12 +11,27 @@ namespace CapaNegocio
 {
     public class CN_usuario
     {
-        private CD_usuario oUsuario = new CD_usuario();//instancia a nuestra clase usuario de la capa datos
+        public CD_usuario oUsuario = new CD_usuario();
 
         public List<Usuario> Listar()
         {
             return oUsuario.Listar();
         }
 
+        public void agregarUsuario(UsuarioModel obj)
+        {
+            var usuario = new usuario
+            {
+                dni_usuario = obj.dni_usuario,
+                nombre = obj.nombre,
+                apellido = obj.apellido,
+                username = obj.username,
+                telefono = obj.telefono,
+                password = obj.password,
+                email_usuario = obj.email_usuario,
+                rol = new rol { id_rol = obj.oRol.id_rol }
+            };
+            oUsuario.agregarUsuario(usuario);
+        }
     }
 }
