@@ -43,16 +43,11 @@ namespace CapaPresentacion.Vistas.Administrador.Reportes
             this.label1 = new System.Windows.Forms.Label();
             this.lblTituloCosto = new System.Windows.Forms.Label();
             this.dgvConsultaVentas = new System.Windows.Forms.DataGridView();
-            this.clienteConsVentas = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.fechaInicio = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.fechaFin = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.formaPagoConsVenta = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ventaTotal = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.verDetalle = new System.Windows.Forms.DataGridViewButtonColumn();
             this.lblCostoTotal = new System.Windows.Forms.TextBox();
             this.lblTituloTotalVentas = new System.Windows.Forms.Label();
             this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
             this.pnlConsultaVentas2 = new System.Windows.Forms.Panel();
+            this.label2 = new System.Windows.Forms.Label();
             this.lblDatoDni = new System.Windows.Forms.Label();
             this.lblDatoApellido = new System.Windows.Forms.Label();
             this.lblDatoNombre = new System.Windows.Forms.Label();
@@ -69,7 +64,11 @@ namespace CapaPresentacion.Vistas.Administrador.Reportes
             this.txtCliente_Ventas = new System.Windows.Forms.TextBox();
             this.btnBuscar = new System.Windows.Forms.Button();
             this.lblFechaDesde = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
+            this.clienteConsVentas = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.fechaVenta = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.formaPagoConsVenta = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ventaTotal = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.verDetalle = new System.Windows.Forms.DataGridViewButtonColumn();
             this.Agregra.SuspendLayout();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvConsultaVentas)).BeginInit();
@@ -184,8 +183,7 @@ namespace CapaPresentacion.Vistas.Administrador.Reportes
             this.dgvConsultaVentas.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvConsultaVentas.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.clienteConsVentas,
-            this.fechaInicio,
-            this.fechaFin,
+            this.fechaVenta,
             this.formaPagoConsVenta,
             this.ventaTotal,
             this.verDetalle});
@@ -195,44 +193,6 @@ namespace CapaPresentacion.Vistas.Administrador.Reportes
             this.dgvConsultaVentas.RowHeadersVisible = false;
             this.dgvConsultaVentas.Size = new System.Drawing.Size(451, 226);
             this.dgvConsultaVentas.TabIndex = 28;
-            // 
-            // clienteConsVentas
-            // 
-            this.clienteConsVentas.HeaderText = "Cliente";
-            this.clienteConsVentas.Name = "clienteConsVentas";
-            this.clienteConsVentas.ReadOnly = true;
-            // 
-            // fechaInicio
-            // 
-            this.fechaInicio.HeaderText = "Fecha inicio";
-            this.fechaInicio.Name = "fechaInicio";
-            this.fechaInicio.ReadOnly = true;
-            // 
-            // fechaFin
-            // 
-            this.fechaFin.HeaderText = "Fecha fin";
-            this.fechaFin.Name = "fechaFin";
-            this.fechaFin.ReadOnly = true;
-            // 
-            // formaPagoConsVenta
-            // 
-            this.formaPagoConsVenta.HeaderText = "Forma de Pago";
-            this.formaPagoConsVenta.Name = "formaPagoConsVenta";
-            this.formaPagoConsVenta.ReadOnly = true;
-            // 
-            // ventaTotal
-            // 
-            this.ventaTotal.HeaderText = "Total";
-            this.ventaTotal.Name = "ventaTotal";
-            this.ventaTotal.ReadOnly = true;
-            // 
-            // verDetalle
-            // 
-            this.verDetalle.HeaderText = "Ver detalle";
-            this.verDetalle.Name = "verDetalle";
-            this.verDetalle.ReadOnly = true;
-            this.verDetalle.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.verDetalle.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
             // 
             // lblCostoTotal
             // 
@@ -282,6 +242,18 @@ namespace CapaPresentacion.Vistas.Administrador.Reportes
             this.pnlConsultaVentas2.Name = "pnlConsultaVentas2";
             this.pnlConsultaVentas2.Size = new System.Drawing.Size(463, 415);
             this.pnlConsultaVentas2.TabIndex = 31;
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.BackColor = System.Drawing.Color.White;
+            this.label2.Font = new System.Drawing.Font("Franklin Gothic Medium", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.ForeColor = System.Drawing.Color.Black;
+            this.label2.Location = new System.Drawing.Point(352, 76);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(84, 17);
+            this.label2.TabIndex = 22;
+            this.label2.Text = "Codigo venta:";
             // 
             // lblDatoDni
             // 
@@ -461,17 +433,37 @@ namespace CapaPresentacion.Vistas.Administrador.Reportes
             this.lblFechaDesde.Text = "Fecha desde:";
             this.lblFechaDesde.Click += new System.EventHandler(this.lblFechaDesde_Click);
             // 
-            // label2
+            // clienteConsVentas
             // 
-            this.label2.AutoSize = true;
-            this.label2.BackColor = System.Drawing.Color.White;
-            this.label2.Font = new System.Drawing.Font("Franklin Gothic Medium", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.ForeColor = System.Drawing.Color.Black;
-            this.label2.Location = new System.Drawing.Point(352, 76);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(84, 17);
-            this.label2.TabIndex = 22;
-            this.label2.Text = "Codigo venta:";
+            this.clienteConsVentas.HeaderText = "Cliente";
+            this.clienteConsVentas.Name = "clienteConsVentas";
+            this.clienteConsVentas.ReadOnly = true;
+            // 
+            // fechaVenta
+            // 
+            this.fechaVenta.HeaderText = "Fecha venta";
+            this.fechaVenta.Name = "fechaVenta";
+            this.fechaVenta.ReadOnly = true;
+            // 
+            // formaPagoConsVenta
+            // 
+            this.formaPagoConsVenta.HeaderText = "Forma de Pago";
+            this.formaPagoConsVenta.Name = "formaPagoConsVenta";
+            this.formaPagoConsVenta.ReadOnly = true;
+            // 
+            // ventaTotal
+            // 
+            this.ventaTotal.HeaderText = "Total";
+            this.ventaTotal.Name = "ventaTotal";
+            this.ventaTotal.ReadOnly = true;
+            // 
+            // verDetalle
+            // 
+            this.verDetalle.HeaderText = "Ver detalle";
+            this.verDetalle.Name = "verDetalle";
+            this.verDetalle.ReadOnly = true;
+            this.verDetalle.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.verDetalle.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
             // 
             // frmDetalleVentas
             // 
@@ -505,12 +497,6 @@ namespace CapaPresentacion.Vistas.Administrador.Reportes
         private Label lblDetalleVenta;
         private Label label1;
         private DataGridView dgvConsultaVentas;
-        private DataGridViewTextBoxColumn clienteConsVentas;
-        private DataGridViewTextBoxColumn fechaInicio;
-        private DataGridViewTextBoxColumn fechaFin;
-        private DataGridViewTextBoxColumn formaPagoConsVenta;
-        private DataGridViewTextBoxColumn ventaTotal;
-        private DataGridViewButtonColumn verDetalle;
         private Button btnBuscar;
         private DateTimePicker dateTimePicker1;
         private Label lblFechaDesde;
@@ -534,6 +520,11 @@ namespace CapaPresentacion.Vistas.Administrador.Reportes
         private Panel panel2;
         private Button button1;
         private Label label2;
+        private DataGridViewTextBoxColumn clienteConsVentas;
+        private DataGridViewTextBoxColumn fechaVenta;
+        private DataGridViewTextBoxColumn formaPagoConsVenta;
+        private DataGridViewTextBoxColumn ventaTotal;
+        private DataGridViewButtonColumn verDetalle;
     }
 }
 

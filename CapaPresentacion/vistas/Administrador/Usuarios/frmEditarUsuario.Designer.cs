@@ -29,8 +29,8 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             this.txtUserList = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.dgvUsuarios = new System.Windows.Forms.DataGridView();
@@ -40,12 +40,10 @@
             this.correo = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.telefonoRegUsuario = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.rol = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.btnCancelar = new FontAwesome.Sharp.IconButton();
             this.btnLimpiar = new FontAwesome.Sharp.IconButton();
             this.btnGuardar = new FontAwesome.Sharp.IconButton();
             this.label4 = new System.Windows.Forms.Label();
             this.txtCorreo = new System.Windows.Forms.TextBox();
-            this.lblBuscarListUser = new System.Windows.Forms.Label();
             this.txtTelefono = new System.Windows.Forms.TextBox();
             this.label6 = new System.Windows.Forms.Label();
             this.txtPassword = new System.Windows.Forms.TextBox();
@@ -62,6 +60,7 @@
             this.label10 = new System.Windows.Forms.Label();
             this.btnBuscar = new FontAwesome.Sharp.IconButton();
             this.errIngresoDatos = new System.Windows.Forms.ErrorProvider(this.components);
+            this.lblBuscarListUser = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dgvUsuarios)).BeginInit();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.errIngresoDatos)).BeginInit();
@@ -69,7 +68,7 @@
             // 
             // txtUserList
             // 
-            this.txtUserList.Location = new System.Drawing.Point(250, 68);
+            this.txtUserList.Location = new System.Drawing.Point(710, 12);
             this.txtUserList.Multiline = true;
             this.txtUserList.Name = "txtUserList";
             this.txtUserList.Size = new System.Drawing.Size(197, 19);
@@ -90,17 +89,19 @@
             // dgvUsuarios
             // 
             this.dgvUsuarios.AllowUserToAddRows = false;
+            this.dgvUsuarios.AllowUserToDeleteRows = false;
             this.dgvUsuarios.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dgvUsuarios.BackgroundColor = System.Drawing.Color.White;
-            dataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle9.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle9.Font = new System.Drawing.Font("Franklin Gothic Medium", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle9.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle9.Padding = new System.Windows.Forms.Padding(2);
-            dataGridViewCellStyle9.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle9.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle9.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvUsuarios.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle9;
+            this.dgvUsuarios.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Franklin Gothic Medium", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle3.Padding = new System.Windows.Forms.Padding(2);
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvUsuarios.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle3;
             this.dgvUsuarios.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvUsuarios.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.btnSeleccionar,
@@ -109,16 +110,17 @@
             this.correo,
             this.telefonoRegUsuario,
             this.rol});
-            this.dgvUsuarios.Location = new System.Drawing.Point(250, 93);
+            this.dgvUsuarios.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dgvUsuarios.Location = new System.Drawing.Point(244, 42);
             this.dgvUsuarios.MultiSelect = false;
             this.dgvUsuarios.Name = "dgvUsuarios";
             this.dgvUsuarios.ReadOnly = true;
             this.dgvUsuarios.RowHeadersVisible = false;
-            dataGridViewCellStyle10.SelectionBackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle10.SelectionForeColor = System.Drawing.Color.Black;
-            this.dgvUsuarios.RowsDefaultCellStyle = dataGridViewCellStyle10;
+            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.Color.Black;
+            this.dgvUsuarios.RowsDefaultCellStyle = dataGridViewCellStyle4;
             this.dgvUsuarios.RowTemplate.Height = 28;
-            this.dgvUsuarios.Size = new System.Drawing.Size(704, 400);
+            this.dgvUsuarios.Size = new System.Drawing.Size(716, 496);
             this.dgvUsuarios.TabIndex = 56;
             // 
             // btnSeleccionar
@@ -157,27 +159,6 @@
             this.rol.HeaderText = "Rol";
             this.rol.Name = "rol";
             this.rol.ReadOnly = true;
-            // 
-            // btnCancelar
-            // 
-            this.btnCancelar.BackColor = System.Drawing.Color.Red;
-            this.btnCancelar.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnCancelar.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.btnCancelar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnCancelar.Font = new System.Drawing.Font("Segoe UI", 10F);
-            this.btnCancelar.IconChar = FontAwesome.Sharp.IconChar.ChevronLeft;
-            this.btnCancelar.IconColor = System.Drawing.Color.Black;
-            this.btnCancelar.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            this.btnCancelar.IconSize = 16;
-            this.btnCancelar.Location = new System.Drawing.Point(844, 499);
-            this.btnCancelar.Name = "btnCancelar";
-            this.btnCancelar.Size = new System.Drawing.Size(104, 27);
-            this.btnCancelar.TabIndex = 47;
-            this.btnCancelar.Text = "Cancelar";
-            this.btnCancelar.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btnCancelar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.btnCancelar.UseVisualStyleBackColor = false;
-            this.btnCancelar.Click += new System.EventHandler(this.btnCancelar_Click);
             // 
             // btnLimpiar
             // 
@@ -239,17 +220,6 @@
             this.txtCorreo.Name = "txtCorreo";
             this.txtCorreo.Size = new System.Drawing.Size(208, 20);
             this.txtCorreo.TabIndex = 7;
-            // 
-            // lblBuscarListUser
-            // 
-            this.lblBuscarListUser.AutoSize = true;
-            this.lblBuscarListUser.Font = new System.Drawing.Font("Franklin Gothic Medium", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblBuscarListUser.ForeColor = System.Drawing.Color.Black;
-            this.lblBuscarListUser.Location = new System.Drawing.Point(250, 48);
-            this.lblBuscarListUser.Name = "lblBuscarListUser";
-            this.lblBuscarListUser.Size = new System.Drawing.Size(49, 17);
-            this.lblBuscarListUser.TabIndex = 59;
-            this.lblBuscarListUser.Text = "Buscar:";
             // 
             // txtTelefono
             // 
@@ -425,9 +395,9 @@
             this.btnBuscar.IconColor = System.Drawing.Color.White;
             this.btnBuscar.IconFont = FontAwesome.Sharp.IconFont.Auto;
             this.btnBuscar.IconSize = 19;
-            this.btnBuscar.Location = new System.Drawing.Point(453, 63);
+            this.btnBuscar.Location = new System.Drawing.Point(913, 12);
             this.btnBuscar.Name = "btnBuscar";
-            this.btnBuscar.Size = new System.Drawing.Size(41, 23);
+            this.btnBuscar.Size = new System.Drawing.Size(41, 19);
             this.btnBuscar.TabIndex = 62;
             this.btnBuscar.UseVisualStyleBackColor = false;
             // 
@@ -435,17 +405,28 @@
             // 
             this.errIngresoDatos.ContainerControl = this;
             // 
+            // lblBuscarListUser
+            // 
+            this.lblBuscarListUser.AutoSize = true;
+            this.lblBuscarListUser.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
+            this.lblBuscarListUser.Font = new System.Drawing.Font("Franklin Gothic Medium", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblBuscarListUser.ForeColor = System.Drawing.Color.White;
+            this.lblBuscarListUser.Location = new System.Drawing.Point(655, 14);
+            this.lblBuscarListUser.Name = "lblBuscarListUser";
+            this.lblBuscarListUser.Size = new System.Drawing.Size(49, 17);
+            this.lblBuscarListUser.TabIndex = 59;
+            this.lblBuscarListUser.Text = "Buscar:";
+            // 
             // frmEditarUsuario
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(960, 538);
             this.Controls.Add(this.btnBuscar);
-            this.Controls.Add(this.btnCancelar);
-            this.Controls.Add(this.label10);
             this.Controls.Add(this.txtUserList);
             this.Controls.Add(this.dgvUsuarios);
             this.Controls.Add(this.lblBuscarListUser);
+            this.Controls.Add(this.label10);
             this.Controls.Add(this.panel2);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "frmEditarUsuario";
@@ -464,12 +445,10 @@
         private System.Windows.Forms.TextBox txtUserList;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.DataGridView dgvUsuarios;
-        private FontAwesome.Sharp.IconButton btnCancelar;
         private FontAwesome.Sharp.IconButton btnLimpiar;
         private FontAwesome.Sharp.IconButton btnGuardar;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.TextBox txtCorreo;
-        private System.Windows.Forms.Label lblBuscarListUser;
         private System.Windows.Forms.TextBox txtTelefono;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.TextBox txtPassword;
@@ -492,5 +471,6 @@
         private System.Windows.Forms.ErrorProvider errIngresoDatos;
         private System.Windows.Forms.Label lblApellido;
         private System.Windows.Forms.TextBox txtApellido;
+        private System.Windows.Forms.Label lblBuscarListUser;
     }
 }

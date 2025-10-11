@@ -42,6 +42,7 @@
             this.lblNombre = new System.Windows.Forms.Label();
             this.lblTituloAdm = new System.Windows.Forms.Label();
             this.lblTitulo = new System.Windows.Forms.Label();
+            this.tsmiConsultarProveedor = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.pntCabecera.SuspendLayout();
             this.SuspendLayout();
@@ -119,7 +120,8 @@
             // 
             this.iconMenuItem3.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.tsmAltaProveedor,
-            this.tsmiConsultarProveedores});
+            this.tsmiConsultarProveedores,
+            this.tsmiConsultarProveedor});
             this.iconMenuItem3.Font = new System.Drawing.Font("Segoe UI Variable Text Semibold", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.iconMenuItem3.ForeColor = System.Drawing.Color.White;
             this.iconMenuItem3.IconChar = FontAwesome.Sharp.IconChar.UserAlt;
@@ -217,6 +219,13 @@
             this.lblTitulo.TabIndex = 10;
             this.lblTitulo.Text = "Tienda zonafitt";
             // 
+            // tsmiConsultarProveedor
+            // 
+            this.tsmiConsultarProveedor.Name = "tsmiConsultarProveedor";
+            this.tsmiConsultarProveedor.Size = new System.Drawing.Size(214, 22);
+            this.tsmiConsultarProveedor.Text = "Editar proveedor";
+            this.tsmiConsultarProveedor.Click += new System.EventHandler(this.tsmiConsultarProveedor_Click);
+            // 
             // frmVistaRepositor
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -255,5 +264,6 @@
         private System.Windows.Forms.ToolStripMenuItem tsmiConsultarCompra;
         private FontAwesome.Sharp.IconButton iconBtnSalir;
         private System.Windows.Forms.ToolStripMenuItem tsmAltaProveedor;
+        private System.Windows.Forms.ToolStripMenuItem tsmiConsultarProveedor;
     }
 }

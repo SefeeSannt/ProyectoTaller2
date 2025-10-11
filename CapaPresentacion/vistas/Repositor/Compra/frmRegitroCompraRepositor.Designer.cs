@@ -40,6 +40,9 @@
             this.subTotal = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.btnAgregar = new FontAwesome.Sharp.IconButton();
             this.gbInfProducto = new System.Windows.Forms.GroupBox();
+            this.txtPrecioVenta = new System.Windows.Forms.TextBox();
+            this.txtPrecioCompra = new System.Windows.Forms.TextBox();
+            this.lblPrecioVenta = new System.Windows.Forms.Label();
             this.cboProducto = new System.Windows.Forms.ComboBox();
             this.numUpDCantidad = new System.Windows.Forms.NumericUpDown();
             this.lblCantidad = new System.Windows.Forms.Label();
@@ -57,9 +60,6 @@
             this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
             this.lblFecha = new System.Windows.Forms.Label();
             this.errIngresoDatos = new System.Windows.Forms.ErrorProvider(this.components);
-            this.txtPrecioCompra = new System.Windows.Forms.TextBox();
-            this.lblPrecioVenta = new System.Windows.Forms.Label();
-            this.txtPrecioVenta = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.dgvRegistroCompras)).BeginInit();
             this.gbInfProducto.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numUpDCantidad)).BeginInit();
@@ -128,9 +128,12 @@
             this.PrecioCompra,
             this.cantidad,
             this.subTotal});
+            this.dgvRegistroCompras.EnableHeadersVisualStyles = false;
+            this.dgvRegistroCompras.GridColor = System.Drawing.SystemColors.ControlDarkDark;
             this.dgvRegistroCompras.Location = new System.Drawing.Point(7, 254);
             this.dgvRegistroCompras.Name = "dgvRegistroCompras";
             this.dgvRegistroCompras.ReadOnly = true;
+            this.dgvRegistroCompras.RowHeadersVisible = false;
             this.dgvRegistroCompras.Size = new System.Drawing.Size(623, 272);
             this.dgvRegistroCompras.TabIndex = 18;
             // 
@@ -195,6 +198,33 @@
             this.gbInfProducto.TabStop = false;
             this.gbInfProducto.Text = "Información de Producto";
             // 
+            // txtPrecioVenta
+            // 
+            this.txtPrecioVenta.Location = new System.Drawing.Point(442, 55);
+            this.txtPrecioVenta.Multiline = true;
+            this.txtPrecioVenta.Name = "txtPrecioVenta";
+            this.txtPrecioVenta.ReadOnly = true;
+            this.txtPrecioVenta.Size = new System.Drawing.Size(114, 26);
+            this.txtPrecioVenta.TabIndex = 13;
+            // 
+            // txtPrecioCompra
+            // 
+            this.txtPrecioCompra.Location = new System.Drawing.Point(322, 55);
+            this.txtPrecioCompra.Multiline = true;
+            this.txtPrecioCompra.Name = "txtPrecioCompra";
+            this.txtPrecioCompra.Size = new System.Drawing.Size(114, 26);
+            this.txtPrecioCompra.TabIndex = 12;
+            // 
+            // lblPrecioVenta
+            // 
+            this.lblPrecioVenta.AutoSize = true;
+            this.lblPrecioVenta.Font = new System.Drawing.Font("Franklin Gothic Medium", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblPrecioVenta.Location = new System.Drawing.Point(439, 35);
+            this.lblPrecioVenta.Name = "lblPrecioVenta";
+            this.lblPrecioVenta.Size = new System.Drawing.Size(81, 17);
+            this.lblPrecioVenta.TabIndex = 11;
+            this.lblPrecioVenta.Text = "Precio Venta:";
+            // 
             // cboProducto
             // 
             this.cboProducto.FormattingEnabled = true;
@@ -230,7 +260,6 @@
             this.lblPrecioCompra.Size = new System.Drawing.Size(93, 17);
             this.lblPrecioCompra.TabIndex = 4;
             this.lblPrecioCompra.Text = "Precio Compra:";
-
             // 
             // txtCodProducto
             // 
@@ -353,35 +382,6 @@
             // errIngresoDatos
             // 
             this.errIngresoDatos.ContainerControl = this;
-            // 
-            // txtPrecioCompra
-            // 
-            this.txtPrecioCompra.Location = new System.Drawing.Point(322, 55);
-            this.txtPrecioCompra.Multiline = true;
-            this.txtPrecioCompra.Name = "txtPrecioCompra";
-            this.txtPrecioCompra.Size = new System.Drawing.Size(114, 26);
-            this.txtPrecioCompra.TabIndex = 12;
-          
-            // 
-            // lblPrecioVenta
-            // 
-            this.lblPrecioVenta.AutoSize = true;
-            this.lblPrecioVenta.Font = new System.Drawing.Font("Franklin Gothic Medium", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblPrecioVenta.Location = new System.Drawing.Point(439, 35);
-            this.lblPrecioVenta.Name = "lblPrecioVenta";
-            this.lblPrecioVenta.Size = new System.Drawing.Size(81, 17);
-            this.lblPrecioVenta.TabIndex = 11;
-            this.lblPrecioVenta.Text = "Precio Venta:";
-            
-            // 
-            // txtPrecioVenta
-            // 
-            this.txtPrecioVenta.Location = new System.Drawing.Point(442, 55);
-            this.txtPrecioVenta.Multiline = true;
-            this.txtPrecioVenta.Name = "txtPrecioVenta";
-            this.txtPrecioVenta.ReadOnly = true;
-            this.txtPrecioVenta.Size = new System.Drawing.Size(114, 26);
-            this.txtPrecioVenta.TabIndex = 13;
             // 
             // frmRegitroCompraRepositor
             // 

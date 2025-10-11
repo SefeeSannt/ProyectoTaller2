@@ -90,8 +90,9 @@
             dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
             this.dgvClientes.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.dgvClientes.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvClientes.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dgvClientes.Enabled = false;
-            this.dgvClientes.Location = new System.Drawing.Point(262, 112);
+            this.dgvClientes.Location = new System.Drawing.Point(244, 42);
             this.dgvClientes.Margin = new System.Windows.Forms.Padding(4);
             this.dgvClientes.MultiSelect = false;
             this.dgvClientes.Name = "dgvClientes";
@@ -102,7 +103,7 @@
             dataGridViewCellStyle2.SelectionForeColor = System.Drawing.Color.Black;
             this.dgvClientes.RowsDefaultCellStyle = dataGridViewCellStyle2;
             this.dgvClientes.RowTemplate.Height = 28;
-            this.dgvClientes.Size = new System.Drawing.Size(685, 458);
+            this.dgvClientes.Size = new System.Drawing.Size(716, 496);
             this.dgvClientes.TabIndex = 50;
             this.dgvClientes.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvClientes_CellContentClick);
             // 
@@ -326,12 +327,13 @@
             // label10
             // 
             this.label10.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
+            this.label10.Dock = System.Windows.Forms.DockStyle.Top;
             this.label10.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label10.ForeColor = System.Drawing.Color.White;
-            this.label10.Location = new System.Drawing.Point(241, 0);
+            this.label10.Location = new System.Drawing.Point(244, 0);
             this.label10.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(718, 42);
+            this.label10.Size = new System.Drawing.Size(716, 42);
             this.label10.TabIndex = 51;
             this.label10.Text = "Lista de Clientes";
             this.label10.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -342,17 +344,19 @@
             // 
             // txtBuscarDni
             // 
-            this.txtBuscarDni.Location = new System.Drawing.Point(262, 84);
+            this.txtBuscarDni.Location = new System.Drawing.Point(759, 12);
             this.txtBuscarDni.Multiline = true;
             this.txtBuscarDni.Name = "txtBuscarDni";
-            this.txtBuscarDni.Size = new System.Drawing.Size(197, 19);
+            this.txtBuscarDni.Size = new System.Drawing.Size(144, 19);
             this.txtBuscarDni.TabIndex = 57;
             // 
             // lblBuscarListProd
             // 
             this.lblBuscarListProd.AutoSize = true;
+            this.lblBuscarListProd.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
             this.lblBuscarListProd.Font = new System.Drawing.Font("Franklin Gothic Medium", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblBuscarListProd.Location = new System.Drawing.Point(259, 64);
+            this.lblBuscarListProd.ForeColor = System.Drawing.Color.White;
+            this.lblBuscarListProd.Location = new System.Drawing.Point(662, 14);
             this.lblBuscarListProd.Name = "lblBuscarListProd";
             this.lblBuscarListProd.Size = new System.Drawing.Size(91, 17);
             this.lblBuscarListProd.TabIndex = 55;
@@ -367,7 +371,7 @@
             this.btnBuscar.IconColor = System.Drawing.Color.White;
             this.btnBuscar.IconFont = FontAwesome.Sharp.IconFont.Auto;
             this.btnBuscar.IconSize = 19;
-            this.btnBuscar.Location = new System.Drawing.Point(465, 84);
+            this.btnBuscar.Location = new System.Drawing.Point(909, 10);
             this.btnBuscar.Name = "btnBuscar";
             this.btnBuscar.Size = new System.Drawing.Size(41, 21);
             this.btnBuscar.TabIndex = 54;
@@ -384,8 +388,8 @@
             this.Controls.Add(this.lblBuscarListProd);
             this.Controls.Add(this.btnBuscar);
             this.Controls.Add(this.dgvClientes);
-            this.Controls.Add(this.pnlClientes);
             this.Controls.Add(this.label10);
+            this.Controls.Add(this.pnlClientes);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "frmCliente";
             this.Text = "frmCliente";

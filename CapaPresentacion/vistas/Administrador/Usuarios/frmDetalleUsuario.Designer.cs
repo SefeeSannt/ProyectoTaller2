@@ -38,7 +38,6 @@
             this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
             this.backgroundWorker2 = new System.ComponentModel.BackgroundWorker();
             this.iconBtnLupaDetalleUser = new FontAwesome.Sharp.IconButton();
-            this.lblUsuariosReegistrados = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.lblFiltroEstado = new System.Windows.Forms.Label();
@@ -47,13 +46,17 @@
             this.cbFiltrarEstado = new System.Windows.Forms.ComboBox();
             this.lblUsuariosRegistrados = new System.Windows.Forms.Label();
             this.lblTotalUsuariosRegistrados = new System.Windows.Forms.Label();
+            this.lblBajaUsuario = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dgvDetalleUsuario)).BeginInit();
             this.SuspendLayout();
             // 
             // dgvDetalleUsuario
             // 
+            this.dgvDetalleUsuario.AllowUserToAddRows = false;
+            this.dgvDetalleUsuario.AllowUserToDeleteRows = false;
             this.dgvDetalleUsuario.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dgvDetalleUsuario.BackgroundColor = System.Drawing.Color.White;
+            this.dgvDetalleUsuario.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.dgvDetalleUsuario.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvDetalleUsuario.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.numDocumento,
@@ -62,10 +65,12 @@
             this.telefono,
             this.rol,
             this.estado});
-            this.dgvDetalleUsuario.Location = new System.Drawing.Point(12, 134);
+            this.dgvDetalleUsuario.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dgvDetalleUsuario.Location = new System.Drawing.Point(0, 42);
             this.dgvDetalleUsuario.Name = "dgvDetalleUsuario";
+            this.dgvDetalleUsuario.ReadOnly = true;
             this.dgvDetalleUsuario.RowHeadersVisible = false;
-            this.dgvDetalleUsuario.Size = new System.Drawing.Size(936, 365);
+            this.dgvDetalleUsuario.Size = new System.Drawing.Size(960, 496);
             this.dgvDetalleUsuario.TabIndex = 0;
             // 
             // numDocumento
@@ -107,27 +112,19 @@
             this.iconBtnLupaDetalleUser.IconColor = System.Drawing.Color.White;
             this.iconBtnLupaDetalleUser.IconFont = FontAwesome.Sharp.IconFont.Auto;
             this.iconBtnLupaDetalleUser.IconSize = 19;
-            this.iconBtnLupaDetalleUser.Location = new System.Drawing.Point(235, 99);
+            this.iconBtnLupaDetalleUser.Location = new System.Drawing.Point(467, 17);
             this.iconBtnLupaDetalleUser.Name = "iconBtnLupaDetalleUser";
             this.iconBtnLupaDetalleUser.Size = new System.Drawing.Size(41, 21);
             this.iconBtnLupaDetalleUser.TabIndex = 2;
             this.iconBtnLupaDetalleUser.UseVisualStyleBackColor = false;
             // 
-            // lblUsuariosReegistrados
-            // 
-            this.lblUsuariosReegistrados.AutoSize = true;
-            this.lblUsuariosReegistrados.Font = new System.Drawing.Font("Franklin Gothic Medium", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblUsuariosReegistrados.Location = new System.Drawing.Point(12, 9);
-            this.lblUsuariosReegistrados.Name = "lblUsuariosReegistrados";
-            this.lblUsuariosReegistrados.Size = new System.Drawing.Size(202, 26);
-            this.lblUsuariosReegistrados.TabIndex = 3;
-            this.lblUsuariosReegistrados.Text = "Usuarios Registrados";
-            // 
             // label1
             // 
             this.label1.AutoSize = true;
+            this.label1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
             this.label1.Font = new System.Drawing.Font("Franklin Gothic Medium", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(29, 83);
+            this.label1.ForeColor = System.Drawing.Color.White;
+            this.label1.Location = new System.Drawing.Point(250, 19);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(90, 17);
             this.label1.TabIndex = 4;
@@ -136,8 +133,10 @@
             // label2
             // 
             this.label2.AutoSize = true;
+            this.label2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
             this.label2.Font = new System.Drawing.Font("Franklin Gothic Medium", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(296, 80);
+            this.label2.ForeColor = System.Drawing.Color.White;
+            this.label2.Location = new System.Drawing.Point(529, 19);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(85, 17);
             this.label2.TabIndex = 5;
@@ -147,8 +146,10 @@
             // lblFiltroEstado
             // 
             this.lblFiltroEstado.AutoSize = true;
+            this.lblFiltroEstado.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
             this.lblFiltroEstado.Font = new System.Drawing.Font("Franklin Gothic Medium", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblFiltroEstado.Location = new System.Drawing.Point(527, 80);
+            this.lblFiltroEstado.ForeColor = System.Drawing.Color.White;
+            this.lblFiltroEstado.Location = new System.Drawing.Point(743, 19);
             this.lblFiltroEstado.Name = "lblFiltroEstado";
             this.lblFiltroEstado.Size = new System.Drawing.Size(105, 17);
             this.lblFiltroEstado.TabIndex = 6;
@@ -156,26 +157,26 @@
             // 
             // textBox1
             // 
-            this.textBox1.Location = new System.Drawing.Point(32, 99);
+            this.textBox1.Location = new System.Drawing.Point(346, 18);
             this.textBox1.Multiline = true;
             this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(197, 19);
+            this.textBox1.Size = new System.Drawing.Size(115, 19);
             this.textBox1.TabIndex = 7;
             // 
             // cbFiltrarRol
             // 
             this.cbFiltrarRol.FormattingEnabled = true;
-            this.cbFiltrarRol.Location = new System.Drawing.Point(299, 97);
+            this.cbFiltrarRol.Location = new System.Drawing.Point(620, 15);
             this.cbFiltrarRol.Name = "cbFiltrarRol";
-            this.cbFiltrarRol.Size = new System.Drawing.Size(207, 21);
+            this.cbFiltrarRol.Size = new System.Drawing.Size(117, 21);
             this.cbFiltrarRol.TabIndex = 8;
             // 
             // cbFiltrarEstado
             // 
             this.cbFiltrarEstado.FormattingEnabled = true;
-            this.cbFiltrarEstado.Location = new System.Drawing.Point(530, 97);
+            this.cbFiltrarEstado.Location = new System.Drawing.Point(854, 15);
             this.cbFiltrarEstado.Name = "cbFiltrarEstado";
-            this.cbFiltrarEstado.Size = new System.Drawing.Size(239, 21);
+            this.cbFiltrarEstado.Size = new System.Drawing.Size(94, 21);
             this.cbFiltrarEstado.TabIndex = 10;
             // 
             // lblUsuariosRegistrados
@@ -198,6 +199,19 @@
             this.lblTotalUsuariosRegistrados.TabIndex = 12;
             this.lblTotalUsuariosRegistrados.Text = "0";
             // 
+            // lblBajaUsuario
+            // 
+            this.lblBajaUsuario.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
+            this.lblBajaUsuario.Dock = System.Windows.Forms.DockStyle.Top;
+            this.lblBajaUsuario.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblBajaUsuario.ForeColor = System.Drawing.Color.White;
+            this.lblBajaUsuario.Location = new System.Drawing.Point(0, 0);
+            this.lblBajaUsuario.Name = "lblBajaUsuario";
+            this.lblBajaUsuario.Size = new System.Drawing.Size(960, 42);
+            this.lblBajaUsuario.TabIndex = 23;
+            this.lblBajaUsuario.Text = "Usuarios Registrados";
+            this.lblBajaUsuario.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
             // frmDetalleUsuario
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -212,9 +226,9 @@
             this.Controls.Add(this.lblFiltroEstado);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.lblUsuariosReegistrados);
             this.Controls.Add(this.iconBtnLupaDetalleUser);
             this.Controls.Add(this.dgvDetalleUsuario);
+            this.Controls.Add(this.lblBajaUsuario);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "frmDetalleUsuario";
             this.Load += new System.EventHandler(this.frmDetalleUsuario_Load);
@@ -236,7 +250,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn rol;
         private System.Windows.Forms.DataGridViewTextBoxColumn estado;
         private FontAwesome.Sharp.IconButton iconBtnLupaDetalleUser;
-        private System.Windows.Forms.Label lblUsuariosReegistrados;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label lblFiltroEstado;
@@ -245,5 +258,6 @@
         private System.Windows.Forms.ComboBox cbFiltrarEstado;
         private System.Windows.Forms.Label lblUsuariosRegistrados;
         private System.Windows.Forms.Label lblTotalUsuariosRegistrados;
+        private System.Windows.Forms.Label lblBajaUsuario;
     }
 }

@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace CapaEntidad
+namespace CapaNegocio
 {
-    public class Proveedor
+    public class ProveedorModel
     {
         public long dni_proveedor { get; set; }
         public string nombre { get; set; }

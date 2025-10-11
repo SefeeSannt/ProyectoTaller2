@@ -84,11 +84,12 @@ namespace CapaPresentacion.Vistas.Administrador.Productos
             // lblTituloListaProd
             // 
             this.lblTituloListaProd.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
+            this.lblTituloListaProd.Dock = System.Windows.Forms.DockStyle.Top;
             this.lblTituloListaProd.Font = new System.Drawing.Font("Tahoma", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblTituloListaProd.ForeColor = System.Drawing.Color.White;
-            this.lblTituloListaProd.Location = new System.Drawing.Point(243, 0);
+            this.lblTituloListaProd.Location = new System.Drawing.Point(244, 0);
             this.lblTituloListaProd.Name = "lblTituloListaProd";
-            this.lblTituloListaProd.Size = new System.Drawing.Size(717, 42);
+            this.lblTituloListaProd.Size = new System.Drawing.Size(716, 42);
             this.lblTituloListaProd.TabIndex = 26;
             this.lblTituloListaProd.Text = "Lista de Productos";
             this.lblTituloListaProd.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -96,8 +97,10 @@ namespace CapaPresentacion.Vistas.Administrador.Productos
             // dgvRegistrarProducto
             // 
             this.dgvRegistrarProducto.AllowUserToAddRows = false;
+            this.dgvRegistrarProducto.AllowUserToDeleteRows = false;
             this.dgvRegistrarProducto.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dgvRegistrarProducto.BackgroundColor = System.Drawing.Color.White;
+            this.dgvRegistrarProducto.BorderStyle = System.Windows.Forms.BorderStyle.None;
             dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
             dataGridViewCellStyle1.Font = new System.Drawing.Font("Franklin Gothic Medium", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -116,7 +119,7 @@ namespace CapaPresentacion.Vistas.Administrador.Productos
             this.precioVenta,
             this.colCosto,
             this.stockRegProd});
-            this.dgvRegistrarProducto.Location = new System.Drawing.Point(261, 112);
+            this.dgvRegistrarProducto.Location = new System.Drawing.Point(244, 39);
             this.dgvRegistrarProducto.MultiSelect = false;
             this.dgvRegistrarProducto.Name = "dgvRegistrarProducto";
             this.dgvRegistrarProducto.ReadOnly = true;
@@ -126,8 +129,9 @@ namespace CapaPresentacion.Vistas.Administrador.Productos
             dataGridViewCellStyle2.SelectionForeColor = System.Drawing.Color.Black;
             this.dgvRegistrarProducto.RowsDefaultCellStyle = dataGridViewCellStyle2;
             this.dgvRegistrarProducto.RowTemplate.Height = 28;
-            this.dgvRegistrarProducto.Size = new System.Drawing.Size(687, 414);
+            this.dgvRegistrarProducto.Size = new System.Drawing.Size(716, 499);
             this.dgvRegistrarProducto.TabIndex = 25;
+            this.dgvRegistrarProducto.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvRegistrarProducto_CellContentClick);
             // 
             // nombreProducto
             // 
@@ -363,7 +367,7 @@ namespace CapaPresentacion.Vistas.Administrador.Productos
             // 
             // txtProdList
             // 
-            this.txtProdList.Location = new System.Drawing.Point(261, 82);
+            this.txtProdList.Location = new System.Drawing.Point(704, 12);
             this.txtProdList.Multiline = true;
             this.txtProdList.Name = "txtProdList";
             this.txtProdList.Size = new System.Drawing.Size(197, 19);
@@ -372,8 +376,10 @@ namespace CapaPresentacion.Vistas.Administrador.Productos
             // lblBuscarListProd
             // 
             this.lblBuscarListProd.AutoSize = true;
+            this.lblBuscarListProd.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
             this.lblBuscarListProd.Font = new System.Drawing.Font("Franklin Gothic Medium", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblBuscarListProd.Location = new System.Drawing.Point(258, 66);
+            this.lblBuscarListProd.ForeColor = System.Drawing.Color.White;
+            this.lblBuscarListProd.Location = new System.Drawing.Point(649, 13);
             this.lblBuscarListProd.Name = "lblBuscarListProd";
             this.lblBuscarListProd.Size = new System.Drawing.Size(49, 17);
             this.lblBuscarListProd.TabIndex = 48;
@@ -388,7 +394,7 @@ namespace CapaPresentacion.Vistas.Administrador.Productos
             this.iconBtnLupaDetalleUser.IconColor = System.Drawing.Color.White;
             this.iconBtnLupaDetalleUser.IconFont = FontAwesome.Sharp.IconFont.Auto;
             this.iconBtnLupaDetalleUser.IconSize = 19;
-            this.iconBtnLupaDetalleUser.Location = new System.Drawing.Point(464, 82);
+            this.iconBtnLupaDetalleUser.Location = new System.Drawing.Point(907, 12);
             this.iconBtnLupaDetalleUser.Name = "iconBtnLupaDetalleUser";
             this.iconBtnLupaDetalleUser.Size = new System.Drawing.Size(41, 21);
             this.iconBtnLupaDetalleUser.TabIndex = 47;

@@ -29,7 +29,6 @@
         private void InitializeComponent()
         {
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            this.lblConsultarStockRepositor = new System.Windows.Forms.Label();
             this.lblBuscarPor = new System.Windows.Forms.Label();
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.iconBtnBuscar = new FontAwesome.Sharp.IconButton();
@@ -39,25 +38,17 @@
             this.descripcion = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.stockActual = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.nivelMinimo = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.lblBajaUsuario = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dgvConsultaStock)).BeginInit();
             this.SuspendLayout();
-            // 
-            // lblConsultarStockRepositor
-            // 
-            this.lblConsultarStockRepositor.AutoSize = true;
-            this.lblConsultarStockRepositor.Font = new System.Drawing.Font("Franklin Gothic Medium", 15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblConsultarStockRepositor.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
-            this.lblConsultarStockRepositor.Location = new System.Drawing.Point(7, 21);
-            this.lblConsultarStockRepositor.Name = "lblConsultarStockRepositor";
-            this.lblConsultarStockRepositor.Size = new System.Drawing.Size(163, 25);
-            this.lblConsultarStockRepositor.TabIndex = 0;
-            this.lblConsultarStockRepositor.Text = "Consultar Stock";
             // 
             // lblBuscarPor
             // 
             this.lblBuscarPor.AutoSize = true;
+            this.lblBuscarPor.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
             this.lblBuscarPor.Font = new System.Drawing.Font("Franklin Gothic Medium", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblBuscarPor.Location = new System.Drawing.Point(25, 77);
+            this.lblBuscarPor.ForeColor = System.Drawing.Color.White;
+            this.lblBuscarPor.Location = new System.Drawing.Point(642, 16);
             this.lblBuscarPor.Name = "lblBuscarPor";
             this.lblBuscarPor.Size = new System.Drawing.Size(49, 17);
             this.lblBuscarPor.TabIndex = 1;
@@ -66,7 +57,7 @@
             // textBox1
             // 
             this.textBox1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.textBox1.Location = new System.Drawing.Point(71, 77);
+            this.textBox1.Location = new System.Drawing.Point(697, 16);
             this.textBox1.Multiline = true;
             this.textBox1.Name = "textBox1";
             this.textBox1.Size = new System.Drawing.Size(166, 17);
@@ -78,9 +69,9 @@
             this.iconBtnBuscar.IconColor = System.Drawing.Color.Black;
             this.iconBtnBuscar.IconFont = FontAwesome.Sharp.IconFont.Auto;
             this.iconBtnBuscar.IconSize = 15;
-            this.iconBtnBuscar.Location = new System.Drawing.Point(243, 72);
+            this.iconBtnBuscar.Location = new System.Drawing.Point(870, 14);
             this.iconBtnBuscar.Name = "iconBtnBuscar";
-            this.iconBtnBuscar.Size = new System.Drawing.Size(78, 26);
+            this.iconBtnBuscar.Size = new System.Drawing.Size(78, 21);
             this.iconBtnBuscar.TabIndex = 4;
             this.iconBtnBuscar.Text = "Buscar";
             this.iconBtnBuscar.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -108,11 +99,12 @@
             this.descripcion,
             this.stockActual,
             this.nivelMinimo});
-            this.dgvConsultaStock.Location = new System.Drawing.Point(12, 134);
+            this.dgvConsultaStock.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dgvConsultaStock.Location = new System.Drawing.Point(0, 42);
             this.dgvConsultaStock.Name = "dgvConsultaStock";
             this.dgvConsultaStock.ReadOnly = true;
             this.dgvConsultaStock.RowHeadersVisible = false;
-            this.dgvConsultaStock.Size = new System.Drawing.Size(936, 320);
+            this.dgvConsultaStock.Size = new System.Drawing.Size(960, 496);
             this.dgvConsultaStock.TabIndex = 5;
             // 
             // codigo
@@ -145,6 +137,19 @@
             this.nivelMinimo.Name = "nivelMinimo";
             this.nivelMinimo.ReadOnly = true;
             // 
+            // lblBajaUsuario
+            // 
+            this.lblBajaUsuario.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
+            this.lblBajaUsuario.Dock = System.Windows.Forms.DockStyle.Top;
+            this.lblBajaUsuario.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblBajaUsuario.ForeColor = System.Drawing.Color.White;
+            this.lblBajaUsuario.Location = new System.Drawing.Point(0, 0);
+            this.lblBajaUsuario.Name = "lblBajaUsuario";
+            this.lblBajaUsuario.Size = new System.Drawing.Size(960, 42);
+            this.lblBajaUsuario.TabIndex = 24;
+            this.lblBajaUsuario.Text = "Consulta Stock";
+            this.lblBajaUsuario.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
             // frmConsultaStock
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -155,7 +160,7 @@
             this.Controls.Add(this.iconBtnBuscar);
             this.Controls.Add(this.textBox1);
             this.Controls.Add(this.lblBuscarPor);
-            this.Controls.Add(this.lblConsultarStockRepositor);
+            this.Controls.Add(this.lblBajaUsuario);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "frmConsultaStock";
             this.Text = "frmConsultaStock";
@@ -166,8 +171,6 @@
         }
 
         #endregion
-
-        private System.Windows.Forms.Label lblConsultarStockRepositor;
         private System.Windows.Forms.Label lblBuscarPor;
         private System.Windows.Forms.TextBox textBox1;
         private FontAwesome.Sharp.IconButton iconBtnBuscar;
@@ -177,5 +180,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn descripcion;
         private System.Windows.Forms.DataGridViewTextBoxColumn stockActual;
         private System.Windows.Forms.DataGridViewTextBoxColumn nivelMinimo;
+        private System.Windows.Forms.Label lblBajaUsuario;
     }
 }

@@ -29,8 +29,8 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             this.lblBuscarListProd = new System.Windows.Forms.Label();
             this.btnBuscar = new FontAwesome.Sharp.IconButton();
             this.dgvClientes = new System.Windows.Forms.DataGridView();
@@ -62,8 +62,10 @@
             // lblBuscarListProd
             // 
             this.lblBuscarListProd.AutoSize = true;
+            this.lblBuscarListProd.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
             this.lblBuscarListProd.Font = new System.Drawing.Font("Franklin Gothic Medium", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblBuscarListProd.Location = new System.Drawing.Point(259, 64);
+            this.lblBuscarListProd.ForeColor = System.Drawing.Color.White;
+            this.lblBuscarListProd.Location = new System.Drawing.Point(607, 16);
             this.lblBuscarListProd.Name = "lblBuscarListProd";
             this.lblBuscarListProd.Size = new System.Drawing.Size(91, 17);
             this.lblBuscarListProd.TabIndex = 62;
@@ -78,7 +80,7 @@
             this.btnBuscar.IconColor = System.Drawing.Color.White;
             this.btnBuscar.IconFont = FontAwesome.Sharp.IconFont.Auto;
             this.btnBuscar.IconSize = 19;
-            this.btnBuscar.Location = new System.Drawing.Point(465, 85);
+            this.btnBuscar.Location = new System.Drawing.Point(907, 9);
             this.btnBuscar.Name = "btnBuscar";
             this.btnBuscar.Size = new System.Drawing.Size(41, 23);
             this.btnBuscar.TabIndex = 61;
@@ -93,40 +95,42 @@
             this.dgvClientes.AllowUserToResizeRows = false;
             this.dgvClientes.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dgvClientes.BackgroundColor = System.Drawing.Color.White;
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Franklin Gothic Medium", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle1.Padding = new System.Windows.Forms.Padding(2);
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvClientes.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Franklin Gothic Medium", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle3.Padding = new System.Windows.Forms.Padding(2);
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvClientes.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle3;
             this.dgvClientes.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvClientes.Location = new System.Drawing.Point(262, 112);
+            this.dgvClientes.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dgvClientes.Location = new System.Drawing.Point(244, 42);
             this.dgvClientes.Margin = new System.Windows.Forms.Padding(4);
             this.dgvClientes.MultiSelect = false;
             this.dgvClientes.Name = "dgvClientes";
             this.dgvClientes.ReadOnly = true;
             this.dgvClientes.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
             this.dgvClientes.RowHeadersVisible = false;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.Color.Black;
-            this.dgvClientes.RowsDefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.Color.Black;
+            this.dgvClientes.RowsDefaultCellStyle = dataGridViewCellStyle4;
             this.dgvClientes.RowTemplate.Height = 28;
-            this.dgvClientes.Size = new System.Drawing.Size(685, 369);
+            this.dgvClientes.Size = new System.Drawing.Size(716, 496);
             this.dgvClientes.TabIndex = 58;
             this.dgvClientes.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvClientes_CellClick);
             // 
             // lblTituloCliente
             // 
             this.lblTituloCliente.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
+            this.lblTituloCliente.Dock = System.Windows.Forms.DockStyle.Top;
             this.lblTituloCliente.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblTituloCliente.ForeColor = System.Drawing.Color.White;
             this.lblTituloCliente.Location = new System.Drawing.Point(244, 0);
             this.lblTituloCliente.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblTituloCliente.Name = "lblTituloCliente";
-            this.lblTituloCliente.Size = new System.Drawing.Size(718, 42);
+            this.lblTituloCliente.Size = new System.Drawing.Size(716, 42);
             this.lblTituloCliente.TabIndex = 59;
             this.lblTituloCliente.Text = "Lista de Clientes";
             this.lblTituloCliente.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -163,10 +167,10 @@
             // 
             // txtBuscarCliente
             // 
-            this.txtBuscarCliente.Location = new System.Drawing.Point(262, 85);
+            this.txtBuscarCliente.Location = new System.Drawing.Point(704, 12);
             this.txtBuscarCliente.Multiline = true;
             this.txtBuscarCliente.Name = "txtBuscarCliente";
-            this.txtBuscarCliente.Size = new System.Drawing.Size(197, 23);
+            this.txtBuscarCliente.Size = new System.Drawing.Size(197, 20);
             this.txtBuscarCliente.TabIndex = 63;
             // 
             // lblTelefonoCliente
@@ -381,10 +385,10 @@
             this.Controls.Add(this.lblBuscarListProd);
             this.Controls.Add(this.btnBuscar);
             this.Controls.Add(this.dgvClientes);
-            this.Controls.Add(this.lblTituloCliente);
             this.Controls.Add(this.txtBuscarCliente);
-            this.Controls.Add(this.pnlClientes);
             this.Controls.Add(this.btnCancelar);
+            this.Controls.Add(this.lblTituloCliente);
+            this.Controls.Add(this.pnlClientes);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "frmEditarCliente";
             this.Text = "frmEditarCliente";

@@ -105,5 +105,10 @@ namespace CapaPresentacion.Vistas.Administrador.Productos {
                 this.Close();
             }
         }
+
+        private void dgvRegistrarProducto_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
     }
 }

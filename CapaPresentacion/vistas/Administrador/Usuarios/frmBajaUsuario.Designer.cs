@@ -49,8 +49,10 @@
             // lblRol
             // 
             this.lblRol.AutoSize = true;
+            this.lblRol.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
             this.lblRol.Font = new System.Drawing.Font("Franklin Gothic Medium", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblRol.Location = new System.Drawing.Point(393, 61);
+            this.lblRol.ForeColor = System.Drawing.Color.White;
+            this.lblRol.Location = new System.Drawing.Point(580, 16);
             this.lblRol.Name = "lblRol";
             this.lblRol.Size = new System.Drawing.Size(29, 17);
             this.lblRol.TabIndex = 1;
@@ -59,8 +61,10 @@
             // lblBusar
             // 
             this.lblBusar.AutoSize = true;
+            this.lblBusar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
             this.lblBusar.Font = new System.Drawing.Font("Franklin Gothic Medium", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblBusar.Location = new System.Drawing.Point(11, 60);
+            this.lblBusar.ForeColor = System.Drawing.Color.White;
+            this.lblBusar.Location = new System.Drawing.Point(230, 16);
             this.lblBusar.Name = "lblBusar";
             this.lblBusar.Size = new System.Drawing.Size(93, 17);
             this.lblBusar.TabIndex = 2;
@@ -68,7 +72,7 @@
             // 
             // txtBuscar
             // 
-            this.txtBuscar.Location = new System.Drawing.Point(110, 61);
+            this.txtBuscar.Location = new System.Drawing.Point(329, 15);
             this.txtBuscar.Multiline = true;
             this.txtBuscar.Name = "txtBuscar";
             this.txtBuscar.Size = new System.Drawing.Size(195, 19);
@@ -77,9 +81,9 @@
             // cbRol
             // 
             this.cbRol.FormattingEnabled = true;
-            this.cbRol.Location = new System.Drawing.Point(428, 60);
+            this.cbRol.Location = new System.Drawing.Point(615, 14);
             this.cbRol.Name = "cbRol";
-            this.cbRol.Size = new System.Drawing.Size(152, 21);
+            this.cbRol.Size = new System.Drawing.Size(117, 21);
             this.cbRol.TabIndex = 4;
             // 
             // dgvDetalleUsuario
@@ -96,11 +100,12 @@
             this.telefono,
             this.rol,
             this.accion});
-            this.dgvDetalleUsuario.Location = new System.Drawing.Point(14, 91);
+            this.dgvDetalleUsuario.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dgvDetalleUsuario.Location = new System.Drawing.Point(0, 42);
             this.dgvDetalleUsuario.Name = "dgvDetalleUsuario";
             this.dgvDetalleUsuario.ReadOnly = true;
             this.dgvDetalleUsuario.RowHeadersVisible = false;
-            this.dgvDetalleUsuario.Size = new System.Drawing.Size(934, 435);
+            this.dgvDetalleUsuario.Size = new System.Drawing.Size(960, 496);
             this.dgvDetalleUsuario.TabIndex = 5;
             // 
             // numDocumento
@@ -150,9 +155,9 @@
             this.iconBtnLupaDetalleUser.IconColor = System.Drawing.Color.White;
             this.iconBtnLupaDetalleUser.IconFont = FontAwesome.Sharp.IconFont.Auto;
             this.iconBtnLupaDetalleUser.IconSize = 19;
-            this.iconBtnLupaDetalleUser.Location = new System.Drawing.Point(311, 54);
+            this.iconBtnLupaDetalleUser.Location = new System.Drawing.Point(521, 15);
             this.iconBtnLupaDetalleUser.Name = "iconBtnLupaDetalleUser";
-            this.iconBtnLupaDetalleUser.Size = new System.Drawing.Size(41, 31);
+            this.iconBtnLupaDetalleUser.Size = new System.Drawing.Size(41, 20);
             this.iconBtnLupaDetalleUser.TabIndex = 6;
             this.iconBtnLupaDetalleUser.UseVisualStyleBackColor = false;
             // 
@@ -172,16 +177,18 @@
             // cbFiltrarEstadoCliente
             // 
             this.cbFiltrarEstadoCliente.FormattingEnabled = true;
-            this.cbFiltrarEstadoCliente.Location = new System.Drawing.Point(726, 59);
+            this.cbFiltrarEstadoCliente.Location = new System.Drawing.Point(863, 14);
             this.cbFiltrarEstadoCliente.Name = "cbFiltrarEstadoCliente";
-            this.cbFiltrarEstadoCliente.Size = new System.Drawing.Size(141, 21);
+            this.cbFiltrarEstadoCliente.Size = new System.Drawing.Size(94, 21);
             this.cbFiltrarEstadoCliente.TabIndex = 33;
             // 
             // lblFiltroEstadoCliente
             // 
             this.lblFiltroEstadoCliente.AutoSize = true;
+            this.lblFiltroEstadoCliente.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
             this.lblFiltroEstadoCliente.Font = new System.Drawing.Font("Franklin Gothic Medium", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblFiltroEstadoCliente.Location = new System.Drawing.Point(615, 60);
+            this.lblFiltroEstadoCliente.ForeColor = System.Drawing.Color.White;
+            this.lblFiltroEstadoCliente.Location = new System.Drawing.Point(752, 15);
             this.lblFiltroEstadoCliente.Name = "lblFiltroEstadoCliente";
             this.lblFiltroEstadoCliente.Size = new System.Drawing.Size(105, 17);
             this.lblFiltroEstadoCliente.TabIndex = 32;
@@ -195,13 +202,13 @@
             this.ClientSize = new System.Drawing.Size(960, 538);
             this.Controls.Add(this.cbFiltrarEstadoCliente);
             this.Controls.Add(this.lblFiltroEstadoCliente);
-            this.Controls.Add(this.lblBajaUsuario);
             this.Controls.Add(this.iconBtnLupaDetalleUser);
             this.Controls.Add(this.dgvDetalleUsuario);
             this.Controls.Add(this.cbRol);
             this.Controls.Add(this.txtBuscar);
             this.Controls.Add(this.lblBusar);
             this.Controls.Add(this.lblRol);
+            this.Controls.Add(this.lblBajaUsuario);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "frmBajaUsuario";
             this.Text = "frmBaja";

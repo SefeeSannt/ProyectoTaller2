@@ -12,6 +12,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using CapaPresentacion.Helpers;
 using CapaEntidad;
+using CapaPresentacion.vistas.Repositor.Proveedor;
 
 namespace CapaPresentacion.Vistas.Repositor
 {
@@ -101,6 +102,19 @@ namespace CapaPresentacion.Vistas.Repositor
             }
 
             Form frm = new frmAltaProveedor();
+            frm.MdiParent = this;
+            frm.Dock = DockStyle.Fill;
+            frm.Show();
+        }
+
+        private void tsmiConsultarProveedor_Click(object sender, EventArgs e)
+        {
+            foreach (Form form in this.MdiChildren)
+            {
+                form.Close();
+            }
+
+            Form frm = new frmEditarProveedor();
             frm.MdiParent = this;
             frm.Dock = DockStyle.Fill;
             frm.Show();

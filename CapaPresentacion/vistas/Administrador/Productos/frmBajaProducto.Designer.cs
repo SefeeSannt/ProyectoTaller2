@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.lblBajaUsuario = new System.Windows.Forms.Label();
             this.iconBtnLupaDetalleUser = new FontAwesome.Sharp.IconButton();
             this.txtBuscar = new System.Windows.Forms.TextBox();
@@ -42,6 +42,7 @@
             this.accion = new System.Windows.Forms.DataGridViewButtonColumn();
             this.cbFiltrarEstadoCliente = new System.Windows.Forms.ComboBox();
             this.lblFiltroEstadoCliente = new System.Windows.Forms.Label();
+            this.iconButton1 = new FontAwesome.Sharp.IconButton();
             ((System.ComponentModel.ISupportInitialize)(this.dgvBajaProducto)).BeginInit();
             this.SuspendLayout();
             // 
@@ -67,7 +68,7 @@
             this.iconBtnLupaDetalleUser.IconColor = System.Drawing.Color.White;
             this.iconBtnLupaDetalleUser.IconFont = FontAwesome.Sharp.IconFont.Auto;
             this.iconBtnLupaDetalleUser.IconSize = 19;
-            this.iconBtnLupaDetalleUser.Location = new System.Drawing.Point(330, 78);
+            this.iconBtnLupaDetalleUser.Location = new System.Drawing.Point(572, 5);
             this.iconBtnLupaDetalleUser.Name = "iconBtnLupaDetalleUser";
             this.iconBtnLupaDetalleUser.Size = new System.Drawing.Size(41, 31);
             this.iconBtnLupaDetalleUser.TabIndex = 28;
@@ -75,17 +76,19 @@
             // 
             // txtBuscar
             // 
-            this.txtBuscar.Location = new System.Drawing.Point(119, 77);
+            this.txtBuscar.Location = new System.Drawing.Point(355, 12);
             this.txtBuscar.Multiline = true;
             this.txtBuscar.Name = "txtBuscar";
-            this.txtBuscar.Size = new System.Drawing.Size(195, 32);
+            this.txtBuscar.Size = new System.Drawing.Size(195, 17);
             this.txtBuscar.TabIndex = 26;
             // 
             // lblBusar
             // 
             this.lblBusar.AutoSize = true;
+            this.lblBusar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
             this.lblBusar.Font = new System.Drawing.Font("Franklin Gothic Medium", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblBusar.Location = new System.Drawing.Point(12, 82);
+            this.lblBusar.ForeColor = System.Drawing.Color.Cornsilk;
+            this.lblBusar.Location = new System.Drawing.Point(248, 12);
             this.lblBusar.Name = "lblBusar";
             this.lblBusar.Size = new System.Drawing.Size(101, 17);
             this.lblBusar.TabIndex = 25;
@@ -97,6 +100,7 @@
             this.dgvBajaProducto.AllowUserToDeleteRows = false;
             this.dgvBajaProducto.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dgvBajaProducto.BackgroundColor = System.Drawing.Color.White;
+            this.dgvBajaProducto.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.dgvBajaProducto.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleHorizontal;
             this.dgvBajaProducto.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvBajaProducto.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
@@ -106,19 +110,20 @@
             this.descripcion,
             this.precio,
             this.accion});
-            this.dgvBajaProducto.Location = new System.Drawing.Point(12, 124);
+            this.dgvBajaProducto.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dgvBajaProducto.Location = new System.Drawing.Point(0, 42);
             this.dgvBajaProducto.Name = "dgvBajaProducto";
             this.dgvBajaProducto.ReadOnly = true;
-            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle6.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle6.Font = new System.Drawing.Font("Franklin Gothic Medium", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle6.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvBajaProducto.RowHeadersDefaultCellStyle = dataGridViewCellStyle6;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Franklin Gothic Medium", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvBajaProducto.RowHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.dgvBajaProducto.RowHeadersVisible = false;
-            this.dgvBajaProducto.Size = new System.Drawing.Size(936, 384);
+            this.dgvBajaProducto.Size = new System.Drawing.Size(960, 496);
             this.dgvBajaProducto.TabIndex = 29;
             // 
             // codProducto
@@ -160,20 +165,37 @@
             // cbFiltrarEstadoCliente
             // 
             this.cbFiltrarEstadoCliente.FormattingEnabled = true;
-            this.cbFiltrarEstadoCliente.Location = new System.Drawing.Point(709, 77);
+            this.cbFiltrarEstadoCliente.Location = new System.Drawing.Point(783, 11);
             this.cbFiltrarEstadoCliente.Name = "cbFiltrarEstadoCliente";
-            this.cbFiltrarEstadoCliente.Size = new System.Drawing.Size(239, 21);
+            this.cbFiltrarEstadoCliente.Size = new System.Drawing.Size(116, 21);
             this.cbFiltrarEstadoCliente.TabIndex = 31;
             // 
             // lblFiltroEstadoCliente
             // 
             this.lblFiltroEstadoCliente.AutoSize = true;
+            this.lblFiltroEstadoCliente.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
             this.lblFiltroEstadoCliente.Font = new System.Drawing.Font("Franklin Gothic Medium", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblFiltroEstadoCliente.Location = new System.Drawing.Point(585, 82);
+            this.lblFiltroEstadoCliente.ForeColor = System.Drawing.Color.Cornsilk;
+            this.lblFiltroEstadoCliente.Location = new System.Drawing.Point(672, 12);
             this.lblFiltroEstadoCliente.Name = "lblFiltroEstadoCliente";
             this.lblFiltroEstadoCliente.Size = new System.Drawing.Size(105, 17);
             this.lblFiltroEstadoCliente.TabIndex = 30;
             this.lblFiltroEstadoCliente.Text = "Filtrar por estado:";
+            // 
+            // iconButton1
+            // 
+            this.iconButton1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
+            this.iconButton1.FlatAppearance.BorderSize = 0;
+            this.iconButton1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.iconButton1.IconChar = FontAwesome.Sharp.IconChar.MagnifyingGlass;
+            this.iconButton1.IconColor = System.Drawing.Color.White;
+            this.iconButton1.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            this.iconButton1.IconSize = 19;
+            this.iconButton1.Location = new System.Drawing.Point(905, 5);
+            this.iconButton1.Name = "iconButton1";
+            this.iconButton1.Size = new System.Drawing.Size(41, 31);
+            this.iconButton1.TabIndex = 32;
+            this.iconButton1.UseVisualStyleBackColor = false;
             // 
             // frmBajaProducto
             // 
@@ -181,6 +203,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(960, 538);
+            this.Controls.Add(this.iconButton1);
             this.Controls.Add(this.cbFiltrarEstadoCliente);
             this.Controls.Add(this.lblFiltroEstadoCliente);
             this.Controls.Add(this.dgvBajaProducto);
@@ -212,5 +235,6 @@
         private System.Windows.Forms.DataGridViewButtonColumn accion;
         private System.Windows.Forms.ComboBox cbFiltrarEstadoCliente;
         private System.Windows.Forms.Label lblFiltroEstadoCliente;
+        private FontAwesome.Sharp.IconButton iconButton1;
     }
 }

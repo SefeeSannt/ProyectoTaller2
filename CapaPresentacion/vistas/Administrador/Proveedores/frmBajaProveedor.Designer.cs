@@ -29,17 +29,10 @@
         private void InitializeComponent()
         {
             this.lblBajaProveedor = new System.Windows.Forms.Label();
-            this.iconBtnLupaDetalleUser = new FontAwesome.Sharp.IconButton();
+            this.btnBuscar = new FontAwesome.Sharp.IconButton();
             this.txtBuscar = new System.Windows.Forms.TextBox();
             this.lblBusar = new System.Windows.Forms.Label();
             this.dgvBajaProveedores = new System.Windows.Forms.DataGridView();
-            this.nombre = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.apellido = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Documento = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.email = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.accion = new System.Windows.Forms.DataGridViewButtonColumn();
-            this.cbFiltrarEstadoCliente = new System.Windows.Forms.ComboBox();
-            this.lblFiltroEstadoCliente = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dgvBajaProveedores)).BeginInit();
             this.SuspendLayout();
             // 
@@ -56,34 +49,37 @@
             this.lblBajaProveedor.Text = "Baja proveedor";
             this.lblBajaProveedor.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
-            // iconBtnLupaDetalleUser
+            // btnBuscar
             // 
-            this.iconBtnLupaDetalleUser.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
-            this.iconBtnLupaDetalleUser.FlatAppearance.BorderSize = 0;
-            this.iconBtnLupaDetalleUser.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.iconBtnLupaDetalleUser.IconChar = FontAwesome.Sharp.IconChar.MagnifyingGlass;
-            this.iconBtnLupaDetalleUser.IconColor = System.Drawing.Color.White;
-            this.iconBtnLupaDetalleUser.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            this.iconBtnLupaDetalleUser.IconSize = 19;
-            this.iconBtnLupaDetalleUser.Location = new System.Drawing.Point(339, 60);
-            this.iconBtnLupaDetalleUser.Name = "iconBtnLupaDetalleUser";
-            this.iconBtnLupaDetalleUser.Size = new System.Drawing.Size(41, 32);
-            this.iconBtnLupaDetalleUser.TabIndex = 31;
-            this.iconBtnLupaDetalleUser.UseVisualStyleBackColor = false;
+            this.btnBuscar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
+            this.btnBuscar.FlatAppearance.BorderSize = 0;
+            this.btnBuscar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnBuscar.IconChar = FontAwesome.Sharp.IconChar.MagnifyingGlass;
+            this.btnBuscar.IconColor = System.Drawing.Color.White;
+            this.btnBuscar.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            this.btnBuscar.IconSize = 19;
+            this.btnBuscar.Location = new System.Drawing.Point(924, 16);
+            this.btnBuscar.Name = "btnBuscar";
+            this.btnBuscar.Size = new System.Drawing.Size(29, 17);
+            this.btnBuscar.TabIndex = 31;
+            this.btnBuscar.UseVisualStyleBackColor = false;
+            this.btnBuscar.Click += new System.EventHandler(this.btnBuscar_Click);
             // 
             // txtBuscar
             // 
-            this.txtBuscar.Location = new System.Drawing.Point(126, 60);
+            this.txtBuscar.Location = new System.Drawing.Point(723, 16);
             this.txtBuscar.Multiline = true;
             this.txtBuscar.Name = "txtBuscar";
-            this.txtBuscar.Size = new System.Drawing.Size(195, 32);
+            this.txtBuscar.Size = new System.Drawing.Size(195, 17);
             this.txtBuscar.TabIndex = 30;
             // 
             // lblBusar
             // 
             this.lblBusar.AutoSize = true;
+            this.lblBusar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
             this.lblBusar.Font = new System.Drawing.Font("Franklin Gothic Medium", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblBusar.Location = new System.Drawing.Point(12, 64);
+            this.lblBusar.ForeColor = System.Drawing.Color.White;
+            this.lblBusar.Location = new System.Drawing.Point(609, 16);
             this.lblBusar.Name = "lblBusar";
             this.lblBusar.Size = new System.Drawing.Size(108, 17);
             this.lblBusar.TabIndex = 29;
@@ -97,67 +93,16 @@
             this.dgvBajaProveedores.BackgroundColor = System.Drawing.Color.White;
             this.dgvBajaProveedores.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleHorizontal;
             this.dgvBajaProveedores.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvBajaProveedores.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.nombre,
-            this.apellido,
-            this.Documento,
-            this.email,
-            this.accion});
             this.dgvBajaProveedores.Cursor = System.Windows.Forms.Cursors.Default;
-            this.dgvBajaProveedores.Location = new System.Drawing.Point(5, 109);
+            this.dgvBajaProveedores.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dgvBajaProveedores.Location = new System.Drawing.Point(0, 42);
             this.dgvBajaProveedores.Name = "dgvBajaProveedores";
             this.dgvBajaProveedores.ReadOnly = true;
             this.dgvBajaProveedores.RowHeadersVisible = false;
-            this.dgvBajaProveedores.Size = new System.Drawing.Size(933, 417);
+            this.dgvBajaProveedores.Size = new System.Drawing.Size(960, 496);
             this.dgvBajaProveedores.TabIndex = 32;
-            // 
-            // nombre
-            // 
-            this.nombre.HeaderText = "Nombre";
-            this.nombre.Name = "nombre";
-            this.nombre.ReadOnly = true;
-            // 
-            // apellido
-            // 
-            this.apellido.HeaderText = "Apellido";
-            this.apellido.Name = "apellido";
-            this.apellido.ReadOnly = true;
-            // 
-            // Documento
-            // 
-            this.Documento.HeaderText = "Documento";
-            this.Documento.Name = "Documento";
-            this.Documento.ReadOnly = true;
-            // 
-            // email
-            // 
-            this.email.HeaderText = "Email";
-            this.email.Name = "email";
-            this.email.ReadOnly = true;
-            // 
-            // accion
-            // 
-            this.accion.HeaderText = "Acción";
-            this.accion.Name = "accion";
-            this.accion.ReadOnly = true;
-            // 
-            // cbFiltrarEstadoCliente
-            // 
-            this.cbFiltrarEstadoCliente.FormattingEnabled = true;
-            this.cbFiltrarEstadoCliente.Location = new System.Drawing.Point(709, 60);
-            this.cbFiltrarEstadoCliente.Name = "cbFiltrarEstadoCliente";
-            this.cbFiltrarEstadoCliente.Size = new System.Drawing.Size(239, 21);
-            this.cbFiltrarEstadoCliente.TabIndex = 34;
-            // 
-            // lblFiltroEstadoCliente
-            // 
-            this.lblFiltroEstadoCliente.AutoSize = true;
-            this.lblFiltroEstadoCliente.Font = new System.Drawing.Font("Franklin Gothic Medium", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblFiltroEstadoCliente.Location = new System.Drawing.Point(585, 65);
-            this.lblFiltroEstadoCliente.Name = "lblFiltroEstadoCliente";
-            this.lblFiltroEstadoCliente.Size = new System.Drawing.Size(105, 17);
-            this.lblFiltroEstadoCliente.TabIndex = 33;
-            this.lblFiltroEstadoCliente.Text = "Filtrar por estado:";
+            this.dgvBajaProveedores.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvBajaProveedor);
+            this.dgvBajaProveedores.RowPrePaint += new System.Windows.Forms.DataGridViewRowPrePaintEventHandler(this.dgvProveedor_RowPrePaint);
             // 
             // frmBajaProveedor
             // 
@@ -165,16 +110,15 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(960, 538);
-            this.Controls.Add(this.cbFiltrarEstadoCliente);
-            this.Controls.Add(this.lblFiltroEstadoCliente);
             this.Controls.Add(this.dgvBajaProveedores);
-            this.Controls.Add(this.iconBtnLupaDetalleUser);
+            this.Controls.Add(this.btnBuscar);
             this.Controls.Add(this.txtBuscar);
             this.Controls.Add(this.lblBusar);
             this.Controls.Add(this.lblBajaProveedor);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "frmBajaProveedor";
             this.Text = "frmBajaProveedor";
+            this.Load += new System.EventHandler(this.frmBajaProveedor_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgvBajaProveedores)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -184,16 +128,9 @@
         #endregion
 
         private System.Windows.Forms.Label lblBajaProveedor;
-        private FontAwesome.Sharp.IconButton iconBtnLupaDetalleUser;
+        private FontAwesome.Sharp.IconButton btnBuscar;
         private System.Windows.Forms.TextBox txtBuscar;
         private System.Windows.Forms.Label lblBusar;
         private System.Windows.Forms.DataGridView dgvBajaProveedores;
-        private System.Windows.Forms.DataGridViewTextBoxColumn nombre;
-        private System.Windows.Forms.DataGridViewTextBoxColumn apellido;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Documento;
-        private System.Windows.Forms.DataGridViewTextBoxColumn email;
-        private System.Windows.Forms.DataGridViewButtonColumn accion;
-        private System.Windows.Forms.ComboBox cbFiltrarEstadoCliente;
-        private System.Windows.Forms.Label lblFiltroEstadoCliente;
     }
 }

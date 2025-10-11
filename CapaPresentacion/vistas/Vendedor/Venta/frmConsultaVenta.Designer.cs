@@ -45,26 +45,25 @@ namespace CapaPresentacion.Vistas.Vendedor
             this.lblTotalVentaFilt = new System.Windows.Forms.Label();
             this.lblTituloTotalVentas = new System.Windows.Forms.Label();
             this.dgvConsultaVentas = new System.Windows.Forms.DataGridView();
-            this.clienteConsVentas = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.fechaInicio = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.fechaFin = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.formaPagoConsVenta = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ventaTotal = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.verDetalle = new System.Windows.Forms.DataGridViewButtonColumn();
             this.pnlConsultaVentas2 = new System.Windows.Forms.Panel();
             this.lblDatoDomicilio = new System.Windows.Forms.Label();
             this.lblDatoDni = new System.Windows.Forms.Label();
             this.lblDatoApellido = new System.Windows.Forms.Label();
             this.lblDatoNombre = new System.Windows.Forms.Label();
             this.lblTitulo = new System.Windows.Forms.Label();
-            this.lblTituloCosto = new System.Windows.Forms.Label();
-            this.lblCostoTotal = new System.Windows.Forms.TextBox();
             this.dgvDetalleVenta = new System.Windows.Forms.DataGridView();
             this.clmProducto = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.clmCant = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Subtotal = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.lblTituloCosto = new System.Windows.Forms.Label();
+            this.lblCostoTotal = new System.Windows.Forms.TextBox();
             this.lblDetalleVenta = new System.Windows.Forms.Label();
             this.button1 = new System.Windows.Forms.Button();
+            this.clienteConsVentas = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.fechaVenta = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.formaPagoConsVenta = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ventaTotal = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.verDetalle = new System.Windows.Forms.DataGridViewButtonColumn();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvConsultaVentas)).BeginInit();
             this.pnlConsultaVentas2.SuspendLayout();
@@ -215,8 +214,7 @@ namespace CapaPresentacion.Vistas.Vendedor
             this.dgvConsultaVentas.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvConsultaVentas.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.clienteConsVentas,
-            this.fechaInicio,
-            this.fechaFin,
+            this.fechaVenta,
             this.formaPagoConsVenta,
             this.ventaTotal,
             this.verDetalle});
@@ -226,44 +224,6 @@ namespace CapaPresentacion.Vistas.Vendedor
             this.dgvConsultaVentas.RowHeadersVisible = false;
             this.dgvConsultaVentas.Size = new System.Drawing.Size(451, 226);
             this.dgvConsultaVentas.TabIndex = 15;
-            // 
-            // clienteConsVentas
-            // 
-            this.clienteConsVentas.HeaderText = "Cliente";
-            this.clienteConsVentas.Name = "clienteConsVentas";
-            this.clienteConsVentas.ReadOnly = true;
-            // 
-            // fechaInicio
-            // 
-            this.fechaInicio.HeaderText = "Fecha inicio";
-            this.fechaInicio.Name = "fechaInicio";
-            this.fechaInicio.ReadOnly = true;
-            // 
-            // fechaFin
-            // 
-            this.fechaFin.HeaderText = "Fecha fin";
-            this.fechaFin.Name = "fechaFin";
-            this.fechaFin.ReadOnly = true;
-            // 
-            // formaPagoConsVenta
-            // 
-            this.formaPagoConsVenta.HeaderText = "Forma de Pago";
-            this.formaPagoConsVenta.Name = "formaPagoConsVenta";
-            this.formaPagoConsVenta.ReadOnly = true;
-            // 
-            // ventaTotal
-            // 
-            this.ventaTotal.HeaderText = "Total";
-            this.ventaTotal.Name = "ventaTotal";
-            this.ventaTotal.ReadOnly = true;
-            // 
-            // verDetalle
-            // 
-            this.verDetalle.HeaderText = "Ver detalle";
-            this.verDetalle.Name = "verDetalle";
-            this.verDetalle.ReadOnly = true;
-            this.verDetalle.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.verDetalle.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
             // 
             // pnlConsultaVentas2
             // 
@@ -334,30 +294,6 @@ namespace CapaPresentacion.Vistas.Vendedor
             this.lblTitulo.TabIndex = 18;
             this.lblTitulo.Text = "Datos Cliente";
             // 
-            // lblTituloCosto
-            // 
-            this.lblTituloCosto.AutoSize = true;
-            this.lblTituloCosto.BackColor = System.Drawing.Color.White;
-            this.lblTituloCosto.Font = new System.Drawing.Font("Franklin Gothic Medium", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblTituloCosto.Location = new System.Drawing.Point(725, 470);
-            this.lblTituloCosto.Name = "lblTituloCosto";
-            this.lblTituloCosto.Size = new System.Drawing.Size(85, 17);
-            this.lblTituloCosto.TabIndex = 17;
-            this.lblTituloCosto.Text = "COSTO TOTAL:";
-            // 
-            // lblCostoTotal
-            // 
-            this.lblCostoTotal.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(0)))));
-            this.lblCostoTotal.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.lblCostoTotal.Font = new System.Drawing.Font("Franklin Gothic Medium", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblCostoTotal.Location = new System.Drawing.Point(816, 459);
-            this.lblCostoTotal.Multiline = true;
-            this.lblCostoTotal.Name = "lblCostoTotal";
-            this.lblCostoTotal.Size = new System.Drawing.Size(132, 40);
-            this.lblCostoTotal.TabIndex = 17;
-            this.lblCostoTotal.Text = "$0.00";
-            this.lblCostoTotal.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
             // dgvDetalleVenta
             // 
             this.dgvDetalleVenta.AllowUserToAddRows = false;
@@ -402,6 +338,30 @@ namespace CapaPresentacion.Vistas.Vendedor
             this.Subtotal.Name = "Subtotal";
             this.Subtotal.ReadOnly = true;
             // 
+            // lblTituloCosto
+            // 
+            this.lblTituloCosto.AutoSize = true;
+            this.lblTituloCosto.BackColor = System.Drawing.Color.White;
+            this.lblTituloCosto.Font = new System.Drawing.Font("Franklin Gothic Medium", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblTituloCosto.Location = new System.Drawing.Point(725, 470);
+            this.lblTituloCosto.Name = "lblTituloCosto";
+            this.lblTituloCosto.Size = new System.Drawing.Size(85, 17);
+            this.lblTituloCosto.TabIndex = 17;
+            this.lblTituloCosto.Text = "COSTO TOTAL:";
+            // 
+            // lblCostoTotal
+            // 
+            this.lblCostoTotal.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(0)))));
+            this.lblCostoTotal.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.lblCostoTotal.Font = new System.Drawing.Font("Franklin Gothic Medium", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblCostoTotal.Location = new System.Drawing.Point(816, 459);
+            this.lblCostoTotal.Multiline = true;
+            this.lblCostoTotal.Name = "lblCostoTotal";
+            this.lblCostoTotal.Size = new System.Drawing.Size(132, 40);
+            this.lblCostoTotal.TabIndex = 17;
+            this.lblCostoTotal.Text = "$0.00";
+            this.lblCostoTotal.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
             // lblDetalleVenta
             // 
             this.lblDetalleVenta.AutoSize = true;
@@ -422,6 +382,38 @@ namespace CapaPresentacion.Vistas.Vendedor
             this.button1.TabIndex = 28;
             this.button1.Text = "Imprimir detalle";
             this.button1.UseVisualStyleBackColor = true;
+            // 
+            // clienteConsVentas
+            // 
+            this.clienteConsVentas.HeaderText = "Cliente";
+            this.clienteConsVentas.Name = "clienteConsVentas";
+            this.clienteConsVentas.ReadOnly = true;
+            // 
+            // fechaVenta
+            // 
+            this.fechaVenta.HeaderText = "Fecha venta";
+            this.fechaVenta.Name = "fechaVenta";
+            this.fechaVenta.ReadOnly = true;
+            // 
+            // formaPagoConsVenta
+            // 
+            this.formaPagoConsVenta.HeaderText = "Forma de Pago";
+            this.formaPagoConsVenta.Name = "formaPagoConsVenta";
+            this.formaPagoConsVenta.ReadOnly = true;
+            // 
+            // ventaTotal
+            // 
+            this.ventaTotal.HeaderText = "Total";
+            this.ventaTotal.Name = "ventaTotal";
+            this.ventaTotal.ReadOnly = true;
+            // 
+            // verDetalle
+            // 
+            this.verDetalle.HeaderText = "Ver detalle";
+            this.verDetalle.Name = "verDetalle";
+            this.verDetalle.ReadOnly = true;
+            this.verDetalle.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.verDetalle.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
             // 
             // frmConsultaVenta
             // 
@@ -478,16 +470,15 @@ namespace CapaPresentacion.Vistas.Vendedor
         private System.Windows.Forms.DataGridViewTextBoxColumn clmCant;
         private System.Windows.Forms.DataGridViewTextBoxColumn Subtotal;
         private System.Windows.Forms.Label lblTitulo;
-        private System.Windows.Forms.DataGridViewTextBoxColumn clienteConsVentas;
-        private System.Windows.Forms.DataGridViewTextBoxColumn fechaInicio;
-        private System.Windows.Forms.DataGridViewTextBoxColumn fechaFin;
-        private System.Windows.Forms.DataGridViewTextBoxColumn formaPagoConsVenta;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ventaTotal;
-        private System.Windows.Forms.DataGridViewButtonColumn verDetalle;
         private System.Windows.Forms.Label lblDatoDomicilio;
         private System.Windows.Forms.Label lblDatoDni;
         private System.Windows.Forms.Label lblDatoApellido;
         private System.Windows.Forms.Label lblDatoNombre;
         private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn clienteConsVentas;
+        private System.Windows.Forms.DataGridViewTextBoxColumn fechaVenta;
+        private System.Windows.Forms.DataGridViewTextBoxColumn formaPagoConsVenta;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ventaTotal;
+        private System.Windows.Forms.DataGridViewButtonColumn verDetalle;
     }
 }

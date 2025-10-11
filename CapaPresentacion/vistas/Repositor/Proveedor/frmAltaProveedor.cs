@@ -22,6 +22,7 @@ namespace CapaPresentacion.Vistas.Repositor.Proveedor
         private void btnGuardar_Click(object sender, EventArgs e)
         {
             errIngresoDatos.Clear();
+            var negocio = new CN_proveedor();
 
             if (string.IsNullOrEmpty(txtDocProveedor.Text))
             {
@@ -62,7 +63,43 @@ namespace CapaPresentacion.Vistas.Repositor.Proveedor
                 return;
             }
 
-            MessageBox.Show("Proveedor registrado con éxito.", "Registro Exitoso", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+            var nuevoProveedor = new ProveedorModel
+            {
+                dni_proveedor = long.Parse(txtDocProveedor.Text),
+                nombre = txtNombre.Text.Trim(),
+                apellido = txtApellido.Text.Trim(),
+                telefono = long.Parse(txtTelefono.Text),
+                email_proveedor = txtEmail.Text.Trim(),
+                id_estado = 1
+            };
+
+
+            if (negocio.VerificarProveedorExistente(nuevoProveedor.dni_proveedor))
+            {
+                MessageBox.Show("Ya existe un proveedor con ese documento.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
+            try
+            {
+                negocio.AgregarProveedor(nuevoProveedor);
+                MessageBox.Show("Proveedor registrado con éxito.", "Registro Exitoso", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                cargarProveedorEnGrid();
+
+
+                txtDocProveedor.Clear();
+                txtNombre.Clear();
+                txtApellido.Clear();
+                txtTelefono.Clear();
+                txtEmail.Clear();
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("Ocurrió un error al registrar el proveedor.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+
+
         }
 
         private void btnLimpiar_Click(object sender, EventArgs e)
@@ -79,6 +116,33 @@ namespace CapaPresentacion.Vistas.Repositor.Proveedor
                 txtTelefono.Clear();
                 txtEmail.Clear();
             }
+        }
+
+        public void cargarProveedorEnGrid()
+        {
+            var negocio = new CN_proveedor();
+            var lista = negocio.ObtenerProveedoresActivos();
+            MessageBox.Show("Proveedores cargados: " + lista.Count);
+            dgvProveedores.DataSource = lista;
+        }
+
+        private void frmAltaProveedor_Load(object sender, EventArgs e)
+        {
+            dgvProveedores.AutoGenerateColumns = true;
+            cargarProveedorEnGrid();
+        }
+
+        private void dgvProveedores_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            dgvProveedores.AutoGenerateColumns = false;
+        }
+
+        private void btnBuscarProveedor_Click(object sender, EventArgs e)
+        {
+            var negocio = new CN_proveedor();
+            var criterio = txtBuscarProveedor.Text;
+            var lista = negocio.BuscarProveedores(criterio);
+            dgvProveedores.DataSource = lista;
         }
     }
 }

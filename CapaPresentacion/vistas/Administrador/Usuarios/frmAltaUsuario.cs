@@ -152,5 +152,7 @@ namespace CapaPresentacion.Vistas.Administrador.Usuarios
             // TODO: esta línea de código carga datos en la tabla 'proyectoTaller2DataSet1.rol' Puede moverla o quitarla según sea necesario.
             this.rolTableAdapter1.Fill(this.proyectoTaller2DataSet1.rol);
         }
+
+        
     }
 }
