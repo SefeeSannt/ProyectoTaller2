@@ -13,7 +13,7 @@ namespace CapaEntidad
         public string documento { get; set; }
         public string telefono { get; set; }
         public string correo { get; set; }  
-        public string Estado { get; set; }  
+        public estado estado { get; set; }  
         public string fecha_registro { get; set; }
     }
 }

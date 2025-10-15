@@ -122,7 +122,6 @@ namespace CapaPresentacion.Vistas.Repositor.Proveedor
         {
             var negocio = new CN_proveedor();
             var lista = negocio.ObtenerProveedoresActivos();
-            MessageBox.Show("Proveedores cargados: " + lista.Count);
             dgvProveedores.DataSource = lista;
         }
 
@@ -130,11 +129,6 @@ namespace CapaPresentacion.Vistas.Repositor.Proveedor
         {
             dgvProveedores.AutoGenerateColumns = true;
             cargarProveedorEnGrid();
-        }
-
-        private void dgvProveedores_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-            dgvProveedores.AutoGenerateColumns = false;
         }
 
         private void btnBuscarProveedor_Click(object sender, EventArgs e)

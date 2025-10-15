@@ -53,8 +53,10 @@
   <ItemGroup>
     <Compile Include="ClienteModel.cs" />
     <Compile Include="CN_cliente.cs" />
+    <Compile Include="CN_producto.cs" />
     <Compile Include="CN_proveedor.cs" />
     <Compile Include="CN_usuario.cs" />
+    <Compile Include="ProductoModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ProveedorModel.cs" />
     <Compile Include="UsuarioModel.cs" />
