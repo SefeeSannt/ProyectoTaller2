@@ -18,7 +18,7 @@ namespace CapaNegocio
                 domicilio = clienteModel.domicilio,
                 telefono = clienteModel.telefono,
                 email_cliente = clienteModel.email,
-                id_estado = clienteModel.id_estado
+                estado = clienteModel.id_estado
             };
 
             oCliente.AgregarCliente(clienteEntidad);
@@ -35,7 +35,7 @@ namespace CapaNegocio
                 domicilio = c.domicilio,
                 telefono = c.telefono,
                 email = c.email_cliente,
-                id_estado = c.id_estado
+                id_estado = c.estado
             }).ToList();
         }
 
@@ -50,7 +50,7 @@ namespace CapaNegocio
                 domicilio = c.domicilio,
                 telefono = c.telefono,
                 email = c.email_cliente,
-                id_estado = c.id_estado
+                id_estado = c.estado
             }).ToList();
         }
 
@@ -65,7 +65,7 @@ namespace CapaNegocio
                 domicilio = c.domicilio,
                 telefono = c.telefono,
                 email = c.email_cliente,
-                id_estado = c.id_estado
+                id_estado = c.estado
             }).ToList();
         }
 
@@ -80,7 +80,7 @@ namespace CapaNegocio
                 domicilio = c.domicilio,
                 telefono = c.telefono,
                 email = c.email_cliente,
-                id_estado = c.id_estado
+                id_estado = c.estado
             }).ToList();
         }
 
@@ -104,7 +104,7 @@ namespace CapaNegocio
                 domicilio = clienteModel.domicilio,
                 telefono = clienteModel.telefono,
                 email_cliente = clienteModel.email,
-                id_estado = clienteModel.id_estado
+                estado = clienteModel.id_estado
             };
             oCliente.ActualizarCliente(clienteEntidad);
         }

@@ -20,7 +20,7 @@ namespace CapaDatos
             this.detalle_venta = new HashSet<detalle_venta>();
         }
     
-        public System.DateTime fecha_venta { get; set; }
+        public Nullable<System.DateTime> fecha_venta { get; set; }
         public double monto_total { get; set; }
         public int cod_venta { get; set; }
         public long dni_cliente { get; set; }

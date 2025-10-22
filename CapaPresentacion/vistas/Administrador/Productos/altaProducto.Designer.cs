@@ -32,18 +32,11 @@ namespace CapaPresentacion.Vistas.Administrador.Productos
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             this.label11 = new System.Windows.Forms.Label();
             this.lblTituloListaProd = new System.Windows.Forms.Label();
             this.dgvRegistrarProducto = new System.Windows.Forms.DataGridView();
-            this.nombreProducto = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.codigoListProd = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.categoria = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.descripcionRegProd = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.precioVenta = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colCosto = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.stockRegProd = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.lblRegistroProducto = new System.Windows.Forms.Label();
             this.lblNombreProducto = new System.Windows.Forms.Label();
             this.lblCategoria = new System.Windows.Forms.Label();
@@ -101,79 +94,29 @@ namespace CapaPresentacion.Vistas.Administrador.Productos
             this.dgvRegistrarProducto.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dgvRegistrarProducto.BackgroundColor = System.Drawing.Color.White;
             this.dgvRegistrarProducto.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Franklin Gothic Medium", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle1.Padding = new System.Windows.Forms.Padding(2);
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvRegistrarProducto.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Franklin Gothic Medium", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle3.Padding = new System.Windows.Forms.Padding(2);
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvRegistrarProducto.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle3;
             this.dgvRegistrarProducto.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvRegistrarProducto.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.nombreProducto,
-            this.codigoListProd,
-            this.categoria,
-            this.descripcionRegProd,
-            this.precioVenta,
-            this.colCosto,
-            this.stockRegProd});
             this.dgvRegistrarProducto.Location = new System.Drawing.Point(244, 39);
             this.dgvRegistrarProducto.MultiSelect = false;
             this.dgvRegistrarProducto.Name = "dgvRegistrarProducto";
             this.dgvRegistrarProducto.ReadOnly = true;
             this.dgvRegistrarProducto.RowHeadersVisible = false;
             this.dgvRegistrarProducto.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.AutoSizeToAllHeaders;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.Color.Black;
-            this.dgvRegistrarProducto.RowsDefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.Color.Black;
+            this.dgvRegistrarProducto.RowsDefaultCellStyle = dataGridViewCellStyle4;
             this.dgvRegistrarProducto.RowTemplate.Height = 28;
             this.dgvRegistrarProducto.Size = new System.Drawing.Size(716, 499);
             this.dgvRegistrarProducto.TabIndex = 25;
             this.dgvRegistrarProducto.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvRegistrarProducto_CellContentClick);
-            // 
-            // nombreProducto
-            // 
-            this.nombreProducto.HeaderText = "Nombre";
-            this.nombreProducto.Name = "nombreProducto";
-            this.nombreProducto.ReadOnly = true;
-            // 
-            // codigoListProd
-            // 
-            this.codigoListProd.HeaderText = "Código";
-            this.codigoListProd.Name = "codigoListProd";
-            this.codigoListProd.ReadOnly = true;
-            // 
-            // categoria
-            // 
-            this.categoria.HeaderText = "Categoria";
-            this.categoria.Name = "categoria";
-            this.categoria.ReadOnly = true;
-            // 
-            // descripcionRegProd
-            // 
-            this.descripcionRegProd.HeaderText = "Descripcion";
-            this.descripcionRegProd.Name = "descripcionRegProd";
-            this.descripcionRegProd.ReadOnly = true;
-            // 
-            // precioVenta
-            // 
-            this.precioVenta.HeaderText = "Precio Venta";
-            this.precioVenta.Name = "precioVenta";
-            this.precioVenta.ReadOnly = true;
-            // 
-            // colCosto
-            // 
-            this.colCosto.HeaderText = "Costo";
-            this.colCosto.Name = "colCosto";
-            this.colCosto.ReadOnly = true;
-            // 
-            // stockRegProd
-            // 
-            this.stockRegProd.HeaderText = "Stock";
-            this.stockRegProd.Name = "stockRegProd";
-            this.stockRegProd.ReadOnly = true;
             // 
             // lblRegistroProducto
             // 
@@ -406,6 +349,7 @@ namespace CapaPresentacion.Vistas.Administrador.Productos
             this.textBox1.Name = "textBox1";
             this.textBox1.Size = new System.Drawing.Size(210, 20);
             this.textBox1.TabIndex = 53;
+            this.textBox1.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.onlyInteger_KeyPress);
             // 
             // lblCodigoProdRegistro
             // 
@@ -452,6 +396,7 @@ namespace CapaPresentacion.Vistas.Administrador.Productos
             this.Name = "frmAltaProducto";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Alta producto";
+            this.Load += new System.EventHandler(this.frmAltaProducto_Load_1);
             ((System.ComponentModel.ISupportInitialize)(this.dgvRegistrarProducto)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.errIngresoDatos)).EndInit();
             this.ResumeLayout(false);
@@ -483,13 +428,6 @@ namespace CapaPresentacion.Vistas.Administrador.Productos
         private TextBox txtProdList;
         private Label lblBuscarListProd;
         private FontAwesome.Sharp.IconButton iconBtnLupaDetalleUser;
-        private DataGridViewTextBoxColumn nombreProducto;
-        private DataGridViewTextBoxColumn codigoListProd;
-        private DataGridViewTextBoxColumn categoria;
-        private DataGridViewTextBoxColumn descripcionRegProd;
-        private DataGridViewTextBoxColumn precioVenta;
-        private DataGridViewTextBoxColumn colCosto;
-        private DataGridViewTextBoxColumn stockRegProd;
         private TextBox textBox1;
         private Label lblCodigoProdRegistro;
     }

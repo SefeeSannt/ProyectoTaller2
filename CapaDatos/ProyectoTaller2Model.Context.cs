@@ -30,7 +30,6 @@ namespace CapaDatos
         public virtual DbSet<compra> compra { get; set; }
         public virtual DbSet<detalle_compra> detalle_compra { get; set; }
         public virtual DbSet<detalle_venta> detalle_venta { get; set; }
-        public virtual DbSet<estado> estado { get; set; }
         public virtual DbSet<producto> producto { get; set; }
         public virtual DbSet<proveedor> proveedor { get; set; }
         public virtual DbSet<rol> rol { get; set; }

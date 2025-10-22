@@ -28,12 +28,11 @@ namespace CapaDatos
         public long telefono { get; set; }
         public string password { get; set; }
         public string email_usuario { get; set; }
-        public int id_estado { get; set; }
+        public int estado { get; set; }
         public int id_rol { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<compra> compra { get; set; }
-        public virtual estado estado { get; set; }
         public virtual rol rol { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<venta> venta { get; set; }

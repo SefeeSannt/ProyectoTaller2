@@ -143,7 +143,7 @@ namespace CapaPresentacion.Vistas.Administrador.Productos {
                 var cn = new CN_producto();
                 cn.AgregarProducto(productoModel);
                 MessageBox.Show("Producto registrado con éxito.", "Registro Exitoso", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                this.Close();
+                cargarProductosEnGrid();
             }
             catch (Exception ex)
             {
@@ -172,9 +172,29 @@ namespace CapaPresentacion.Vistas.Administrador.Productos {
             }
         }
 
+        private void cargarProductosEnGrid()
+        {
+            try
+            {
+                var cnProducto = new CN_producto();
+                var productos = cnProducto.ObtenerProductos();
+                dgvRegistrarProducto.DataSource = null;
+                dgvRegistrarProducto.DataSource = productos;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error al cargar productos: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
         private void dgvRegistrarProducto_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
 
+        }
+
+        private void frmAltaProducto_Load_1(object sender, EventArgs e)
+        {
+            cargarProductosEnGrid();
         }
     }
 }

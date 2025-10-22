@@ -26,9 +26,8 @@ namespace CapaDatos
         public string domicilio { get; set; }
         public long telefono { get; set; }
         public string email_cliente { get; set; }
-        public int id_estado { get; set; }
+        public int estado { get; set; }
     
-        public virtual estado estado { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<venta> venta { get; set; }
     }

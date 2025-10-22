@@ -30,7 +30,7 @@ namespace CapaDatos
         {
             using (var db = new ProyectoTaller2Entities())
             {
-                return db.producto.Where(p => p.id_estado == 1).ToList();
+                return db.producto.Where(p => p.estado == 1).ToList();
             }
         }
 
@@ -43,7 +43,7 @@ namespace CapaDatos
                 {
                     prodExistente.nombre = producto.nombre;
                     prodExistente.descripcion = producto.descripcion;
-                    prodExistente.id_estado = producto.id_estado;
+                    prodExistente.estado = producto.estado;
                     db.SaveChanges();
                 }
             }

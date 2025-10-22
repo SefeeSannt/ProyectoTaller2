@@ -30,7 +30,7 @@ namespace CapaDatos
         {
             using (var db = new ProyectoTaller2Entities())
             {
-                return db.cliente.Where(c => c.id_estado == 1).ToList();
+                return db.cliente.Where(c => c.estado == 1).ToList();
             }
         }
 
@@ -53,7 +53,7 @@ namespace CapaDatos
             using (var db = new ProyectoTaller2Entities())
             {
                 return db.cliente
-                         .Where(c => c.id_estado == 1 &&
+                         .Where(c => c.estado == 1 &&
                                      (c.nombre.Contains(criterio) ||
                                       c.apellido.Contains(criterio) ||
                                       c.dni_cliente.ToString().Contains(criterio) ||
@@ -91,7 +91,7 @@ namespace CapaDatos
                     clienteExistente.domicilio = cliente.domicilio;
                     clienteExistente.telefono = cliente.telefono;
                     clienteExistente.email_cliente = cliente.email_cliente;
-                    clienteExistente.id_estado = cliente.id_estado;
+                    clienteExistente.estado = cliente.estado;
                     db.SaveChanges();
                 }
             }
@@ -104,7 +104,7 @@ namespace CapaDatos
                 var cliente = db.cliente.Find(dni);
                 if (cliente != null)
                 {
-                   cliente.id_estado = 0;
+                   cliente.estado = 0;
                     db.SaveChanges();
                 }
             }
@@ -117,7 +117,7 @@ namespace CapaDatos
                 var cliente = db.cliente.Find(dni);
                 if (cliente != null)
                 {
-                    cliente.id_estado = 1;
+                    cliente.estado = 1;
                     db.SaveChanges();
                 }
             }
@@ -135,7 +135,7 @@ namespace CapaDatos
         {
             using (var db = new ProyectoTaller2Entities())
             {
-                return db.cliente.Count(c => c.id_estado == 1);
+                return db.cliente.Count(c => c.estado == 1);
             }
         }
 
@@ -143,7 +143,7 @@ namespace CapaDatos
         {
             using (var db = new ProyectoTaller2Entities())
             {
-                return db.cliente.Count(c => c.id_estado == 0);
+                return db.cliente.Count(c => c.estado == 0);
             }
         }
     }

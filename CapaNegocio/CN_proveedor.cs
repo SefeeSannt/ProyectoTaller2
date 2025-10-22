@@ -20,7 +20,7 @@ namespace CapaNegocio
                 apellido = proveedorModel.apellido,
                 email_proveedor = proveedorModel.email_proveedor,
                 telefono = proveedorModel.telefono,
-                id_estado = proveedorModel.id_estado
+                estado = proveedorModel.estado
             };
             oProveedor.AgregarProveedor(proveedorEntidad);
         }
@@ -35,7 +35,7 @@ namespace CapaNegocio
                 apellido = p.apellido,
                 email_proveedor = p.email_proveedor,
                 telefono = p.telefono,
-                id_estado = p.id_estado
+                estado = p.estado
             }).ToList();
         }
 
@@ -49,7 +49,7 @@ namespace CapaNegocio
                 apellido = p.apellido,
                 email_proveedor = p.email_proveedor,
                 telefono = p.telefono,
-                id_estado = p.id_estado
+                estado = p.estado
             }).ToList();
         }
 
@@ -63,7 +63,7 @@ namespace CapaNegocio
                 apellido = p.apellido,
                 email_proveedor = p.email_proveedor,
                 telefono = p.telefono,
-                id_estado = p.id_estado
+                estado = p.estado
             }).ToList();
         }
 
@@ -73,7 +73,7 @@ namespace CapaNegocio
             {
 
                 var query = db.proveedor
-                    .Where(p => p.id_estado == 1);
+                    .Where(p => p.estado == 1);
 
 
                 if (!string.IsNullOrWhiteSpace(nombre))
@@ -95,7 +95,7 @@ namespace CapaNegocio
                     apellido = p.apellido,
                     email_proveedor = p.email_proveedor,
                     telefono = p.telefono,
-                    id_estado = p.id_estado
+                    estado = p.estado
                 }).ToList();
 
                 return lista;
@@ -105,14 +105,14 @@ namespace CapaNegocio
         public List<ProveedorModel> BuscarProveedoresActivos2(string criterio)
         {
             var listaDatos = oProveedor.buscarProveedores(criterio);
-            return listaDatos.Where(p => p.id_estado == 1).Select(p => new ProveedorModel
+            return listaDatos.Where(p => p.estado == 1).Select(p => new ProveedorModel
             {
                 dni_proveedor = p.dni_proveedor,
                 nombre = p.nombre,
                 apellido = p.apellido,
                 email_proveedor = p.email_proveedor,
                 telefono = p.telefono,
-                id_estado = p.id_estado
+                estado = p.estado
             }).ToList();
         }
 
@@ -121,7 +121,7 @@ namespace CapaNegocio
             using (var db = new ProyectoTaller2Entities())
             {
                 var lista = db.proveedor
-                    .Where(p => p.id_estado == 1) // solo activos
+                    .Where(p => p.estado == 1) // solo activos
                     .Select(p => new ProveedorModel
                     {
                         dni_proveedor = p.dni_proveedor,
@@ -129,7 +129,7 @@ namespace CapaNegocio
                         apellido = p.apellido,
                         email_proveedor = p.email_proveedor,
                         telefono = p.telefono,
-                        id_estado = p.id_estado
+                        estado = p.estado
                     }).ToList();
 
                 return lista;
@@ -139,14 +139,14 @@ namespace CapaNegocio
         public List<ProveedorModel> ObtenerProveedoresInactivos()
         {
             var listaDatos = oProveedor.obtenerProveedores();
-            return listaDatos.Where(p => p.id_estado != 1).Select(p => new ProveedorModel
+            return listaDatos.Where(p => p.estado != 1).Select(p => new ProveedorModel
             {
                 dni_proveedor = p.dni_proveedor,
                 nombre = p.nombre,
                 apellido = p.apellido,
                 email_proveedor = p.email_proveedor,
                 telefono = p.telefono,
-                id_estado = p.id_estado
+                estado = p.estado
             }).ToList();
         }
 
@@ -159,7 +159,7 @@ namespace CapaNegocio
                 apellido = proveedorModel.apellido,
                 email_proveedor = proveedorModel.email_proveedor,
                 telefono = proveedorModel.telefono,
-                id_estado = proveedorModel.id_estado
+                estado = proveedorModel.estado
             };
             oProveedor.actualizarProveedor(proveedorEntidad);
         }

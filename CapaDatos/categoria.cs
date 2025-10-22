@@ -22,6 +22,7 @@ namespace CapaDatos
     
         public int id_categoria { get; set; }
         public string descripcion { get; set; }
+        public int estado { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<producto> producto { get; set; }

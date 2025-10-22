@@ -74,9 +74,6 @@
     <Compile Include="detalle_venta.cs">
       <DependentUpon>ProyectoTaller2Model.tt</DependentUpon>
     </Compile>
-    <Compile Include="estado.cs">
-      <DependentUpon>ProyectoTaller2Model.tt</DependentUpon>
-    </Compile>
     <Compile Include="producto.cs">
       <DependentUpon>ProyectoTaller2Model.tt</DependentUpon>
     </Compile>

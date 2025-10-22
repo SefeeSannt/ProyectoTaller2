@@ -11,6 +11,7 @@
           </Key>
           <Property Name="id_categoria" Type="int" Nullable="false" />
           <Property Name="descripcion" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="estado" Type="int" Nullable="false" />
         </EntityType>
         <EntityType Name="cliente">
           <Key>
@@ -22,7 +23,7 @@
           <Property Name="domicilio" Type="varchar" MaxLength="200" Nullable="false" />
           <Property Name="telefono" Type="bigint" Nullable="false" />
           <Property Name="email_cliente" Type="varchar" MaxLength="150" Nullable="false" />
-          <Property Name="id_estado" Type="int" Nullable="false" />
+          <Property Name="estado" Type="int" Nullable="false" />
         </EntityType>
         <EntityType Name="compra">
           <Key>
@@ -54,13 +55,6 @@
           <Property Name="cod_venta" Type="int" Nullable="false" />
           <Property Name="cod_producto" Type="int" Nullable="false" />
         </EntityType>
-        <EntityType Name="estado">
-          <Key>
-            <PropertyRef Name="id_estado" />
-          </Key>
-          <Property Name="id_estado" Type="int" Nullable="false" />
-          <Property Name="descripcion" Type="varchar" MaxLength="50" Nullable="false" />
-        </EntityType>
         <EntityType Name="producto">
           <Key>
             <PropertyRef Name="cod_producto" />
@@ -68,10 +62,10 @@
           <Property Name="cod_producto" Type="int" Nullable="false" />
           <Property Name="nombre" Type="varchar" MaxLength="100" Nullable="false" />
           <Property Name="descripcion" Type="varchar" MaxLength="300" Nullable="false" />
-          <Property Name="precio_vta" Type="float" Nullable="false" />
-          <Property Name="costo" Type="float" Nullable="false" />
-          <Property Name="stock" Type="int" Nullable="false" />
-          <Property Name="id_estado" Type="int" Nullable="false" />
+          <Property Name="precio_vta" Type="float" />
+          <Property Name="costo" Type="float" />
+          <Property Name="stock" Type="int" />
+          <Property Name="estado" Type="int" Nullable="false" />
           <Property Name="id_categoria" Type="int" Nullable="false" />
         </EntityType>
         <EntityType Name="proveedor">
@@ -83,7 +77,7 @@
           <Property Name="apellido" Type="varchar" MaxLength="50" Nullable="false" />
           <Property Name="email_proveedor" Type="varchar" MaxLength="150" Nullable="false" />
           <Property Name="telefono" Type="bigint" Nullable="false" />
-          <Property Name="id_estado" Type="int" Nullable="false" />
+          <Property Name="estado" Type="int" Nullable="false" />
         </EntityType>
         <EntityType Name="rol">
           <Key>
@@ -103,31 +97,19 @@
           <Property Name="telefono" Type="bigint" Nullable="false" />
           <Property Name="password" Type="varchar" MaxLength="150" Nullable="false" />
           <Property Name="email_usuario" Type="varchar" MaxLength="150" Nullable="false" />
-          <Property Name="id_estado" Type="int" Nullable="false" />
+          <Property Name="estado" Type="int" Nullable="false" />
           <Property Name="id_rol" Type="int" Nullable="false" />
         </EntityType>
         <EntityType Name="venta">
           <Key>
             <PropertyRef Name="cod_venta" />
           </Key>
-          <Property Name="fecha_venta" Type="date" Nullable="false" />
+          <Property Name="fecha_venta" Type="date" />
           <Property Name="monto_total" Type="float" Nullable="false" />
           <Property Name="cod_venta" Type="int" Nullable="false" />
           <Property Name="dni_cliente" Type="bigint" Nullable="false" />
           <Property Name="dni_usuario" Type="bigint" Nullable="false" />
         </EntityType>
-        <Association Name="FK_cliente_estado">
-          <End Role="estado" Type="Self.estado" Multiplicity="1" />
-          <End Role="cliente" Type="Self.cliente" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="estado">
-              <PropertyRef Name="id_estado" />
-            </Principal>
-            <Dependent Role="cliente">
-              <PropertyRef Name="id_estado" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="FK_compra_proveedor">
           <End Role="proveedor" Type="Self.proveedor" Multiplicity="1" />
           <End Role="compra" Type="Self.compra" Multiplicity="*" />
@@ -209,42 +191,6 @@
             </Principal>
             <Dependent Role="producto">
               <PropertyRef Name="id_categoria" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_producto_estado">
-          <End Role="estado" Type="Self.estado" Multiplicity="1" />
-          <End Role="producto" Type="Self.producto" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="estado">
-              <PropertyRef Name="id_estado" />
-            </Principal>
-            <Dependent Role="producto">
-              <PropertyRef Name="id_estado" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_proveedor_estado">
-          <End Role="estado" Type="Self.estado" Multiplicity="1" />
-          <End Role="proveedor" Type="Self.proveedor" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="estado">
-              <PropertyRef Name="id_estado" />
-            </Principal>
-            <Dependent Role="proveedor">
-              <PropertyRef Name="id_estado" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_usuario_estado">
-          <End Role="estado" Type="Self.estado" Multiplicity="1" />
-          <End Role="usuario" Type="Self.usuario" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="estado">
-              <PropertyRef Name="id_estado" />
-            </Principal>
-            <Dependent Role="usuario">
-              <PropertyRef Name="id_estado" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -290,16 +236,11 @@
           <EntitySet Name="compra" EntityType="Self.compra" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="detalle_compra" EntityType="Self.detalle_compra" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="detalle_venta" EntityType="Self.detalle_venta" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="estado" EntityType="Self.estado" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="producto" EntityType="Self.producto" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="proveedor" EntityType="Self.proveedor" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="rol" EntityType="Self.rol" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="usuario" EntityType="Self.usuario" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="venta" EntityType="Self.venta" Schema="dbo" store:Type="Tables" />
-          <AssociationSet Name="FK_cliente_estado" Association="Self.FK_cliente_estado">
-            <End Role="estado" EntitySet="estado" />
-            <End Role="cliente" EntitySet="cliente" />
-          </AssociationSet>
           <AssociationSet Name="FK_compra_proveedor" Association="Self.FK_compra_proveedor">
             <End Role="proveedor" EntitySet="proveedor" />
             <End Role="compra" EntitySet="compra" />
@@ -328,18 +269,6 @@
             <End Role="categoria" EntitySet="categoria" />
             <End Role="producto" EntitySet="producto" />
           </AssociationSet>
-          <AssociationSet Name="FK_producto_estado" Association="Self.FK_producto_estado">
-            <End Role="estado" EntitySet="estado" />
-            <End Role="producto" EntitySet="producto" />
-          </AssociationSet>
-          <AssociationSet Name="FK_proveedor_estado" Association="Self.FK_proveedor_estado">
-            <End Role="estado" EntitySet="estado" />
-            <End Role="proveedor" EntitySet="proveedor" />
-          </AssociationSet>
-          <AssociationSet Name="FK_usuario_estado" Association="Self.FK_usuario_estado">
-            <End Role="estado" EntitySet="estado" />
-            <End Role="usuario" EntitySet="usuario" />
-          </AssociationSet>
           <AssociationSet Name="FK_usuario_rol" Association="Self.FK_usuario_rol">
             <End Role="rol" EntitySet="rol" />
             <End Role="usuario" EntitySet="usuario" />
@@ -364,6 +293,7 @@
           </Key>
           <Property Name="id_categoria" Type="Int32" Nullable="false" />
           <Property Name="descripcion" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="estado" Type="Int32" Nullable="false" />
           <NavigationProperty Name="producto" Relationship="Self.FK_producto_categoria" FromRole="categoria" ToRole="producto" />
         </EntityType>
         <EntityType Name="cliente">
@@ -376,8 +306,7 @@
           <Property Name="domicilio" Type="String" MaxLength="200" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="telefono" Type="Int64" Nullable="false" />
           <Property Name="email_cliente" Type="String" MaxLength="150" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="id_estado" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="estado" Relationship="Self.FK_cliente_estado" FromRole="cliente" ToRole="estado" />
+          <Property Name="estado" Type="Int32" Nullable="false" />
           <NavigationProperty Name="venta" Relationship="Self.FK_venta_cliente" FromRole="cliente" ToRole="venta" />
         </EntityType>
         <EntityType Name="compra">
@@ -417,17 +346,6 @@
           <NavigationProperty Name="producto" Relationship="Self.FK_detalle_producto" FromRole="detalle_venta" ToRole="producto" />
           <NavigationProperty Name="venta" Relationship="Self.FK_detalle_venta" FromRole="detalle_venta" ToRole="venta" />
         </EntityType>
-        <EntityType Name="estado">
-          <Key>
-            <PropertyRef Name="id_estado" />
-          </Key>
-          <Property Name="id_estado" Type="Int32" Nullable="false" />
-          <Property Name="descripcion" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
-          <NavigationProperty Name="cliente" Relationship="Self.FK_cliente_estado" FromRole="estado" ToRole="cliente" />
-          <NavigationProperty Name="producto" Relationship="Self.FK_producto_estado" FromRole="estado" ToRole="producto" />
-          <NavigationProperty Name="proveedor" Relationship="Self.FK_proveedor_estado" FromRole="estado" ToRole="proveedor" />
-          <NavigationProperty Name="usuario" Relationship="Self.FK_usuario_estado" FromRole="estado" ToRole="usuario" />
-        </EntityType>
         <EntityType Name="producto">
           <Key>
             <PropertyRef Name="cod_producto" />
@@ -435,15 +353,14 @@
           <Property Name="cod_producto" Type="Int32" Nullable="false" />
           <Property Name="nombre" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="descripcion" Type="String" MaxLength="300" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="precio_vta" Type="Double" Nullable="false" />
-          <Property Name="costo" Type="Double" Nullable="false" />
-          <Property Name="stock" Type="Int32" Nullable="false" />
-          <Property Name="id_estado" Type="Int32" Nullable="false" />
+          <Property Name="precio_vta" Type="Double" />
+          <Property Name="costo" Type="Double" />
+          <Property Name="stock" Type="Int32" />
+          <Property Name="estado" Type="Int32" Nullable="false" />
           <Property Name="id_categoria" Type="Int32" Nullable="false" />
           <NavigationProperty Name="categoria" Relationship="Self.FK_producto_categoria" FromRole="producto" ToRole="categoria" />
           <NavigationProperty Name="detalle_compra" Relationship="Self.FK_detalle_compra_producto" FromRole="producto" ToRole="detalle_compra" />
           <NavigationProperty Name="detalle_venta" Relationship="Self.FK_detalle_producto" FromRole="producto" ToRole="detalle_venta" />
-          <NavigationProperty Name="estado" Relationship="Self.FK_producto_estado" FromRole="producto" ToRole="estado" />
         </EntityType>
         <EntityType Name="proveedor">
           <Key>
@@ -454,9 +371,8 @@
           <Property Name="apellido" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="email_proveedor" Type="String" MaxLength="150" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="telefono" Type="Int64" Nullable="false" />
-          <Property Name="id_estado" Type="Int32" Nullable="false" />
+          <Property Name="estado" Type="Int32" Nullable="false" />
           <NavigationProperty Name="compra" Relationship="Self.FK_compra_proveedor" FromRole="proveedor" ToRole="compra" />
-          <NavigationProperty Name="estado" Relationship="Self.FK_proveedor_estado" FromRole="proveedor" ToRole="estado" />
         </EntityType>
         <EntityType Name="rol">
           <Key>
@@ -477,10 +393,9 @@
           <Property Name="telefono" Type="Int64" Nullable="false" />
           <Property Name="password" Type="String" MaxLength="150" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="email_usuario" Type="String" MaxLength="150" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="id_estado" Type="Int32" Nullable="false" />
+          <Property Name="estado" Type="Int32" Nullable="false" />
           <Property Name="id_rol" Type="Int32" Nullable="false" />
           <NavigationProperty Name="compra" Relationship="Self.FK_compra_usuario" FromRole="usuario" ToRole="compra" />
-          <NavigationProperty Name="estado" Relationship="Self.FK_usuario_estado" FromRole="usuario" ToRole="estado" />
           <NavigationProperty Name="rol" Relationship="Self.FK_usuario_rol" FromRole="usuario" ToRole="rol" />
           <NavigationProperty Name="venta" Relationship="Self.FK_venta_usuario" FromRole="usuario" ToRole="venta" />
         </EntityType>
@@ -488,7 +403,7 @@
           <Key>
             <PropertyRef Name="cod_venta" />
           </Key>
-          <Property Name="fecha_venta" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="fecha_venta" Type="DateTime" Precision="0" />
           <Property Name="monto_total" Type="Double" Nullable="false" />
           <Property Name="cod_venta" Type="Int32" Nullable="false" />
           <Property Name="dni_cliente" Type="Int64" Nullable="false" />
@@ -506,18 +421,6 @@
             </Principal>
             <Dependent Role="producto">
               <PropertyRef Name="id_categoria" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_cliente_estado">
-          <End Role="estado" Type="Self.estado" Multiplicity="1" />
-          <End Role="cliente" Type="Self.cliente" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="estado">
-              <PropertyRef Name="id_estado" />
-            </Principal>
-            <Dependent Role="cliente">
-              <PropertyRef Name="id_estado" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -605,42 +508,6 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_producto_estado">
-          <End Role="estado" Type="Self.estado" Multiplicity="1" />
-          <End Role="producto" Type="Self.producto" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="estado">
-              <PropertyRef Name="id_estado" />
-            </Principal>
-            <Dependent Role="producto">
-              <PropertyRef Name="id_estado" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_proveedor_estado">
-          <End Role="estado" Type="Self.estado" Multiplicity="1" />
-          <End Role="proveedor" Type="Self.proveedor" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="estado">
-              <PropertyRef Name="id_estado" />
-            </Principal>
-            <Dependent Role="proveedor">
-              <PropertyRef Name="id_estado" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_usuario_estado">
-          <End Role="estado" Type="Self.estado" Multiplicity="1" />
-          <End Role="usuario" Type="Self.usuario" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="estado">
-              <PropertyRef Name="id_estado" />
-            </Principal>
-            <Dependent Role="usuario">
-              <PropertyRef Name="id_estado" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="FK_usuario_rol">
           <End Role="rol" Type="Self.rol" Multiplicity="1" />
           <End Role="usuario" Type="Self.usuario" Multiplicity="*" />
@@ -671,7 +538,6 @@
           <EntitySet Name="compra" EntityType="Self.compra" />
           <EntitySet Name="detalle_compra" EntityType="Self.detalle_compra" />
           <EntitySet Name="detalle_venta" EntityType="Self.detalle_venta" />
-          <EntitySet Name="estado" EntityType="Self.estado" />
           <EntitySet Name="producto" EntityType="Self.producto" />
           <EntitySet Name="proveedor" EntityType="Self.proveedor" />
           <EntitySet Name="rol" EntityType="Self.rol" />
@@ -680,10 +546,6 @@
           <AssociationSet Name="FK_producto_categoria" Association="Self.FK_producto_categoria">
             <End Role="categoria" EntitySet="categoria" />
             <End Role="producto" EntitySet="producto" />
-          </AssociationSet>
-          <AssociationSet Name="FK_cliente_estado" Association="Self.FK_cliente_estado">
-            <End Role="estado" EntitySet="estado" />
-            <End Role="cliente" EntitySet="cliente" />
           </AssociationSet>
           <AssociationSet Name="FK_venta_cliente" Association="Self.FK_venta_cliente">
             <End Role="cliente" EntitySet="cliente" />
@@ -713,18 +575,6 @@
             <End Role="venta" EntitySet="venta" />
             <End Role="detalle_venta" EntitySet="detalle_venta" />
           </AssociationSet>
-          <AssociationSet Name="FK_producto_estado" Association="Self.FK_producto_estado">
-            <End Role="estado" EntitySet="estado" />
-            <End Role="producto" EntitySet="producto" />
-          </AssociationSet>
-          <AssociationSet Name="FK_proveedor_estado" Association="Self.FK_proveedor_estado">
-            <End Role="estado" EntitySet="estado" />
-            <End Role="proveedor" EntitySet="proveedor" />
-          </AssociationSet>
-          <AssociationSet Name="FK_usuario_estado" Association="Self.FK_usuario_estado">
-            <End Role="estado" EntitySet="estado" />
-            <End Role="usuario" EntitySet="usuario" />
-          </AssociationSet>
           <AssociationSet Name="FK_usuario_rol" Association="Self.FK_usuario_rol">
             <End Role="rol" EntitySet="rol" />
             <End Role="usuario" EntitySet="usuario" />
@@ -745,6 +595,7 @@
               <MappingFragment StoreEntitySet="categoria">
                 <ScalarProperty Name="id_categoria" ColumnName="id_categoria" />
                 <ScalarProperty Name="descripcion" ColumnName="descripcion" />
+                <ScalarProperty Name="estado" ColumnName="estado" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -757,7 +608,7 @@
                 <ScalarProperty Name="domicilio" ColumnName="domicilio" />
                 <ScalarProperty Name="telefono" ColumnName="telefono" />
                 <ScalarProperty Name="email_cliente" ColumnName="email_cliente" />
-                <ScalarProperty Name="id_estado" ColumnName="id_estado" />
+                <ScalarProperty Name="estado" ColumnName="estado" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -792,14 +643,6 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="estado">
-            <EntityTypeMapping TypeName="ProyectoTaller2Model.estado">
-              <MappingFragment StoreEntitySet="estado">
-                <ScalarProperty Name="id_estado" ColumnName="id_estado" />
-                <ScalarProperty Name="descripcion" ColumnName="descripcion" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <EntitySetMapping Name="producto">
             <EntityTypeMapping TypeName="ProyectoTaller2Model.producto">
               <MappingFragment StoreEntitySet="producto">
@@ -809,7 +652,7 @@
                 <ScalarProperty Name="precio_vta" ColumnName="precio_vta" />
                 <ScalarProperty Name="costo" ColumnName="costo" />
                 <ScalarProperty Name="stock" ColumnName="stock" />
-                <ScalarProperty Name="id_estado" ColumnName="id_estado" />
+                <ScalarProperty Name="estado" ColumnName="estado" />
                 <ScalarProperty Name="id_categoria" ColumnName="id_categoria" />
               </MappingFragment>
             </EntityTypeMapping>
@@ -822,7 +665,7 @@
                 <ScalarProperty Name="apellido" ColumnName="apellido" />
                 <ScalarProperty Name="email_proveedor" ColumnName="email_proveedor" />
                 <ScalarProperty Name="telefono" ColumnName="telefono" />
-                <ScalarProperty Name="id_estado" ColumnName="id_estado" />
+                <ScalarProperty Name="estado" ColumnName="estado" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -844,7 +687,7 @@
                 <ScalarProperty Name="telefono" ColumnName="telefono" />
                 <ScalarProperty Name="password" ColumnName="password" />
                 <ScalarProperty Name="email_usuario" ColumnName="email_usuario" />
-                <ScalarProperty Name="id_estado" ColumnName="id_estado" />
+                <ScalarProperty Name="estado" ColumnName="estado" />
                 <ScalarProperty Name="id_rol" ColumnName="id_rol" />
               </MappingFragment>
             </EntityTypeMapping>

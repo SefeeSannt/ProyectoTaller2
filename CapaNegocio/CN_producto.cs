@@ -44,8 +44,8 @@ namespace CapaNegocio
                 descripcion = p.descripcion,
                 precio_vta = (decimal)p.precio_vta,
                 costo = (decimal)p.costo,
-                stock = p.stock,
-                id_estado = new Ent.estado { id_estado = p.id_estado },
+                stock = (int)p.stock,
+                
                 id_categoria = new Ent.Categoria { id_categoria = p.id_categoria }
             }).ToList();
         }
@@ -60,8 +60,8 @@ namespace CapaNegocio
                 descripcion = p.descripcion,
                 precio_vta = (decimal)p.precio_vta,
                 costo = (decimal)p.costo,
-                stock = p.stock,
-                id_estado = new Ent.estado { id_estado = p.id_estado },
+                stock = (int)p.stock,
+                estado = 1,
                 id_categoria = new Ent.Categoria { id_categoria = p.id_categoria }
             }).ToList();
         }
@@ -76,7 +76,7 @@ namespace CapaNegocio
                 precio_vta = (double)obj.precio_vta,
                 costo = (double)obj.costo,
                 stock = obj.stock,
-                id_estado = obj.id_estado != null ? obj.id_estado.id_estado : 1,
+                estado = 1,
                 id_categoria = obj.id_categoria != null ? obj.id_categoria.id_categoria : 0
             };
             oProducto.actualizarProducto(producto);

@@ -30,7 +30,7 @@ namespace CapaDatos
         {
             using (var db = new ProyectoTaller2Entities())
             {
-                return db.proveedor.Where(p => p.id_estado == 1).ToList();
+                return db.proveedor.Where(p => p.estado == 1).ToList();
             }
         }
 
@@ -53,7 +53,7 @@ namespace CapaDatos
             using (var db = new ProyectoTaller2Entities())
             {
                 return db.proveedor
-                         .Where(p => p.id_estado == 1 &&
+                         .Where(p => p.estado == 1 &&
                                      (p.dni_proveedor.ToString().Contains(criterio) ||
                                      p.nombre.Contains(criterio) ||
                                      p.apellido.Contains(criterio) ||
@@ -74,7 +74,7 @@ namespace CapaDatos
                     proveedorExistente.apellido = proveedor.apellido;
                     proveedorExistente.email_proveedor = proveedor.email_proveedor;
                     proveedorExistente.telefono = proveedor.telefono;
-                    proveedorExistente.id_estado = proveedor.id_estado;
+                    proveedorExistente.estado = proveedor.estado;
                     db.SaveChanges();
                 }
             }
@@ -87,7 +87,7 @@ namespace CapaDatos
                 var proveedor = db.proveedor.Find(dni);
                 if (proveedor != null)
                 {
-                    proveedor.id_estado = 1;
+                    proveedor.estado = 1;
                     db.SaveChanges();
                 }
             }
@@ -100,7 +100,7 @@ namespace CapaDatos
                 var proveedor = db.proveedor.Find(dni);
                 if (proveedor != null)
                 {
-                    proveedor.id_estado = 0;
+                    proveedor.estado = 0;
                     db.SaveChanges();
                 }
             }

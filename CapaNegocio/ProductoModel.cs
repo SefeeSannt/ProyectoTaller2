@@ -15,7 +15,7 @@ namespace CapaNegocio
         public decimal precio_vta { get; set; }
         public decimal costo { get; set; }
         public int stock { get; set; }
-        public estado id_estado { get; set; }
+        public int estado { get; set; }
         public Categoria id_categoria { get; set; }
     }
 }

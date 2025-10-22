@@ -13,6 +13,6 @@ namespace CapaNegocio
         public string apellido { get; set; }
         public string email_proveedor { get; set; }
         public long telefono { get; set; }
-        public int id_estado { get; set; }
+        public int estado { get; set; }
     }
 }

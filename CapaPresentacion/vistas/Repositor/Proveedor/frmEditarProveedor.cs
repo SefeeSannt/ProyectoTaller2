@@ -71,7 +71,7 @@ namespace CapaPresentacion.vistas.Repositor.Proveedor
                 apellido = txtApellido_proveedor.Text,
                 telefono = long.Parse(txtTelefono_proveedor.Text),
                 email_proveedor = txtEmail_proveedor.Text,
-                id_estado = 1
+                estado = 1
             };
 
             try
