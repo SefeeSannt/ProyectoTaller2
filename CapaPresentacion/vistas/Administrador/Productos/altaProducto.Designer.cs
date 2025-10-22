@@ -116,7 +116,6 @@ namespace CapaPresentacion.Vistas.Administrador.Productos
             this.dgvRegistrarProducto.RowTemplate.Height = 28;
             this.dgvRegistrarProducto.Size = new System.Drawing.Size(716, 499);
             this.dgvRegistrarProducto.TabIndex = 25;
-            this.dgvRegistrarProducto.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvRegistrarProducto_CellContentClick);
             // 
             // lblRegistroProducto
             // 

@@ -179,17 +179,20 @@ namespace CapaPresentacion.Vistas.Administrador.Productos {
                 var cnProducto = new CN_producto();
                 var productos = cnProducto.ObtenerProductos();
                 dgvRegistrarProducto.DataSource = null;
-                dgvRegistrarProducto.DataSource = productos;
+                dgvRegistrarProducto.DataSource = productos.Select(p => new
+                {
+                    p.nombre,
+                    p.descripcion,
+                    categoria = p.id_categoria.descripcion,
+                    p.precio_vta,
+                    p.costo,
+                    p.stock
+                }).ToList();
             }
             catch (Exception ex)
             {
                 MessageBox.Show("Error al cargar productos: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-        }
-
-        private void dgvRegistrarProducto_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-
         }
 
         private void frmAltaProducto_Load_1(object sender, EventArgs e)
