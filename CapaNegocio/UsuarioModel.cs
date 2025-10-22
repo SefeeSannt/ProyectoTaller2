@@ -4,7 +4,6 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using CapaEntidad;
-using CapaDatos;
 
 namespace CapaNegocio
 {
@@ -17,7 +16,7 @@ namespace CapaNegocio
         public long telefono { get; set; }
         public string password { get; set; }
         public string email_usuario { get; set; }
-        public Estado oEstado { get; set; }
+        public estado oEstado { get; set; }
         public Rol oRol { get; set; }
     }
 }

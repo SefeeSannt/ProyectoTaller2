@@ -8,6 +8,8 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using CapaPresentacion.Helpers;
+using CapaNegocio;
+using CapaEntidad;
 
 namespace CapaPresentacion.Vistas.Administrador.Productos {
 
@@ -16,6 +18,13 @@ namespace CapaPresentacion.Vistas.Administrador.Productos {
         public frmAltaProducto()
         {
             InitializeComponent();
+            // Asegura que el evento Load esté registrado si el diseñador no lo hace
+            this.Load += frmAltaProducto_Load;
+        }
+
+        private void frmAltaProducto_Load(object sender, EventArgs e)
+        {
+            CargarCategorias();
         }
 
         private void onlyNumbers_KeyPress(object sender, KeyPressEventArgs e)
@@ -43,12 +52,55 @@ namespace CapaPresentacion.Vistas.Administrador.Productos {
             {
                 txtNombreProd.Clear();
                 txtDescripcionProd.Clear();
-                cboCategoriaProd.SelectedIndex = -1;
+                cboCategoriaProd.SelectedIndex = 0; // placeholder
                 txtPrecioVentaProd.Clear();
                 txtCostoProd.Clear();
                 txtStockProd.Clear();
             }
 
+        }
+
+        private void CargarCategorias()
+        {
+            try
+            {
+                var cnCat = new CN_categoria();
+                var categorias = cnCat.ObtenerCategorias();
+
+                // Si fallo la consulta o está vacía, mostramos un placeholder informativo
+                var lista = new List<Categoria>();
+                lista.Add(new Categoria { id_categoria = 0, descripcion = "-- Seleccione categoría --" });
+
+                if (categorias != null && categorias.Count > 0)
+                {
+                    lista.AddRange(categorias.OrderBy(c => c.descripcion));
+                }
+                else
+                {
+                    // Si no hay categorías en BD, añadimos un item informativo
+                    // (se controla en btnGuardar para evitar inserciones con id 0)
+                }
+
+                // Bind seguro: primero despejar, luego setear Display/Value y DataSource
+                cboCategoriaProd.DataSource = null;
+                cboCategoriaProd.DisplayMember = "descripcion";
+                cboCategoriaProd.ValueMember = "id_categoria";
+                cboCategoriaProd.DataSource = lista;
+                cboCategoriaProd.SelectedIndex = 0;
+
+                // Opcional: evitar que el usuario escriba en el combo
+                cboCategoriaProd.DropDownStyle = ComboBoxStyle.DropDownList;
+            }
+            catch (Exception ex)
+            {
+                // No silencies la excepción: informa al usuario para depurar
+                MessageBox.Show("Error al cargar categorías: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                // Dejar el combo con placeholder mínimo
+                cboCategoriaProd.DataSource = null;
+                cboCategoriaProd.Items.Clear();
+                cboCategoriaProd.Items.Add("-- Error cargando categorías --");
+                cboCategoriaProd.SelectedIndex = 0;
+            }
         }
 
         private void btnGuardar_Click(object sender, EventArgs e)
@@ -61,9 +113,12 @@ namespace CapaPresentacion.Vistas.Administrador.Productos {
                 return;
             }
 
-            if (cboCategoriaProd.SelectedIndex == -1)
+            // Validar que se haya seleccionado una categoría distinta al placeholder (id = 0)
+            if (cboCategoriaProd.SelectedValue == null
+                || !int.TryParse(cboCategoriaProd.SelectedValue.ToString(), out int idCategoria)
+                || idCategoria == 0)
             {
-                errIngresoDatos.SetError(cboCategoriaProd, "Debe seleccionar una categoría.");
+                errIngresoDatos.SetError(cboCategoriaProd, "Debe seleccionar una categoría válida.");
                 return;
             }
 
@@ -73,26 +128,37 @@ namespace CapaPresentacion.Vistas.Administrador.Productos {
                 return;
             }
 
-            if (string.IsNullOrWhiteSpace(txtPrecioVentaProd.Text))
+            var productoModel = new ProductoModel
             {
-                errIngresoDatos.SetError(txtPrecioVentaProd, "Debe ingresar un precio de venta.");
-                return;
-            }
+                nombre = txtNombreProd.Text.Trim(),
+                descripcion = txtDescripcionProd.Text.Trim(),
+                precio_vta = 0m,
+                costo = 0m,
+                stock = 0,
+                id_categoria = new Categoria { id_categoria = idCategoria }
+            };
 
-            if (string.IsNullOrWhiteSpace(txtCostoProd.Text))
+            try
             {
-                errIngresoDatos.SetError(txtCostoProd, "Debe ingresar un costo.");
-                return;
+                var cn = new CN_producto();
+                cn.AgregarProducto(productoModel);
+                MessageBox.Show("Producto registrado con éxito.", "Registro Exitoso", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                this.Close();
             }
-
-            if (string.IsNullOrWhiteSpace(txtStockProd.Text))
+            catch (Exception ex)
             {
-                errIngresoDatos.SetError(txtStockProd, "Debe ingresar un stock.");
-                return;
-            }
+                // Mostrar detalles completos para depurar (temporal)
+                var msg = new StringBuilder();
+                msg.AppendLine("Error al registrar el producto: " + ex.Message);
+                if (ex.InnerException != null) msg.AppendLine("InnerException: " + ex.InnerException.Message);
+                if (ex.InnerException?.InnerException != null) msg.AppendLine("InnerException.Inner: " + ex.InnerException.InnerException.Message);
+                msg.AppendLine();
+                msg.AppendLine("StackTrace:");
+                msg.AppendLine(ex.ToString());
 
-            //guardar en base de datos
-            MessageBox.Show("Producto registrado con éxito.", "Registro Exitoso", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                // Mostrar en MessageBox y opcionalmente escribir en un fichero o Output window
+                MessageBox.Show(msg.ToString(), "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         private void btnCancelar_Click(object sender, EventArgs e)

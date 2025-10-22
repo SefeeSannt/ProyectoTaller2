@@ -35,7 +35,6 @@ namespace CapaDatos
                                 telefono = Convert.ToInt64(dr["telefono"].ToString()),
                                 password = dr["password"].ToString(),
                                 email_usuario = dr["email_usuario"].ToString(),
-                                oEstado = new Estado() { id_estado = Convert.ToInt32(dr["id_estado"].ToString()) },
                                 oRol = new Rol() { id_rol = Convert.ToInt32(dr["id_rol"].ToString()) }
                             });
                         }

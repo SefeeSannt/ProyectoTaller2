@@ -52,6 +52,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ClienteModel.cs" />
+    <Compile Include="CN_categoria.cs" />
     <Compile Include="CN_cliente.cs" />
     <Compile Include="CN_producto.cs" />
     <Compile Include="CN_proveedor.cs" />
