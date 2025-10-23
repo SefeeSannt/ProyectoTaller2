@@ -102,7 +102,7 @@ namespace CapaPresentacion.Vistas.Administrador.Productos {
                 cboCategoriaProd.SelectedIndex = 0;
             }
         }
-
+        /*
         private void btnGuardar_Click(object sender, EventArgs e)
         {
             errIngresoDatos.Clear();
@@ -159,7 +159,9 @@ namespace CapaPresentacion.Vistas.Administrador.Productos {
                 // Mostrar en MessageBox y opcionalmente escribir en un fichero o Output window
                 MessageBox.Show(msg.ToString(), "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-        }
+        }*/
+
+
 
         private void btnCancelar_Click(object sender, EventArgs e)
         {
@@ -198,6 +200,75 @@ namespace CapaPresentacion.Vistas.Administrador.Productos {
         private void frmAltaProducto_Load_1(object sender, EventArgs e)
         {
             cargarProductosEnGrid();
+        }
+
+        private void btnGuardar_Click(object sender, EventArgs e)
+        {
+            errIngresoDatos.Clear();
+
+            // --- VALIDACIÓN 1: CÓDIGO DE PRODUCTO ---
+            if (string.IsNullOrWhiteSpace(txtCodProducto.Text))
+            {
+                errIngresoDatos.SetError(txtCodProducto, "Debe ingresar un código de producto.");
+                return;
+            }
+
+            if (!int.TryParse(txtCodProducto.Text, out int codigoProducto))
+            {
+                errIngresoDatos.SetError(txtCodProducto, "El código debe ser un número entero válido.");
+                return;
+            }
+
+            // --- VALIDACIÓN 2: NOMBRE ---
+            if (string.IsNullOrWhiteSpace(txtNombreProd.Text))
+            {
+                errIngresoDatos.SetError(txtNombreProd, "Debe ingresar un nombre.");
+                return;
+            }
+
+            // --- VALIDACIÓN 3: CATEGORÍA ---
+            if (cboCategoriaProd.SelectedValue == null
+                || !int.TryParse(cboCategoriaProd.SelectedValue.ToString(), out int idCategoria)
+                || idCategoria == 0)
+            {
+                errIngresoDatos.SetError(cboCategoriaProd, "Debe seleccionar una categoría válida.");
+                return;
+            }
+
+            // ... (puedes añadir más validaciones si quieres) ...
+
+            try
+            {
+                var cn = new CN_producto();
+
+                // --- VALIDACIÓN 4: EXISTENCIA DE CÓDIGO ---
+                if (cn.ExisteProducto(codigoProducto))
+                {
+                    errIngresoDatos.SetError(txtCodProducto, "Ese código de producto ya existe. Por favor, ingrese otro.");
+                    return;
+                }
+
+                // --- ARMADO DEL MODELO (Ahora con el código) ---
+                var productoModel = new ProductoModel
+                {
+                    cod_producto = codigoProducto, // <-- ¡Aquí pasamos el código!
+                    nombre = txtNombreProd.Text.Trim(),
+                    descripcion = txtDescripcionProd.Text.Trim(),
+                    precio_vta = 0m,
+                    costo = 0m,
+                    stock = 0,
+                    id_categoria = new Categoria { id_categoria = idCategoria }
+                };
+
+                cn.AgregarProducto(productoModel);
+                MessageBox.Show("Producto registrado con éxito.", "Registro Exitoso", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                cargarProductosEnGrid();
+            }
+            catch (Exception ex)
+            {
+                // ... (tu manejo de errores está bien) ...
+                MessageBox.Show("Error al registrar el producto: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
     }
 }

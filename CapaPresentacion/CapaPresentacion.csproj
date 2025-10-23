@@ -289,11 +289,23 @@
     <Compile Include="vistas\Login\login.Designer.cs">
       <DependentUpon>login.cs</DependentUpon>
     </Compile>
+    <Compile Include="vistas\Repositor\Compra\frmCompraProveedor.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="vistas\Repositor\Compra\frmCompraProveedor.Designer.cs">
+      <DependentUpon>frmCompraProveedor.cs</DependentUpon>
+    </Compile>
     <Compile Include="vistas\Repositor\Compra\frmConsultaCompra.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="vistas\Repositor\Compra\frmConsultaCompra.Designer.cs">
       <DependentUpon>frmConsultaCompra.cs</DependentUpon>
+    </Compile>
+    <Compile Include="vistas\Repositor\Compra\frmRepositorProductos.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="vistas\Repositor\Compra\frmRepositorProductos.Designer.cs">
+      <DependentUpon>frmRepositorProductos.cs</DependentUpon>
     </Compile>
     <Compile Include="vistas\Repositor\Compra\frmRegitroCompraRepositor.cs">
       <SubType>Form</SubType>
@@ -448,8 +460,14 @@
     <EmbeddedResource Include="vistas\Login\login.resx">
       <DependentUpon>login.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="vistas\Repositor\Compra\frmCompraProveedor.resx">
+      <DependentUpon>frmCompraProveedor.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="vistas\Repositor\Compra\frmConsultaCompra.resx">
       <DependentUpon>frmConsultaCompra.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="vistas\Repositor\Compra\frmRepositorProductos.resx">
+      <DependentUpon>frmRepositorProductos.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="vistas\Repositor\Compra\frmRegitroCompraRepositor.resx">
       <DependentUpon>frmRegitroCompraRepositor.cs</DependentUpon>

@@ -32,8 +32,8 @@ namespace CapaPresentacion.Vistas.Administrador.Productos
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.label11 = new System.Windows.Forms.Label();
             this.lblTituloListaProd = new System.Windows.Forms.Label();
             this.dgvRegistrarProducto = new System.Windows.Forms.DataGridView();
@@ -57,7 +57,7 @@ namespace CapaPresentacion.Vistas.Administrador.Productos
             this.txtProdList = new System.Windows.Forms.TextBox();
             this.lblBuscarListProd = new System.Windows.Forms.Label();
             this.iconBtnLupaDetalleUser = new FontAwesome.Sharp.IconButton();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.txtCodProducto = new System.Windows.Forms.TextBox();
             this.lblCodigoProdRegistro = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dgvRegistrarProducto)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.errIngresoDatos)).BeginInit();
@@ -94,15 +94,15 @@ namespace CapaPresentacion.Vistas.Administrador.Productos
             this.dgvRegistrarProducto.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dgvRegistrarProducto.BackgroundColor = System.Drawing.Color.White;
             this.dgvRegistrarProducto.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("Franklin Gothic Medium", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle3.Padding = new System.Windows.Forms.Padding(2);
-            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvRegistrarProducto.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Franklin Gothic Medium", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle1.Padding = new System.Windows.Forms.Padding(2);
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvRegistrarProducto.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.dgvRegistrarProducto.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvRegistrarProducto.Location = new System.Drawing.Point(244, 39);
             this.dgvRegistrarProducto.MultiSelect = false;
@@ -110,9 +110,9 @@ namespace CapaPresentacion.Vistas.Administrador.Productos
             this.dgvRegistrarProducto.ReadOnly = true;
             this.dgvRegistrarProducto.RowHeadersVisible = false;
             this.dgvRegistrarProducto.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.AutoSizeToAllHeaders;
-            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.Color.Black;
-            this.dgvRegistrarProducto.RowsDefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.Color.Black;
+            this.dgvRegistrarProducto.RowsDefaultCellStyle = dataGridViewCellStyle2;
             this.dgvRegistrarProducto.RowTemplate.Height = 28;
             this.dgvRegistrarProducto.Size = new System.Drawing.Size(716, 499);
             this.dgvRegistrarProducto.TabIndex = 25;
@@ -342,13 +342,13 @@ namespace CapaPresentacion.Vistas.Administrador.Productos
             this.iconBtnLupaDetalleUser.TabIndex = 47;
             this.iconBtnLupaDetalleUser.UseVisualStyleBackColor = false;
             // 
-            // textBox1
+            // txtCodProducto
             // 
-            this.textBox1.Location = new System.Drawing.Point(12, 125);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(210, 20);
-            this.textBox1.TabIndex = 53;
-            this.textBox1.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.onlyInteger_KeyPress);
+            this.txtCodProducto.Location = new System.Drawing.Point(12, 125);
+            this.txtCodProducto.Name = "txtCodProducto";
+            this.txtCodProducto.Size = new System.Drawing.Size(210, 20);
+            this.txtCodProducto.TabIndex = 53;
+            this.txtCodProducto.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.onlyInteger_KeyPress);
             // 
             // lblCodigoProdRegistro
             // 
@@ -367,7 +367,7 @@ namespace CapaPresentacion.Vistas.Administrador.Productos
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(960, 538);
-            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.txtCodProducto);
             this.Controls.Add(this.lblCodigoProdRegistro);
             this.Controls.Add(this.txtProdList);
             this.Controls.Add(this.lblBuscarListProd);
@@ -427,7 +427,7 @@ namespace CapaPresentacion.Vistas.Administrador.Productos
         private TextBox txtProdList;
         private Label lblBuscarListProd;
         private FontAwesome.Sharp.IconButton iconBtnLupaDetalleUser;
-        private TextBox textBox1;
+        private TextBox txtCodProducto;
         private Label lblCodigoProdRegistro;
     }
 }
