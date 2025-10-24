@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Dat = CapaDatos;
 using Ent = CapaEntidad;
+using System.Data.Entity;
 
 namespace CapaNegocio
 {
@@ -137,5 +138,67 @@ namespace CapaNegocio
                 return lista;
             }
         }
+
+
+        public void ActualizarStockYCostos(int codProducto, decimal nuevoCosto, int cantidadAAgregar)
+        {
+            decimal nuevoPrecioVenta = nuevoCosto * 1.20m;
+
+            using (var db = new Dat.ProyectoTaller2Entities())
+            {
+                var productoEnDB = db.producto.FirstOrDefault(p => p.cod_producto == codProducto);
+
+                if (productoEnDB != null)
+                {
+                    productoEnDB.costo = (double)nuevoCosto;
+                    productoEnDB.precio_vta = (double)nuevoPrecioVenta;
+
+                    // Sumamos la cantidad al stock existente
+                    productoEnDB.stock = productoEnDB.stock + cantidadAAgregar;
+                }
+                else
+                {
+                    throw new Exception($"No se encontró el producto con código {codProducto} para actualizar.");
+                }
+
+                db.SaveChanges();
+            }
+        }
+
+
+
+        public List<ProductoModel> ListarProductosActivosConStock()
+        {
+            using (var db = new Dat.ProyectoTaller2Entities())
+            {
+               
+                var listaDeDatos = db.producto
+                    .Include("categoria")
+                    .Where(p => p.estado == 1 && p.stock > 0)
+                    .ToList(); 
+
+                var lista = listaDeDatos
+                    .Select(p => new ProductoModel
+                    {
+                        cod_producto = p.cod_producto,
+                        nombre = p.nombre,
+                        stock = (int)p.stock,
+
+                        precio_vta = (decimal)p.precio_vta,
+                        costo = (decimal)p.costo,
+
+                        estado = p.estado,
+                        id_categoria = new Ent.Categoria
+                        {
+                            id_categoria = p.id_categoria,
+                            descripcion = p.categoria?.descripcion
+                        }
+                    }).ToList(); 
+
+                return lista;
+            }
+        }
+
+
     }
 }
