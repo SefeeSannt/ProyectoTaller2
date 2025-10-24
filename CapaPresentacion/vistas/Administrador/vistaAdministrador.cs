@@ -16,6 +16,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using CapaEntidad;
 using CapaNegocio;
+using CapaPresentacion.vistas.Administrador.Productos;
 
 namespace CapaPresentacion.Vistas.Administrador
 {
@@ -175,7 +176,7 @@ namespace CapaPresentacion.Vistas.Administrador
                 form.Close();
             }
 
-            Form frm = new frmBajaUsuario();
+            Form frm = new frmBajaProducto();
             frm.MdiParent = this;
             frm.Dock = DockStyle.Fill;
             frm.Show();
