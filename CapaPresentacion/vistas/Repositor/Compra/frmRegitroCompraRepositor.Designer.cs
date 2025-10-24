@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.btnRegistrar = new FontAwesome.Sharp.IconButton();
             this.txtTotalPagar = new System.Windows.Forms.TextBox();
             this.lblTotalPagar = new System.Windows.Forms.Label();
@@ -43,7 +43,6 @@
             this.txtPrecioVenta = new System.Windows.Forms.TextBox();
             this.txtPrecioCompra = new System.Windows.Forms.TextBox();
             this.lblPrecioVenta = new System.Windows.Forms.Label();
-            this.cboProducto = new System.Windows.Forms.ComboBox();
             this.numUpDCantidad = new System.Windows.Forms.NumericUpDown();
             this.lblCantidad = new System.Windows.Forms.Label();
             this.lblPrecioCompra = new System.Windows.Forms.Label();
@@ -51,6 +50,7 @@
             this.lblProductos = new System.Windows.Forms.Label();
             this.lblCodProducto = new System.Windows.Forms.Label();
             this.gbInforProveedor = new System.Windows.Forms.GroupBox();
+            this.txtNombreProv = new System.Windows.Forms.TextBox();
             this.lblNombreProveedor = new System.Windows.Forms.Label();
             this.txtNumProv = new System.Windows.Forms.TextBox();
             this.lblNumDoc = new System.Windows.Forms.Label();
@@ -60,7 +60,8 @@
             this.lblFecha = new System.Windows.Forms.Label();
             this.errIngresoDatos = new System.Windows.Forms.ErrorProvider(this.components);
             this.btnAgregarProv = new FontAwesome.Sharp.IconButton();
-            this.txtNombreProv = new System.Windows.Forms.TextBox();
+            this.txtProductoNombre = new System.Windows.Forms.TextBox();
+            this.iconButton2 = new FontAwesome.Sharp.IconButton();
             ((System.ComponentModel.ISupportInitialize)(this.dgvRegistroCompras)).BeginInit();
             this.gbInfProducto.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numUpDCantidad)).BeginInit();
@@ -79,20 +80,20 @@
             this.btnRegistrar.IconChar = FontAwesome.Sharp.IconChar.Receipt;
             this.btnRegistrar.IconColor = System.Drawing.Color.White;
             this.btnRegistrar.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            this.btnRegistrar.IconSize = 15;
-            this.btnRegistrar.Location = new System.Drawing.Point(816, 498);
+            this.btnRegistrar.IconSize = 30;
+            this.btnRegistrar.Location = new System.Drawing.Point(816, 475);
             this.btnRegistrar.Name = "btnRegistrar";
-            this.btnRegistrar.Size = new System.Drawing.Size(132, 29);
+            this.btnRegistrar.Size = new System.Drawing.Size(132, 51);
             this.btnRegistrar.TabIndex = 20;
-            this.btnRegistrar.Text = "Registrar";
-            this.btnRegistrar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnRegistrar.Text = "Registrar compra";
+            this.btnRegistrar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.btnRegistrar.UseVisualStyleBackColor = false;
             this.btnRegistrar.Click += new System.EventHandler(this.btnRegistrar_Click);
             // 
             // txtTotalPagar
             // 
             this.txtTotalPagar.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtTotalPagar.Location = new System.Drawing.Point(816, 463);
+            this.txtTotalPagar.Location = new System.Drawing.Point(816, 440);
             this.txtTotalPagar.Multiline = true;
             this.txtTotalPagar.Name = "txtTotalPagar";
             this.txtTotalPagar.ReadOnly = true;
@@ -104,7 +105,7 @@
             // 
             this.lblTotalPagar.AutoSize = true;
             this.lblTotalPagar.Font = new System.Drawing.Font("Franklin Gothic Medium", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblTotalPagar.Location = new System.Drawing.Point(813, 443);
+            this.lblTotalPagar.Location = new System.Drawing.Point(813, 420);
             this.lblTotalPagar.Name = "lblTotalPagar";
             this.lblTotalPagar.Size = new System.Drawing.Size(83, 17);
             this.lblTotalPagar.TabIndex = 19;
@@ -112,17 +113,19 @@
             // 
             // dgvRegistroCompras
             // 
+            this.dgvRegistroCompras.AllowUserToAddRows = false;
+            this.dgvRegistroCompras.AllowUserToDeleteRows = false;
             this.dgvRegistroCompras.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dgvRegistroCompras.BackgroundColor = System.Drawing.Color.White;
             this.dgvRegistroCompras.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvRegistroCompras.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvRegistroCompras.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.dgvRegistroCompras.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvRegistroCompras.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.producto,
@@ -130,12 +133,12 @@
             this.cantidad,
             this.subTotal});
             this.dgvRegistroCompras.EnableHeadersVisualStyles = false;
-            this.dgvRegistroCompras.GridColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.dgvRegistroCompras.Location = new System.Drawing.Point(7, 254);
+            this.dgvRegistroCompras.GridColor = System.Drawing.SystemColors.ButtonShadow;
+            this.dgvRegistroCompras.Location = new System.Drawing.Point(7, 269);
             this.dgvRegistroCompras.Name = "dgvRegistroCompras";
             this.dgvRegistroCompras.ReadOnly = true;
             this.dgvRegistroCompras.RowHeadersVisible = false;
-            this.dgvRegistroCompras.Size = new System.Drawing.Size(800, 272);
+            this.dgvRegistroCompras.Size = new System.Drawing.Size(800, 257);
             this.dgvRegistroCompras.TabIndex = 18;
             // 
             // producto
@@ -171,21 +174,21 @@
             this.btnAgregar.IconColor = System.Drawing.Color.Green;
             this.btnAgregar.IconFont = FontAwesome.Sharp.IconFont.Auto;
             this.btnAgregar.IconSize = 25;
-            this.btnAgregar.Location = new System.Drawing.Point(849, 156);
+            this.btnAgregar.Location = new System.Drawing.Point(821, 141);
             this.btnAgregar.Name = "btnAgregar";
-            this.btnAgregar.Size = new System.Drawing.Size(75, 80);
+            this.btnAgregar.Size = new System.Drawing.Size(75, 78);
             this.btnAgregar.TabIndex = 17;
-            this.btnAgregar.Text = "Agregar Compra";
+            this.btnAgregar.Text = "Agregar Producto";
             this.btnAgregar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.btnAgregar.UseVisualStyleBackColor = false;
             this.btnAgregar.Click += new System.EventHandler(this.btnAgregar_Click);
             // 
             // gbInfProducto
             // 
+            this.gbInfProducto.Controls.Add(this.txtProductoNombre);
             this.gbInfProducto.Controls.Add(this.txtPrecioVenta);
             this.gbInfProducto.Controls.Add(this.txtPrecioCompra);
             this.gbInfProducto.Controls.Add(this.lblPrecioVenta);
-            this.gbInfProducto.Controls.Add(this.cboProducto);
             this.gbInfProducto.Controls.Add(this.numUpDCantidad);
             this.gbInfProducto.Controls.Add(this.lblCantidad);
             this.gbInfProducto.Controls.Add(this.lblPrecioCompra);
@@ -193,7 +196,7 @@
             this.gbInfProducto.Controls.Add(this.lblProductos);
             this.gbInfProducto.Controls.Add(this.lblCodProducto);
             this.gbInfProducto.Font = new System.Drawing.Font("Franklin Gothic Medium", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.gbInfProducto.Location = new System.Drawing.Point(12, 149);
+            this.gbInfProducto.Location = new System.Drawing.Point(11, 132);
             this.gbInfProducto.Name = "gbInfProducto";
             this.gbInfProducto.Size = new System.Drawing.Size(795, 87);
             this.gbInfProducto.TabIndex = 14;
@@ -202,42 +205,34 @@
             // 
             // txtPrecioVenta
             // 
-            this.txtPrecioVenta.Location = new System.Drawing.Point(442, 55);
+            this.txtPrecioVenta.Location = new System.Drawing.Point(383, 59);
             this.txtPrecioVenta.Multiline = true;
             this.txtPrecioVenta.Name = "txtPrecioVenta";
             this.txtPrecioVenta.ReadOnly = true;
-            this.txtPrecioVenta.Size = new System.Drawing.Size(114, 26);
+            this.txtPrecioVenta.Size = new System.Drawing.Size(114, 22);
             this.txtPrecioVenta.TabIndex = 13;
             // 
             // txtPrecioCompra
             // 
-            this.txtPrecioCompra.Location = new System.Drawing.Point(322, 55);
+            this.txtPrecioCompra.Location = new System.Drawing.Point(254, 58);
             this.txtPrecioCompra.Multiline = true;
             this.txtPrecioCompra.Name = "txtPrecioCompra";
-            this.txtPrecioCompra.Size = new System.Drawing.Size(114, 26);
+            this.txtPrecioCompra.Size = new System.Drawing.Size(114, 23);
             this.txtPrecioCompra.TabIndex = 12;
             // 
             // lblPrecioVenta
             // 
             this.lblPrecioVenta.AutoSize = true;
             this.lblPrecioVenta.Font = new System.Drawing.Font("Franklin Gothic Medium", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblPrecioVenta.Location = new System.Drawing.Point(439, 35);
+            this.lblPrecioVenta.Location = new System.Drawing.Point(380, 39);
             this.lblPrecioVenta.Name = "lblPrecioVenta";
             this.lblPrecioVenta.Size = new System.Drawing.Size(81, 17);
             this.lblPrecioVenta.TabIndex = 11;
             this.lblPrecioVenta.Text = "Precio Venta:";
             // 
-            // cboProducto
-            // 
-            this.cboProducto.FormattingEnabled = true;
-            this.cboProducto.Location = new System.Drawing.Point(134, 55);
-            this.cboProducto.Name = "cboProducto";
-            this.cboProducto.Size = new System.Drawing.Size(164, 25);
-            this.cboProducto.TabIndex = 10;
-            // 
             // numUpDCantidad
             // 
-            this.numUpDCantidad.Location = new System.Drawing.Point(576, 55);
+            this.numUpDCantidad.Location = new System.Drawing.Point(503, 60);
             this.numUpDCantidad.Name = "numUpDCantidad";
             this.numUpDCantidad.Size = new System.Drawing.Size(120, 22);
             this.numUpDCantidad.TabIndex = 9;
@@ -247,7 +242,7 @@
             // 
             this.lblCantidad.AutoSize = true;
             this.lblCantidad.Font = new System.Drawing.Font("Franklin Gothic Medium", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblCantidad.Location = new System.Drawing.Point(573, 37);
+            this.lblCantidad.Location = new System.Drawing.Point(500, 39);
             this.lblCantidad.Name = "lblCantidad";
             this.lblCantidad.Size = new System.Drawing.Size(63, 17);
             this.lblCantidad.TabIndex = 8;
@@ -257,7 +252,7 @@
             // 
             this.lblPrecioCompra.AutoSize = true;
             this.lblPrecioCompra.Font = new System.Drawing.Font("Franklin Gothic Medium", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblPrecioCompra.Location = new System.Drawing.Point(319, 35);
+            this.lblPrecioCompra.Location = new System.Drawing.Point(251, 39);
             this.lblPrecioCompra.Name = "lblPrecioCompra";
             this.lblPrecioCompra.Size = new System.Drawing.Size(93, 17);
             this.lblPrecioCompra.TabIndex = 4;
@@ -267,7 +262,7 @@
             // 
             this.txtCodProducto.Location = new System.Drawing.Point(19, 58);
             this.txtCodProducto.Name = "txtCodProducto";
-            this.txtCodProducto.Size = new System.Drawing.Size(100, 22);
+            this.txtCodProducto.Size = new System.Drawing.Size(83, 22);
             this.txtCodProducto.TabIndex = 2;
             this.txtCodProducto.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.onlyInteger_KeyPress);
             // 
@@ -275,7 +270,7 @@
             // 
             this.lblProductos.AutoSize = true;
             this.lblProductos.Font = new System.Drawing.Font("Franklin Gothic Medium", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblProductos.Location = new System.Drawing.Point(131, 37);
+            this.lblProductos.Location = new System.Drawing.Point(118, 39);
             this.lblProductos.Name = "lblProductos";
             this.lblProductos.Size = new System.Drawing.Size(58, 17);
             this.lblProductos.TabIndex = 1;
@@ -285,7 +280,7 @@
             // 
             this.lblCodProducto.AutoSize = true;
             this.lblCodProducto.Font = new System.Drawing.Font("Franklin Gothic Medium", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblCodProducto.Location = new System.Drawing.Point(16, 42);
+            this.lblCodProducto.Location = new System.Drawing.Point(16, 37);
             this.lblCodProducto.Name = "lblCodProducto";
             this.lblCodProducto.Size = new System.Drawing.Size(86, 17);
             this.lblCodProducto.TabIndex = 0;
@@ -298,12 +293,20 @@
             this.gbInforProveedor.Controls.Add(this.txtNumProv);
             this.gbInforProveedor.Controls.Add(this.lblNumDoc);
             this.gbInforProveedor.Font = new System.Drawing.Font("Franklin Gothic Medium", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.gbInforProveedor.Location = new System.Drawing.Point(386, 56);
+            this.gbInforProveedor.Location = new System.Drawing.Point(386, 42);
             this.gbInforProveedor.Name = "gbInforProveedor";
             this.gbInforProveedor.Size = new System.Drawing.Size(421, 87);
             this.gbInforProveedor.TabIndex = 15;
             this.gbInforProveedor.TabStop = false;
             this.gbInforProveedor.Text = "Información Proveedor";
+            // 
+            // txtNombreProv
+            // 
+            this.txtNombreProv.Location = new System.Drawing.Point(173, 55);
+            this.txtNombreProv.Multiline = true;
+            this.txtNombreProv.Name = "txtNombreProv";
+            this.txtNombreProv.Size = new System.Drawing.Size(129, 23);
+            this.txtNombreProv.TabIndex = 4;
             // 
             // lblNombreProveedor
             // 
@@ -349,7 +352,7 @@
             this.gbInfCompra.Controls.Add(this.dateTimePicker1);
             this.gbInfCompra.Controls.Add(this.lblFecha);
             this.gbInfCompra.Font = new System.Drawing.Font("Franklin Gothic Medium", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.gbInfCompra.Location = new System.Drawing.Point(11, 56);
+            this.gbInfCompra.Location = new System.Drawing.Point(11, 42);
             this.gbInfCompra.Name = "gbInfCompra";
             this.gbInfCompra.Size = new System.Drawing.Size(355, 87);
             this.gbInfCompra.TabIndex = 12;
@@ -386,7 +389,7 @@
             this.btnAgregarProv.IconColor = System.Drawing.Color.Green;
             this.btnAgregarProv.IconFont = FontAwesome.Sharp.IconFont.Auto;
             this.btnAgregarProv.IconSize = 25;
-            this.btnAgregarProv.Location = new System.Drawing.Point(849, 63);
+            this.btnAgregarProv.Location = new System.Drawing.Point(821, 49);
             this.btnAgregarProv.Name = "btnAgregarProv";
             this.btnAgregarProv.Size = new System.Drawing.Size(75, 80);
             this.btnAgregarProv.TabIndex = 21;
@@ -395,13 +398,31 @@
             this.btnAgregarProv.UseVisualStyleBackColor = false;
             this.btnAgregarProv.Click += new System.EventHandler(this.btnAgregarProv_Click);
             // 
-            // txtNombreProv
+            // txtProductoNombre
             // 
-            this.txtNombreProv.Location = new System.Drawing.Point(173, 55);
-            this.txtNombreProv.Multiline = true;
-            this.txtNombreProv.Name = "txtNombreProv";
-            this.txtNombreProv.Size = new System.Drawing.Size(129, 23);
-            this.txtNombreProv.TabIndex = 4;
+            this.txtProductoNombre.Location = new System.Drawing.Point(121, 59);
+            this.txtProductoNombre.Name = "txtProductoNombre";
+            this.txtProductoNombre.Size = new System.Drawing.Size(127, 22);
+            this.txtProductoNombre.TabIndex = 14;
+            // 
+            // iconButton2
+            // 
+            this.iconButton2.BackColor = System.Drawing.Color.Green;
+            this.iconButton2.FlatAppearance.BorderSize = 0;
+            this.iconButton2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.iconButton2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.iconButton2.ForeColor = System.Drawing.Color.White;
+            this.iconButton2.IconChar = FontAwesome.Sharp.IconChar.Receipt;
+            this.iconButton2.IconColor = System.Drawing.Color.White;
+            this.iconButton2.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            this.iconButton2.IconSize = 15;
+            this.iconButton2.Location = new System.Drawing.Point(682, 225);
+            this.iconButton2.Name = "iconButton2";
+            this.iconButton2.Size = new System.Drawing.Size(125, 38);
+            this.iconButton2.TabIndex = 22;
+            this.iconButton2.Text = "Registrar producto";
+            this.iconButton2.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.iconButton2.UseVisualStyleBackColor = false;
             // 
             // frmRegitroCompraRepositor
             // 
@@ -409,6 +430,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(960, 538);
+            this.Controls.Add(this.iconButton2);
             this.Controls.Add(this.btnAgregarProv);
             this.Controls.Add(this.btnRegistrar);
             this.Controls.Add(this.txtTotalPagar);
@@ -462,12 +484,13 @@
         private System.Windows.Forms.Label lblFecha;
         private System.Windows.Forms.ErrorProvider errIngresoDatos;
         private System.Windows.Forms.DateTimePicker dateTimePicker1;
-        private System.Windows.Forms.ComboBox cboProducto;
         private System.Windows.Forms.Label lblNombreProveedor;
         private System.Windows.Forms.TextBox txtPrecioCompra;
         private System.Windows.Forms.Label lblPrecioVenta;
         private System.Windows.Forms.TextBox txtPrecioVenta;
         private FontAwesome.Sharp.IconButton btnAgregarProv;
         private System.Windows.Forms.TextBox txtNombreProv;
+        private System.Windows.Forms.TextBox txtProductoNombre;
+        private FontAwesome.Sharp.IconButton iconButton2;
     }
 }
