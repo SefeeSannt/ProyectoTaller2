@@ -13,6 +13,8 @@ namespace CapaPresentacion.vistas.Repositor.Compra
 {
     public partial class frmRepositorProductos : Form
     {
+        public ProductoModel ProductoSeleccionado { get; private set; }
+
         public frmRepositorProductos()
         {
             InitializeComponent();
@@ -29,12 +31,86 @@ namespace CapaPresentacion.vistas.Repositor.Compra
                 dgvListaProducto.Columns["id_estado"].Visible = false;
             }
 
-
         }
 
         private void frmListaProductos_Load(object sender, EventArgs e)
         {
             cargarListaProductoGrid();
         }
+
+        private void dgvListaProducto_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex >= 0)
+            {
+
+                this.ProductoSeleccionado = dgvListaProducto.Rows[e.RowIndex].DataBoundItem as ProductoModel;
+
+                if (this.ProductoSeleccionado != null)
+                {
+                    this.DialogResult = DialogResult.OK;
+
+                    this.Close();
+                }
+            }
+        }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     }
 }

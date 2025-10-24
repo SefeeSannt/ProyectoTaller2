@@ -54,12 +54,6 @@ namespace CapaPresentacion.Vistas.Repositor
                 return;
             }
 
-            if (cboProducto.SelectedIndex == -1)
-            {
-                errIngresoDatos.SetError(cboProducto, "Ingrese un producto");
-                return;
-            }
-
             if (string.IsNullOrEmpty(txtPrecioCompra.Text))
             {
                 errIngresoDatos.SetError(txtPrecioCompra, "Ingrese un precio de compra");
@@ -77,21 +71,20 @@ namespace CapaPresentacion.Vistas.Repositor
             MessageBox.Show("Compra registrada con exito", "Registro Exitoso", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
 
+        /*Agrega el producto selecciconado en los txtbox de frmRegistroCompra*/
         private void btnAgregar_Click(object sender, EventArgs e)
         {
-            // Ya no necesitas cerrar otros formularios hijos aquí
-
-            // Abre frmListaProductos como un DIÁLOGO.
-            // Esto pausa el formulario actual hasta que el usuario
-            // seleccione un producto y cierre la lista.
-
             using (frmRepositorProductos frm = new frmRepositorProductos())
             {
-                frm.ShowDialog();
-
-                // Opcional: Después de que se cierre el diálogo,
-                // puedes recuperar el producto que el usuario seleccionó.
-                // if (frm.DialogResult == DialogResult.OK) { ... }
+                //frm.ShowDialog();
+                DialogResult resultado = frm.ShowDialog();
+                if (resultado == DialogResult.OK)
+                {
+                    ProductoModel productoElegido = frm.ProductoSeleccionado;
+                    txtCodProducto.Text = productoElegido.cod_producto.ToString();
+                    txtProductoNombre.Text = productoElegido.nombre;
+                    txtPrecioCompra.Text = productoElegido.costo.ToString();
+                }
             }
         }
 
@@ -99,33 +92,19 @@ namespace CapaPresentacion.Vistas.Repositor
         {
             using (frmCompraProveedor frm = new frmCompraProveedor())
             {
-                // 1. Abre la lista de proveedores como un diálogo
                 DialogResult resultado = frm.ShowDialog();
 
-                // 2. Verifica si el usuario cerró con "OK" (haciendo doble clic)
                 if (resultado == DialogResult.OK)
                 {
-                    // 3. Lee la propiedad pública que creamos en el Paso 1
                     ProveedorModel proveedorElegido = frm.ProveedorSeleccionado;
 
-                    // 4. Asigna los valores a tus TextBoxes
                     txtNumProv.Text = proveedorElegido.dni_proveedor.ToString();
 
-                    // ¡AQUÍ PUEDES RELLENAR OTROS TEXTBOXES!
-                    // Por ejemplo, si tuvieras un TextBox txtNombreProv:
+            
                      txtNombreProv.Text = proveedorElegido.nombre;
                 }
             }
-            // Si el usuario cierra la ventana con la 'X', el resultado no es 'OK'
-            // y el código simplemente no hace nada, que es lo que queremos.
-            /* using (frmCompraProveedor frm = new frmCompraProveedor())
-             {
-                 frm.ShowDialog();
-
-                 // Opcional: Después de que se cierre el diálogo,
-                 // puedes recuperar el producto que el usuario seleccionó.
-                 // if (frm.DialogResult == DialogResult.OK) { ... }
-             }*/
+         
         }
     }
 }

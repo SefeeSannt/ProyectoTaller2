@@ -39,13 +39,16 @@
             // 
             this.dgvListaProveedores.AllowUserToAddRows = false;
             this.dgvListaProveedores.AllowUserToDeleteRows = false;
-            this.dgvListaProveedores.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
+            this.dgvListaProveedores.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dgvListaProveedores.BackgroundColor = System.Drawing.Color.LightSteelBlue;
             this.dgvListaProveedores.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.dgvListaProveedores.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvListaProveedores.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.dgvListaProveedores.Location = new System.Drawing.Point(0, 38);
             this.dgvListaProveedores.Name = "dgvListaProveedores";
+            this.dgvListaProveedores.ReadOnly = true;
             this.dgvListaProveedores.RowHeadersVisible = false;
-            this.dgvListaProveedores.Size = new System.Drawing.Size(492, 412);
+            this.dgvListaProveedores.Size = new System.Drawing.Size(736, 412);
             this.dgvListaProveedores.TabIndex = 0;
             this.dgvListaProveedores.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvListaProveedores_CellDoubleClick);
             // 
@@ -59,7 +62,7 @@
             this.btnVolver.IconColor = System.Drawing.Color.Black;
             this.btnVolver.IconFont = FontAwesome.Sharp.IconFont.Auto;
             this.btnVolver.IconSize = 25;
-            this.btnVolver.Location = new System.Drawing.Point(457, 7);
+            this.btnVolver.Location = new System.Drawing.Point(689, 7);
             this.btnVolver.Name = "btnVolver";
             this.btnVolver.Size = new System.Drawing.Size(35, 25);
             this.btnVolver.TabIndex = 34;
@@ -77,14 +80,13 @@
             // 
             // btnBuscar
             // 
-            this.btnBuscar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
+            this.btnBuscar.BackColor = System.Drawing.Color.White;
             this.btnBuscar.FlatAppearance.BorderSize = 0;
-            this.btnBuscar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnBuscar.IconChar = FontAwesome.Sharp.IconChar.MagnifyingGlass;
-            this.btnBuscar.IconColor = System.Drawing.Color.White;
+            this.btnBuscar.IconColor = System.Drawing.Color.Black;
             this.btnBuscar.IconFont = FontAwesome.Sharp.IconFont.Auto;
             this.btnBuscar.IconSize = 19;
-            this.btnBuscar.Location = new System.Drawing.Point(213, 10);
+            this.btnBuscar.Location = new System.Drawing.Point(213, 12);
             this.btnBuscar.Name = "btnBuscar";
             this.btnBuscar.Size = new System.Drawing.Size(41, 22);
             this.btnBuscar.TabIndex = 33;
