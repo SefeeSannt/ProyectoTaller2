@@ -331,10 +331,10 @@
     <Compile Include="vistas\Repositor\Proveedor\frmConsultaProveedores.Designer.cs">
       <DependentUpon>frmConsultaProveedores.cs</DependentUpon>
     </Compile>
-    <Compile Include="vistas\Repositor\Proveedor\frmEditarProducto.cs">
+    <Compile Include="vistas\Administrador\Productos\frmEditarProducto.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="vistas\Repositor\Proveedor\frmEditarProducto.Designer.cs">
+    <Compile Include="vistas\Administrador\Productos\frmEditarProducto.Designer.cs">
       <DependentUpon>frmEditarProducto.cs</DependentUpon>
     </Compile>
     <Compile Include="vistas\Repositor\Proveedor\frmEditarProveedor.cs">
@@ -481,7 +481,7 @@
     <EmbeddedResource Include="vistas\Repositor\Proveedor\frmConsultaProveedores.resx">
       <DependentUpon>frmConsultaProveedores.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="vistas\Repositor\Proveedor\frmEditarProducto.resx">
+    <EmbeddedResource Include="vistas\Administrador\Productos\frmEditarProducto.resx">
       <DependentUpon>frmEditarProducto.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="vistas\Repositor\Proveedor\frmEditarProveedor.resx">

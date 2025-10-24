@@ -235,8 +235,6 @@ namespace CapaPresentacion.Vistas.Administrador.Productos {
                 return;
             }
 
-            // ... (puedes añadir más validaciones si quieres) ...
-
             try
             {
                 var cn = new CN_producto();
@@ -251,7 +249,7 @@ namespace CapaPresentacion.Vistas.Administrador.Productos {
                 // --- ARMADO DEL MODELO (Ahora con el código) ---
                 var productoModel = new ProductoModel
                 {
-                    cod_producto = codigoProducto, // <-- ¡Aquí pasamos el código!
+                    cod_producto = codigoProducto,
                     nombre = txtNombreProd.Text.Trim(),
                     descripcion = txtDescripcionProd.Text.Trim(),
                     precio_vta = 0m,
@@ -266,7 +264,6 @@ namespace CapaPresentacion.Vistas.Administrador.Productos {
             }
             catch (Exception ex)
             {
-                // ... (tu manejo de errores está bien) ...
                 MessageBox.Show("Error al registrar el producto: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
