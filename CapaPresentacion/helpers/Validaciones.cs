@@ -46,5 +46,26 @@ namespace CapaPresentacion.Helpers
             e.Handled = true;
         }
 
+        public static void onlyDecimal(object sender, KeyPressEventArgs e, ErrorProvider err)
+        {
+            TextBox txt = sender as TextBox;
+            if (txt == null) return;
+
+            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar) && (e.KeyChar != ','))
+            {
+                e.Handled = true;
+                if (err != null) err.SetError(txt, "Solo se permiten números y una coma");
+            }
+            else if ((e.KeyChar == ',') && (txt.Text.IndexOf(',') > -1))
+            {
+                e.Handled = true;
+                if (err != null) err.SetError(txt, "Solo se permite una coma");
+            }
+            else
+            {
+                if (err != null) err.Clear();
+            }
+        }
+
     }
 }

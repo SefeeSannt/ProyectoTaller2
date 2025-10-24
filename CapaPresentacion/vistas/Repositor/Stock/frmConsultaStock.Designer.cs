@@ -32,14 +32,9 @@
             this.lblBuscarPor = new System.Windows.Forms.Label();
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.iconBtnBuscar = new FontAwesome.Sharp.IconButton();
-            this.dgvConsultaStock = new System.Windows.Forms.DataGridView();
-            this.codigo = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.producto = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.descripcion = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.stockActual = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.nivelMinimo = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dgvStock = new System.Windows.Forms.DataGridView();
             this.lblBajaUsuario = new System.Windows.Forms.Label();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvConsultaStock)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvStock)).BeginInit();
             this.SuspendLayout();
             // 
             // lblBuscarPor
@@ -78,12 +73,13 @@
             this.iconBtnBuscar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.iconBtnBuscar.UseVisualStyleBackColor = true;
             // 
-            // dgvConsultaStock
+            // dgvStock
             // 
-            this.dgvConsultaStock.AllowUserToAddRows = false;
-            this.dgvConsultaStock.AllowUserToDeleteRows = false;
-            this.dgvConsultaStock.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.dgvConsultaStock.BackgroundColor = System.Drawing.Color.White;
+            this.dgvStock.AllowUserToAddRows = false;
+            this.dgvStock.AllowUserToDeleteRows = false;
+            this.dgvStock.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dgvStock.BackgroundColor = System.Drawing.Color.White;
+            this.dgvStock.BorderStyle = System.Windows.Forms.BorderStyle.None;
             dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
             dataGridViewCellStyle1.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -91,51 +87,15 @@
             dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
             dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
             dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvConsultaStock.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
-            this.dgvConsultaStock.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvConsultaStock.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.codigo,
-            this.producto,
-            this.descripcion,
-            this.stockActual,
-            this.nivelMinimo});
-            this.dgvConsultaStock.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dgvConsultaStock.Location = new System.Drawing.Point(0, 42);
-            this.dgvConsultaStock.Name = "dgvConsultaStock";
-            this.dgvConsultaStock.ReadOnly = true;
-            this.dgvConsultaStock.RowHeadersVisible = false;
-            this.dgvConsultaStock.Size = new System.Drawing.Size(960, 496);
-            this.dgvConsultaStock.TabIndex = 5;
-            // 
-            // codigo
-            // 
-            this.codigo.HeaderText = "Código";
-            this.codigo.Name = "codigo";
-            this.codigo.ReadOnly = true;
-            // 
-            // producto
-            // 
-            this.producto.HeaderText = "Producto";
-            this.producto.Name = "producto";
-            this.producto.ReadOnly = true;
-            // 
-            // descripcion
-            // 
-            this.descripcion.HeaderText = "Descripción";
-            this.descripcion.Name = "descripcion";
-            this.descripcion.ReadOnly = true;
-            // 
-            // stockActual
-            // 
-            this.stockActual.HeaderText = "Stock Actual";
-            this.stockActual.Name = "stockActual";
-            this.stockActual.ReadOnly = true;
-            // 
-            // nivelMinimo
-            // 
-            this.nivelMinimo.HeaderText = "Nivel Minímo";
-            this.nivelMinimo.Name = "nivelMinimo";
-            this.nivelMinimo.ReadOnly = true;
+            this.dgvStock.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            this.dgvStock.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvStock.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dgvStock.Location = new System.Drawing.Point(0, 42);
+            this.dgvStock.Name = "dgvStock";
+            this.dgvStock.ReadOnly = true;
+            this.dgvStock.RowHeadersVisible = false;
+            this.dgvStock.Size = new System.Drawing.Size(960, 496);
+            this.dgvStock.TabIndex = 5;
             // 
             // lblBajaUsuario
             // 
@@ -156,7 +116,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(960, 538);
-            this.Controls.Add(this.dgvConsultaStock);
+            this.Controls.Add(this.dgvStock);
             this.Controls.Add(this.iconBtnBuscar);
             this.Controls.Add(this.textBox1);
             this.Controls.Add(this.lblBuscarPor);
@@ -164,7 +124,8 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "frmConsultaStock";
             this.Text = "frmConsultaStock";
-            ((System.ComponentModel.ISupportInitialize)(this.dgvConsultaStock)).EndInit();
+            this.Load += new System.EventHandler(this.frmConsultaStock_Load);
+            ((System.ComponentModel.ISupportInitialize)(this.dgvStock)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -174,12 +135,7 @@
         private System.Windows.Forms.Label lblBuscarPor;
         private System.Windows.Forms.TextBox textBox1;
         private FontAwesome.Sharp.IconButton iconBtnBuscar;
-        private System.Windows.Forms.DataGridView dgvConsultaStock;
-        private System.Windows.Forms.DataGridViewTextBoxColumn codigo;
-        private System.Windows.Forms.DataGridViewTextBoxColumn producto;
-        private System.Windows.Forms.DataGridViewTextBoxColumn descripcion;
-        private System.Windows.Forms.DataGridViewTextBoxColumn stockActual;
-        private System.Windows.Forms.DataGridViewTextBoxColumn nivelMinimo;
+        private System.Windows.Forms.DataGridView dgvStock;
         private System.Windows.Forms.Label lblBajaUsuario;
     }
 }
