@@ -18,20 +18,24 @@ namespace CapaPresentacion.Vistas.Repositor
 {
     public partial class frmVistaRepositor : Form
     {
+        private Usuario usuarioLogueado;
+
         public frmVistaRepositor(Usuario oUsuario)
         {
-            InitializeComponent();
-            lblNombre.Text = oUsuario.nombre + " " + oUsuario.apellido;
+            InitializeComponent();            lblNombre.Text = oUsuario.nombre + " " + oUsuario.apellido;
+            this.usuarioLogueado = oUsuario;
         }
 
         private void tsmiRegistrarCompra_Click(object sender, EventArgs e)
         {
+            frmRegitroCompraRepositor frmCompra = new frmRegitroCompraRepositor(this.usuarioLogueado);
+
             foreach (Form form in this.MdiChildren)
             {
                 form.Close();
             }
 
-            Form frm = new frmRegitroCompraRepositor();
+            Form frm = new frmRegitroCompraRepositor(this.usuarioLogueado);
             frm.MdiParent = this;
             frm.Dock = DockStyle.Fill;
             frm.Show();
