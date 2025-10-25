@@ -59,11 +59,6 @@
             this.panel1 = new System.Windows.Forms.Panel();
             this.pnlConsultaVentas2 = new System.Windows.Forms.Panel();
             this.button1 = new System.Windows.Forms.Button();
-            this.proveedor = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.fechaVenta = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.formaPagoConsVenta = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ventaTotal = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.verDetalle = new System.Windows.Forms.DataGridViewButtonColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dgvDetalleCompra)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvConsultaCompra)).BeginInit();
             this.panel1.SuspendLayout();
@@ -211,12 +206,6 @@
             dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
             this.dgvConsultaCompra.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
             this.dgvConsultaCompra.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvConsultaCompra.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.proveedor,
-            this.fechaVenta,
-            this.formaPagoConsVenta,
-            this.ventaTotal,
-            this.verDetalle});
             this.dgvConsultaCompra.EnableHeadersVisualStyles = false;
             this.dgvConsultaCompra.Location = new System.Drawing.Point(15, 252);
             this.dgvConsultaCompra.Name = "dgvConsultaCompra";
@@ -399,38 +388,6 @@
             this.button1.Text = "Imprimir detalle";
             this.button1.UseVisualStyleBackColor = true;
             // 
-            // proveedor
-            // 
-            this.proveedor.HeaderText = "Proveedor";
-            this.proveedor.Name = "proveedor";
-            this.proveedor.ReadOnly = true;
-            // 
-            // fechaVenta
-            // 
-            this.fechaVenta.HeaderText = "Fecha venta";
-            this.fechaVenta.Name = "fechaVenta";
-            this.fechaVenta.ReadOnly = true;
-            // 
-            // formaPagoConsVenta
-            // 
-            this.formaPagoConsVenta.HeaderText = "Forma de Pago";
-            this.formaPagoConsVenta.Name = "formaPagoConsVenta";
-            this.formaPagoConsVenta.ReadOnly = true;
-            // 
-            // ventaTotal
-            // 
-            this.ventaTotal.HeaderText = "Total";
-            this.ventaTotal.Name = "ventaTotal";
-            this.ventaTotal.ReadOnly = true;
-            // 
-            // verDetalle
-            // 
-            this.verDetalle.HeaderText = "Ver detalle";
-            this.verDetalle.Name = "verDetalle";
-            this.verDetalle.ReadOnly = true;
-            this.verDetalle.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.verDetalle.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
-            // 
             // frmConsultaCompra
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -451,6 +408,7 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "frmConsultaCompra";
             this.Text = "frmDetalleCompraRepositor";
+            this.Load += new System.EventHandler(this.frmConsultaCompra_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgvDetalleCompra)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvConsultaCompra)).EndInit();
             this.panel1.ResumeLayout(false);
@@ -492,10 +450,5 @@
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Panel pnlConsultaVentas2;
         private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn proveedor;
-        private System.Windows.Forms.DataGridViewTextBoxColumn fechaVenta;
-        private System.Windows.Forms.DataGridViewTextBoxColumn formaPagoConsVenta;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ventaTotal;
-        private System.Windows.Forms.DataGridViewButtonColumn verDetalle;
     }
 }

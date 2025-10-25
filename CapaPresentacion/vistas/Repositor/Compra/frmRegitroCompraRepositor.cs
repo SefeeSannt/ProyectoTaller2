@@ -13,16 +13,23 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using CapaEntidad;
+
 
 namespace CapaPresentacion.Vistas.Repositor
 {
     public partial class frmRegitroCompraRepositor : Form
     {
+        private Usuario usuarioActual;
+        private CapaEntidad.Proveedor proveedorActual;
+
         private int idCategoriaTemporal = 0;
 
-        public frmRegitroCompraRepositor()
+        public frmRegitroCompraRepositor(Usuario oUsuario)
         {
             InitializeComponent();
+
+            this.usuarioActual = oUsuario;
         }
 
         private void onlyNumber_KeyPress(object sender, KeyPressEventArgs e)
@@ -66,26 +73,56 @@ namespace CapaPresentacion.Vistas.Repositor
 
             try
             {
-                var cnProducto = new CN_producto();
+
+
+                // Construir request de compra desde la grilla
+                var request = new CompraRequest
+                {
+                    dni_proveedor = this.proveedorActual,
+                    fecha_compra = dtpFechaCompra.Value,
+                    monto_total = decimal.Parse(txtTotalPagar.Text),
+                    detalles = new List<DetalleCompraModel>(),
+
+                    dni_usuario = this.usuarioActual
+                }; 
 
                 foreach (DataGridViewRow row in dgvRegistroCompras.Rows)
                 {
+                    // Orden de las columnas al añadir filas:
+                    // 0: dniProveedor, 1: nombreProveedor, 2: fecha, 3: idCategoria,
+                    // 4: codProducto, 5: nombreProducto, 6: precioCompra, 7: cantidad, 8: subTotal
+                   
+                    
+                    int codProducto = Convert.ToInt32(row.Cells[4].Value);
+                    decimal precioCompra = Convert.ToDecimal(row.Cells[6].Value);
+                    int cantidadAAgregar = Convert.ToInt32(row.Cells[7].Value);
+                    decimal subTotal = Convert.ToDecimal(row.Cells[8].Value);
 
-                    int codProducto = Convert.ToInt32(row.Cells["colCodProducto"].Value);
-
-                    decimal nuevoCosto = Convert.ToDecimal(row.Cells["colPrecioCompra"].Value);
-                    int cantidadAAgregar = Convert.ToInt32(row.Cells["colCantidad"].Value);
-
-                    cnProducto.ActualizarStockYCostos(codProducto, nuevoCosto, cantidadAAgregar);
+                    request.detalles.Add(new DetalleCompraModel
+                    {
+                        cod_producto = codProducto,
+                        cantidad = cantidadAAgregar,
+                        precio_compra = precioCompra,
+                        subtotal = subTotal
+                    });
                 }
 
-                MessageBox.Show("¡Compra registrada y stock actualizado con éxito!", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                var cnCompra = new CN_compra();
+                int codGenerado = cnCompra.RegistrarCompra(request);
 
-                LimpiarFormularioCompra();
+                if (codGenerado > 0)
+                {
+                    MessageBox.Show($"¡Compra registrada (N° {codGenerado}) y stock actualizado con éxito!", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    LimpiarFormularioCompra();
+                }
+                else
+                {
+                    MessageBox.Show("No se pudo registrar la compra.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Error al registrar la compra: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Error al registrar la compra: " + ex.GetBaseException().Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -97,6 +134,7 @@ namespace CapaPresentacion.Vistas.Repositor
                 if (resultado == DialogResult.OK)
                 {
                     ProductoModel productoElegido = frm.ProductoSeleccionado;
+                 
                     txtCodProducto.Text = productoElegido.cod_producto.ToString();
                     txtProductoNombre.Text = productoElegido.nombre;
                     txtPrecioCompra.Text = productoElegido.costo.ToString();
@@ -114,16 +152,27 @@ namespace CapaPresentacion.Vistas.Repositor
 
                 if (resultado == DialogResult.OK)
                 {
-                    ProveedorModel proveedorElegido = frm.ProveedorSeleccionado;
+                    // 1. Obtienes el Modelo (de CapaNegocio)
+                    // Asumo que tu popup devuelve este tipo, basado en el error
+                    CapaNegocio.ProveedorModel proveedorElegido = frm.ProveedorSeleccionado;
 
-                    txtNumProv.Text = proveedorElegido.dni_proveedor.ToString();
+                    // 2. Conviertes el Modelo a la Entidad
+                    // (Esta es la corrección)
+                    this.proveedorActual = new CapaEntidad.Proveedor
+                    {
+                        // Copia las propiedades del modelo a la entidad
+                        dni_proveedor = proveedorElegido.dni_proveedor,
+                        nombre = proveedorElegido.nombre,
+                        // (Copia cualquier otra propiedad que necesites)
+                    };
 
-            
-                     txtNombreProv.Text = proveedorElegido.nombre;
+                    // 3. Actualizas la UI usando la variable 'proveedorActual'
+                    txtNumProv.Text = this.proveedorActual.dni_proveedor.ToString();
+                    txtNombreProv.Text = this.proveedorActual.nombre;
                 }
             }
-         
         }
+         
 
         private void txtPrecioCompra_KeyPress(object sender, KeyPressEventArgs e)
         {
@@ -241,27 +290,27 @@ namespace CapaPresentacion.Vistas.Repositor
             }
 
          
-            string dniProveedor = txtNumProv.Text;
-            string nombreProveedor = txtNombreProv.Text;
+            string dni_proveedor = txtNumProv.Text;
+            string nombre = txtNombreProv.Text;
             DateTime fechaCompra = dtpFechaCompra.Value;
-            int idCategoria = this.idCategoriaTemporal;
-            string codProducto = txtCodProducto.Text;
-            string nombreProducto = txtProductoNombre.Text;
-            decimal precioCompra = decimal.Parse(txtPrecioCompra.Text);
+            int id_categoria = this.idCategoriaTemporal;
+            string cod_producto = txtCodProducto.Text;
+            string nombre_producto = txtProductoNombre.Text;
+            decimal monto_total = decimal.Parse(txtPrecioCompra.Text);
             int cantidad = (int)numUpDCantidad.Value;
 
             // ---  CALCULAR SUBTOTAL ---
-            decimal subTotal = precioCompra * cantidad;
+            decimal subTotal = monto_total * cantidad;
 
             // ---  AÑADIR FILA A LA GRILLA ---
             dgvRegistroCompras.Rows.Add(
-                dniProveedor, 
-                nombreProveedor,
+                dni_proveedor, 
+                nombre,
                 fechaCompra,
-                idCategoria,
-                codProducto,
-                nombreProducto,
-                precioCompra,
+                id_categoria,
+                cod_producto,
+                nombre_producto,
+                monto_total,
                 cantidad,
                 subTotal
             );

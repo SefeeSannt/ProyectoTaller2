@@ -58,6 +58,8 @@
       <DependentUpon>ProyectoTaller2Model.tt</DependentUpon>
     </Compile>
     <Compile Include="CD_cliente.cs" />
+    <Compile Include="CD_compra.cs" />
+    <Compile Include="CD_detalle_compra.cs" />
     <Compile Include="CD_producto.cs" />
     <Compile Include="CD_proveedor.cs" />
     <Compile Include="CD_usuario.cs" />

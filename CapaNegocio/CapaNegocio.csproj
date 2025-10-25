@@ -54,9 +54,14 @@
     <Compile Include="ClienteModel.cs" />
     <Compile Include="CN_categoria.cs" />
     <Compile Include="CN_cliente.cs" />
+    <Compile Include="CN_compra.cs" />
+    <Compile Include="CN_compraDetalle.cs" />
     <Compile Include="CN_producto.cs" />
     <Compile Include="CN_proveedor.cs" />
     <Compile Include="CN_usuario.cs" />
+    <Compile Include="CompraModel.cs" />
+    <Compile Include="CompraRequest.cs" />
+    <Compile Include="DetalleCompraModel.cs" />
     <Compile Include="ProductoModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ProveedorModel.cs" />

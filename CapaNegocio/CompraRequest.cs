@@ -1,18 +1,16 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using CapaEntidad;
 
-namespace CapaEntidad
+namespace CapaNegocio
 {
-    public class Compra
+    public class CompraRequest
     {
         public int cod_compra { get; set; }
         public DateTime fecha_compra { get; set; }
         public decimal monto_total { get; set; }
-        public Usuario dni_usuario { get; set; }
         public Proveedor dni_proveedor { get; set; }
-      
+        public Usuario dni_usuario { get; set; }
+        public List<DetalleCompraModel> detalles { get; set; } = new List<DetalleCompraModel>();
     }
 }
