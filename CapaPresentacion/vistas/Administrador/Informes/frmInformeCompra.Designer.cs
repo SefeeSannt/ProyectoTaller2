@@ -29,25 +29,25 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea3 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend3 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series3 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea4 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend4 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series4 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea5 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend5 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series5 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea6 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend6 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series6 = new System.Windows.Forms.DataVisualization.Charting.Series();
             this.lblTotalCompra = new System.Windows.Forms.Label();
             this.lblTitulo4 = new System.Windows.Forms.Label();
             this.iconPictureBox1 = new FontAwesome.Sharp.IconPictureBox();
             this.lblResumen3 = new System.Windows.Forms.Label();
             this.pnlResumen = new System.Windows.Forms.Panel();
-            this.lblTotalCompras = new System.Windows.Forms.Label();
-            this.lblTitulo6 = new System.Windows.Forms.Label();
+            this.lblMontoTotalCompras = new System.Windows.Forms.Label();
+            this.lblTituloT = new System.Windows.Forms.Label();
             this.iconPictureBox2 = new FontAwesome.Sharp.IconPictureBox();
             this.lblTotalCategoria = new System.Windows.Forms.Label();
-            this.lblTitulo5 = new System.Windows.Forms.Label();
+            this.lblTituloC = new System.Windows.Forms.Label();
             this.iconPictureBox3 = new FontAwesome.Sharp.IconPictureBox();
             this.pnlDiagramaCategoria = new System.Windows.Forms.Panel();
-            this.chDonuts = new System.Windows.Forms.DataVisualization.Charting.Chart();
+            this.chCategoria = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.lblTitulo2 = new System.Windows.Forms.Label();
             this.pnlDiagramaCompra = new System.Windows.Forms.Panel();
             this.lblTitulo1 = new System.Windows.Forms.Label();
@@ -55,8 +55,6 @@
             this.panel1 = new System.Windows.Forms.Panel();
             this.dtpFechaHasta = new System.Windows.Forms.DateTimePicker();
             this.lblFechaHasta = new System.Windows.Forms.Label();
-            this.cbCategoria = new System.Windows.Forms.ComboBox();
-            this.lblCategoria = new System.Windows.Forms.Label();
             this.lblProducto = new System.Windows.Forms.Label();
             this.txtProducto = new System.Windows.Forms.TextBox();
             this.lblProveedor = new System.Windows.Forms.Label();
@@ -65,13 +63,13 @@
             this.txtProveedor = new System.Windows.Forms.TextBox();
             this.lblInformeCompra = new System.Windows.Forms.Label();
             this.errIngresoDatos = new System.Windows.Forms.ErrorProvider(this.components);
-            this.btnFiltrar = new System.Windows.Forms.Button();
+            this.btnBuscar = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.iconPictureBox1)).BeginInit();
             this.pnlResumen.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.iconPictureBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.iconPictureBox3)).BeginInit();
             this.pnlDiagramaCategoria.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.chDonuts)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.chCategoria)).BeginInit();
             this.pnlDiagramaCompra.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.chCompra)).BeginInit();
             this.panel1.SuspendLayout();
@@ -126,11 +124,11 @@
             // pnlResumen
             // 
             this.pnlResumen.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.pnlResumen.Controls.Add(this.lblTotalCompras);
-            this.pnlResumen.Controls.Add(this.lblTitulo6);
+            this.pnlResumen.Controls.Add(this.lblMontoTotalCompras);
+            this.pnlResumen.Controls.Add(this.lblTituloT);
             this.pnlResumen.Controls.Add(this.iconPictureBox2);
             this.pnlResumen.Controls.Add(this.lblTotalCategoria);
-            this.pnlResumen.Controls.Add(this.lblTitulo5);
+            this.pnlResumen.Controls.Add(this.lblTituloC);
             this.pnlResumen.Controls.Add(this.iconPictureBox3);
             this.pnlResumen.Controls.Add(this.lblTotalCompra);
             this.pnlResumen.Controls.Add(this.lblTitulo4);
@@ -141,26 +139,26 @@
             this.pnlResumen.Size = new System.Drawing.Size(920, 107);
             this.pnlResumen.TabIndex = 18;
             // 
-            // lblTotalCompras
+            // lblMontoTotalCompras
             // 
-            this.lblTotalCompras.AutoSize = true;
-            this.lblTotalCompras.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblTotalCompras.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
-            this.lblTotalCompras.Location = new System.Drawing.Point(542, 62);
-            this.lblTotalCompras.Name = "lblTotalCompras";
-            this.lblTotalCompras.Size = new System.Drawing.Size(23, 25);
-            this.lblTotalCompras.TabIndex = 26;
-            this.lblTotalCompras.Text = "0";
+            this.lblMontoTotalCompras.AutoSize = true;
+            this.lblMontoTotalCompras.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblMontoTotalCompras.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
+            this.lblMontoTotalCompras.Location = new System.Drawing.Point(542, 62);
+            this.lblMontoTotalCompras.Name = "lblMontoTotalCompras";
+            this.lblMontoTotalCompras.Size = new System.Drawing.Size(23, 25);
+            this.lblMontoTotalCompras.TabIndex = 26;
+            this.lblMontoTotalCompras.Text = "0";
             // 
-            // lblTitulo6
+            // lblTituloT
             // 
-            this.lblTitulo6.AutoSize = true;
-            this.lblTitulo6.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
-            this.lblTitulo6.Location = new System.Drawing.Point(542, 49);
-            this.lblTitulo6.Name = "lblTitulo6";
-            this.lblTitulo6.Size = new System.Drawing.Size(89, 13);
-            this.lblTitulo6.TabIndex = 25;
-            this.lblTitulo6.Text = "Total de compras";
+            this.lblTituloT.AutoSize = true;
+            this.lblTituloT.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
+            this.lblTituloT.Location = new System.Drawing.Point(542, 49);
+            this.lblTituloT.Name = "lblTituloT";
+            this.lblTituloT.Size = new System.Drawing.Size(89, 13);
+            this.lblTituloT.TabIndex = 25;
+            this.lblTituloT.Text = "Total de compras";
             // 
             // iconPictureBox2
             // 
@@ -187,15 +185,15 @@
             this.lblTotalCategoria.TabIndex = 23;
             this.lblTotalCategoria.Text = "0";
             // 
-            // lblTitulo5
+            // lblTituloC
             // 
-            this.lblTitulo5.AutoSize = true;
-            this.lblTitulo5.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
-            this.lblTitulo5.Location = new System.Drawing.Point(323, 49);
-            this.lblTitulo5.Name = "lblTitulo5";
-            this.lblTitulo5.Size = new System.Drawing.Size(93, 13);
-            this.lblTitulo5.TabIndex = 22;
-            this.lblTitulo5.Text = "Total de categoria";
+            this.lblTituloC.AutoSize = true;
+            this.lblTituloC.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
+            this.lblTituloC.Location = new System.Drawing.Point(323, 49);
+            this.lblTituloC.Name = "lblTituloC";
+            this.lblTituloC.Size = new System.Drawing.Size(93, 13);
+            this.lblTituloC.TabIndex = 22;
+            this.lblTituloC.Text = "Total de categoria";
             // 
             // iconPictureBox3
             // 
@@ -214,33 +212,33 @@
             // pnlDiagramaCategoria
             // 
             this.pnlDiagramaCategoria.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.pnlDiagramaCategoria.Controls.Add(this.chDonuts);
+            this.pnlDiagramaCategoria.Controls.Add(this.chCategoria);
             this.pnlDiagramaCategoria.Controls.Add(this.lblTitulo2);
             this.pnlDiagramaCategoria.Location = new System.Drawing.Point(579, 125);
             this.pnlDiagramaCategoria.Name = "pnlDiagramaCategoria";
             this.pnlDiagramaCategoria.Size = new System.Drawing.Size(364, 290);
             this.pnlDiagramaCategoria.TabIndex = 17;
             // 
-            // chDonuts
+            // chCategoria
             // 
-            chartArea3.Name = "ChartArea1";
-            this.chDonuts.ChartAreas.Add(chartArea3);
-            legend3.Name = "Legend1";
-            this.chDonuts.Legends.Add(legend3);
-            this.chDonuts.Location = new System.Drawing.Point(15, 42);
-            this.chDonuts.Name = "chDonuts";
-            this.chDonuts.Palette = System.Windows.Forms.DataVisualization.Charting.ChartColorPalette.Berry;
-            series3.BorderWidth = 2;
-            series3.ChartArea = "ChartArea1";
-            series3.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Doughnut;
-            series3.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            series3.IsValueShownAsLabel = true;
-            series3.Legend = "Legend1";
-            series3.Name = "Series1";
-            this.chDonuts.Series.Add(series3);
-            this.chDonuts.Size = new System.Drawing.Size(300, 195);
-            this.chDonuts.TabIndex = 14;
-            this.chDonuts.Text = "chart2";
+            chartArea5.Name = "ChartArea1";
+            this.chCategoria.ChartAreas.Add(chartArea5);
+            legend5.Name = "Legend1";
+            this.chCategoria.Legends.Add(legend5);
+            this.chCategoria.Location = new System.Drawing.Point(15, 42);
+            this.chCategoria.Name = "chCategoria";
+            this.chCategoria.Palette = System.Windows.Forms.DataVisualization.Charting.ChartColorPalette.Berry;
+            series5.BorderWidth = 2;
+            series5.ChartArea = "ChartArea1";
+            series5.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Doughnut;
+            series5.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            series5.IsValueShownAsLabel = true;
+            series5.Legend = "Legend1";
+            series5.Name = "Series1";
+            this.chCategoria.Series.Add(series5);
+            this.chCategoria.Size = new System.Drawing.Size(300, 195);
+            this.chCategoria.TabIndex = 14;
+            this.chCategoria.Text = "chCategoria";
             // 
             // lblTitulo2
             // 
@@ -274,25 +272,25 @@
             // 
             // chCompra
             // 
-            chartArea4.AxisX.MajorGrid.LineColor = System.Drawing.Color.LightGray;
-            chartArea4.AxisX2.IsLabelAutoFit = false;
-            chartArea4.AxisX2.LabelStyle.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            chartArea4.AxisY.IsLabelAutoFit = false;
-            chartArea4.AxisY.LabelStyle.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            chartArea4.AxisY.MajorGrid.LineColor = System.Drawing.Color.LightGray;
-            chartArea4.Name = "ChartArea1";
-            this.chCompra.ChartAreas.Add(chartArea4);
-            legend4.Name = "Legend1";
-            this.chCompra.Legends.Add(legend4);
+            chartArea6.AxisX.MajorGrid.LineColor = System.Drawing.Color.LightGray;
+            chartArea6.AxisX2.IsLabelAutoFit = false;
+            chartArea6.AxisX2.LabelStyle.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            chartArea6.AxisY.IsLabelAutoFit = false;
+            chartArea6.AxisY.LabelStyle.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            chartArea6.AxisY.MajorGrid.LineColor = System.Drawing.Color.LightGray;
+            chartArea6.Name = "ChartArea1";
+            this.chCompra.ChartAreas.Add(chartArea6);
+            legend6.Name = "Legend1";
+            this.chCompra.Legends.Add(legend6);
             this.chCompra.Location = new System.Drawing.Point(19, 43);
             this.chCompra.Name = "chCompra";
             this.chCompra.Palette = System.Windows.Forms.DataVisualization.Charting.ChartColorPalette.SemiTransparent;
-            series4.BorderWidth = 4;
-            series4.ChartArea = "ChartArea1";
-            series4.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
-            series4.Legend = "Legend1";
-            series4.Name = "Productos";
-            this.chCompra.Series.Add(series4);
+            series6.BorderWidth = 4;
+            series6.ChartArea = "ChartArea1";
+            series6.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
+            series6.Legend = "Legend1";
+            series6.Name = "Productos";
+            this.chCompra.Series.Add(series6);
             this.chCompra.Size = new System.Drawing.Size(517, 228);
             this.chCompra.TabIndex = 9;
             this.chCompra.Text = "chart1";
@@ -300,11 +298,9 @@
             // panel1
             // 
             this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.panel1.Controls.Add(this.btnFiltrar);
+            this.panel1.Controls.Add(this.btnBuscar);
             this.panel1.Controls.Add(this.dtpFechaHasta);
             this.panel1.Controls.Add(this.lblFechaHasta);
-            this.panel1.Controls.Add(this.cbCategoria);
-            this.panel1.Controls.Add(this.lblCategoria);
             this.panel1.Controls.Add(this.lblProducto);
             this.panel1.Controls.Add(this.txtProducto);
             this.panel1.Controls.Add(this.lblProveedor);
@@ -334,30 +330,11 @@
             this.lblFechaHasta.TabIndex = 15;
             this.lblFechaHasta.Text = "Fecha hasta";
             // 
-            // cbCategoria
-            // 
-            this.cbCategoria.FormattingEnabled = true;
-            this.cbCategoria.Location = new System.Drawing.Point(637, 33);
-            this.cbCategoria.Name = "cbCategoria";
-            this.cbCategoria.Size = new System.Drawing.Size(168, 21);
-            this.cbCategoria.TabIndex = 14;
-            this.cbCategoria.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.cbCategoria_KeyPress);
-            // 
-            // lblCategoria
-            // 
-            this.lblCategoria.AutoSize = true;
-            this.lblCategoria.Font = new System.Drawing.Font("Franklin Gothic Medium", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblCategoria.Location = new System.Drawing.Point(634, 13);
-            this.lblCategoria.Name = "lblCategoria";
-            this.lblCategoria.Size = new System.Drawing.Size(62, 17);
-            this.lblCategoria.TabIndex = 13;
-            this.lblCategoria.Text = "Categoria";
-            // 
             // lblProducto
             // 
             this.lblProducto.AutoSize = true;
             this.lblProducto.Font = new System.Drawing.Font("Franklin Gothic Medium", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblProducto.Location = new System.Drawing.Point(460, 13);
+            this.lblProducto.Location = new System.Drawing.Point(434, 13);
             this.lblProducto.Name = "lblProducto";
             this.lblProducto.Size = new System.Drawing.Size(58, 17);
             this.lblProducto.TabIndex = 11;
@@ -365,7 +342,7 @@
             // 
             // txtProducto
             // 
-            this.txtProducto.Location = new System.Drawing.Point(463, 33);
+            this.txtProducto.Location = new System.Drawing.Point(437, 33);
             this.txtProducto.Name = "txtProducto";
             this.txtProducto.Size = new System.Drawing.Size(159, 20);
             this.txtProducto.TabIndex = 12;
@@ -374,7 +351,7 @@
             // 
             this.lblProveedor.AutoSize = true;
             this.lblProveedor.Font = new System.Drawing.Font("Franklin Gothic Medium", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblProveedor.Location = new System.Drawing.Point(286, 13);
+            this.lblProveedor.Location = new System.Drawing.Point(260, 13);
             this.lblProveedor.Name = "lblProveedor";
             this.lblProveedor.Size = new System.Drawing.Size(65, 17);
             this.lblProveedor.TabIndex = 9;
@@ -400,7 +377,7 @@
             // 
             // txtProveedor
             // 
-            this.txtProveedor.Location = new System.Drawing.Point(289, 34);
+            this.txtProveedor.Location = new System.Drawing.Point(263, 34);
             this.txtProveedor.Name = "txtProveedor";
             this.txtProveedor.Size = new System.Drawing.Size(159, 20);
             this.txtProveedor.TabIndex = 10;
@@ -419,14 +396,15 @@
             // 
             this.errIngresoDatos.ContainerControl = this;
             // 
-            // btnFiltrar
+            // btnBuscar
             // 
-            this.btnFiltrar.Location = new System.Drawing.Point(828, 32);
-            this.btnFiltrar.Name = "btnFiltrar";
-            this.btnFiltrar.Size = new System.Drawing.Size(75, 23);
-            this.btnFiltrar.TabIndex = 17;
-            this.btnFiltrar.Text = "Filtrar";
-            this.btnFiltrar.UseVisualStyleBackColor = true;
+            this.btnBuscar.Location = new System.Drawing.Point(619, 33);
+            this.btnBuscar.Name = "btnBuscar";
+            this.btnBuscar.Size = new System.Drawing.Size(106, 23);
+            this.btnBuscar.TabIndex = 18;
+            this.btnBuscar.Text = "Buscar";
+            this.btnBuscar.UseVisualStyleBackColor = true;
+            this.btnBuscar.Click += new System.EventHandler(this.btnBuscar_Click);
             // 
             // frmInformeCompra
             // 
@@ -441,6 +419,7 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "frmInformeCompra";
             this.Text = "frmInformeCompra";
+            this.Load += new System.EventHandler(this.frmInformeCompra_Load);
             ((System.ComponentModel.ISupportInitialize)(this.iconPictureBox1)).EndInit();
             this.pnlResumen.ResumeLayout(false);
             this.pnlResumen.PerformLayout();
@@ -448,7 +427,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.iconPictureBox3)).EndInit();
             this.pnlDiagramaCategoria.ResumeLayout(false);
             this.pnlDiagramaCategoria.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.chDonuts)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.chCategoria)).EndInit();
             this.pnlDiagramaCompra.ResumeLayout(false);
             this.pnlDiagramaCompra.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.chCompra)).EndInit();
@@ -467,10 +446,10 @@
         private System.Windows.Forms.Label lblResumen3;
         private System.Windows.Forms.Panel pnlResumen;
         private System.Windows.Forms.Label lblTotalCategoria;
-        private System.Windows.Forms.Label lblTitulo5;
+        private System.Windows.Forms.Label lblTituloC;
         private FontAwesome.Sharp.IconPictureBox iconPictureBox3;
         private System.Windows.Forms.Panel pnlDiagramaCategoria;
-        private System.Windows.Forms.DataVisualization.Charting.Chart chDonuts;
+        private System.Windows.Forms.DataVisualization.Charting.Chart chCategoria;
         private System.Windows.Forms.Label lblTitulo2;
         private System.Windows.Forms.Panel pnlDiagramaCompra;
         private System.Windows.Forms.Label lblTitulo1;
@@ -483,14 +462,12 @@
         private System.Windows.Forms.Label lblInformeCompra;
         private System.Windows.Forms.Label lblProducto;
         private System.Windows.Forms.TextBox txtProducto;
-        private System.Windows.Forms.Label lblTotalCompras;
-        private System.Windows.Forms.Label lblTitulo6;
+        private System.Windows.Forms.Label lblMontoTotalCompras;
+        private System.Windows.Forms.Label lblTituloT;
         private FontAwesome.Sharp.IconPictureBox iconPictureBox2;
-        private System.Windows.Forms.ComboBox cbCategoria;
-        private System.Windows.Forms.Label lblCategoria;
         private System.Windows.Forms.DateTimePicker dtpFechaHasta;
         private System.Windows.Forms.Label lblFechaHasta;
         private System.Windows.Forms.ErrorProvider errIngresoDatos;
-        private System.Windows.Forms.Button btnFiltrar;
+        private System.Windows.Forms.Button btnBuscar;
     }
 }

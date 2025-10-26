@@ -12,7 +12,7 @@ namespace CapaDatos
     public class CD_compra
     {
 
-        public DataTable ListarCompras()
+        public DataTable ListarCompras(DateTime fechaDesde, DateTime fechaHasta, string dniProveedor)
         {
             DataTable tabla = new DataTable();
             using (SqlConnection con = new SqlConnection(conexion.cadena))
@@ -20,26 +20,41 @@ namespace CapaDatos
                 try
                 {
                     con.Open();
-                    // Uso de nombre + apellido (campos presentes en tu entidad proveedor)
-                    string query = @"
+                    string queryBase = @"
                         SELECT 
                             c.cod_compra,
                             (ISNULL(p.nombre,'') + ' ' + ISNULL(p.apellido,'')) AS proveedor,
                             c.fecha_compra AS fecha_compra,
                             c.monto_total AS monto_total
                         FROM compra c
-                        INNER JOIN proveedor p ON c.dni_proveedor = p.dni_proveedor
-                        ORDER BY c.fecha_compra DESC";
-                    using (SqlCommand cmd = new SqlCommand(query, con))
+                        INNER JOIN proveedor p ON c.dni_proveedor = p.dni_proveedor";
+                    
+
+                    string whereClause = " WHERE c.fecha_compra BETWEEN @fechaDesde AND @fechaHasta";
+
+                    using (SqlCommand cmd = new SqlCommand())
                     {
+                        
+                        cmd.Parameters.AddWithValue("@fechaDesde", fechaDesde.Date);
+                        cmd.Parameters.AddWithValue("@fechaHasta", fechaHasta.Date.AddDays(1).AddSeconds(-1));
+
+                        if (!string.IsNullOrEmpty(dniProveedor))
+                        {
+                            whereClause += " AND p.dni_proveedor = @dniProveedor";
+                            cmd.Parameters.AddWithValue("@dniProveedor", dniProveedor);
+                        }
+
+                        cmd.CommandText = queryBase + whereClause + " ORDER BY c.fecha_compra DESC";
+                        cmd.Connection = con;
                         cmd.CommandType = CommandType.Text;
+
                         SqlDataAdapter da = new SqlDataAdapter(cmd);
                         da.Fill(tabla);
                     }
                 }
                 catch (Exception ex)
                 {
-                    throw new Exception("Error en CD_compra.ListarCompras: " + ex.Message, ex); 
+                    throw new Exception("Error en CD_compra.ListarCompras: " + ex.Message, ex);
                 }
             }
             return tabla;
@@ -200,5 +215,184 @@ namespace CapaDatos
                 return true;
             }
         }
+
+        public DataTable ObtenerDashboardMontoPorDia(DateTime fechaDesde, DateTime fechaHasta, string nombreProveedor, string nombreProducto)
+        {
+            DataTable tabla = new DataTable();
+            using (SqlConnection con = new SqlConnection(conexion.cadena))
+            {
+                try
+                {
+                    con.Open();
+                    // Consulta base
+                    string queryBase = @"
+                SELECT 
+                    CAST(c.fecha_compra AS DATE) AS Fecha, 
+                    SUM(c.monto_total) AS Total
+                FROM compra c
+                INNER JOIN proveedor p ON c.dni_proveedor = p.dni_proveedor
+                WHERE c.fecha_compra BETWEEN @fechaDesde AND @fechaHasta";
+
+                    using (SqlCommand cmd = new SqlCommand())
+                    {
+                        cmd.Parameters.AddWithValue("@fechaDesde", fechaDesde.Date);
+                        cmd.Parameters.AddWithValue("@fechaHasta", fechaHasta.Date.AddDays(1).AddSeconds(-1)); // Incluye el día completo
+
+                        // Filtro dinámico para Proveedor
+                        if (!string.IsNullOrEmpty(nombreProveedor))
+                        {
+                            queryBase += " AND (p.nombre LIKE @prov OR p.apellido LIKE @prov)";
+                            cmd.Parameters.AddWithValue("@prov", "%" + nombreProveedor + "%");
+                        }
+
+                        // Filtro dinámico para Producto
+                        if (!string.IsNullOrEmpty(nombreProducto))
+                        {
+                            // Subconsulta para ver si la compra CONTIENE ese producto
+                            queryBase += @" AND EXISTS (
+                        SELECT 1 
+                        FROM detalle_compra dc
+                        INNER JOIN producto pr ON dc.cod_producto = pr.cod_producto
+                        WHERE dc.cod_compra = c.cod_compra AND pr.nombre LIKE @prod
+                    )";
+                            cmd.Parameters.AddWithValue("@prod", "%" + nombreProducto + "%");
+                        }
+
+                        queryBase += " GROUP BY CAST(c.fecha_compra AS DATE) ORDER BY Fecha";
+
+                        cmd.CommandText = queryBase;
+                        cmd.Connection = con;
+                        cmd.CommandType = CommandType.Text;
+
+                        SqlDataAdapter da = new SqlDataAdapter(cmd);
+                        da.Fill(tabla);
+                    }
+                }
+                catch (Exception ex)
+                {
+                    throw new Exception("Error en CD_compra.ObtenerDashboardMontoPorDia: " + ex.Message, ex);
+                }
+            }
+            return tabla;
+        }
+
+        public DataTable ObtenerDashboardCategoria(DateTime fechaDesde, DateTime fechaHasta, string nombreProveedor, string nombreProducto)
+        {
+            DataTable tabla = new DataTable();
+            using (SqlConnection con = new SqlConnection(conexion.cadena))
+            {
+                try
+                {
+                    con.Open();
+                    // Consulta base: une todo para poder filtrar
+                    string queryBase = @"
+                SELECT 
+                    ca.descripcion AS Categoria, 
+                    SUM(dc.cantidad) AS Cantidad
+                FROM detalle_compra dc
+                INNER JOIN producto pr ON dc.cod_producto = pr.cod_producto
+                INNER JOIN categoria ca ON pr.id_categoria = ca.id_categoria -- (¡Verifica este 'id_categoria'!)
+                INNER JOIN compra c ON dc.cod_compra = c.cod_compra
+                INNER JOIN proveedor p ON c.dni_proveedor = p.dni_proveedor
+                WHERE c.fecha_compra BETWEEN @fechaDesde AND @fechaHasta";
+
+                    using (SqlCommand cmd = new SqlCommand())
+                    {
+                        cmd.Parameters.AddWithValue("@fechaDesde", fechaDesde.Date);
+                        cmd.Parameters.AddWithValue("@fechaHasta", fechaHasta.Date.AddDays(1).AddSeconds(-1));
+
+                        // Filtro dinámico para Proveedor
+                        if (!string.IsNullOrEmpty(nombreProveedor))
+                        {
+                            queryBase += " AND (p.nombre LIKE @prov OR p.apellido LIKE @prov)";
+                            cmd.Parameters.AddWithValue("@prov", "%" + nombreProveedor + "%");
+                        }
+
+                        // Filtro dinámico para Producto
+                        if (!string.IsNullOrEmpty(nombreProducto))
+                        {
+                            queryBase += " AND pr.nombre LIKE @prod";
+                            cmd.Parameters.AddWithValue("@prod", "%" + nombreProducto + "%");
+                        }
+
+                        queryBase += " GROUP BY ca.descripcion ORDER BY Cantidad DESC";
+
+                        cmd.CommandText = queryBase;
+                        cmd.Connection = con;
+                        cmd.CommandType = CommandType.Text;
+
+                        SqlDataAdapter da = new SqlDataAdapter(cmd);
+                        da.Fill(tabla);
+                    }
+                }
+                catch (Exception ex)
+                {
+                    throw new Exception("Error en CD_compra.ObtenerDashboardCategoria: " + ex.Message, ex);
+                }
+            }
+            return tabla;
+        }
+
+
+        // Este método solo cuenta el N° de compras 
+        public int ObtenerTotalComprasFiltrado(DateTime fechaDesde, DateTime fechaHasta, string nombreProveedor, string nombreProducto)
+        {
+            int total = 0;
+            using (SqlConnection con = new SqlConnection(conexion.cadena))
+            {
+                try
+                {
+                    con.Open();
+                    // 1. Consulta base: solo cuenta los IDs de compra únicos
+                    string queryBase = @"
+                SELECT COUNT(DISTINCT c.cod_compra)
+                FROM compra c
+                INNER JOIN proveedor p ON c.dni_proveedor = p.dni_proveedor
+                WHERE c.fecha_compra BETWEEN @fechaDesde AND @fechaHasta";
+
+                    using (SqlCommand cmd = new SqlCommand())
+                    {
+                        cmd.Parameters.AddWithValue("@fechaDesde", fechaDesde.Date);
+                        cmd.Parameters.AddWithValue("@fechaHasta", fechaHasta.Date.AddDays(1).AddSeconds(-1));
+
+                        // 2. Filtro dinámico de Proveedor
+                        if (!string.IsNullOrEmpty(nombreProveedor))
+                        {
+                            queryBase += " AND (p.nombre LIKE @prov OR p.apellido LIKE @prov)";
+                            cmd.Parameters.AddWithValue("@prov", "%" + nombreProveedor + "%");
+                        }
+
+                        // 3. Filtro dinámico de Producto
+                        if (!string.IsNullOrEmpty(nombreProducto))
+                        {
+                            queryBase += @" AND EXISTS (
+                        SELECT 1 
+                        FROM detalle_compra dc
+                        INNER JOIN producto pr ON dc.cod_producto = pr.cod_producto
+                        WHERE dc.cod_compra = c.cod_compra AND pr.nombre LIKE @prod
+                    )";
+                            cmd.Parameters.AddWithValue("@prod", "%" + nombreProducto + "%");
+                        }
+
+                        cmd.CommandText = queryBase;
+                        cmd.Connection = con;
+                        cmd.CommandType = CommandType.Text;
+
+                        // 4. ExecuteScalar devuelve un solo valor (nuestro conteo)
+                        object result = cmd.ExecuteScalar();
+                        if (result != null && result != DBNull.Value)
+                        {
+                            total = Convert.ToInt32(result);
+                        }
+                    }
+                }
+                catch (Exception ex)
+                {
+                    throw new Exception("Error en CD_compra.ObtenerTotalComprasFiltrado: " + ex.Message, ex);
+                }
+            }
+            return total;
+        }
+
     }
 }

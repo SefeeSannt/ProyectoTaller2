@@ -38,12 +38,12 @@
             this.lblTituloTotalVentas = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.dgvConsultaCompra = new System.Windows.Forms.DataGridView();
-            this.dateTimePicker2 = new System.Windows.Forms.DateTimePicker();
+            this.dtpFechaHasta = new System.Windows.Forms.DateTimePicker();
             this.lblfechaHasta = new System.Windows.Forms.Label();
             this.btnBuscar = new System.Windows.Forms.Button();
-            this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
+            this.dtpFechaDesde = new System.Windows.Forms.DateTimePicker();
             this.lblFechaDesde = new System.Windows.Forms.Label();
-            this.txtCliente_Ventas = new System.Windows.Forms.TextBox();
+            this.txtDniProv = new System.Windows.Forms.TextBox();
             this.lblClienteConsVentas = new System.Windows.Forms.Label();
             this.lblDniProveedor = new System.Windows.Forms.Label();
             this.lblApellidoProveedor = new System.Windows.Forms.Label();
@@ -173,13 +173,13 @@
             this.dgvConsultaCompra.TabIndex = 34;
             this.dgvConsultaCompra.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvConsultaCompra_CellContentClick);
             // 
-            // dateTimePicker2
+            // dtpFechaHasta
             // 
-            this.dateTimePicker2.Location = new System.Drawing.Point(217, 31);
-            this.dateTimePicker2.Name = "dateTimePicker2";
-            this.dateTimePicker2.Size = new System.Drawing.Size(159, 20);
-            this.dateTimePicker2.TabIndex = 16;
-            this.dateTimePicker2.TabStop = false;
+            this.dtpFechaHasta.Location = new System.Drawing.Point(217, 31);
+            this.dtpFechaHasta.Name = "dtpFechaHasta";
+            this.dtpFechaHasta.Size = new System.Drawing.Size(159, 20);
+            this.dtpFechaHasta.TabIndex = 16;
+            this.dtpFechaHasta.TabStop = false;
             // 
             // lblfechaHasta
             // 
@@ -203,14 +203,15 @@
             this.btnBuscar.TabIndex = 14;
             this.btnBuscar.Text = "Buscar";
             this.btnBuscar.UseVisualStyleBackColor = false;
+            this.btnBuscar.Click += new System.EventHandler(this.btnBuscar_Click);
             // 
-            // dateTimePicker1
+            // dtpFechaDesde
             // 
-            this.dateTimePicker1.Location = new System.Drawing.Point(11, 31);
-            this.dateTimePicker1.Name = "dateTimePicker1";
-            this.dateTimePicker1.Size = new System.Drawing.Size(159, 20);
-            this.dateTimePicker1.TabIndex = 13;
-            this.dateTimePicker1.TabStop = false;
+            this.dtpFechaDesde.Location = new System.Drawing.Point(11, 31);
+            this.dtpFechaDesde.Name = "dtpFechaDesde";
+            this.dtpFechaDesde.Size = new System.Drawing.Size(159, 20);
+            this.dtpFechaDesde.TabIndex = 13;
+            this.dtpFechaDesde.TabStop = false;
             // 
             // lblFechaDesde
             // 
@@ -223,12 +224,12 @@
             this.lblFechaDesde.TabIndex = 9;
             this.lblFechaDesde.Text = "Fecha desde:";
             // 
-            // txtCliente_Ventas
+            // txtDniProv
             // 
-            this.txtCliente_Ventas.Location = new System.Drawing.Point(11, 95);
-            this.txtCliente_Ventas.Name = "txtCliente_Ventas";
-            this.txtCliente_Ventas.Size = new System.Drawing.Size(159, 20);
-            this.txtCliente_Ventas.TabIndex = 11;
+            this.txtDniProv.Location = new System.Drawing.Point(11, 95);
+            this.txtDniProv.Name = "txtDniProv";
+            this.txtDniProv.Size = new System.Drawing.Size(159, 20);
+            this.txtDniProv.TabIndex = 11;
             // 
             // lblClienteConsVentas
             // 
@@ -299,12 +300,12 @@
             // 
             this.panel1.BackColor = System.Drawing.Color.White;
             this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.panel1.Controls.Add(this.dateTimePicker2);
+            this.panel1.Controls.Add(this.dtpFechaHasta);
             this.panel1.Controls.Add(this.lblfechaHasta);
             this.panel1.Controls.Add(this.btnBuscar);
-            this.panel1.Controls.Add(this.dateTimePicker1);
+            this.panel1.Controls.Add(this.dtpFechaDesde);
             this.panel1.Controls.Add(this.lblFechaDesde);
-            this.panel1.Controls.Add(this.txtCliente_Ventas);
+            this.panel1.Controls.Add(this.txtDniProv);
             this.panel1.Controls.Add(this.lblClienteConsVentas);
             this.panel1.Location = new System.Drawing.Point(15, 63);
             this.panel1.Name = "panel1";
@@ -376,12 +377,12 @@
         private System.Windows.Forms.Label lblTituloTotalVentas;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.DataGridView dgvConsultaCompra;
-        private System.Windows.Forms.DateTimePicker dateTimePicker2;
+        private System.Windows.Forms.DateTimePicker dtpFechaHasta;
         private System.Windows.Forms.Label lblfechaHasta;
         private System.Windows.Forms.Button btnBuscar;
-        private System.Windows.Forms.DateTimePicker dateTimePicker1;
+        private System.Windows.Forms.DateTimePicker dtpFechaDesde;
         private System.Windows.Forms.Label lblFechaDesde;
-        private System.Windows.Forms.TextBox txtCliente_Ventas;
+        private System.Windows.Forms.TextBox txtDniProv;
         private System.Windows.Forms.Label lblClienteConsVentas;
         private System.Windows.Forms.Label lblDniProveedor;
         private System.Windows.Forms.Label lblApellidoProveedor;

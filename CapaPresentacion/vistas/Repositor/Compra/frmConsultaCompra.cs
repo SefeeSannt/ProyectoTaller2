@@ -13,7 +13,7 @@ namespace CapaPresentacion.Vistas.Repositor
             InitializeComponent();
         }
 
-        private void CargarGridCompras()
+        private void CargarGridCompras(DateTime fechaDesde, DateTime fechaHasta, string dniProveedor)
         {
             try
             {
@@ -21,11 +21,9 @@ namespace CapaPresentacion.Vistas.Repositor
                 dgvConsultaCompra.DataSource = null;
 
                 CN_compra objCN = new CN_compra();
-                DataTable tablaCompras = objCN.ListarCompras();
+                DataTable tablaCompras = objCN.ListarCompras(fechaDesde, fechaHasta, dniProveedor); // Obtenemos los datos
 
-                dgvConsultaCompra.AutoGenerateColumns = true;
-
-                dgvConsultaCompra.DataSource = tablaCompras ?? new DataTable();
+                dgvConsultaCompra.DataSource = tablaCompras;
 
                 DataGridViewButtonColumn btnVer = new DataGridViewButtonColumn();
                 btnVer.Name = "btnVer";
@@ -35,43 +33,34 @@ namespace CapaPresentacion.Vistas.Repositor
                 btnVer.Width = 40;
                 dgvConsultaCompra.Columns.Add(btnVer);
 
-                if (tablaCompras == null || tablaCompras.Columns.Count == 0)
-                {
-                    
-                    return;
-                }
-
                 if (dgvConsultaCompra.Columns.Contains("cod_compra"))
                     dgvConsultaCompra.Columns["cod_compra"].Visible = false;
 
-                if (dgvConsultaCompra.Columns.Contains("proveedor"))
-                    dgvConsultaCompra.Columns["proveedor"].HeaderText = "Proveedor";
+                if (dgvConsultaCompra.Columns.Contains("Proveedor"))
+                    dgvConsultaCompra.Columns["Proveedor"].HeaderText = "Proveedor";
 
-                if (dgvConsultaCompra.Columns.Contains("fecha_compra"))
+                decimal totalFiltrado = 0;
+                if (tablaCompras != null && tablaCompras.Rows.Count > 0)
                 {
-                    dgvConsultaCompra.Columns["fecha_compra"].HeaderText = "Fecha de Registro";
-                    dgvConsultaCompra.Columns["fecha_compra"].DefaultCellStyle.Format = "dd/MM/yyyy";
+                    foreach (DataRow row in tablaCompras.Rows)
+                    {
+                        totalFiltrado += Convert.ToDecimal(row["monto_total"]);
+                    }
                 }
 
-                if (dgvConsultaCompra.Columns.Contains("monto_total"))
-                {
-                    dgvConsultaCompra.Columns["monto_total"].HeaderText = "Monto Total";
-                    dgvConsultaCompra.Columns["monto_total"].DefaultCellStyle.Format = "C2";
-                    dgvConsultaCompra.Columns["monto_total"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
-                }
-
-                dgvConsultaCompra.AutoResizeColumns();
-                dgvConsultaCompra.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+                lblTotalVentaFilt.Text = totalFiltrado.ToString("C2");
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Error al cargar las compras: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Error al cargar las compras: " + ex.GetBaseException().Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
         private void frmConsultaCompra_Load(object sender, EventArgs e)
         {
-            CargarGridCompras();
+            dtpFechaDesde.Value = DateTime.Now.AddDays(-30);
+            dtpFechaHasta.Value = DateTime.Now;
+            CargarGridCompras(dtpFechaDesde.Value, dtpFechaHasta.Value, txtDniProv.Text);
             ConfigurarGridDetalle();
         }
 
@@ -156,6 +145,18 @@ namespace CapaPresentacion.Vistas.Repositor
             {
                 MessageBox.Show("Error al mostrar detalle: " + ex.GetBaseException().Message, "Error");
             }
+        }
+
+        private void btnBuscar_Click(object sender, EventArgs e)
+        {
+            dgvDetalleCompra.DataSource = null;
+            lblCostoTotal.Text = "$0,00";
+            lblNombreProveedor.Text = "";
+            lblApellidoProveedor.Text = "";
+            lblDniProveedor.Text = "";
+          
+         
+            CargarGridCompras(dtpFechaDesde.Value, dtpFechaHasta.Value, txtDniProv.Text);
         }
     }
 
