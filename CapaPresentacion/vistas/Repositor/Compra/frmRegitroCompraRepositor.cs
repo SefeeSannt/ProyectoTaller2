@@ -214,6 +214,10 @@ namespace CapaPresentacion.Vistas.Repositor
         private void frmRegitroCompraRepositor_Load(object sender, EventArgs e)
         {
 
+
+
+
+
             dgvRegistroCompras.AutoGenerateColumns = false;
 
             dgvRegistroCompras.Columns.Add("colDNIProveedor", "DNI Proveedor");

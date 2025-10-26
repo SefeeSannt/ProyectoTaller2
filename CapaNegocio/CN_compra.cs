@@ -11,21 +11,17 @@ namespace CapaNegocio
     {
         private CD_compra objCD_Compra = new CD_compra();
 
-        // Método público que la capa de presentación (el formulario) llamará
         public DataTable ListarCompras()
         {
-            // Llama al método de la capa de datos y devuelve los resultados
             return objCD_Compra.ListarCompras();
         }
 
-        // Nuevo: registra compra + detalles y luego actualiza stock/precios
         public int RegistrarCompra(CompraRequest request)
         {
             if (request == null) throw new ArgumentNullException(nameof(request));
             if (request.detalles == null || request.detalles.Count == 0)
                 throw new ArgumentException("La compra debe contener al menos un detalle.", nameof(request));
 
-            // Mapear a entidad EF (CapaDatos)
             var compraEnt = new Dat.compra
             {
                 fecha_compra = request.fecha_compra,
@@ -42,26 +38,75 @@ namespace CapaNegocio
                 {
                     cod_producto = d.cod_producto,
                     cantidad = d.cantidad,
-                 //   precio_compra = (double)d.precio_compra,
                     subtotal = (double)d.subtotal
                 });
             }
 
-            // Guardar compra (CD_compra.AgregarCompra hace la transacción)
             int codGenerado = objCD_Compra.AgregarCompra(compraEnt);
 
-            // Si se guardó correctamente, actualizar stock y precios
             if (codGenerado > 0)
             {
                 var cnProducto = new CN_producto();
                 foreach (var d in request.detalles)
                 {
-                    // Actualiza costo, recalcula precio de venta y suma stock
                     cnProducto.ActualizarStockYCostos(d.cod_producto, d.precio_compra, d.cantidad);
                 }
             }
 
             return codGenerado;
         }
-    }
+
+
+
+        public DataTable ObtenerDetalleCompra(int codCompra)
+        {
+            return objCD_Compra.ObtenerDetalleCompra(codCompra);
+        }
+
+
+        public CapaEntidad.Compra ObtenerCompraPorId(int codCompra)
+        {
+          
+            CapaDatos.compra compraDeDatos = objCD_Compra.ObtenerCompraPorId(codCompra);
+
+            if (compraDeDatos == null)
+            {
+                return null;
+            }
+
+            var compraEntidad = new CapaEntidad.Compra
+            {
+                
+                cod_compra = compraDeDatos.cod_compra,
+                fecha_compra = compraDeDatos.fecha_compra,
+                monto_total = (decimal)compraDeDatos.monto_total,
+
+                dni_proveedor = new CapaEntidad.Proveedor
+                {
+                    dni_proveedor = compraDeDatos.proveedor.dni_proveedor,
+                    nombre = compraDeDatos.proveedor.nombre,
+                    apellido = compraDeDatos.proveedor.apellido,
+                //    domicilio = compraDeDatos.proveedor.domicilio
+                },
+
+                dni_usuario = new CapaEntidad.Usuario
+                {
+                    dni_usuario = compraDeDatos.usuario.dni_usuario,
+                    nombre = compraDeDatos.usuario.nombre
+                },
+
+                detalle_compra = compraDeDatos.detalle_compra.Select(d => new CapaEntidad.DetalleCompra
+                {
+                    cod_compra = d.cod_compra,
+                    cod_producto = d.cod_producto,
+                    cantidad = d.cantidad,
+                    subtotal = (decimal)d.subtotal,
+                }).ToList()
+            };
+
+            return compraEntidad;
+        }
+    };
+
 }
+

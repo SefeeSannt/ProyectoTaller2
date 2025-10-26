@@ -14,7 +14,6 @@ namespace CapaDatos
             {
                 foreach (var d in detalles)
                 {
-                    // Si cod_compra no está asignado, asumimos que ya viene asignado por el llamador.
                     db.detalle_compra.Add(d);
                 }
                 db.SaveChanges();

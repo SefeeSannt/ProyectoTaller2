@@ -13,6 +13,8 @@ namespace CapaEntidad
         public decimal monto_total { get; set; }
         public Usuario dni_usuario { get; set; }
         public Proveedor dni_proveedor { get; set; }
-      
+
+        public List<DetalleCompra> detalle_compra { get; set; }
+
     }
 }

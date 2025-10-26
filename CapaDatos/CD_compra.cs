@@ -23,6 +23,7 @@ namespace CapaDatos
                     // Uso de nombre + apellido (campos presentes en tu entidad proveedor)
                     string query = @"
                         SELECT 
+                            c.cod_compra,
                             (ISNULL(p.nombre,'') + ' ' + ISNULL(p.apellido,'')) AS proveedor,
                             c.fecha_compra AS fecha_compra,
                             c.monto_total AS monto_total
@@ -38,20 +39,50 @@ namespace CapaDatos
                 }
                 catch (Exception ex)
                 {
-                    // Re-lanzar para que la capa de presentación vea el error en caso de fallo
                     throw new Exception("Error en CD_compra.ListarCompras: " + ex.Message, ex); 
                 }
             }
             return tabla;
         }
 
+        public DataTable ObtenerDetalleCompra(int codCompra)
+        {
+            DataTable tabla = new DataTable();
+            using (SqlConnection con = new SqlConnection(conexion.cadena))
+            {
+                try
+                {
+                    con.Open();
+                    string query = @"
+                SELECT 
+                    p.nombre AS Producto,
+                    (d.subtotal / d.cantidad) AS PrecioCompra,
+                    d.cantidad AS Cantidad,
+                    d.subtotal AS Subtotal
+                FROM detalle_compra d
+                INNER JOIN producto p ON d.cod_producto = p.cod_producto
+                WHERE d.cod_compra = @codCompra";
 
+                    using (SqlCommand cmd = new SqlCommand(query, con))
+                    {
+                        cmd.Parameters.AddWithValue("@codCompra", codCompra);
+                        cmd.CommandType = CommandType.Text;
+                        SqlDataAdapter da = new SqlDataAdapter(cmd);
+                        da.Fill(tabla);
+                    }
+                }
+                catch (Exception ex)
+                {
+                    throw new Exception("Error en CD_compra.ObtenerDetalleCompra: " + ex.Message, ex);
+                }
+            }
+            return tabla;
+        }
 
         public List<compra> ObtenerCompras()
         {
             using (var db = new ProyectoTaller2Entities())
             {
-                // incluir proveedor, usuario y detalles para que la capa de negocio tenga la info necesaria
                 return db.compra
                          .Include("proveedor")
                          .Include("usuario")
@@ -72,13 +103,6 @@ namespace CapaDatos
             }
         }
 
-        // Inserta una compra con sus detalles en una transacción
-        // Se espera que 'compra.detalle_compra' esté poblada con los detalles (sin cod_compra)
-        // Devuelve el cod_compra generado
-        // Reemplaza tu método 'AgregarCompra' por este:
-
-        // EN: CD_compra.cs
-
         public int AgregarCompra(compra compra)
         {
             if (compra == null) throw new ArgumentNullException(nameof(compra));
@@ -91,32 +115,24 @@ namespace CapaDatos
                 {
                     try
                     {
-                        // --- 1. NUEVA LÓGICA PARA GENERAR ID ---
-                        // Buscamos el ID más alto que exista en la tabla
                         int maxId = 0;
-                        if (db.compra.Any()) // Comprueba si la tabla tiene algún registro
+                        if (db.compra.Any()) 
                         {
                             maxId = db.compra.Max(c => c.cod_compra);
                         }
-
-                        // Asignamos el siguiente ID
+                       
                         compra.cod_compra = maxId + 1;
-                        // --- FIN DE LA NUEVA LÓGICA ---
 
-
-                        // --- 2. VINCULAR PROVEEDOR (LÓGICA ANTERIOR) ---
                         var prov = db.proveedor.Find(compra.dni_proveedor);
                         if (prov == null)
                             throw new Exception($"El proveedor con DNI {compra.dni_proveedor} no existe.");
                         compra.proveedor = prov;
 
-                        // --- 3. VINCULAR USUARIO (LÓGICA ANTERIOR) ---
                         var user = db.usuario.Find(compra.dni_usuario);
                         if (user == null)
                             throw new Exception($"El usuario con DNI {compra.dni_usuario} no existe.");
                         compra.usuario = user;
 
-                        // --- 4. VINCULAR PRODUCTOS (LÓGICA ANTERIOR) ---
                         decimal totalCalculado = 0m;
                         foreach (var det in compra.detalle_compra)
                         {
@@ -125,26 +141,21 @@ namespace CapaDatos
                                 throw new Exception($"El producto con código {det.cod_producto} no existe.");
                             det.producto = prod;
 
-                            // Asignamos el cod_compra generado a cada detalle
                             det.cod_compra = compra.cod_compra;
 
                             totalCalculado += (decimal)det.subtotal;
                         }
 
-                        // Asignar valores finales
                         compra.monto_total = (double)totalCalculado;
                         if (compra.fecha_compra == default(DateTime))
                             compra.fecha_compra = DateTime.Now;
 
-                        // --- 5. GUARDAR ---
                         db.compra.Add(compra);
 
-                        // NOTA: EF debería guardar los detalles en cascada ahora que están
-                        // vinculados a 'compra' y tienen el ID asignado.
                         db.SaveChanges();
 
                         tran.Commit();
-                        return compra.cod_compra; // Devolverá el nuevo ID (ej: 1)
+                        return compra.cod_compra; 
                     }
                     catch (System.Data.Entity.Validation.DbEntityValidationException ex)
                     {
@@ -178,7 +189,6 @@ namespace CapaDatos
                 var compra = db.compra.Find(codCompra);
                 if (compra == null) return false;
 
-                // eliminar detalles primero si existen por FK
                 var detalles = db.detalle_compra.Where(d => d.cod_compra == codCompra).ToList();
                 if (detalles.Any())
                 {

@@ -28,14 +28,9 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             this.dgvDetalleCompra = new System.Windows.Forms.DataGridView();
-            this.codProducto = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.clmProducto = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.categoria = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.clmCant = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Subtotal = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.lblTotalVentaFilt = new System.Windows.Forms.Label();
             this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
             this.lblTituloCosto = new System.Windows.Forms.Label();
@@ -50,10 +45,9 @@
             this.lblFechaDesde = new System.Windows.Forms.Label();
             this.txtCliente_Ventas = new System.Windows.Forms.TextBox();
             this.lblClienteConsVentas = new System.Windows.Forms.Label();
-            this.lblDatoDomicilio = new System.Windows.Forms.Label();
-            this.lblDatoDni = new System.Windows.Forms.Label();
-            this.lblDatoApellido = new System.Windows.Forms.Label();
-            this.lblDatoNombre = new System.Windows.Forms.Label();
+            this.lblDniProveedor = new System.Windows.Forms.Label();
+            this.lblApellidoProveedor = new System.Windows.Forms.Label();
+            this.lblNombreProveedor = new System.Windows.Forms.Label();
             this.lblTitulo = new System.Windows.Forms.Label();
             this.lblDetalleCompra = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
@@ -71,21 +65,15 @@
             this.dgvDetalleCompra.AllowUserToDeleteRows = false;
             this.dgvDetalleCompra.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dgvDetalleCompra.BackgroundColor = System.Drawing.Color.White;
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Franklin Gothic Medium", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvDetalleCompra.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Franklin Gothic Medium", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvDetalleCompra.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle3;
             this.dgvDetalleCompra.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvDetalleCompra.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.codProducto,
-            this.clmProducto,
-            this.categoria,
-            this.clmCant,
-            this.Subtotal});
             this.dgvDetalleCompra.EnableHeadersVisualStyles = false;
             this.dgvDetalleCompra.Location = new System.Drawing.Point(-1, 106);
             this.dgvDetalleCompra.Name = "dgvDetalleCompra";
@@ -93,36 +81,6 @@
             this.dgvDetalleCompra.RowHeadersVisible = false;
             this.dgvDetalleCompra.Size = new System.Drawing.Size(463, 308);
             this.dgvDetalleCompra.TabIndex = 0;
-            // 
-            // codProducto
-            // 
-            this.codProducto.HeaderText = "Código producto";
-            this.codProducto.Name = "codProducto";
-            this.codProducto.ReadOnly = true;
-            // 
-            // clmProducto
-            // 
-            this.clmProducto.HeaderText = "Producto";
-            this.clmProducto.Name = "clmProducto";
-            this.clmProducto.ReadOnly = true;
-            // 
-            // categoria
-            // 
-            this.categoria.HeaderText = "Categoria";
-            this.categoria.Name = "categoria";
-            this.categoria.ReadOnly = true;
-            // 
-            // clmCant
-            // 
-            this.clmCant.HeaderText = "Cantidad";
-            this.clmCant.Name = "clmCant";
-            this.clmCant.ReadOnly = true;
-            // 
-            // Subtotal
-            // 
-            this.Subtotal.HeaderText = "Subtotal";
-            this.Subtotal.Name = "Subtotal";
-            this.Subtotal.ReadOnly = true;
             // 
             // lblTotalVentaFilt
             // 
@@ -197,14 +155,14 @@
             this.dgvConsultaCompra.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dgvConsultaCompra.BackgroundColor = System.Drawing.Color.White;
             this.dgvConsultaCompra.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Franklin Gothic Medium", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvConsultaCompra.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle4.Font = new System.Drawing.Font("Franklin Gothic Medium", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvConsultaCompra.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle4;
             this.dgvConsultaCompra.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvConsultaCompra.EnableHeadersVisualStyles = false;
             this.dgvConsultaCompra.Location = new System.Drawing.Point(15, 252);
@@ -213,6 +171,7 @@
             this.dgvConsultaCompra.RowHeadersVisible = false;
             this.dgvConsultaCompra.Size = new System.Drawing.Size(451, 226);
             this.dgvConsultaCompra.TabIndex = 34;
+            this.dgvConsultaCompra.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvConsultaCompra_CellContentClick);
             // 
             // dateTimePicker2
             // 
@@ -282,49 +241,38 @@
             this.lblClienteConsVentas.TabIndex = 8;
             this.lblClienteConsVentas.Text = "DNI proveedor:";
             // 
-            // lblDatoDomicilio
+            // lblDniProveedor
             // 
-            this.lblDatoDomicilio.AutoSize = true;
-            this.lblDatoDomicilio.BackColor = System.Drawing.Color.White;
-            this.lblDatoDomicilio.Font = new System.Drawing.Font("Franklin Gothic Medium", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblDatoDomicilio.Location = new System.Drawing.Point(12, 86);
-            this.lblDatoDomicilio.Name = "lblDatoDomicilio";
-            this.lblDatoDomicilio.Size = new System.Drawing.Size(117, 17);
-            this.lblDatoDomicilio.TabIndex = 22;
-            this.lblDatoDomicilio.Text = "domicilio proveedor";
+            this.lblDniProveedor.AutoSize = true;
+            this.lblDniProveedor.BackColor = System.Drawing.Color.White;
+            this.lblDniProveedor.Font = new System.Drawing.Font("Franklin Gothic Medium", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblDniProveedor.Location = new System.Drawing.Point(12, 69);
+            this.lblDniProveedor.Name = "lblDniProveedor";
+            this.lblDniProveedor.Size = new System.Drawing.Size(84, 17);
+            this.lblDniProveedor.TabIndex = 21;
+            this.lblDniProveedor.Text = "dni proveedor";
             // 
-            // lblDatoDni
+            // lblApellidoProveedor
             // 
-            this.lblDatoDni.AutoSize = true;
-            this.lblDatoDni.BackColor = System.Drawing.Color.White;
-            this.lblDatoDni.Font = new System.Drawing.Font("Franklin Gothic Medium", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblDatoDni.Location = new System.Drawing.Point(12, 69);
-            this.lblDatoDni.Name = "lblDatoDni";
-            this.lblDatoDni.Size = new System.Drawing.Size(84, 17);
-            this.lblDatoDni.TabIndex = 21;
-            this.lblDatoDni.Text = "dni proveedor";
+            this.lblApellidoProveedor.AutoSize = true;
+            this.lblApellidoProveedor.BackColor = System.Drawing.Color.White;
+            this.lblApellidoProveedor.Font = new System.Drawing.Font("Franklin Gothic Medium", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblApellidoProveedor.Location = new System.Drawing.Point(13, 52);
+            this.lblApellidoProveedor.Name = "lblApellidoProveedor";
+            this.lblApellidoProveedor.Size = new System.Drawing.Size(111, 17);
+            this.lblApellidoProveedor.TabIndex = 20;
+            this.lblApellidoProveedor.Text = "apellido proveedor";
             // 
-            // lblDatoApellido
+            // lblNombreProveedor
             // 
-            this.lblDatoApellido.AutoSize = true;
-            this.lblDatoApellido.BackColor = System.Drawing.Color.White;
-            this.lblDatoApellido.Font = new System.Drawing.Font("Franklin Gothic Medium", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblDatoApellido.Location = new System.Drawing.Point(13, 52);
-            this.lblDatoApellido.Name = "lblDatoApellido";
-            this.lblDatoApellido.Size = new System.Drawing.Size(111, 17);
-            this.lblDatoApellido.TabIndex = 20;
-            this.lblDatoApellido.Text = "apellido proveedor";
-            // 
-            // lblDatoNombre
-            // 
-            this.lblDatoNombre.AutoSize = true;
-            this.lblDatoNombre.BackColor = System.Drawing.Color.White;
-            this.lblDatoNombre.Font = new System.Drawing.Font("Franklin Gothic Medium", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblDatoNombre.Location = new System.Drawing.Point(12, 35);
-            this.lblDatoNombre.Name = "lblDatoNombre";
-            this.lblDatoNombre.Size = new System.Drawing.Size(110, 17);
-            this.lblDatoNombre.TabIndex = 19;
-            this.lblDatoNombre.Text = "nombre proveedor";
+            this.lblNombreProveedor.AutoSize = true;
+            this.lblNombreProveedor.BackColor = System.Drawing.Color.White;
+            this.lblNombreProveedor.Font = new System.Drawing.Font("Franklin Gothic Medium", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblNombreProveedor.Location = new System.Drawing.Point(12, 35);
+            this.lblNombreProveedor.Name = "lblNombreProveedor";
+            this.lblNombreProveedor.Size = new System.Drawing.Size(110, 17);
+            this.lblNombreProveedor.TabIndex = 19;
+            this.lblNombreProveedor.Text = "nombre proveedor";
             // 
             // lblTitulo
             // 
@@ -366,10 +314,9 @@
             // pnlConsultaVentas2
             // 
             this.pnlConsultaVentas2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.pnlConsultaVentas2.Controls.Add(this.lblDatoDomicilio);
-            this.pnlConsultaVentas2.Controls.Add(this.lblDatoDni);
-            this.pnlConsultaVentas2.Controls.Add(this.lblDatoApellido);
-            this.pnlConsultaVentas2.Controls.Add(this.lblDatoNombre);
+            this.pnlConsultaVentas2.Controls.Add(this.lblDniProveedor);
+            this.pnlConsultaVentas2.Controls.Add(this.lblApellidoProveedor);
+            this.pnlConsultaVentas2.Controls.Add(this.lblNombreProveedor);
             this.pnlConsultaVentas2.Controls.Add(this.lblTitulo);
             this.pnlConsultaVentas2.Controls.Add(this.dgvDetalleCompra);
             this.pnlConsultaVentas2.Location = new System.Drawing.Point(488, 63);
@@ -422,11 +369,6 @@
 
         #endregion
         private System.Windows.Forms.DataGridView dgvDetalleCompra;
-        private System.Windows.Forms.DataGridViewTextBoxColumn codProducto;
-        private System.Windows.Forms.DataGridViewTextBoxColumn clmProducto;
-        private System.Windows.Forms.DataGridViewTextBoxColumn categoria;
-        private System.Windows.Forms.DataGridViewTextBoxColumn clmCant;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Subtotal;
         private System.Windows.Forms.Label lblTotalVentaFilt;
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel1;
         private System.Windows.Forms.Label lblTituloCosto;
@@ -441,10 +383,9 @@
         private System.Windows.Forms.Label lblFechaDesde;
         private System.Windows.Forms.TextBox txtCliente_Ventas;
         private System.Windows.Forms.Label lblClienteConsVentas;
-        private System.Windows.Forms.Label lblDatoDomicilio;
-        private System.Windows.Forms.Label lblDatoDni;
-        private System.Windows.Forms.Label lblDatoApellido;
-        private System.Windows.Forms.Label lblDatoNombre;
+        private System.Windows.Forms.Label lblDniProveedor;
+        private System.Windows.Forms.Label lblApellidoProveedor;
+        private System.Windows.Forms.Label lblNombreProveedor;
         private System.Windows.Forms.Label lblTitulo;
         private System.Windows.Forms.Label lblDetalleCompra;
         private System.Windows.Forms.Panel panel1;

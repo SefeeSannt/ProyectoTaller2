@@ -8,12 +8,9 @@ namespace CapaEntidad
 {
     public class DetalleCompra
     {
-        // Identificadores (útiles para mapeo y operaciones)
-        public int cod_detalle { get; set; }     // opcional si la BD lo genera
-        public int cod_compra { get; set; }      // para asociar al guardar/recuperar
+        public int cod_detalle { get; set; }     
+        public int cod_compra { get; set; }     
         public int cod_producto { get; set; }
-
-        // Valores comerciales
         public int cantidad { get; set; }
         public decimal subtotal { get; set; }
 
