@@ -11,9 +11,9 @@ namespace CapaNegocio
     {
         private CD_compra objCD_Compra = new CD_compra();
 
-        public DataTable ListarCompras()
+        public DataTable ListarCompras(DateTime fechaDesde, DateTime fechaHasta, string dniProveedor)
         {
-            return objCD_Compra.ListarCompras();
+            return objCD_Compra.ListarCompras(fechaDesde, fechaHasta, dniProveedor);
         }
 
         public int RegistrarCompra(CompraRequest request)
@@ -106,6 +106,40 @@ namespace CapaNegocio
 
             return compraEntidad;
         }
+
+        public DataTable ObtenerDashboardMontoPorDia(DateTime fechaDesde, DateTime fechaHasta, string nombreProveedor, string nombreProducto)
+        {
+            return objCD_Compra.ObtenerDashboardMontoPorDia(fechaDesde, fechaHasta, nombreProveedor, nombreProducto);
+        }
+
+        public DataTable ObtenerDashboardCategoria(DateTime fechaDesde, DateTime fechaHasta, string nombreProveedor, string nombreProducto)
+        {
+            return objCD_Compra.ObtenerDashboardCategoria(fechaDesde, fechaHasta, nombreProveedor, nombreProducto);
+        }
+
+        public int ObtenerTotalComprasFiltrado(DateTime fechaDesde, DateTime fechaHasta, string nombreProveedor, string nombreProducto)
+        {
+            return objCD_Compra.ObtenerTotalComprasFiltrado(fechaDesde, fechaHasta, nombreProveedor, nombreProducto);
+        }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     };
 
 }
