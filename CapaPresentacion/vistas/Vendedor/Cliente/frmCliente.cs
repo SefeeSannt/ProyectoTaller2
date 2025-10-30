@@ -98,7 +98,7 @@ namespace CapaPresentacion.Vistas.Vendedor
                 domicilio = txtDomicilio.Text,
                 telefono = long.Parse(txtTelefono.Text),
                 email = txtEmail.Text,
-                id_estado = 1
+                estado = 1
             };
 
             try

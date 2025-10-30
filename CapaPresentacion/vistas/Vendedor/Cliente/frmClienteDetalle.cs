@@ -25,9 +25,9 @@ namespace CapaPresentacion.Vistas.Vendedor
             var lista = negocio.ObtenerClientesActivos() ?? new List<ClienteModel>();
             dgvClientes.DataSource = lista;
 
-            if (dgvClientes.Columns.Contains("id_estado"))
+            if (dgvClientes.Columns.Contains("estado"))
             {
-                dgvClientes.Columns["id_estado"].Visible = false;
+                dgvClientes.Columns["estado"].Visible = false;
             }
 
             lblTotalClientes.Text = $"{negocio.TotalClientes()}";

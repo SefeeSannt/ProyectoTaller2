@@ -17,6 +17,11 @@ namespace CapaPresentacion.Vistas.Administrador.Productos
             InitializeComponent();
         }
 
+        private void cargarProductosEnGrid()
+        {
+            
+        }
+
         private void ListaProductos_Load(object sender, EventArgs e)
         {
 
