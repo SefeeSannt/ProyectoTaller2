@@ -60,9 +60,11 @@
     <Compile Include="CD_cliente.cs" />
     <Compile Include="CD_compra.cs" />
     <Compile Include="CD_detalle_compra.cs" />
+    <Compile Include="CD_detalle_venta.cs" />
     <Compile Include="CD_producto.cs" />
     <Compile Include="CD_proveedor.cs" />
     <Compile Include="CD_usuario.cs" />
+    <Compile Include="CD_venta.cs" />
     <Compile Include="cliente.cs">
       <DependentUpon>ProyectoTaller2Model.tt</DependentUpon>
     </Compile>

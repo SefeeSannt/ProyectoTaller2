@@ -48,5 +48,17 @@ namespace CapaDatos
                 }
             }
         }
+
+        public List<producto> BuscarProductosActivos(string criterio)
+        {
+            using (var db = new ProyectoTaller2Entities())
+            {
+                return db.producto
+                         .Where(p => p.estado == 1 && 
+                                     (p.nombre.Contains(criterio) || 
+                                      p.descripcion.Contains(criterio)))
+                         .ToList();
+            }
+        }
     }
 }

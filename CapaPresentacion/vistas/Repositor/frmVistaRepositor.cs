@@ -28,7 +28,7 @@ namespace CapaPresentacion.Vistas.Repositor
 
         private void tsmiRegistrarCompra_Click(object sender, EventArgs e)
         {
-            frmRegitroCompraRepositor frmCompra = new frmRegitroCompraRepositor(this.usuarioLogueado);
+            frmRegitroCompraRepositor frmVenta = new frmRegitroCompraRepositor(this.usuarioLogueado);
 
             foreach (Form form in this.MdiChildren)
             {

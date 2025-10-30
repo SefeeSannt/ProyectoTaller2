@@ -8,12 +8,11 @@ namespace CapaEntidad
 {
     public class Cliente
     {
-        public int id_cliente { get; set; }
-        public string nombre { get; set; }  
-        public string documento { get; set; }
-        public string telefono { get; set; }
-        public string correo { get; set; }  
-        public estado estado { get; set; }  
-        public string fecha_registro { get; set; }
+        public long dni_cliente { get; set; }
+        public string nombre { get; set; }
+        public string apellido { get; set; }
+        public string email_cliente { get; set; }
+        public long telefono { get; set; }
+        public int id_estado { get; set; }
     }
 }

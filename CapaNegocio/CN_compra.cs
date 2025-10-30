@@ -121,26 +121,6 @@ namespace CapaNegocio
         {
             return objCD_Compra.ObtenerTotalComprasFiltrado(fechaDesde, fechaHasta, nombreProveedor, nombreProducto);
         }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
     };
-
 }
 

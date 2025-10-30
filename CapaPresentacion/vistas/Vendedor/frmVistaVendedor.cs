@@ -12,15 +12,20 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using CapaPresentacion.vistas.Vendedor.Cliente;
 using CapaEntidad;
+using CapaPresentacion.Vistas.Repositor;
 
 namespace CapaPresentacion.Vistas.Vendedor
 {
     public partial class frmVistaVendedor : Form
     {
+        private Usuario usuarioLogueado;
+
         public frmVistaVendedor(Usuario oUsuario)
         {
             InitializeComponent();
             lblNombre.Text = oUsuario.nombre + " " + oUsuario.apellido;
+            // Guardar el usuario recibido para pasarlo a los formularios hijos
+            this.usuarioLogueado = oUsuario;
         }
 
         private void tsmiRegistrarVenta_Click(object sender, EventArgs e)
@@ -30,7 +35,7 @@ namespace CapaPresentacion.Vistas.Vendedor
                 form.Close();
             }
 
-            Form frm = new frmRegistrarVenta();
+            Form frm = new frmRegistroVenta(this.usuarioLogueado);
             frm.MdiParent = this;
             frm.Dock = DockStyle.Fill;
             frm.Show();
