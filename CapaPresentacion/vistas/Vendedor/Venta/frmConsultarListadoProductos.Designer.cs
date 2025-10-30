@@ -28,28 +28,21 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.txtProductoBuscarPor = new System.Windows.Forms.TextBox();
+            this.txtBuscarProd = new System.Windows.Forms.TextBox();
             this.lblBuscarNombre = new System.Windows.Forms.Label();
             this.iconBtnLupaDetalleUser = new FontAwesome.Sharp.IconButton();
             this.dgvListaProductos = new System.Windows.Forms.DataGridView();
-            this.codProducto = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.nombreProducto = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.categoria = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.descripcion = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.precio = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.stock = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.eliminar = new System.Windows.Forms.DataGridViewButtonColumn();
             this.lblBajaUsuario = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dgvListaProductos)).BeginInit();
             this.SuspendLayout();
             // 
-            // txtProductoBuscarPor
+            // txtBuscarProd
             // 
-            this.txtProductoBuscarPor.Location = new System.Drawing.Point(688, 12);
-            this.txtProductoBuscarPor.Multiline = true;
-            this.txtProductoBuscarPor.Name = "txtProductoBuscarPor";
-            this.txtProductoBuscarPor.Size = new System.Drawing.Size(197, 19);
-            this.txtProductoBuscarPor.TabIndex = 36;
+            this.txtBuscarProd.Location = new System.Drawing.Point(688, 12);
+            this.txtBuscarProd.Multiline = true;
+            this.txtBuscarProd.Name = "txtBuscarProd";
+            this.txtBuscarProd.Size = new System.Drawing.Size(197, 19);
+            this.txtBuscarProd.TabIndex = 36;
             // 
             // lblBuscarNombre
             // 
@@ -77,6 +70,7 @@
             this.iconBtnLupaDetalleUser.Size = new System.Drawing.Size(41, 21);
             this.iconBtnLupaDetalleUser.TabIndex = 32;
             this.iconBtnLupaDetalleUser.UseVisualStyleBackColor = false;
+            this.iconBtnLupaDetalleUser.Click += new System.EventHandler(this.iconBtnLupaDetalleUser_Click);
             // 
             // dgvListaProductos
             // 
@@ -86,14 +80,6 @@
             this.dgvListaProductos.BackgroundColor = System.Drawing.Color.White;
             this.dgvListaProductos.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleHorizontal;
             this.dgvListaProductos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvListaProductos.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.codProducto,
-            this.nombreProducto,
-            this.categoria,
-            this.descripcion,
-            this.precio,
-            this.stock,
-            this.eliminar});
             this.dgvListaProductos.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dgvListaProductos.Location = new System.Drawing.Point(0, 42);
             this.dgvListaProductos.Name = "dgvListaProductos";
@@ -101,41 +87,6 @@
             this.dgvListaProductos.RowHeadersVisible = false;
             this.dgvListaProductos.Size = new System.Drawing.Size(944, 457);
             this.dgvListaProductos.TabIndex = 38;
-            // 
-            // codProducto
-            // 
-            this.codProducto.HeaderText = "Código";
-            this.codProducto.Name = "codProducto";
-            // 
-            // nombreProducto
-            // 
-            this.nombreProducto.HeaderText = "Nombre";
-            this.nombreProducto.Name = "nombreProducto";
-            // 
-            // categoria
-            // 
-            this.categoria.HeaderText = "Categoria";
-            this.categoria.Name = "categoria";
-            // 
-            // descripcion
-            // 
-            this.descripcion.HeaderText = "Descripcion";
-            this.descripcion.Name = "descripcion";
-            // 
-            // precio
-            // 
-            this.precio.HeaderText = "Precio";
-            this.precio.Name = "precio";
-            // 
-            // stock
-            // 
-            this.stock.HeaderText = "Stock";
-            this.stock.Name = "stock";
-            // 
-            // eliminar
-            // 
-            this.eliminar.HeaderText = "";
-            this.eliminar.Name = "eliminar";
             // 
             // lblBajaUsuario
             // 
@@ -157,13 +108,14 @@
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(944, 499);
             this.Controls.Add(this.dgvListaProductos);
-            this.Controls.Add(this.txtProductoBuscarPor);
+            this.Controls.Add(this.txtBuscarProd);
             this.Controls.Add(this.lblBuscarNombre);
             this.Controls.Add(this.iconBtnLupaDetalleUser);
             this.Controls.Add(this.lblBajaUsuario);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "frmConsultarListadoProductos";
             this.Text = "frmConsultarListadoProductos";
+            this.Load += new System.EventHandler(this.frmConsultarListadoProductos_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgvListaProductos)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -171,17 +123,10 @@
         }
 
         #endregion
-        private System.Windows.Forms.TextBox txtProductoBuscarPor;
+        private System.Windows.Forms.TextBox txtBuscarProd;
         private System.Windows.Forms.Label lblBuscarNombre;
         private FontAwesome.Sharp.IconButton iconBtnLupaDetalleUser;
         private System.Windows.Forms.DataGridView dgvListaProductos;
-        private System.Windows.Forms.DataGridViewTextBoxColumn codProducto;
-        private System.Windows.Forms.DataGridViewTextBoxColumn nombreProducto;
-        private System.Windows.Forms.DataGridViewTextBoxColumn categoria;
-        private System.Windows.Forms.DataGridViewTextBoxColumn descripcion;
-        private System.Windows.Forms.DataGridViewTextBoxColumn precio;
-        private System.Windows.Forms.DataGridViewTextBoxColumn stock;
-        private System.Windows.Forms.DataGridViewButtonColumn eliminar;
         private System.Windows.Forms.Label lblBajaUsuario;
     }
 }

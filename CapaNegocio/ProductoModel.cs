@@ -17,5 +17,11 @@ namespace CapaNegocio
         public int stock { get; set; }
         public int estado { get; set; }
         public Categoria id_categoria { get; set; }
+
+        // Propiedad calculada con la descripción de la categoría (opción 2)
+        public string categoria
+        {
+            get { return id_categoria != null ? id_categoria.descripcion ?? string.Empty : string.Empty; }
+        }
     }
 }

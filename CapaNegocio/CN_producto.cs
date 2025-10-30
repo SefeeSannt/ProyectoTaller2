@@ -6,7 +6,6 @@ using System.Threading.Tasks;
 // alias para evitar ambigüedad entre entidades EF (CapaDatos) y POCOs (CapaEntidad)
 using Dat = CapaDatos;
 using Ent = CapaEntidad;
-using System.Data.Entity;
 
 namespace CapaNegocio
 {
@@ -47,7 +46,7 @@ namespace CapaNegocio
         {
             var productos = oProducto.ObtenerProductos();
 
-            // Obtener todas las categorías para mapear id -> descripcion
+            // Obtener diccionario id -> descripcion de categorías
             var categorias = new CN_categoria().ObtenerCategorias()
                               .ToDictionary(c => c.id_categoria, c => c.descripcion ?? string.Empty);
 
@@ -59,7 +58,7 @@ namespace CapaNegocio
                 precio_vta = p.precio_vta.HasValue ? (decimal)p.precio_vta.Value : 0m,
                 costo = p.costo.HasValue ? (decimal)p.costo.Value : 0m,
                 stock = p.stock.HasValue ? p.stock.Value : 0,
-                estado = p.estado, // tomar el estado desde la entidad de datos
+                estado = p.estado,
                 id_categoria = new Ent.Categoria
                 {
                     id_categoria = p.id_categoria,
@@ -121,38 +120,6 @@ namespace CapaNegocio
             }
         }
 
-        public List<ProductoModel> ListarProductosActivos()
-        {
-            using (var db = new Dat.ProyectoTaller2Entities())
-            {
-                var lista = db.producto
-                    .Where(p => p.estado == 1)
-                    .Select(p => new ProductoModel
-                    {
-                        cod_producto = p.cod_producto,
-                        nombre = p.nombre,
-                        descripcion = p.descripcion,
-                        precio_vta = p.precio_vta.HasValue ? (decimal)p.precio_vta.Value : 0m,
-                        costo = p.costo.HasValue ? (decimal)p.costo.Value : 0m,
-                        stock = p.stock.HasValue ? p.stock.Value : 0,
-                        estado = p.estado,
-                        id_categoria = new Ent.Categoria { id_categoria = p.id_categoria }
-                    }).ToList();
-
-                var categorias = new CN_categoria().ObtenerCategorias()
-                                  .ToDictionary(c => c.id_categoria, c => c.descripcion ?? string.Empty);
-
-                foreach (var item in lista)
-                {
-                    if (item.id_categoria != null && categorias.ContainsKey(item.id_categoria.id_categoria))
-                        item.id_categoria.descripcion = categorias[item.id_categoria.id_categoria];
-                }
-
-                return lista;
-            }
-        }
-
-
         public void ActualizarStockYCostos(int codProducto, decimal nuevoCosto, int cantidadAAgregar)
         {
             decimal nuevoPrecioVenta = nuevoCosto * 1.20m;
@@ -212,6 +179,27 @@ namespace CapaNegocio
             }
         }
 
+        public List<ProductoModel> BuscarProductosActivos(string criterio)
+        {
+            var productos = oProducto.BuscarProductosActivos(criterio);
+            var categorias = new CN_categoria().ObtenerCategorias()
+                              .ToDictionary(c => c.id_categoria, c => c.descripcion ?? string.Empty);
+            return productos.Select(p => new ProductoModel
+            {
+                cod_producto = p.cod_producto,
+                nombre = p.nombre,
+                descripcion = p.descripcion,
+                precio_vta = p.precio_vta.HasValue ? (decimal)p.precio_vta.Value : 0m,
+                costo = p.costo.HasValue ? (decimal)p.costo.Value : 0m,
+                stock = p.stock.HasValue ? p.stock.Value : 0,
+                estado = p.estado,
+                id_categoria = new Ent.Categoria
+                {
+                    id_categoria = p.id_categoria,
+                    descripcion = categorias.ContainsKey(p.id_categoria) ? categorias[p.id_categoria] : string.Empty
+                }
+            }).ToList();
+        }
 
     }
 }
