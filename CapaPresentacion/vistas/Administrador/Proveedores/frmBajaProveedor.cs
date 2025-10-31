@@ -22,10 +22,11 @@ namespace CapaPresentacion.vistas.Administrador.Usuarios
         {
             var negocio = new CN_proveedor();
             var lista = negocio.ObtenerProveedores() ?? new List<ProveedorModel>();
+
             dgvBajaProveedores.AutoGenerateColumns = true;
             dgvBajaProveedores.DataSource = lista;
-            if (dgvBajaProveedores.Columns.Contains("id_estado"))
-                dgvBajaProveedores.Columns["id_estado"].Visible = false;
+            if (dgvBajaProveedores.Columns.Contains("estado"))
+                dgvBajaProveedores.Columns["estado"].Visible = false;
             if (!dgvBajaProveedores.Columns.Contains("Accion"))
             {
                 var btnCol = new DataGridViewButtonColumn
@@ -36,11 +37,11 @@ namespace CapaPresentacion.vistas.Administrador.Usuarios
                 };
                 dgvBajaProveedores.Columns.Add(btnCol);
             }
-            bool hasIdEstado = dgvBajaProveedores.Columns.Contains("id_estado");
+            bool hasIdEstado = dgvBajaProveedores.Columns.Contains("estado");
             foreach (DataGridViewRow row in dgvBajaProveedores.Rows)
             {
                 if (!dgvBajaProveedores.Columns.Contains("Accion")) break;
-                var estadoVal = hasIdEstado ? row.Cells["id_estado"].Value?.ToString() : null;
+                var estadoVal = hasIdEstado ? row.Cells["estado"].Value?.ToString() : null;
                 row.Cells["Accion"].Value = estadoVal == "1" ? "Dar de baja" : "Dar de alta";
             }
 
@@ -65,7 +66,7 @@ namespace CapaPresentacion.vistas.Administrador.Usuarios
             {
                 var row = dgvBajaProveedores.Rows[e.RowIndex];
                 var dni = Convert.ToInt64(row.Cells["dni_proveedor"].Value);
-                var estado = dgvBajaProveedores.Columns.Contains("id_estado") ? row.Cells["id_estado"].Value?.ToString() : null;
+                var estado = dgvBajaProveedores.Columns.Contains("estado") ? row.Cells["estado"].Value?.ToString() : null;
 
                 var negocio = new CN_proveedor();
 
@@ -91,7 +92,7 @@ namespace CapaPresentacion.vistas.Administrador.Usuarios
         private void dgvProveedor_RowPrePaint(object sender, DataGridViewRowPrePaintEventArgs e)
         {
             var row = dgvBajaProveedores.Rows[e.RowIndex];
-            var estado = dgvBajaProveedores.Columns.Contains("id_estado") ? row.Cells["id_estado"].Value?.ToString() : null;
+            var estado = dgvBajaProveedores.Columns.Contains("estado") ? row.Cells["estado"].Value?.ToString() : null;
 
             if (estado == "1")
                 row.DefaultCellStyle.BackColor = Color.LightGreen;
