@@ -75,7 +75,6 @@ namespace CapaPresentacion.Vistas.Repositor
             {
 
 
-                // Construir request de compra desde la grilla
                 var request = new CompraRequest
                 {
                     dni_proveedor = this.proveedorActual,
@@ -128,13 +127,23 @@ namespace CapaPresentacion.Vistas.Repositor
 
         private void btnAgregar_Click(object sender, EventArgs e)
         {
-            using (frmRepositorProductos frm = new frmRepositorProductos())
+            List<int> idsEnCarrito = new List<int>();
+            foreach (DataGridViewRow row in dgvRegistroCompras.Rows)
+            {
+                // Ignoramos la fila "nueva" si existe
+                if (row.IsNewRow) continue;
+
+                // (Asegúrate que el nombre "colCodProducto" sea el correcto)
+                idsEnCarrito.Add(Convert.ToInt32(row.Cells["colCodProducto"].Value));
+            }
+
+            using (frmRepositorProductos frm = new frmRepositorProductos(idsEnCarrito)) // <-- ¡PARÁMETRO AÑADIDO!
             {
                 DialogResult resultado = frm.ShowDialog();
                 if (resultado == DialogResult.OK)
                 {
                     ProductoModel productoElegido = frm.ProductoSeleccionado;
-                 
+
                     txtCodProducto.Text = productoElegido.cod_producto.ToString();
                     txtProductoNombre.Text = productoElegido.nombre;
                     txtPrecioCompra.Text = productoElegido.costo.ToString();
@@ -142,6 +151,8 @@ namespace CapaPresentacion.Vistas.Repositor
                     this.idCategoriaTemporal = productoElegido.id_categoria.id_categoria;
                 }
             }
+
+            
         }
 
         private void btnAgregarProv_Click(object sender, EventArgs e)
@@ -152,21 +163,18 @@ namespace CapaPresentacion.Vistas.Repositor
 
                 if (resultado == DialogResult.OK)
                 {
-                    // 1. Obtienes el Modelo (de CapaNegocio)
-                    // Asumo que tu popup devuelve este tipo, basado en el error
+                    
                     CapaNegocio.ProveedorModel proveedorElegido = frm.ProveedorSeleccionado;
 
-                    // 2. Conviertes el Modelo a la Entidad
-                    // (Esta es la corrección)
                     this.proveedorActual = new CapaEntidad.Proveedor
                     {
-                        // Copia las propiedades del modelo a la entidad
+                       
                         dni_proveedor = proveedorElegido.dni_proveedor,
                         nombre = proveedorElegido.nombre,
-                        // (Copia cualquier otra propiedad que necesites)
+                    
                     };
 
-                    // 3. Actualizas la UI usando la variable 'proveedorActual'
+              
                     txtNumProv.Text = this.proveedorActual.dni_proveedor.ToString();
                     txtNombreProv.Text = this.proveedorActual.nombre;
                 }
@@ -214,10 +222,6 @@ namespace CapaPresentacion.Vistas.Repositor
         private void frmRegitroCompraRepositor_Load(object sender, EventArgs e)
         {
 
-
-
-
-
             dgvRegistroCompras.AutoGenerateColumns = false;
 
             dgvRegistroCompras.Columns.Add("colDNIProveedor", "DNI Proveedor");
@@ -236,6 +240,15 @@ namespace CapaPresentacion.Vistas.Repositor
             dgvRegistroCompras.Columns.Add("colPrecioCompra", "Precio Compra");
             dgvRegistroCompras.Columns.Add("colCantidad", "Cantidad");
             dgvRegistroCompras.Columns.Add("colSubTotal", "Sub Total");
+
+            DataGridViewButtonColumn btnEliminar = new DataGridViewButtonColumn();
+            btnEliminar.Name = "btnEliminar";
+            btnEliminar.HeaderText = "";
+            btnEliminar.Text = "Eliminar";
+            btnEliminar.UseColumnTextForButtonValue = true;
+            btnEliminar.Width = 60; 
+            dgvRegistroCompras.Columns.Add(btnEliminar);
+
 
             dgvRegistroCompras.Columns["colCodProducto"].Visible = false;
             dgvRegistroCompras.Columns["colPrecioCompra"].DefaultCellStyle.Format = "0.00";
@@ -303,10 +316,8 @@ namespace CapaPresentacion.Vistas.Repositor
             decimal monto_total = decimal.Parse(txtPrecioCompra.Text);
             int cantidad = (int)numUpDCantidad.Value;
 
-            // ---  CALCULAR SUBTOTAL ---
             decimal subTotal = monto_total * cantidad;
 
-            // ---  AÑADIR FILA A LA GRILLA ---
             dgvRegistroCompras.Rows.Add(
                 dni_proveedor, 
                 nombre,
@@ -319,11 +330,9 @@ namespace CapaPresentacion.Vistas.Repositor
                 subTotal
             );
 
-            // --- LIMPIAR CAMPOS Y CALCULAR TOTAL ---
             LimpiarCamposProducto();
             CalcularTotalPagar();
         }
-        // --- DESVIA EL FOCO DEL CURSO ESO HACE ENTER---
         private void txtNumProv_Enter(object sender, EventArgs e)
         {
             btnRegistrar.Focus();
@@ -352,6 +361,30 @@ namespace CapaPresentacion.Vistas.Repositor
         private void txtTotalPagar_Enter(object sender, EventArgs e)
         {
             btnRegistrar.Focus();
+        }
+
+        private void dgvRegistroCompras_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex < 0) return;
+
+            if (dgvRegistroCompras.Columns[e.ColumnIndex].Name == "btnEliminar")
+            {
+                DialogResult confirmacion = MessageBox.Show("¿Está seguro que desea eliminar este producto de la lista?",
+                                                            "Confirmar Eliminación",
+                                                            MessageBoxButtons.YesNo,
+                                                            MessageBoxIcon.Question);
+
+                if (confirmacion == DialogResult.Yes)
+                {
+        
+                    if (!dgvRegistroCompras.Rows[e.RowIndex].IsNewRow)
+                    {
+                        dgvRegistroCompras.Rows.RemoveAt(e.RowIndex);
+
+                        CalcularTotalPagar();
+                    }
+                }
+            }
         }
     }
 }
