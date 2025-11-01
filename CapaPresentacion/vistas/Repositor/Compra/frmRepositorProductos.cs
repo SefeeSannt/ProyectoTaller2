@@ -14,21 +14,28 @@ namespace CapaPresentacion.vistas.Repositor.Compra
     public partial class frmRepositorProductos : Form
     {
         public ProductoModel ProductoSeleccionado { get; private set; }
+        private List<int> idsAExcluir;
 
-        public frmRepositorProductos()
+        public frmRepositorProductos(List<int> idsYaEnCarrito)
         {
             InitializeComponent();
+            this.idsAExcluir = idsYaEnCarrito;
         }
 
         private void cargarListaProductoGrid()
         {
             var negocio = new CN_producto();
-            var lista = negocio.ObtenerProductosActivos () ?? new List<ProductoModel>();
-            dgvListaProducto.DataSource = lista;
+            var listaCompleta = negocio.ObtenerProductosActivos() ?? new List<ProductoModel>();
 
-            if(dgvListaProducto.Columns.Contains("id_estado"))
+            var listaFiltrada = listaCompleta
+                .Where(p => !this.idsAExcluir.Contains(p.cod_producto))
+                .ToList();
+
+            dgvListaProducto.DataSource = listaFiltrada;
+
+            if (dgvListaProducto.Columns.Contains("estado"))
             {
-                dgvListaProducto.Columns["id_estado"].Visible = false;
+                dgvListaProducto.Columns["estado"].Visible = false;
             }
 
         }
@@ -54,63 +61,9 @@ namespace CapaPresentacion.vistas.Repositor.Compra
             }
         }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+        private void btnVolver_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
     }
 }

@@ -135,6 +135,7 @@
             this.dgvRegistroCompras.RowHeadersVisible = false;
             this.dgvRegistroCompras.Size = new System.Drawing.Size(800, 257);
             this.dgvRegistroCompras.TabIndex = 18;
+            this.dgvRegistroCompras.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvRegistroCompras_CellContentClick);
             // 
             // btnAgregar
             // 

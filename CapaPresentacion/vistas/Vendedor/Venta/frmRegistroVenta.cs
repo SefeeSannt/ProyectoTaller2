@@ -126,15 +126,25 @@ namespace CapaPresentacion.Vistas.Repositor
             }
         }
 
+        /*cambios*/
         private void btnAgregar_Click(object sender, EventArgs e)
         {
-            using (frmRepositorProductos frm = new frmRepositorProductos())
+
+            List<int> idsEnCarrito = new List<int>();
+            foreach (DataGridViewRow row in dgvRegistroVenta.Rows)
+            {
+                if (row.IsNewRow) continue;
+
+                idsEnCarrito.Add(Convert.ToInt32(row.Cells["colCodProducto"].Value));
+            }
+
+            using (frmRepositorProductos frm = new frmRepositorProductos(idsEnCarrito)) 
             {
                 DialogResult resultado = frm.ShowDialog();
                 if (resultado == DialogResult.OK)
                 {
                     ProductoModel productoElegido = frm.ProductoSeleccionado;
-                 
+
                     txtCodProducto.Text = productoElegido.cod_producto.ToString();
                     txtProductoNombre.Text = productoElegido.nombre;
                     txtPrecio.Text = productoElegido.precio_vta.ToString("0.00");
@@ -142,7 +152,9 @@ namespace CapaPresentacion.Vistas.Repositor
                     this.idCategoriaTemporal = productoElegido.id_categoria.id_categoria;
                 }
             }
+
         }
+
 
         private void btnAgregarCliente_Click(object sender, EventArgs e)
         {

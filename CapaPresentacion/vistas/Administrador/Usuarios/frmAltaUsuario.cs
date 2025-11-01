@@ -99,13 +99,26 @@ namespace CapaPresentacion.Vistas.Administrador.Usuarios
                 negocio.agregarUsuario(usuario);
                 MessageBox.Show("Usuario registrado con exito.", "Registro Exitoso", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 cargarGrid();
+                limpiarCampos();
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Usuario ya registrado. ", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                // Mensaje detallado en DEBUG; en RELEASE mostrar mensaje genérico y escribir detalle en debug/log
+                var baseMsg = ex.GetBaseException()?.Message ?? ex.Message;
+                var innerMsg = ex.InnerException != null ? ex.InnerException.Message : string.Empty;
+                var details = string.Concat(baseMsg,
+                                         string.IsNullOrEmpty(innerMsg) ? string.Empty : Environment.NewLine + "Inner: " + innerMsg,
+                                         Environment.NewLine + "Stack: " + ex.StackTrace);
+
+    #if DEBUG
+                MessageBox.Show("Error al registrar el usuario:" + Environment.NewLine + details, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+    #else
+                // En producción no mostrar detalles sensibles al usuario
+                MessageBox.Show("Error al registrar el usuario. Consulte al administrador.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                System.Diagnostics.Debug.WriteLine(details); // o usar un logger
+    #endif
                 return;
             }
-            limpiarCampos();
         }
 
         private void btnLimpiar_Click(object sender, EventArgs e)

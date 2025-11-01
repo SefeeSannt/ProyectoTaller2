@@ -87,6 +87,7 @@
             this.btnVolver.TabIndex = 35;
             this.btnVolver.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.btnVolver.UseVisualStyleBackColor = false;
+            this.btnVolver.Click += new System.EventHandler(this.btnVolver_Click);
             // 
             // frmRepositorProductos
             // 
