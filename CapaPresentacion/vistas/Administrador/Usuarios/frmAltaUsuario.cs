@@ -103,7 +103,6 @@ namespace CapaPresentacion.Vistas.Administrador.Usuarios
             }
             catch (Exception ex)
             {
-                // Mensaje detallado en DEBUG; en RELEASE mostrar mensaje genérico y escribir detalle en debug/log
                 var baseMsg = ex.GetBaseException()?.Message ?? ex.Message;
                 var innerMsg = ex.InnerException != null ? ex.InnerException.Message : string.Empty;
                 var details = string.Concat(baseMsg,
@@ -162,7 +161,6 @@ namespace CapaPresentacion.Vistas.Administrador.Usuarios
 
         private void frmAltaUsuario_Load(object sender, EventArgs e)
         {
-            // TODO: esta línea de código carga datos en la tabla 'proyectoTaller2DataSet1.rol' Puede moverla o quitarla según sea necesario.
             this.rolTableAdapter1.Fill(this.proyectoTaller2DataSet1.rol);
         }
 
