@@ -28,7 +28,7 @@ namespace CapaDatos
                         INNER JOIN cliente c ON v.dni_cliente = c.dni_cliente";
 
 
-                    string whereClause = " WHERE v.fecha_compra BETWEEN @fechaDesde AND @fechaHasta";
+                    string whereClause = " WHERE v.fecha_venta BETWEEN @fechaDesde AND @fechaHasta";
 
                     using (SqlCommand cmd = new SqlCommand())
                     {
@@ -42,7 +42,7 @@ namespace CapaDatos
                             cmd.Parameters.AddWithValue("@dniCliente", dniCliente);
                         }
 
-                        cmd.CommandText = queryBase + whereClause + " ORDER BY v.fecha_compra DESC";
+                        cmd.CommandText = queryBase + whereClause + " ORDER BY v.fecha_venta DESC";
                         cmd.Connection = con;
                         cmd.CommandType = CommandType.Text;
 
@@ -112,7 +112,7 @@ namespace CapaDatos
                 return db.venta
                          .Include("cliente")
                          .Include("usuario")
-                         .Include("detalle_compra")
+                         .Include("detalle_venta") 
                          .FirstOrDefault(c => c.cod_venta == codVenta);
             }
         }
@@ -347,7 +347,7 @@ namespace CapaDatos
                 SELECT COUNT(DISTINCT v.cod_venta)
                 FROM venta v
                 INNER JOIN cliente c ON v.dni_cliente = c.dni_cliente
-                WHERE v.fecha_compra BETWEEN @fechaDesde AND @fechaHasta";
+                WHERE v.fecha_venta BETWEEN @fechaDesde AND @fechaHasta";
 
                     using (SqlCommand cmd = new SqlCommand())
                     {

@@ -40,6 +40,11 @@ namespace CapaPresentacion.Vistas.Repositor
         private void onlyInteger_KeyPress(object sender, KeyPressEventArgs e)
         {
             Validaciones.onlyInteger(sender, e, errIngresoDatos);
+            if (e.KeyChar < 0)
+            {
+                e.Handled = true;
+                errIngresoDatos.SetError((Control)sender, "Ingrese una cantidad dentro del stock disponible");
+            }
         }
 
         private void noWrite_KeyPress(object sender, KeyPressEventArgs e)

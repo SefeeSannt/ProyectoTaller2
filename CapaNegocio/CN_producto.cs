@@ -133,7 +133,7 @@ namespace CapaNegocio
                     productoEnDB.costo = (double)nuevoCosto;
                     productoEnDB.precio_vta = (double)nuevoPrecioVenta;
 
-                    // Sumamos la cantidad al stock existente
+                    // Sumamos la cantidad al stock existente (válido para compras)
                     productoEnDB.stock = productoEnDB.stock + cantidadAAgregar;
                 }
                 else
@@ -145,7 +145,28 @@ namespace CapaNegocio
             }
         }
 
+        // Nuevo método: descontar stock por una venta
+        public void ActualizarStockPorVenta(int codProducto, int cantidadVendida)
+        {
+            if (cantidadVendida <= 0) return;
 
+            using (var db = new Dat.ProyectoTaller2Entities())
+            {
+                var productoEnDB = db.producto.FirstOrDefault(p => p.cod_producto == codProducto);
+
+                if (productoEnDB == null)
+                    throw new Exception($"No se encontró el producto con código {codProducto} para descontar stock.");
+
+                int stockActual = productoEnDB.stock ?? 0;
+                int nuevoStock = stockActual - cantidadVendida;
+
+                // Evitamos stock negativo. Ajusta comportamiento si prefieres lanzar excepción.
+                if (nuevoStock < 0) nuevoStock = 0;
+
+                productoEnDB.stock = nuevoStock;
+                db.SaveChanges();
+            }
+        }
 
         public List<ProductoModel> ListarProductosActivosConStock()
         {
