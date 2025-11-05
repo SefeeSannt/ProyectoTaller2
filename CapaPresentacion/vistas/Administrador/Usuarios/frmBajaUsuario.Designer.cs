@@ -1,4 +1,4 @@
-﻿namespace CapaPresentacion.vistas.Administrador
+﻿namespace CapaPresentacion.vistas.Administrador.Usuarios
 {
     partial class frmBajaUsuario
     {
@@ -71,7 +71,7 @@
             this.dgvDetalleUsuario.Size = new System.Drawing.Size(960, 496);
             this.dgvDetalleUsuario.TabIndex = 5;
             this.dgvDetalleUsuario.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvBajaUsuario);
-            this.dgvDetalleUsuario.RowPrePaint += new System.Windows.Forms.DataGridViewRowPrePaintEventHandler(this.dgvUsuario_RowPrePaint);
+            this.dgvDetalleUsuario.RowPrePaint += new System.Windows.Forms.DataGridViewRowPrePaintEventHandler(this.dgvDetalleUsuario_RowPrePaint);
             // 
             // iconBtnLupaDetalleUser
             // 

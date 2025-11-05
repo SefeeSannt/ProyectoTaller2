@@ -573,6 +573,7 @@
     <None Include="ProyectoTaller2DataSet1.xss">
       <DependentUpon>ProyectoTaller2DataSet1.xsd</DependentUpon>
     </None>
+    <None Include="vistas\Administrador\Productos\frm" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

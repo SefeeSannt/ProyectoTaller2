@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
 using System.Linq;
+using System.Data.Entity;
 using CapaEntidad;
 
 namespace CapaDatos
@@ -33,10 +34,11 @@ namespace CapaDatos
                                 nombre = dr["nombre"].ToString(),
                                 apellido = dr["apellido"].ToString(),
                                 username = dr["username"].ToString(),
-                                telefono = Convert.ToInt64(dr["telefono"].ToString()),
+                                telefono = dr["telefono"] != DBNull.Value ? Convert.ToInt64(dr["telefono"].ToString()) : 0,
                                 password = dr["password"].ToString(),
                                 email_usuario = dr["email_usuario"].ToString(),
-                                oRol = new Rol() { id_rol = Convert.ToInt32(dr["id_rol"].ToString()) }
+                                estado = dr["estado"] != DBNull.Value ? Convert.ToInt32(dr["estado"]) : 0,
+                                oRol = new Rol() { id_rol = dr["id_rol"] != DBNull.Value ? Convert.ToInt32(dr["id_rol"]) : 0 }
                             });
                         }
                     }
@@ -47,7 +49,7 @@ namespace CapaDatos
                 }
                 finally
                 {
-                    if (oconexion.State == ConnectionState.Open) oconexion.Close();
+                    if (oconexion.State == System.Data.ConnectionState.Open) oconexion.Close();
                 }
             }
 
@@ -67,7 +69,7 @@ namespace CapaDatos
         {
             using (var db = new ProyectoTaller2Entities())
             {
-                return db.usuario.ToList();
+                return db.usuario.Include("rol").ToList();
             }
         }
 
@@ -76,12 +78,40 @@ namespace CapaDatos
             using (var db = new ProyectoTaller2Entities())
             {
                 return db.usuario
+                         .Include("rol")
                          .Where(p => p.dni_usuario.ToString().Contains(criterio) ||
                                      p.nombre.Contains(criterio) ||
                                      p.apellido.Contains(criterio) ||
                                      p.email_usuario.Contains(criterio) ||
                                      p.telefono.ToString().Contains(criterio))
                          .ToList();
+            }
+        }
+
+        // Nuevos métodos para actualizar el int 'estado' en tabla usuario
+        public void AltaUsuario(long dni)
+        {
+            using (var db = new ProyectoTaller2Entities())
+            {
+                var usu = db.usuario.Find(dni);
+                if (usu != null)
+                {
+                    usu.estado = 1;
+                    db.SaveChanges();
+                }
+            }
+        }
+
+        public void BajaUsuario(long dni)
+        {
+            using (var db = new ProyectoTaller2Entities())
+            {
+                var usu = db.usuario.Find(dni);
+                if (usu != null)
+                {
+                    usu.estado = 0;
+                    db.SaveChanges();
+                }
             }
         }
     }
