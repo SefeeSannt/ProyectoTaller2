@@ -29,11 +29,11 @@ namespace CapaNegocio
                 telefono = obj.telefono,
                 password = obj.password,
                 email_usuario = obj.email_usuario,
-                rol = new rol { id_rol = obj.oRol.id_rol }
+                id_rol = obj.oRol != null ? obj.oRol.id_rol : 0,
+                estado = obj.estado
             };
             oUsuario.agregarUsuario(usuario);
         }
-
         public List<UsuarioModel> ObtenerUsuarios()
         {
             var listaDatos = oUsuario.obtenerUsuarios();
@@ -46,7 +46,9 @@ namespace CapaNegocio
                 telefono = u.telefono,
                 password = u.password,
                 email_usuario = u.email_usuario,
-                oRol = new Rol { id_rol = u.id_rol }
+                oRol = u.rol != null ? new Rol { id_rol = u.id_rol } : null,
+                estado = u.estado,
+                rol_nombre = u.rol != null ? u.rol.descripcion : string.Empty
             }).ToList();
         }
 
@@ -60,53 +62,22 @@ namespace CapaNegocio
                 apellido = u.apellido,
                 username = u.username,
                 telefono = u.telefono,
-                password = u.password,
                 email_usuario = u.email_usuario,
-                oRol = new Rol { id_rol = u.id_rol }
+                estado = u.estado,
+                oRol = u.rol != null ? new Rol { id_rol = u.id_rol } : null,
+                rol_nombre = u.rol != null ? u.rol.descripcion : string.Empty
             }).ToList();
         }
 
-        public void ActualizarUsuario(UsuarioModel usuario_Model)
+        // Alta/Baja de usuario (actualiza int estado en BD)
+        public void AltaUsuario(long dni)
         {
-            var usuario = new usuario  // Este es el objeto de Entity Framework
-            {
-                dni_usuario = usuario_Model.dni_usuario,
-                nombre = usuario_Model.nombre,
-                apellido = usuario_Model.apellido,
-                username = usuario_Model.username,
-                telefono = usuario_Model.telefono,
-                password = usuario_Model.password,
-                email_usuario = usuario_Model.email_usuario,
-
-                // --- ¡ESTA ES LA CORRECCIÓN! ---
-                // Debes asignar el ID (la clave foránea), no el objeto.
-                id_rol = usuario_Model.oRol.id_rol
-            };
-            oUsuario.ActualizarUsuario(usuario);
+            oUsuario.AltaUsuario(dni);
         }
 
-        public List<UsuarioModel> ObtenerUsuariosActivos()
+        public void BajaUsuario(long dni)
         {
-            var listaDatos = oUsuario.ObtenerUsuariosActivos(); 
-
-            return listaDatos.Select(u => new UsuarioModel
-            {
-                dni_usuario = u.dni_usuario,
-                nombre = u.nombre,
-                apellido = u.apellido,
-                username = u.username,
-                telefono = u.telefono,
-                password = u.password,
-                email_usuario = u.email_usuario,
-                oRol = new Rol { id_rol = u.id_rol }
-
-            }).ToList();
+            oUsuario.BajaUsuario(dni);
         }
-
-
-
-
-
-
     }
 }

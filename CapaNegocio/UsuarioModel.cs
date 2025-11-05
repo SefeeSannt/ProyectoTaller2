@@ -16,7 +16,14 @@ namespace CapaNegocio
         public long telefono { get; set; }
         public string password { get; set; }
         public string email_usuario { get; set; }
+
+        // estado como int (1 = activo, 0 = inactivo)
         public int estado { get; set; }
+
+        // navegación / id de rol
         public Rol oRol { get; set; }
+
+        // Nueva propiedad que usará la UI para mostrar sólo el nombre del rol
+        public string rol_nombre { get; set; }
     }
 }

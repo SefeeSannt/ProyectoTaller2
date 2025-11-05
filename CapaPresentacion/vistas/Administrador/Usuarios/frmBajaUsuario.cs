@@ -1,59 +1,100 @@
 ﻿using CapaNegocio;
-using CapaPresentacion.Vistas.Administrador.Usuarios;
 using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Drawing;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace CapaPresentacion.vistas.Administrador
+namespace CapaPresentacion.vistas.Administrador.Usuarios
 {
     public partial class frmBajaUsuario : Form
     {
         public frmBajaUsuario()
         {
             InitializeComponent();
-
-
+            dgvDetalleUsuario.CellFormatting += dgvDetalleUsuario_CellFormatting;
         }
 
         private void cargaUsuariosEnGrid()
         {
             var negocio = new CN_usuario();
-            var lista = negocio.ObtenerUsuarios() ?? new List<UsuarioModel>();
-            dgvDetalleUsuario.AutoGenerateColumns = true;
-            dgvDetalleUsuario.DataSource = lista;
-            if (dgvDetalleUsuario.Columns.Contains("estado"))
-                dgvDetalleUsuario.Columns["estado"].Visible = false;
-            if (!dgvDetalleUsuario.Columns.Contains("Accion"))
-            {
-                var btnCol = new DataGridViewButtonColumn
-                {
-                    Name = "Accion",
-                    HeaderText = "Acción",
-                    UseColumnTextForButtonValue = false
-                };
-                dgvDetalleUsuario.Columns.Add(btnCol);
-            }
-            bool hasIdEstado = dgvDetalleUsuario.Columns.Contains("estado");
-            foreach (DataGridViewRow row in dgvDetalleUsuario.Rows)
-            {
-                if (!dgvDetalleUsuario.Columns.Contains("Accion")) break;
-                var estadoVal = hasIdEstado ? row.Cells["estado"].Value?.ToString() : null;
-                row.Cells["Accion"].Value = estadoVal == "1" ? "Dar de baja" : "Dar de alta";
-            }
-        }
+            // Usar la capa de negocio (NO la capa de datos) para obtener los usuarios
+            var listaUsuarios = negocio.ObtenerUsuarios() ?? new List<UsuarioModel>();
 
-        private void iconBtnLupaDetalleUser_Click(object sender, EventArgs e)
-        {
-            var negocio = new CN_usuario();
-            var criterio = txtBuscar.Text;
-            var lista = negocio.BuscarUsuarios(criterio) ?? new List<UsuarioModel>();
-            dgvDetalleUsuario.DataSource = lista;
+            // Proyectar a un DTO anónimo que el grid mostrará
+            var usuarios = listaUsuarios.Select(u => new
+            {
+                dni = u.dni_usuario,
+                nombre = u.nombre,
+                apellido = u.apellido,
+                email = u.email_usuario,
+                telefono = u.telefono,
+                rol = u.rol_nombre ?? string.Empty,
+                estado = u.estado
+            }).ToList();
+
+            dgvDetalleUsuario.AutoGenerateColumns = true;
+            dgvDetalleUsuario.DataSource = usuarios;
+
+            // Ajustes visuales: encabezado rol
+            if (dgvDetalleUsuario.Columns.Contains("rol"))
+                dgvDetalleUsuario.Columns["rol"].HeaderText = "Rol";
+
+            // Evitar duplicar la columna botón
+            if (dgvDetalleUsuario.Columns.Contains("Accion"))
+                dgvDetalleUsuario.Columns.Remove("Accion");
+
+            // Añadir columna botón al final
+            var btnCol = new DataGridViewButtonColumn
+            {
+                Name = "Accion",
+                HeaderText = "Acción",
+                UseColumnTextForButtonValue = false
+            };
+            dgvDetalleUsuario.Columns.Add(btnCol);
+            dgvDetalleUsuario.Columns["Accion"].DisplayIndex = dgvDetalleUsuario.Columns.Count - 1;
+
+            // Normalizar nombre de columna DNI para que handler use "dni"
+            if (dgvDetalleUsuario.Columns.Contains("dni"))
+            {
+                dgvDetalleUsuario.Columns["dni"].HeaderText = "DNI";
+            }
+            else if (dgvDetalleUsuario.Columns.Contains("dni_usuario"))
+            {
+                dgvDetalleUsuario.Columns["dni_usuario"].HeaderText = "DNI";
+                dgvDetalleUsuario.Columns["dni_usuario"].Name = "dni";
+            }
+
+            // Rellenar el texto del botón leyendo el valor numérico de 'estado' (sin modificar la celda)
+            if (dgvDetalleUsuario.Columns.Contains("estado"))
+            {
+                dgvDetalleUsuario.Columns["estado"].HeaderText = "Estado";
+
+                foreach (DataGridViewRow row in dgvDetalleUsuario.Rows)
+                {
+                    var raw = row.Cells["estado"].Value;
+                    int estadoInt = 0;
+                    if (raw != null && int.TryParse(raw.ToString(), out estadoInt))
+                    {
+                        if (dgvDetalleUsuario.Columns.Contains("Accion"))
+                            row.Cells["Accion"].Value = estadoInt == 1 ? "Dar de baja" : "Dar de alta";
+                    }
+                    else
+                    {
+                        if (dgvDetalleUsuario.Columns.Contains("Accion"))
+                            row.Cells["Accion"].Value = "Dar de baja";
+                    }
+                }
+            }
+            else
+            {
+                // Si no existe 'estado', botón por defecto
+                foreach (DataGridViewRow row in dgvDetalleUsuario.Rows)
+                {
+                    if (dgvDetalleUsuario.Columns.Contains("Accion"))
+                        row.Cells["Accion"].Value = "Dar de baja";
+                }
+            }
         }
 
         private void frmBajaUsuario_Load(object sender, EventArgs e)
@@ -61,47 +102,124 @@ namespace CapaPresentacion.vistas.Administrador
             cargaUsuariosEnGrid();
         }
 
-        private void dgvBajaUsuario(object sender, DataGridViewCellEventArgs e)
+        private void iconBtnLupaDetalleUser_Click(object sender, EventArgs e)
         {
-            if (e.RowIndex >= 0 && dgvDetalleUsuario.Columns[e.ColumnIndex].Name == "Accion")
+            var criterio = txtBuscar.Text;
+            var negocio = new CN_usuario();
+            var listaUsuarios = negocio.BuscarUsuarios(criterio) ?? new List<UsuarioModel>();
+
+            var usuarios = listaUsuarios.Select(u => new
             {
-                var row = dgvDetalleUsuario.Rows[e.RowIndex];
-                var dni = Convert.ToInt64(row.Cells["dni_usuario"].Value);
-                var estado = dgvDetalleUsuario.Columns.Contains("estado") ? row.Cells["estado"].Value?.ToString() : null;
+                dni = u.dni_usuario,
+                nombre = u.nombre,
+                apellido = u.apellido,
+                email = u.email_usuario,
+                telefono = u.telefono,
+                rol = u.rol_nombre ?? string.Empty,
+                estado = u.estado
+            }).ToList();
 
-                var negocio = new CN_proveedor();
+            dgvDetalleUsuario.AutoGenerateColumns = true;
+            dgvDetalleUsuario.DataSource = usuarios;
 
-                if (estado == "1")
+            if (dgvDetalleUsuario.Columns.Contains("rol"))
+                dgvDetalleUsuario.Columns["rol"].HeaderText = "Rol";
+
+            // Añadimos la columna acción y textos igual que en cargaUsuariosEnGrid
+            if (dgvDetalleUsuario.Columns.Contains("Accion"))
+                dgvDetalleUsuario.Columns.Remove("Accion");
+
+            var btnCol = new DataGridViewButtonColumn
+            {
+                Name = "Accion",
+                HeaderText = "Acción",
+                UseColumnTextForButtonValue = false
+            };
+            dgvDetalleUsuario.Columns.Add(btnCol);
+            dgvDetalleUsuario.Columns["Accion"].DisplayIndex = dgvDetalleUsuario.Columns.Count - 1;
+
+            //Asignar textos de botón basado en estado
+            if (dgvDetalleUsuario.Columns.Contains("estado"))
+            {
+                foreach (DataGridViewRow row in dgvDetalleUsuario.Rows)
                 {
-                    var result = MessageBox.Show("¿Está seguro que desea dar de baja a este usuario?", "Confirmar Baja", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
-                    if (result != DialogResult.Yes) return;
-                    negocio.bajaProveedor(dni);
-                    MessageBox.Show("Usuario dado de baja correctamente.", "Alta usuario", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    var raw = row.Cells["estado"].Value;
+                    int estadoInt = 0;
+                    if (raw != null && int.TryParse(raw.ToString(), out estadoInt))
+                    {
+                        row.Cells["Accion"].Value = estadoInt == 1 ? "Dar de baja" : "Dar de alta";
+                    }
+                    else
+                    {
+                        row.Cells["Accion"].Value = "Dar de baja";
+                    }
                 }
-                else
-                {
-                    var result = MessageBox.Show("¿Está seguro que desea dar de alta a este usuario?", "Confirmar Alta", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
-                    if (result != DialogResult.Yes) return;
-                    negocio.altaProveedor(dni);
-                    MessageBox.Show("Usuario dado de alta correctamente.", "Baja usuario", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                }
-
-                cargaUsuariosEnGrid();
             }
         }
 
-        private void dgvUsuario_RowPrePaint(object sender, DataGridViewRowPrePaintEventArgs e)
+        private void dgvDetalleUsuario_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
         {
-            var row = dgvDetalleUsuario.Rows[e.RowIndex];
-            var estado = dgvDetalleUsuario.Columns.Contains("estado") ? row.Cells["estado"].Value?.ToString() : null;
+            if (!dgvDetalleUsuario.Columns.Contains("estado")) return;
 
-            if (estado == "1")
-                row.DefaultCellStyle.BackColor = Color.LightGreen;
-            else if (estado == "0")
-                row.DefaultCellStyle.BackColor = Color.LightCoral;
-            else
-                row.DefaultCellStyle.BackColor = Color.White;
+            if (dgvDetalleUsuario.Columns[e.ColumnIndex].Name == "estado" && e.Value != null)
+            {
+                int val;
+                if (int.TryParse(e.Value.ToString(), out val))
+                {
+                    e.Value = val == 1 ? "Activo" : "Inactivo";
+                    e.FormattingApplied = true;
+                }
+            }
         }
 
+        private void dgvDetalleUsuario_RowPrePaint(object sender, DataGridViewRowPrePaintEventArgs e)
+        {
+            var row = dgvDetalleUsuario.Rows[e.RowIndex];
+            var raw = dgvDetalleUsuario.Columns.Contains("estado") ? row.Cells["estado"].Value : null;
+
+            int estadoInt = 0;
+            if (raw != null && int.TryParse(raw.ToString(), out estadoInt))
+            {
+                if (estadoInt == 1)
+                    row.DefaultCellStyle.BackColor = Color.LightGreen;
+                else
+                    row.DefaultCellStyle.BackColor = Color.LightCoral;
+            }
+            else
+            {
+                row.DefaultCellStyle.BackColor = Color.White;
+            }
+        }
+
+        // Handler del click en columna de acción (usa CN_usuario para alternar estado)
+        private void dgvBajaUsuario(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex < 0) return;
+            if (!dgvDetalleUsuario.Columns.Contains("Accion")) return;
+            if (dgvDetalleUsuario.Columns[e.ColumnIndex].Name != "Accion") return;
+
+            var row = dgvDetalleUsuario.Rows[e.RowIndex];
+            var dniObj = row.Cells["dni"].Value;
+            var rawEstado = row.Cells["estado"].Value;
+
+            if (dniObj == null || rawEstado == null) return;
+
+            long dni = Convert.ToInt64(dniObj);
+            int estadoInt = 0;
+            int.TryParse(rawEstado.ToString(), out estadoInt);
+
+            var negocio = new CN_usuario();
+
+            if (estadoInt == 1)
+            {
+                negocio.BajaUsuario(dni);
+            }
+            else
+            {
+                negocio.AltaUsuario(dni);
+            }
+
+            cargaUsuariosEnGrid();
+        }
     }
 }
