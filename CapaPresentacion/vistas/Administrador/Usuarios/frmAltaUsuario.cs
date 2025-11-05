@@ -157,6 +157,9 @@ namespace CapaPresentacion.Vistas.Administrador.Usuarios
             var negocio = new CN_usuario();
             var lista = negocio.Listar();
             dgvAltaUsuario.DataSource = lista;
+            dgvAltaUsuario.Columns["password"].Visible = false;
+            dgvAltaUsuario.Columns["oRol"].Visible = false;
+            dgvAltaUsuario.Columns["estado"].Visible = false;
         }
 
         private void frmAltaUsuario_Load(object sender, EventArgs e)

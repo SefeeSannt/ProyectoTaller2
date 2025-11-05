@@ -29,11 +29,11 @@ namespace CapaNegocio
                 telefono = obj.telefono,
                 password = obj.password,
                 email_usuario = obj.email_usuario,
-                rol = new rol { id_rol = obj.oRol.id_rol }
+                id_rol = obj.oRol != null ? obj.oRol.id_rol : 0,
+                estado = obj.estado
             };
             oUsuario.agregarUsuario(usuario);
         }
-
         public List<UsuarioModel> ObtenerUsuarios()
         {
             var listaDatos = oUsuario.obtenerUsuarios();
@@ -46,22 +46,38 @@ namespace CapaNegocio
                 telefono = u.telefono,
                 password = u.password,
                 email_usuario = u.email_usuario,
-                oRol = new Rol { id_rol = u.id_rol }
+                oRol = u.rol != null ? new Rol { id_rol = u.id_rol } : null,
+                estado = u.estado,
+                rol_nombre = u.rol != null ? u.rol.descripcion : string.Empty
             }).ToList();
         }
 
-        public List<ProveedorModel> BuscarUsuarios(string criterio)
+        public List<UsuarioModel> BuscarUsuarios(string criterio)
         {
             var listaDatos = oUsuario.buscarUsuarios(criterio);
-            return listaDatos.Select(p => new ProveedorModel
+            return listaDatos.Select(u => new UsuarioModel
             {
-                dni_proveedor = p.dni_usuario,
-                nombre = p.nombre,
-                apellido = p.apellido,
-                email_proveedor = p.email_usuario,
-                telefono = p.telefono,
-                estado = p.estado
+                dni_usuario = u.dni_usuario,
+                nombre = u.nombre,
+                apellido = u.apellido,
+                username = u.username,
+                telefono = u.telefono,
+                email_usuario = u.email_usuario,
+                estado = u.estado,
+                oRol = u.rol != null ? new Rol { id_rol = u.id_rol } : null,
+                rol_nombre = u.rol != null ? u.rol.descripcion : string.Empty
             }).ToList();
+        }
+
+        // Alta/Baja de usuario (actualiza int estado en BD)
+        public void AltaUsuario(long dni)
+        {
+            oUsuario.AltaUsuario(dni);
+        }
+
+        public void BajaUsuario(long dni)
+        {
+            oUsuario.BajaUsuario(dni);
         }
     }
 }

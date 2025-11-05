@@ -15,7 +15,7 @@ namespace CapaEntidad
         public long telefono { get; set; }
         public string password { get; set; }
         public string email_usuario { get; set; }
-        public estado oEstado { get; set; }
+        public int estado { get; set; }
         public Rol oRol { get; set; }
     }
 }
