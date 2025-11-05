@@ -34,7 +34,7 @@ namespace CapaPresentacion.vistas.Vendedor.Cliente
             var negocio = new CN_cliente();
             var lista = negocio.ObtenerClientesActivos();
             dgvClientes.DataSource = lista;
-
+            dgvClientes.ClearSelection();
         }
 
         private void btnCancelar_Click(object sender, EventArgs e)

@@ -52,7 +52,7 @@ namespace CapaPresentacion.vistas.Administrador
         {
             var negocio = new CN_usuario();
             var criterio = txtBuscar.Text;
-            var lista = negocio.BuscarUsuarios(criterio) ?? new List<ProveedorModel>();
+            var lista = negocio.BuscarUsuarios(criterio) ?? new List<UsuarioModel>();
             dgvDetalleUsuario.DataSource = lista;
         }
 

@@ -84,5 +84,41 @@ namespace CapaDatos
                          .ToList();
             }
         }
+
+        public List<usuario> ObtenerUsuariosActivos()
+        {
+            using (var db = new ProyectoTaller2Entities())
+            {
+                return db.usuario.Where(u => u.estado == 1).ToList();
+            }
+        }
+
+
+        public void ActualizarUsuario(usuario usuario)
+        {
+            using (var db = new ProyectoTaller2Entities())
+            {
+                var usuarioExistente = db.usuario.Find(usuario.dni_usuario);
+                if (usuarioExistente != null)
+                {
+                    usuarioExistente.nombre = usuario.nombre;
+                    usuarioExistente.apellido = usuario.apellido;
+                    usuarioExistente.username = usuario.username;
+                    usuarioExistente.telefono = usuario.telefono;
+                    usuarioExistente.email_usuario = usuario.email_usuario;
+                    usuarioExistente.id_rol = usuario.id_rol;
+
+                    // Solo actualiza la contraseña si el usuario.password NO está vacío
+                    if (!string.IsNullOrEmpty(usuario.password))
+                    {
+                        usuarioExistente.password = usuario.password;
+                    }
+                 
+
+                    db.SaveChanges();
+                }
+            }
+        }
+
     }
 }

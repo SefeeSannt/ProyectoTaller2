@@ -50,18 +50,63 @@ namespace CapaNegocio
             }).ToList();
         }
 
-        public List<ProveedorModel> BuscarUsuarios(string criterio)
+        public List<UsuarioModel> BuscarUsuarios(string criterio)
         {
             var listaDatos = oUsuario.buscarUsuarios(criterio);
-            return listaDatos.Select(p => new ProveedorModel
+            return listaDatos.Select(u => new UsuarioModel
             {
-                dni_proveedor = p.dni_usuario,
-                nombre = p.nombre,
-                apellido = p.apellido,
-                email_proveedor = p.email_usuario,
-                telefono = p.telefono,
-                estado = p.estado
+                dni_usuario = u.dni_usuario,
+                nombre = u.nombre,
+                apellido = u.apellido,
+                username = u.username,
+                telefono = u.telefono,
+                password = u.password,
+                email_usuario = u.email_usuario,
+                oRol = new Rol { id_rol = u.id_rol }
             }).ToList();
         }
+
+        public void ActualizarUsuario(UsuarioModel usuario_Model)
+        {
+            var usuario = new usuario  // Este es el objeto de Entity Framework
+            {
+                dni_usuario = usuario_Model.dni_usuario,
+                nombre = usuario_Model.nombre,
+                apellido = usuario_Model.apellido,
+                username = usuario_Model.username,
+                telefono = usuario_Model.telefono,
+                password = usuario_Model.password,
+                email_usuario = usuario_Model.email_usuario,
+
+                // --- ¡ESTA ES LA CORRECCIÓN! ---
+                // Debes asignar el ID (la clave foránea), no el objeto.
+                id_rol = usuario_Model.oRol.id_rol
+            };
+            oUsuario.ActualizarUsuario(usuario);
+        }
+
+        public List<UsuarioModel> ObtenerUsuariosActivos()
+        {
+            var listaDatos = oUsuario.ObtenerUsuariosActivos(); 
+
+            return listaDatos.Select(u => new UsuarioModel
+            {
+                dni_usuario = u.dni_usuario,
+                nombre = u.nombre,
+                apellido = u.apellido,
+                username = u.username,
+                telefono = u.telefono,
+                password = u.password,
+                email_usuario = u.email_usuario,
+                oRol = new Rol { id_rol = u.id_rol }
+
+            }).ToList();
+        }
+
+
+
+
+
+
     }
 }
