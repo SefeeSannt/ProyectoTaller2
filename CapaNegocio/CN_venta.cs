@@ -12,7 +12,7 @@ namespace CapaNegocio
     public class CN_venta
     {
         private CD_venta objCD_Venta = new CD_venta();
-        public DataTable ListarCompras(DateTime fechaDesde, DateTime fechaHasta, string dniProveedor)
+        public DataTable ListarVentas(DateTime fechaDesde, DateTime fechaHasta, string dniProveedor)
         {
             return objCD_Venta.ListarVentas(fechaDesde, fechaHasta, dniProveedor);
         }
@@ -50,7 +50,7 @@ namespace CapaNegocio
                 var cnProducto = new CN_producto();
                 foreach (var d in request.detalles)
                 {
-                    cnProducto.ActualizarStockYCostos(d.cod_producto, d.precio_compra, d.cantidad);
+                    cnProducto.ActualizarStockPorVenta(d.cod_producto, d.cantidad);
                 }
             }
 
@@ -59,13 +59,13 @@ namespace CapaNegocio
 
 
 
-        public DataTable ObtenerDetalleCompra(int codVenta)
+        public DataTable ObtenerDetalleVenta(int codVenta)
         {
             return objCD_Venta.ObtenerDetalleVenta(codVenta);
         }
 
 
-        public CapaEntidad.Venta ObtenerCompraPorId(int codVenta)
+        public CapaEntidad.Venta ObtenerVentaPorId(int codVenta)
         {
 
             CapaDatos.venta ventaDeDatos = objCD_Venta.ObtenerVentaPorId(codVenta);

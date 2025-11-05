@@ -265,11 +265,11 @@
     <Compile Include="vistas\Administrador\Usuarios\frmAltaUsuario.Designer.cs">
       <DependentUpon>frmAltaUsuario.cs</DependentUpon>
     </Compile>
-    <Compile Include="vistas\Administrador\Usuarios\frmDetalleUsuario.cs">
+    <Compile Include="vistas\Administrador\Usuarios\frmDetalleUsuario%28no uso%29.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="vistas\Administrador\Usuarios\frmDetalleUsuario.Designer.cs">
-      <DependentUpon>frmDetalleUsuario.cs</DependentUpon>
+    <Compile Include="vistas\Administrador\Usuarios\frmDetalleUsuario%28no uso%29.Designer.cs">
+      <DependentUpon>frmDetalleUsuario%28no uso%29.cs</DependentUpon>
     </Compile>
     <Compile Include="vistas\Administrador\Usuarios\frmEditarUsuario.cs">
       <SubType>Form</SubType>
@@ -460,8 +460,8 @@
     <EmbeddedResource Include="vistas\Administrador\Usuarios\frmAltaUsuario.resx">
       <DependentUpon>frmAltaUsuario.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="vistas\Administrador\Usuarios\frmDetalleUsuario.resx">
-      <DependentUpon>frmDetalleUsuario.cs</DependentUpon>
+    <EmbeddedResource Include="vistas\Administrador\Usuarios\frmDetalleUsuario%28no uso%29.resx">
+      <DependentUpon>frmDetalleUsuario%28no uso%29.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="vistas\Administrador\Usuarios\frmEditarUsuario.resx">
       <DependentUpon>frmEditarUsuario.cs</DependentUpon>

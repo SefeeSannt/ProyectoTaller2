@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
+using System.Linq;
 using CapaEntidad;
 
 namespace CapaDatos
@@ -62,6 +63,26 @@ namespace CapaDatos
             }
         }
 
+        public List<usuario> obtenerUsuarios()
+        {
+            using (var db = new ProyectoTaller2Entities())
+            {
+                return db.usuario.ToList();
+            }
+        }
 
+        public List<usuario> buscarUsuarios(string criterio)
+        {
+            using (var db = new ProyectoTaller2Entities())
+            {
+                return db.usuario
+                         .Where(p => p.dni_usuario.ToString().Contains(criterio) ||
+                                     p.nombre.Contains(criterio) ||
+                                     p.apellido.Contains(criterio) ||
+                                     p.email_usuario.Contains(criterio) ||
+                                     p.telefono.ToString().Contains(criterio))
+                         .ToList();
+            }
+        }
     }
 }

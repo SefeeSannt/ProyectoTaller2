@@ -33,5 +33,35 @@ namespace CapaNegocio
             };
             oUsuario.agregarUsuario(usuario);
         }
+
+        public List<UsuarioModel> ObtenerUsuarios()
+        {
+            var listaDatos = oUsuario.obtenerUsuarios();
+            return listaDatos.Select(u => new UsuarioModel
+            {
+                dni_usuario = u.dni_usuario,
+                nombre = u.nombre,
+                apellido = u.apellido,
+                username = u.username,
+                telefono = u.telefono,
+                password = u.password,
+                email_usuario = u.email_usuario,
+                oRol = new Rol { id_rol = u.id_rol }
+            }).ToList();
+        }
+
+        public List<ProveedorModel> BuscarUsuarios(string criterio)
+        {
+            var listaDatos = oUsuario.buscarUsuarios(criterio);
+            return listaDatos.Select(p => new ProveedorModel
+            {
+                dni_proveedor = p.dni_usuario,
+                nombre = p.nombre,
+                apellido = p.apellido,
+                email_proveedor = p.email_usuario,
+                telefono = p.telefono,
+                estado = p.estado
+            }).ToList();
+        }
     }
 }

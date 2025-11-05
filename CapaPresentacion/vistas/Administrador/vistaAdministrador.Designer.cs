@@ -48,7 +48,6 @@ namespace CapaPresentacion.Vistas.Administrador
             this.tsmiAltaUsuario_Click = new System.Windows.Forms.ToolStripMenuItem();
             this.tsmiEditarUser = new System.Windows.Forms.ToolStripMenuItem();
             this.tsmiBajaDeUsuario = new System.Windows.Forms.ToolStripMenuItem();
-            this.tsmiListarUsuarios_Click = new System.Windows.Forms.ToolStripMenuItem();
             this.iconMenuItem6 = new FontAwesome.Sharp.IconMenuItem();
             this.altaBajaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.iconMenuItem7 = new FontAwesome.Sharp.IconMenuItem();
@@ -191,21 +190,21 @@ namespace CapaPresentacion.Vistas.Administrador
             // tsmiAltaProd
             // 
             this.tsmiAltaProd.Name = "tsmiAltaProd";
-            this.tsmiAltaProd.Size = new System.Drawing.Size(180, 22);
+            this.tsmiAltaProd.Size = new System.Drawing.Size(145, 22);
             this.tsmiAltaProd.Text = "Dar de alta";
             this.tsmiAltaProd.Click += new System.EventHandler(this.tsmiAltaProd_Click);
             // 
             // tsmiBajaProducto
             // 
             this.tsmiBajaProducto.Name = "tsmiBajaProducto";
-            this.tsmiBajaProducto.Size = new System.Drawing.Size(180, 22);
+            this.tsmiBajaProducto.Size = new System.Drawing.Size(145, 22);
             this.tsmiBajaProducto.Text = "Dar de baja";
             this.tsmiBajaProducto.Click += new System.EventHandler(this.tsmiBajaProducto_Click);
             // 
             // tsmiEditarProd
             // 
             this.tsmiEditarProd.Name = "tsmiEditarProd";
-            this.tsmiEditarProd.Size = new System.Drawing.Size(180, 22);
+            this.tsmiEditarProd.Size = new System.Drawing.Size(145, 22);
             this.tsmiEditarProd.Text = "Editar ";
             this.tsmiEditarProd.Click += new System.EventHandler(this.tsmiEditarProd_Click);
             // 
@@ -214,8 +213,7 @@ namespace CapaPresentacion.Vistas.Administrador
             this.iconMenuItem4.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.tsmiAltaUsuario_Click,
             this.tsmiEditarUser,
-            this.tsmiBajaDeUsuario,
-            this.tsmiListarUsuarios_Click});
+            this.tsmiBajaDeUsuario});
             this.iconMenuItem4.Font = new System.Drawing.Font("Segoe UI Variable Text Semibold", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.iconMenuItem4.ForeColor = System.Drawing.Color.White;
             this.iconMenuItem4.IconChar = FontAwesome.Sharp.IconChar.User;
@@ -247,13 +245,6 @@ namespace CapaPresentacion.Vistas.Administrador
             this.tsmiBajaDeUsuario.Size = new System.Drawing.Size(194, 22);
             this.tsmiBajaDeUsuario.Text = "Dar de baja usuario";
             this.tsmiBajaDeUsuario.Click += new System.EventHandler(this.tsmiBajaDeUsuario_Click);
-            // 
-            // tsmiListarUsuarios_Click
-            // 
-            this.tsmiListarUsuarios_Click.Name = "tsmiListarUsuarios_Click";
-            this.tsmiListarUsuarios_Click.Size = new System.Drawing.Size(194, 22);
-            this.tsmiListarUsuarios_Click.Text = "Listar";
-            this.tsmiListarUsuarios_Click.Click += new System.EventHandler(this.tsmiListarUsuarios_Click_Click);
             // 
             // iconMenuItem6
             // 
@@ -415,7 +406,6 @@ namespace CapaPresentacion.Vistas.Administrador
         private FontAwesome.Sharp.IconButton iconBtnSalir;
         private FontAwesome.Sharp.IconMenuItem iconMenuItem4;
         private ToolStripMenuItem tsmiAltaUsuario_Click;
-        private ToolStripMenuItem tsmiListarUsuarios_Click;
         private FontAwesome.Sharp.IconMenuItem iconMenuItem2;
         private ToolStripMenuItem tsmiDetalleVentas;
         private ToolStripMenuItem tsmiDetalleCompras;
