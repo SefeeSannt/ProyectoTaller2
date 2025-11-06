@@ -58,6 +58,7 @@
     <Compile Include="CN_compraDetalle.cs" />
     <Compile Include="CN_producto.cs" />
     <Compile Include="CN_proveedor.cs" />
+    <Compile Include="CN_rol.cs" />
     <Compile Include="CN_usuario.cs" />
     <Compile Include="CN_venta.cs" />
     <Compile Include="CompraModel.cs" />
