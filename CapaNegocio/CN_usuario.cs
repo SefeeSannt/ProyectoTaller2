@@ -112,7 +112,8 @@ namespace CapaNegocio
                 telefono = u.telefono,
                 password = u.password,
                 email_usuario = u.email_usuario,
-                oRol = new Rol { id_rol = u.id_rol },
+                oRol = u.rol != null ? new Rol { id_rol = u.id_rol } : null,
+                rol_nombre = u.rol != null ? u.rol.descripcion : string.Empty
 
 
             }).ToList();

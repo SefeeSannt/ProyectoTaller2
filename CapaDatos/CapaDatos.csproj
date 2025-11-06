@@ -63,6 +63,7 @@
     <Compile Include="CD_detalle_venta.cs" />
     <Compile Include="CD_producto.cs" />
     <Compile Include="CD_proveedor.cs" />
+    <Compile Include="CD_rol.cs" />
     <Compile Include="CD_usuario.cs" />
     <Compile Include="CD_venta.cs" />
     <Compile Include="cliente.cs">

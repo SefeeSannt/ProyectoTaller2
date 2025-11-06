@@ -34,10 +34,13 @@ namespace CapaPresentacion.Vistas.Administrador.Reportes
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             this.Agregra = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.nuevoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.button1 = new System.Windows.Forms.Button();
+            this.btnPDFventa = new System.Windows.Forms.Button();
             this.lblTotalVentaFilt = new System.Windows.Forms.Label();
             this.lblDetalleVenta = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
@@ -47,28 +50,20 @@ namespace CapaPresentacion.Vistas.Administrador.Reportes
             this.lblTituloTotalVentas = new System.Windows.Forms.Label();
             this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
             this.pnlConsultaVentas2 = new System.Windows.Forms.Panel();
-            this.label2 = new System.Windows.Forms.Label();
-            this.lblDatoDni = new System.Windows.Forms.Label();
-            this.lblDatoApellido = new System.Windows.Forms.Label();
-            this.lblDatoNombre = new System.Windows.Forms.Label();
+            this.lblCodVenta = new System.Windows.Forms.Label();
+            this.lblDniCliente = new System.Windows.Forms.Label();
+            this.lblApellidoCliente = new System.Windows.Forms.Label();
+            this.lblNombreCliente = new System.Windows.Forms.Label();
             this.lblTitulo = new System.Windows.Forms.Label();
             this.dgvDetalleVenta = new System.Windows.Forms.DataGridView();
-            this.clmProducto = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.clmCant = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Subtotal = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.panel2 = new System.Windows.Forms.Panel();
-            this.dateTimePicker2 = new System.Windows.Forms.DateTimePicker();
-            this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
+            this.dtpFechaHasta = new System.Windows.Forms.DateTimePicker();
+            this.dtpFechaDesde = new System.Windows.Forms.DateTimePicker();
             this.lblfechaHasta = new System.Windows.Forms.Label();
-            this.lblVendedorConsVentas = new System.Windows.Forms.Label();
-            this.txtCliente_Ventas = new System.Windows.Forms.TextBox();
+            this.lblCliente = new System.Windows.Forms.Label();
+            this.txtDniCliente = new System.Windows.Forms.TextBox();
             this.btnBuscar = new System.Windows.Forms.Button();
             this.lblFechaDesde = new System.Windows.Forms.Label();
-            this.clienteConsVentas = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.fechaVenta = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.formaPagoConsVenta = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ventaTotal = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.verDetalle = new System.Windows.Forms.DataGridViewButtonColumn();
             this.Agregra.SuspendLayout();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvConsultaVentas)).BeginInit();
@@ -94,7 +89,7 @@ namespace CapaPresentacion.Vistas.Administrador.Reportes
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.Color.White;
-            this.panel1.Controls.Add(this.button1);
+            this.panel1.Controls.Add(this.btnPDFventa);
             this.panel1.Controls.Add(this.lblTotalVentaFilt);
             this.panel1.Controls.Add(this.lblDetalleVenta);
             this.panel1.Controls.Add(this.label1);
@@ -113,17 +108,18 @@ namespace CapaPresentacion.Vistas.Administrador.Reportes
             this.panel1.Size = new System.Drawing.Size(960, 538);
             this.panel1.TabIndex = 4;
             // 
-            // button1
+            // btnPDFventa
             // 
-            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button1.ForeColor = System.Drawing.Color.Black;
-            this.button1.Location = new System.Drawing.Point(486, 476);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(143, 39);
-            this.button1.TabIndex = 28;
-            this.button1.Text = "Imprimir detalle";
-            this.button1.UseVisualStyleBackColor = true;
+            this.btnPDFventa.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnPDFventa.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnPDFventa.ForeColor = System.Drawing.Color.Black;
+            this.btnPDFventa.Location = new System.Drawing.Point(486, 476);
+            this.btnPDFventa.Name = "btnPDFventa";
+            this.btnPDFventa.Size = new System.Drawing.Size(143, 39);
+            this.btnPDFventa.TabIndex = 28;
+            this.btnPDFventa.Text = "Imprimir detalle";
+            this.btnPDFventa.UseVisualStyleBackColor = true;
+            this.btnPDFventa.Click += new System.EventHandler(this.btnPDFventa_Click);
             // 
             // lblTotalVentaFilt
             // 
@@ -181,18 +177,24 @@ namespace CapaPresentacion.Vistas.Administrador.Reportes
             this.dgvConsultaVentas.BackgroundColor = System.Drawing.Color.White;
             this.dgvConsultaVentas.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
             this.dgvConsultaVentas.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvConsultaVentas.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.clienteConsVentas,
-            this.fechaVenta,
-            this.formaPagoConsVenta,
-            this.ventaTotal,
-            this.verDetalle});
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgvConsultaVentas.DefaultCellStyle = dataGridViewCellStyle1;
+            this.dgvConsultaVentas.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
             this.dgvConsultaVentas.Location = new System.Drawing.Point(13, 245);
             this.dgvConsultaVentas.Name = "dgvConsultaVentas";
             this.dgvConsultaVentas.ReadOnly = true;
             this.dgvConsultaVentas.RowHeadersVisible = false;
+            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.Black;
+            this.dgvConsultaVentas.RowsDefaultCellStyle = dataGridViewCellStyle2;
             this.dgvConsultaVentas.Size = new System.Drawing.Size(451, 226);
             this.dgvConsultaVentas.TabIndex = 28;
+            this.dgvConsultaVentas.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvConsultaVentas_CellContentClick);
             // 
             // lblCostoTotal
             // 
@@ -232,10 +234,10 @@ namespace CapaPresentacion.Vistas.Administrador.Reportes
             // pnlConsultaVentas2
             // 
             this.pnlConsultaVentas2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.pnlConsultaVentas2.Controls.Add(this.label2);
-            this.pnlConsultaVentas2.Controls.Add(this.lblDatoDni);
-            this.pnlConsultaVentas2.Controls.Add(this.lblDatoApellido);
-            this.pnlConsultaVentas2.Controls.Add(this.lblDatoNombre);
+            this.pnlConsultaVentas2.Controls.Add(this.lblCodVenta);
+            this.pnlConsultaVentas2.Controls.Add(this.lblDniCliente);
+            this.pnlConsultaVentas2.Controls.Add(this.lblApellidoCliente);
+            this.pnlConsultaVentas2.Controls.Add(this.lblNombreCliente);
             this.pnlConsultaVentas2.Controls.Add(this.lblTitulo);
             this.pnlConsultaVentas2.Controls.Add(this.dgvDetalleVenta);
             this.pnlConsultaVentas2.Location = new System.Drawing.Point(486, 56);
@@ -243,56 +245,56 @@ namespace CapaPresentacion.Vistas.Administrador.Reportes
             this.pnlConsultaVentas2.Size = new System.Drawing.Size(463, 415);
             this.pnlConsultaVentas2.TabIndex = 31;
             // 
-            // label2
+            // lblCodVenta
             // 
-            this.label2.AutoSize = true;
-            this.label2.BackColor = System.Drawing.Color.White;
-            this.label2.Font = new System.Drawing.Font("Franklin Gothic Medium", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.ForeColor = System.Drawing.Color.Black;
-            this.label2.Location = new System.Drawing.Point(352, 76);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(84, 17);
-            this.label2.TabIndex = 22;
-            this.label2.Text = "Codigo venta:";
+            this.lblCodVenta.AutoSize = true;
+            this.lblCodVenta.BackColor = System.Drawing.Color.White;
+            this.lblCodVenta.Font = new System.Drawing.Font("Franklin Gothic Medium", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblCodVenta.ForeColor = System.Drawing.Color.Black;
+            this.lblCodVenta.Location = new System.Drawing.Point(352, 76);
+            this.lblCodVenta.Name = "lblCodVenta";
+            this.lblCodVenta.Size = new System.Drawing.Size(84, 17);
+            this.lblCodVenta.TabIndex = 22;
+            this.lblCodVenta.Text = "Codigo venta:";
             // 
-            // lblDatoDni
+            // lblDniCliente
             // 
-            this.lblDatoDni.AutoSize = true;
-            this.lblDatoDni.BackColor = System.Drawing.Color.White;
-            this.lblDatoDni.Font = new System.Drawing.Font("Franklin Gothic Medium", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblDatoDni.ForeColor = System.Drawing.Color.Black;
-            this.lblDatoDni.Location = new System.Drawing.Point(12, 69);
-            this.lblDatoDni.Name = "lblDatoDni";
-            this.lblDatoDni.Size = new System.Drawing.Size(80, 17);
-            this.lblDatoDni.TabIndex = 21;
-            this.lblDatoDni.Text = "dni vendedor";
-            this.lblDatoDni.Click += new System.EventHandler(this.lblDatoDni_Click);
+            this.lblDniCliente.AutoSize = true;
+            this.lblDniCliente.BackColor = System.Drawing.Color.White;
+            this.lblDniCliente.Font = new System.Drawing.Font("Franklin Gothic Medium", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblDniCliente.ForeColor = System.Drawing.Color.Black;
+            this.lblDniCliente.Location = new System.Drawing.Point(12, 69);
+            this.lblDniCliente.Name = "lblDniCliente";
+            this.lblDniCliente.Size = new System.Drawing.Size(65, 17);
+            this.lblDniCliente.TabIndex = 21;
+            this.lblDniCliente.Text = "dni cliente";
+            this.lblDniCliente.Click += new System.EventHandler(this.lblDatoDni_Click);
             // 
-            // lblDatoApellido
+            // lblApellidoCliente
             // 
-            this.lblDatoApellido.AutoSize = true;
-            this.lblDatoApellido.BackColor = System.Drawing.Color.White;
-            this.lblDatoApellido.Font = new System.Drawing.Font("Franklin Gothic Medium", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblDatoApellido.ForeColor = System.Drawing.Color.Black;
-            this.lblDatoApellido.Location = new System.Drawing.Point(13, 52);
-            this.lblDatoApellido.Name = "lblDatoApellido";
-            this.lblDatoApellido.Size = new System.Drawing.Size(107, 17);
-            this.lblDatoApellido.TabIndex = 20;
-            this.lblDatoApellido.Text = "apellido vendedor";
-            this.lblDatoApellido.Click += new System.EventHandler(this.lblDatoApellido_Click);
+            this.lblApellidoCliente.AutoSize = true;
+            this.lblApellidoCliente.BackColor = System.Drawing.Color.White;
+            this.lblApellidoCliente.Font = new System.Drawing.Font("Franklin Gothic Medium", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblApellidoCliente.ForeColor = System.Drawing.Color.Black;
+            this.lblApellidoCliente.Location = new System.Drawing.Point(13, 52);
+            this.lblApellidoCliente.Name = "lblApellidoCliente";
+            this.lblApellidoCliente.Size = new System.Drawing.Size(92, 17);
+            this.lblApellidoCliente.TabIndex = 20;
+            this.lblApellidoCliente.Text = "apellido cliente";
+            this.lblApellidoCliente.Click += new System.EventHandler(this.lblDatoApellido_Click);
             // 
-            // lblDatoNombre
+            // lblNombreCliente
             // 
-            this.lblDatoNombre.AutoSize = true;
-            this.lblDatoNombre.BackColor = System.Drawing.Color.White;
-            this.lblDatoNombre.Font = new System.Drawing.Font("Franklin Gothic Medium", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblDatoNombre.ForeColor = System.Drawing.Color.Black;
-            this.lblDatoNombre.Location = new System.Drawing.Point(12, 35);
-            this.lblDatoNombre.Name = "lblDatoNombre";
-            this.lblDatoNombre.Size = new System.Drawing.Size(106, 17);
-            this.lblDatoNombre.TabIndex = 19;
-            this.lblDatoNombre.Text = "nombre vendedor";
-            this.lblDatoNombre.Click += new System.EventHandler(this.lblDatoNombre_Click);
+            this.lblNombreCliente.AutoSize = true;
+            this.lblNombreCliente.BackColor = System.Drawing.Color.White;
+            this.lblNombreCliente.Font = new System.Drawing.Font("Franklin Gothic Medium", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblNombreCliente.ForeColor = System.Drawing.Color.Black;
+            this.lblNombreCliente.Location = new System.Drawing.Point(12, 35);
+            this.lblNombreCliente.Name = "lblNombreCliente";
+            this.lblNombreCliente.Size = new System.Drawing.Size(91, 17);
+            this.lblNombreCliente.TabIndex = 19;
+            this.lblNombreCliente.Text = "nombre cliente";
+            this.lblNombreCliente.Click += new System.EventHandler(this.lblDatoNombre_Click);
             // 
             // lblTitulo
             // 
@@ -302,9 +304,9 @@ namespace CapaPresentacion.Vistas.Administrador.Reportes
             this.lblTitulo.ForeColor = System.Drawing.Color.Black;
             this.lblTitulo.Location = new System.Drawing.Point(12, 11);
             this.lblTitulo.Name = "lblTitulo";
-            this.lblTitulo.Size = new System.Drawing.Size(112, 20);
+            this.lblTitulo.Size = new System.Drawing.Size(97, 20);
             this.lblTitulo.TabIndex = 18;
-            this.lblTitulo.Text = "Datos Vendedor";
+            this.lblTitulo.Text = "Datos Cliente";
             this.lblTitulo.Click += new System.EventHandler(this.lblTitulo_Click);
             // 
             // dgvDetalleVenta
@@ -314,10 +316,15 @@ namespace CapaPresentacion.Vistas.Administrador.Reportes
             this.dgvDetalleVenta.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dgvDetalleVenta.BackgroundColor = System.Drawing.Color.White;
             this.dgvDetalleVenta.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvDetalleVenta.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.clmProducto,
-            this.clmCant,
-            this.Subtotal});
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Franklin Gothic Medium", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle3.ForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgvDetalleVenta.DefaultCellStyle = dataGridViewCellStyle3;
+            this.dgvDetalleVenta.GridColor = System.Drawing.Color.CadetBlue;
             this.dgvDetalleVenta.Location = new System.Drawing.Point(-1, 106);
             this.dgvDetalleVenta.Name = "dgvDetalleVenta";
             this.dgvDetalleVenta.ReadOnly = true;
@@ -325,33 +332,15 @@ namespace CapaPresentacion.Vistas.Administrador.Reportes
             this.dgvDetalleVenta.Size = new System.Drawing.Size(463, 308);
             this.dgvDetalleVenta.TabIndex = 0;
             // 
-            // clmProducto
-            // 
-            this.clmProducto.HeaderText = "Producto";
-            this.clmProducto.Name = "clmProducto";
-            this.clmProducto.ReadOnly = true;
-            // 
-            // clmCant
-            // 
-            this.clmCant.HeaderText = "Cantidad";
-            this.clmCant.Name = "clmCant";
-            this.clmCant.ReadOnly = true;
-            // 
-            // Subtotal
-            // 
-            this.Subtotal.HeaderText = "Subtotal";
-            this.Subtotal.Name = "Subtotal";
-            this.Subtotal.ReadOnly = true;
-            // 
             // panel2
             // 
             this.panel2.BackColor = System.Drawing.Color.White;
             this.panel2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.panel2.Controls.Add(this.dateTimePicker2);
-            this.panel2.Controls.Add(this.dateTimePicker1);
+            this.panel2.Controls.Add(this.dtpFechaHasta);
+            this.panel2.Controls.Add(this.dtpFechaDesde);
             this.panel2.Controls.Add(this.lblfechaHasta);
-            this.panel2.Controls.Add(this.lblVendedorConsVentas);
-            this.panel2.Controls.Add(this.txtCliente_Ventas);
+            this.panel2.Controls.Add(this.lblCliente);
+            this.panel2.Controls.Add(this.txtDniCliente);
             this.panel2.Controls.Add(this.btnBuscar);
             this.panel2.Controls.Add(this.lblFechaDesde);
             this.panel2.Location = new System.Drawing.Point(14, 56);
@@ -359,21 +348,21 @@ namespace CapaPresentacion.Vistas.Administrador.Reportes
             this.panel2.Size = new System.Drawing.Size(450, 183);
             this.panel2.TabIndex = 33;
             // 
-            // dateTimePicker2
+            // dtpFechaHasta
             // 
-            this.dateTimePicker2.Location = new System.Drawing.Point(211, 28);
-            this.dateTimePicker2.Name = "dateTimePicker2";
-            this.dateTimePicker2.Size = new System.Drawing.Size(159, 20);
-            this.dateTimePicker2.TabIndex = 30;
-            this.dateTimePicker2.TabStop = false;
+            this.dtpFechaHasta.Location = new System.Drawing.Point(211, 28);
+            this.dtpFechaHasta.Name = "dtpFechaHasta";
+            this.dtpFechaHasta.Size = new System.Drawing.Size(159, 20);
+            this.dtpFechaHasta.TabIndex = 30;
+            this.dtpFechaHasta.TabStop = false;
             // 
-            // dateTimePicker1
+            // dtpFechaDesde
             // 
-            this.dateTimePicker1.Location = new System.Drawing.Point(5, 28);
-            this.dateTimePicker1.Name = "dateTimePicker1";
-            this.dateTimePicker1.Size = new System.Drawing.Size(159, 20);
-            this.dateTimePicker1.TabIndex = 26;
-            this.dateTimePicker1.TabStop = false;
+            this.dtpFechaDesde.Location = new System.Drawing.Point(5, 28);
+            this.dtpFechaDesde.Name = "dtpFechaDesde";
+            this.dtpFechaDesde.Size = new System.Drawing.Size(159, 20);
+            this.dtpFechaDesde.TabIndex = 26;
+            this.dtpFechaDesde.TabStop = false;
             // 
             // lblfechaHasta
             // 
@@ -388,25 +377,25 @@ namespace CapaPresentacion.Vistas.Administrador.Reportes
             this.lblfechaHasta.Text = "Fecha Hasta:";
             this.lblfechaHasta.Click += new System.EventHandler(this.lblfechaHasta_Click);
             // 
-            // lblVendedorConsVentas
+            // lblCliente
             // 
-            this.lblVendedorConsVentas.AutoSize = true;
-            this.lblVendedorConsVentas.BackColor = System.Drawing.Color.White;
-            this.lblVendedorConsVentas.Font = new System.Drawing.Font("Franklin Gothic Medium", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblVendedorConsVentas.ForeColor = System.Drawing.Color.Black;
-            this.lblVendedorConsVentas.Location = new System.Drawing.Point(4, 76);
-            this.lblVendedorConsVentas.Name = "lblVendedorConsVentas";
-            this.lblVendedorConsVentas.Size = new System.Drawing.Size(72, 17);
-            this.lblVendedorConsVentas.TabIndex = 23;
-            this.lblVendedorConsVentas.Text = "DNI vendor:";
-            this.lblVendedorConsVentas.Click += new System.EventHandler(this.lblVendedorConsVentas_Click);
+            this.lblCliente.AutoSize = true;
+            this.lblCliente.BackColor = System.Drawing.Color.White;
+            this.lblCliente.Font = new System.Drawing.Font("Franklin Gothic Medium", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblCliente.ForeColor = System.Drawing.Color.Black;
+            this.lblCliente.Location = new System.Drawing.Point(4, 76);
+            this.lblCliente.Name = "lblCliente";
+            this.lblCliente.Size = new System.Drawing.Size(71, 17);
+            this.lblCliente.TabIndex = 23;
+            this.lblCliente.Text = "DNI cliente:";
+            this.lblCliente.Click += new System.EventHandler(this.lblVendedorConsVentas_Click);
             // 
-            // txtCliente_Ventas
+            // txtDniCliente
             // 
-            this.txtCliente_Ventas.Location = new System.Drawing.Point(5, 92);
-            this.txtCliente_Ventas.Name = "txtCliente_Ventas";
-            this.txtCliente_Ventas.Size = new System.Drawing.Size(159, 20);
-            this.txtCliente_Ventas.TabIndex = 25;
+            this.txtDniCliente.Location = new System.Drawing.Point(5, 92);
+            this.txtDniCliente.Name = "txtDniCliente";
+            this.txtDniCliente.Size = new System.Drawing.Size(159, 20);
+            this.txtDniCliente.TabIndex = 25;
             // 
             // btnBuscar
             // 
@@ -419,6 +408,7 @@ namespace CapaPresentacion.Vistas.Administrador.Reportes
             this.btnBuscar.TabIndex = 27;
             this.btnBuscar.Text = "Buscar";
             this.btnBuscar.UseVisualStyleBackColor = false;
+            this.btnBuscar.Click += new System.EventHandler(this.btnBuscar_Click);
             // 
             // lblFechaDesde
             // 
@@ -433,38 +423,6 @@ namespace CapaPresentacion.Vistas.Administrador.Reportes
             this.lblFechaDesde.Text = "Fecha desde:";
             this.lblFechaDesde.Click += new System.EventHandler(this.lblFechaDesde_Click);
             // 
-            // clienteConsVentas
-            // 
-            this.clienteConsVentas.HeaderText = "Cliente";
-            this.clienteConsVentas.Name = "clienteConsVentas";
-            this.clienteConsVentas.ReadOnly = true;
-            // 
-            // fechaVenta
-            // 
-            this.fechaVenta.HeaderText = "Fecha venta";
-            this.fechaVenta.Name = "fechaVenta";
-            this.fechaVenta.ReadOnly = true;
-            // 
-            // formaPagoConsVenta
-            // 
-            this.formaPagoConsVenta.HeaderText = "Forma de Pago";
-            this.formaPagoConsVenta.Name = "formaPagoConsVenta";
-            this.formaPagoConsVenta.ReadOnly = true;
-            // 
-            // ventaTotal
-            // 
-            this.ventaTotal.HeaderText = "Total";
-            this.ventaTotal.Name = "ventaTotal";
-            this.ventaTotal.ReadOnly = true;
-            // 
-            // verDetalle
-            // 
-            this.verDetalle.HeaderText = "Ver detalle";
-            this.verDetalle.Name = "verDetalle";
-            this.verDetalle.ReadOnly = true;
-            this.verDetalle.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.verDetalle.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
-            // 
             // frmDetalleVentas
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -475,6 +433,7 @@ namespace CapaPresentacion.Vistas.Administrador.Reportes
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "frmDetalleVentas";
             this.Text = "Ventas";
+            this.Load += new System.EventHandler(this.frmDetalleVentas_Load);
             this.Agregra.ResumeLayout(false);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
@@ -493,38 +452,30 @@ namespace CapaPresentacion.Vistas.Administrador.Reportes
         private System.Windows.Forms.ContextMenuStrip Agregra;
         private System.Windows.Forms.ToolStripMenuItem nuevoToolStripMenuItem;
         private System.Windows.Forms.Panel panel1;
-        private DateTimePicker dateTimePicker2;
+        private DateTimePicker dtpFechaHasta;
         private Label lblDetalleVenta;
         private Label label1;
         private DataGridView dgvConsultaVentas;
         private Button btnBuscar;
-        private DateTimePicker dateTimePicker1;
+        private DateTimePicker dtpFechaDesde;
         private Label lblFechaDesde;
-        private TextBox txtCliente_Ventas;
-        private Label lblVendedorConsVentas;
+        private TextBox txtDniCliente;
+        private Label lblCliente;
         private Label lblTotalVentaFilt;
         private Label lblTituloTotalVentas;
         private FlowLayoutPanel flowLayoutPanel1;
         private Label lblfechaHasta;
         private Panel pnlConsultaVentas2;
-        private Label lblDatoDni;
-        private Label lblDatoApellido;
-        private Label lblDatoNombre;
+        private Label lblDniCliente;
+        private Label lblApellidoCliente;
+        private Label lblNombreCliente;
         private Label lblTitulo;
         private Label lblTituloCosto;
         private TextBox lblCostoTotal;
         private DataGridView dgvDetalleVenta;
-        private DataGridViewTextBoxColumn clmProducto;
-        private DataGridViewTextBoxColumn clmCant;
-        private DataGridViewTextBoxColumn Subtotal;
         private Panel panel2;
-        private Button button1;
-        private Label label2;
-        private DataGridViewTextBoxColumn clienteConsVentas;
-        private DataGridViewTextBoxColumn fechaVenta;
-        private DataGridViewTextBoxColumn formaPagoConsVenta;
-        private DataGridViewTextBoxColumn ventaTotal;
-        private DataGridViewButtonColumn verDetalle;
+        private Button btnPDFventa;
+        private Label lblCodVenta;
     }
 }
 

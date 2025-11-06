@@ -80,8 +80,6 @@ namespace CapaPresentacion.Vistas.Repositor
 
         }
 
-
-
         private void ConfigurarGridDetalle()
         {
             dgvDetalleCompra.AutoGenerateColumns = false;
@@ -121,8 +119,6 @@ namespace CapaPresentacion.Vistas.Repositor
                 DefaultCellStyle = { Format = "C" }
             });
         }
-
-
 
         private void MostrarDetalle(int codCompra)
         {

@@ -1,4 +1,7 @@
-﻿using System;
+﻿using CapaEntidad;
+using CapaNegocio;
+using CapaPresentacion.Helpers;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -6,11 +9,9 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Controls;
 using System.Windows.Forms;
 using System.Xml.Serialization;
-using CapaNegocio;
-using CapaPresentacion.Helpers;
-using CapaEntidad;
 
 namespace CapaPresentacion.vistas.Administrador.Usuarios
 {
@@ -89,7 +90,7 @@ namespace CapaPresentacion.vistas.Administrador.Usuarios
                 email_usuario = txtCorreo.Text,
                 telefono = long.Parse(txtTelefono.Text),
                 password = txtPassword.Text,
-                oRol = new Rol { id_rol = cboRol.SelectedIndex + 1 },
+                oRol = new Rol { id_rol = Convert.ToInt32(cboRol.SelectedValue) },
                 estado = 1
             };
 
@@ -165,15 +166,35 @@ namespace CapaPresentacion.vistas.Administrador.Usuarios
                     txtCorreo.Text = usuarioSeleccionado.email_usuario;
                     txtTelefono.Text = usuarioSeleccionado.telefono.ToString();
                     txtPassword.Text = "";
-              
-                    cboRol.SelectedIndex = usuarioSeleccionado.oRol.id_rol - 1;
+                    if (usuarioSeleccionado.oRol != null)
+                    {
+                        
+                        cboRol.SelectedValue = usuarioSeleccionado.oRol.id_rol;
+                    }
+                    else
+                    {
+                        cboRol.SelectedIndex = -1; 
+                    }
+
+
                 }
             }
         }
 
         private void frmEditarUsuario_Load(object sender, EventArgs e)
         {
+            CargarRoles();
             cargarUsuarioEnGrid();
+        }
+
+        private void CargarRoles()
+        {
+            CN_rol negocioRol = new CN_rol();
+            List<Rol> listaRoles = negocioRol.Listar();
+            cboRol.DataSource = listaRoles;
+            cboRol.ValueMember = "id_rol";
+            cboRol.DisplayMember = "descripcion";
+            cboRol.SelectedIndex = -1;
         }
     }
 }
