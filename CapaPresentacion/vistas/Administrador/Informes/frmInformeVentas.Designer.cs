@@ -29,14 +29,14 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea3 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend3 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series3 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea2 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend2 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series2 = new System.Windows.Forms.DataVisualization.Charting.Series();
             this.pnlResumen = new System.Windows.Forms.Panel();
             this.lblTotal = new System.Windows.Forms.Label();
             this.lblTitulo3 = new System.Windows.Forms.Label();
             this.iconPictureBox3 = new FontAwesome.Sharp.IconPictureBox();
-            this.lblProdVendidos = new System.Windows.Forms.Label();
+            this.lblTotalProducto = new System.Windows.Forms.Label();
             this.lblTitulo2 = new System.Windows.Forms.Label();
             this.iconPictureBox2 = new FontAwesome.Sharp.IconPictureBox();
             this.lblTotalVentas = new System.Windows.Forms.Label();
@@ -45,17 +45,11 @@
             this.label6 = new System.Windows.Forms.Label();
             this.lblInformeVentas = new System.Windows.Forms.Label();
             this.pnlInfVentas = new System.Windows.Forms.Panel();
-            this.btnFiltrar = new System.Windows.Forms.Button();
+            this.btnBuscar = new System.Windows.Forms.Button();
             this.dtpFechaHasta = new System.Windows.Forms.DateTimePicker();
             this.lblFechaHasta = new System.Windows.Forms.Label();
             this.dtpFechaDesde = new System.Windows.Forms.DateTimePicker();
             this.lblFecha = new System.Windows.Forms.Label();
-            this.cbCategoria = new System.Windows.Forms.ComboBox();
-            this.lblCatProducto = new System.Windows.Forms.Label();
-            this.txtCodProd = new System.Windows.Forms.TextBox();
-            this.lblDni = new System.Windows.Forms.Label();
-            this.txtDni = new System.Windows.Forms.TextBox();
-            this.lblCodProducto = new System.Windows.Forms.Label();
             this.chVentas = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.label2 = new System.Windows.Forms.Label();
             this.pnlVentas = new System.Windows.Forms.Panel();
@@ -76,16 +70,16 @@
             this.pnlResumen.Controls.Add(this.lblTotal);
             this.pnlResumen.Controls.Add(this.lblTitulo3);
             this.pnlResumen.Controls.Add(this.iconPictureBox3);
-            this.pnlResumen.Controls.Add(this.lblProdVendidos);
+            this.pnlResumen.Controls.Add(this.lblTotalProducto);
             this.pnlResumen.Controls.Add(this.lblTitulo2);
             this.pnlResumen.Controls.Add(this.iconPictureBox2);
             this.pnlResumen.Controls.Add(this.lblTotalVentas);
             this.pnlResumen.Controls.Add(this.lblTitulo1);
             this.pnlResumen.Controls.Add(this.iconPictureBox1);
             this.pnlResumen.Controls.Add(this.label6);
-            this.pnlResumen.Location = new System.Drawing.Point(599, 224);
+            this.pnlResumen.Location = new System.Drawing.Point(599, 148);
             this.pnlResumen.Name = "pnlResumen";
-            this.pnlResumen.Size = new System.Drawing.Size(344, 290);
+            this.pnlResumen.Size = new System.Drawing.Size(344, 366);
             this.pnlResumen.TabIndex = 18;
             // 
             // lblTotal
@@ -123,16 +117,16 @@
             this.iconPictureBox3.TabIndex = 27;
             this.iconPictureBox3.TabStop = false;
             // 
-            // lblProdVendidos
+            // lblTotalProducto
             // 
-            this.lblProdVendidos.AutoSize = true;
-            this.lblProdVendidos.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblProdVendidos.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
-            this.lblProdVendidos.Location = new System.Drawing.Point(95, 156);
-            this.lblProdVendidos.Name = "lblProdVendidos";
-            this.lblProdVendidos.Size = new System.Drawing.Size(23, 25);
-            this.lblProdVendidos.TabIndex = 20;
-            this.lblProdVendidos.Text = "0";
+            this.lblTotalProducto.AutoSize = true;
+            this.lblTotalProducto.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblTotalProducto.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
+            this.lblTotalProducto.Location = new System.Drawing.Point(95, 156);
+            this.lblTotalProducto.Name = "lblTotalProducto";
+            this.lblTotalProducto.Size = new System.Drawing.Size(23, 25);
+            this.lblTotalProducto.TabIndex = 20;
+            this.lblTotalProducto.Text = "0";
             // 
             // lblTitulo2
             // 
@@ -216,30 +210,25 @@
             // pnlInfVentas
             // 
             this.pnlInfVentas.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.pnlInfVentas.Controls.Add(this.btnFiltrar);
+            this.pnlInfVentas.Controls.Add(this.btnBuscar);
             this.pnlInfVentas.Controls.Add(this.dtpFechaHasta);
             this.pnlInfVentas.Controls.Add(this.lblFechaHasta);
             this.pnlInfVentas.Controls.Add(this.dtpFechaDesde);
             this.pnlInfVentas.Controls.Add(this.lblFecha);
-            this.pnlInfVentas.Controls.Add(this.cbCategoria);
-            this.pnlInfVentas.Controls.Add(this.lblCatProducto);
-            this.pnlInfVentas.Controls.Add(this.txtCodProd);
-            this.pnlInfVentas.Controls.Add(this.lblDni);
-            this.pnlInfVentas.Controls.Add(this.txtDni);
-            this.pnlInfVentas.Controls.Add(this.lblCodProducto);
             this.pnlInfVentas.Location = new System.Drawing.Point(23, 66);
             this.pnlInfVentas.Name = "pnlInfVentas";
-            this.pnlInfVentas.Size = new System.Drawing.Size(920, 136);
+            this.pnlInfVentas.Size = new System.Drawing.Size(920, 76);
             this.pnlInfVentas.TabIndex = 15;
             // 
-            // btnFiltrar
+            // btnBuscar
             // 
-            this.btnFiltrar.Location = new System.Drawing.Point(582, 91);
-            this.btnFiltrar.Name = "btnFiltrar";
-            this.btnFiltrar.Size = new System.Drawing.Size(75, 23);
-            this.btnFiltrar.TabIndex = 21;
-            this.btnFiltrar.Text = "Filtrar";
-            this.btnFiltrar.UseVisualStyleBackColor = true;
+            this.btnBuscar.Location = new System.Drawing.Point(281, 29);
+            this.btnBuscar.Name = "btnBuscar";
+            this.btnBuscar.Size = new System.Drawing.Size(75, 23);
+            this.btnBuscar.TabIndex = 21;
+            this.btnBuscar.Text = "Buscar";
+            this.btnBuscar.UseVisualStyleBackColor = true;
+            this.btnBuscar.Click += new System.EventHandler(this.btnBuscar_Click);
             // 
             // dtpFechaHasta
             // 
@@ -277,81 +266,27 @@
             this.lblFecha.TabIndex = 17;
             this.lblFecha.Text = "Fecha desde";
             // 
-            // cbCategoria
-            // 
-            this.cbCategoria.FormattingEnabled = true;
-            this.cbCategoria.Location = new System.Drawing.Point(329, 93);
-            this.cbCategoria.Name = "cbCategoria";
-            this.cbCategoria.Size = new System.Drawing.Size(218, 21);
-            this.cbCategoria.TabIndex = 14;
-            this.cbCategoria.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.cbCategoria_KeyPress);
-            // 
-            // lblCatProducto
-            // 
-            this.lblCatProducto.AutoSize = true;
-            this.lblCatProducto.Font = new System.Drawing.Font("Franklin Gothic Medium", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblCatProducto.Location = new System.Drawing.Point(326, 73);
-            this.lblCatProducto.Name = "lblCatProducto";
-            this.lblCatProducto.Size = new System.Drawing.Size(114, 17);
-            this.lblCatProducto.TabIndex = 13;
-            this.lblCatProducto.Text = "Categoria producto";
-            // 
-            // txtCodProd
-            // 
-            this.txtCodProd.Location = new System.Drawing.Point(329, 32);
-            this.txtCodProd.Name = "txtCodProd";
-            this.txtCodProd.Size = new System.Drawing.Size(218, 20);
-            this.txtCodProd.TabIndex = 11;
-            // 
-            // lblDni
-            // 
-            this.lblDni.AutoSize = true;
-            this.lblDni.Font = new System.Drawing.Font("Franklin Gothic Medium", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblDni.Location = new System.Drawing.Point(16, 73);
-            this.lblDni.Name = "lblDni";
-            this.lblDni.Size = new System.Drawing.Size(84, 17);
-            this.lblDni.TabIndex = 9;
-            this.lblDni.Text = "DNI Vendedor";
-            // 
-            // txtDni
-            // 
-            this.txtDni.Location = new System.Drawing.Point(19, 94);
-            this.txtDni.Name = "txtDni";
-            this.txtDni.Size = new System.Drawing.Size(244, 20);
-            this.txtDni.TabIndex = 10;
-            this.txtDni.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtDni_keyPress);
-            // 
-            // lblCodProducto
-            // 
-            this.lblCodProducto.AutoSize = true;
-            this.lblCodProducto.Font = new System.Drawing.Font("Franklin Gothic Medium", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblCodProducto.Location = new System.Drawing.Point(326, 12);
-            this.lblCodProducto.Name = "lblCodProducto";
-            this.lblCodProducto.Size = new System.Drawing.Size(98, 17);
-            this.lblCodProducto.TabIndex = 6;
-            this.lblCodProducto.Text = "Buscar producto";
-            // 
             // chVentas
             // 
-            chartArea3.AxisX.MajorGrid.LineColor = System.Drawing.Color.LightGray;
-            chartArea3.AxisX2.IsLabelAutoFit = false;
-            chartArea3.AxisX2.LabelStyle.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            chartArea3.AxisY.IsLabelAutoFit = false;
-            chartArea3.AxisY.LabelStyle.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            chartArea3.AxisY.MajorGrid.LineColor = System.Drawing.Color.LightGray;
-            chartArea3.Name = "ChartArea1";
-            this.chVentas.ChartAreas.Add(chartArea3);
-            legend3.Name = "Legend1";
-            this.chVentas.Legends.Add(legend3);
+            chartArea2.AxisX.MajorGrid.LineColor = System.Drawing.Color.LightGray;
+            chartArea2.AxisX2.IsLabelAutoFit = false;
+            chartArea2.AxisX2.LabelStyle.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            chartArea2.AxisY.IsLabelAutoFit = false;
+            chartArea2.AxisY.LabelStyle.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            chartArea2.AxisY.MajorGrid.LineColor = System.Drawing.Color.LightGray;
+            chartArea2.Name = "ChartArea1";
+            this.chVentas.ChartAreas.Add(chartArea2);
+            legend2.Name = "Legend1";
+            this.chVentas.Legends.Add(legend2);
             this.chVentas.Location = new System.Drawing.Point(19, 43);
             this.chVentas.Name = "chVentas";
             this.chVentas.Palette = System.Windows.Forms.DataVisualization.Charting.ChartColorPalette.SemiTransparent;
-            series3.BorderWidth = 4;
-            series3.ChartArea = "ChartArea1";
-            series3.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
-            series3.Legend = "Legend1";
-            series3.Name = "Productos";
-            this.chVentas.Series.Add(series3);
+            series2.BorderWidth = 4;
+            series2.ChartArea = "ChartArea1";
+            series2.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
+            series2.Legend = "Legend1";
+            series2.Name = "Productos";
+            this.chVentas.Series.Add(series2);
             this.chVentas.Size = new System.Drawing.Size(517, 228);
             this.chVentas.TabIndex = 9;
             this.chVentas.Text = "chart1";
@@ -371,9 +306,9 @@
             this.pnlVentas.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.pnlVentas.Controls.Add(this.label2);
             this.pnlVentas.Controls.Add(this.chVentas);
-            this.pnlVentas.Location = new System.Drawing.Point(23, 224);
+            this.pnlVentas.Location = new System.Drawing.Point(23, 148);
             this.pnlVentas.Name = "pnlVentas";
-            this.pnlVentas.Size = new System.Drawing.Size(570, 290);
+            this.pnlVentas.Size = new System.Drawing.Size(570, 366);
             this.pnlVentas.TabIndex = 16;
             // 
             // errIngresoDatos
@@ -393,6 +328,7 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "frmInformeVentas";
             this.Text = "frmInformeVentas";
+            this.Load += new System.EventHandler(this.frmInformeVentas_Load);
             this.pnlResumen.ResumeLayout(false);
             this.pnlResumen.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.iconPictureBox3)).EndInit();
@@ -412,7 +348,7 @@
         #endregion
 
         private System.Windows.Forms.Panel pnlResumen;
-        private System.Windows.Forms.Label lblProdVendidos;
+        private System.Windows.Forms.Label lblTotalProducto;
         private System.Windows.Forms.Label lblTitulo2;
         private FontAwesome.Sharp.IconPictureBox iconPictureBox2;
         private System.Windows.Forms.Label lblTotalVentas;
@@ -421,15 +357,9 @@
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label lblInformeVentas;
         private System.Windows.Forms.Panel pnlInfVentas;
-        private System.Windows.Forms.Label lblDni;
-        private System.Windows.Forms.TextBox txtDni;
-        private System.Windows.Forms.Label lblCodProducto;
-        private System.Windows.Forms.TextBox txtCodProd;
         private System.Windows.Forms.DataVisualization.Charting.Chart chVentas;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Panel pnlVentas;
-        private System.Windows.Forms.Label lblCatProducto;
-        private System.Windows.Forms.ComboBox cbCategoria;
         private System.Windows.Forms.Label lblTotal;
         private System.Windows.Forms.Label lblTitulo3;
         private FontAwesome.Sharp.IconPictureBox iconPictureBox3;
@@ -437,7 +367,7 @@
         private System.Windows.Forms.Label lblFechaHasta;
         private System.Windows.Forms.DateTimePicker dtpFechaDesde;
         private System.Windows.Forms.Label lblFecha;
-        private System.Windows.Forms.Button btnFiltrar;
+        private System.Windows.Forms.Button btnBuscar;
         private System.Windows.Forms.ErrorProvider errIngresoDatos;
     }
 }

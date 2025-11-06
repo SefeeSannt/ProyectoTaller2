@@ -214,7 +214,7 @@ namespace CapaDatos
                 return true;
             }
         }
-
+        /*
         public DataTable ObtenerDashboardMontoPorDia(DateTime fechaDesde, DateTime fechaHasta, string nombreCliente, string nombreProducto)
         {
             DataTable tabla = new DataTable();
@@ -274,7 +274,8 @@ namespace CapaDatos
             }
             return tabla;
         }
-
+        */
+        /*
         public DataTable ObtenerDashboardCategoria(DateTime fechaDesde, DateTime fechaHasta, string nombreCliente, string nombreProducto)
         {
             DataTable tabla = new DataTable();
@@ -391,6 +392,115 @@ namespace CapaDatos
                 }
             }
             return total;
+        }*/
+
+
+
+
+        public DataTable ObtenerDashboardMontoPorDia(DateTime fechaDesde, DateTime fechaHasta)
+        {
+            DataTable tabla = new DataTable();
+            using (SqlConnection con = new SqlConnection(conexion.cadena))
+            {
+                try
+                {
+                    con.Open();
+                    string queryBase = @"
+                SELECT 
+                    CAST(v.fecha_venta AS DATE) AS Fecha, 
+                    SUM(v.monto_total) AS Total
+                FROM venta v
+                WHERE v.fecha_venta BETWEEN @fechaDesde AND @fechaHasta
+                GROUP BY CAST(v.fecha_venta AS DATE) 
+                ORDER BY Fecha";
+
+                    using (SqlCommand cmd = new SqlCommand(queryBase, con))
+                    {
+                        cmd.Parameters.AddWithValue("@fechaDesde", fechaDesde.Date);
+                        cmd.Parameters.AddWithValue("@fechaHasta", fechaHasta.Date.AddDays(1).AddSeconds(-1));
+                        cmd.CommandType = CommandType.Text;
+
+                        SqlDataAdapter da = new SqlDataAdapter(cmd);
+                        da.Fill(tabla);
+                    }
+                }
+                catch (Exception ex)
+                {
+                    throw new Exception("Error en CD_venta.ObtenerDashboardMontoPorDia: " + ex.Message, ex);
+                }
+            }
+            return tabla;
         }
+
+        public int ObtenerTotalVentasFiltrado(DateTime fechaDesde, DateTime fechaHasta)
+        {
+            int total = 0;
+            using (SqlConnection con = new SqlConnection(conexion.cadena))
+            {
+                try
+                {
+                    con.Open();
+                    string queryBase = @"
+                SELECT COUNT(DISTINCT v.cod_venta)
+                FROM venta v
+                WHERE v.fecha_venta BETWEEN @fechaDesde AND @fechaHasta";
+
+                    using (SqlCommand cmd = new SqlCommand(queryBase, con))
+                    {
+                        cmd.Parameters.AddWithValue("@fechaDesde", fechaDesde.Date);
+                        cmd.Parameters.AddWithValue("@fechaHasta", fechaHasta.Date.AddDays(1).AddSeconds(-1));
+                        cmd.CommandType = CommandType.Text;
+
+                        object result = cmd.ExecuteScalar();
+                        if (result != null && result != DBNull.Value)
+                        {
+                            total = Convert.ToInt32(result);
+                        }
+                    }
+                }
+                catch (Exception ex)
+                {
+                    throw new Exception("Error en CD_venta.ObtenerTotalVentasFiltrado: " + ex.Message, ex);
+                }
+            }
+            return total;
+        }
+
+        public int ObtenerTotalProductosVendidosFiltrado(DateTime fechaDesde, DateTime fechaHasta)
+        {
+            int total = 0;
+            using (SqlConnection con = new SqlConnection(conexion.cadena))
+            {
+                try
+                {
+                    con.Open();
+                    // Consulta simplificada: une venta y detalle, filtra por fecha
+                    string queryBase = @"
+                SELECT ISNULL(SUM(dv.cantidad), 0)
+                FROM detalle_venta dv
+                INNER JOIN venta v ON dv.cod_venta = v.cod_venta
+                WHERE v.fecha_venta BETWEEN @fechaDesde AND @fechaHasta";
+
+                    using (SqlCommand cmd = new SqlCommand(queryBase, con))
+                    {
+                        cmd.Parameters.AddWithValue("@fechaDesde", fechaDesde.Date);
+                        cmd.Parameters.AddWithValue("@fechaHasta", fechaHasta.Date.AddDays(1).AddSeconds(-1));
+                        cmd.CommandType = CommandType.Text;
+
+                        object result = cmd.ExecuteScalar();
+                        if (result != null && result != DBNull.Value)
+                        {
+                            total = Convert.ToInt32(result);
+                        }
+                    }
+                }
+                catch (Exception ex)
+                {
+                    throw new Exception("Error en CD_venta.ObtenerTotalProductosVendidosFiltrado: " + ex.Message, ex);
+                }
+            }
+            return total;
+        }
+
     }
 }

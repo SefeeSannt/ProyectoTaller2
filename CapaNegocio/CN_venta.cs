@@ -108,19 +108,23 @@ namespace CapaNegocio
             return ventaEntidad;
         }
 
-        public DataTable ObtenerDashboardMontoPorDia(DateTime fechaDesde, DateTime fechaHasta, string nombreCliente, string nombreProducto)
+        public DataTable ObtenerDashboardMontoPorDia(DateTime fechaDesde, DateTime fechaHasta)
         {
-            return objCD_Venta.ObtenerDashboardMontoPorDia(fechaDesde, fechaHasta, nombreCliente, nombreProducto);
+            return objCD_Venta.ObtenerDashboardMontoPorDia(fechaDesde, fechaHasta);
         }
 
-        public DataTable ObtenerDashboardCategoria(DateTime fechaDesde, DateTime fechaHasta, string nombreCliente, string nombreProducto)
+        public int ObtenerTotalComprasFiltrado(DateTime fechaDesde, DateTime fechaHasta)
         {
-            return objCD_Venta.ObtenerDashboardCategoria(fechaDesde, fechaHasta, nombreCliente, nombreProducto);
+            return objCD_Venta.ObtenerTotalVentasFiltrado(fechaDesde, fechaHasta);
         }
 
-        public int ObtenerTotalComprasFiltrado(DateTime fechaDesde, DateTime fechaHasta, string nombreCliente, string nombreProducto)
+        public int ObtenerTotalProductosVendidosFiltrado(DateTime fechaDesde, DateTime fechaHasta)
         {
-            return objCD_Venta.ObtenerTotalVentasFiltrado(fechaDesde, fechaHasta, nombreCliente, nombreProducto);
+            return objCD_Venta.ObtenerTotalProductosVendidosFiltrado(fechaDesde, fechaHasta);
         }
+
+
+
+
     }
 }
