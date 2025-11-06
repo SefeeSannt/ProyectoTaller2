@@ -61,9 +61,11 @@
     <Compile Include="CN_rol.cs" />
     <Compile Include="CN_usuario.cs" />
     <Compile Include="CN_venta.cs" />
+    <Compile Include="CN_ventaDetalle.cs" />
     <Compile Include="CompraModel.cs" />
     <Compile Include="CompraRequest.cs" />
     <Compile Include="DetalleCompraModel.cs" />
+    <Compile Include="DetalleVentaModel.cs" />
     <Compile Include="ProductoModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ProveedorModel.cs" />
