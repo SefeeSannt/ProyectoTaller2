@@ -21,7 +21,7 @@ namespace CapaPresentacion.vistas.Administrador.Usuarios
             InitializeComponent();
         }
 
-        private void cargarUsuarioEnGrid()
+        public void cargarUsuarioEnGrid()
          {
             var negocio = new CN_usuario();
             var lista = negocio.ObtenerUsuariosActivos();
@@ -89,10 +89,11 @@ namespace CapaPresentacion.vistas.Administrador.Usuarios
                 email_usuario = txtCorreo.Text,
                 telefono = long.Parse(txtTelefono.Text),
                 password = txtPassword.Text,
-                oRol = new Rol { id_rol = cboRol.SelectedIndex + 1 }
+                oRol = new Rol { id_rol = cboRol.SelectedIndex + 1 },
+                estado = 1
             };
 
-            // En: frmEditarUsuario.cs -> método btnGuardar_Click
+     
 
             try
             {
@@ -101,26 +102,21 @@ namespace CapaPresentacion.vistas.Administrador.Usuarios
                 MessageBox.Show("Cliente modificado con éxito.", "Modificación Exitosa", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 cargarUsuarioEnGrid();
             }
-            // --- REEMPLAZA TU CATCH CON ESTO ---
             catch (System.Data.Entity.Validation.DbEntityValidationException dbEx)
             {
-                // Este catch especial captura los errores de validación de EF
                 StringBuilder sb = new StringBuilder();
 
                 foreach (var validationErrors in dbEx.EntityValidationErrors)
                 {
                     foreach (var validationError in validationErrors.ValidationErrors)
                     {
-                        // Te dirá el nombre de la propiedad (ej: "password") y el error
                         sb.AppendLine($"Propiedad: {validationError.PropertyName} Error: {validationError.ErrorMessage}");
                     }
                 }
-                // Muestra el error detallado
                 MessageBox.Show(sb.ToString(), "Error de Validación DETALLADO", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             catch (Exception ex)
             {
-                // Un catch general para cualquier otro error
                 MessageBox.Show("Error al modificar el cliente: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
 

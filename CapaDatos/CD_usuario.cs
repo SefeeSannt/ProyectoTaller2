@@ -114,5 +114,69 @@ namespace CapaDatos
                 }
             }
         }
-    }
+
+
+        public void ActualizarUsuario (usuario Usuario)
+        {
+            using(var db = new ProyectoTaller2Entities())
+            {
+                var usu = db.usuario.Find(Usuario.dni_usuario);
+                if (usu != null)
+                {
+                    usu.nombre = Usuario.nombre;
+                    usu.apellido = Usuario.apellido;
+                    usu.username = Usuario.username;
+                    usu.telefono = Usuario.telefono;
+                    if (!string.IsNullOrEmpty(Usuario.password))
+                    {
+                        usu.password = Usuario.password;
+                    }
+                    // Si está vacío, simplemente no hacemos nada, y la contraseña 
+                    // original en 'usu' se mantiene intacta.
+
+                    usu.email_usuario = Usuario.email_usuario;
+                    usu.id_rol = Usuario.id_rol;
+                    usu.estado = Usuario.estado; 
+
+                    db.SaveChanges();
+                }
+            }
+        }
+
+
+        
+
+        public List <usuario> ObtenerUsuariosActivos()
+        {
+            using (var db = new ProyectoTaller2Entities())
+            {
+                return db.usuario
+                         .Include("rol")
+                         .Where(u => u.estado == 1)
+                         .ToList();
+            }
+        }
+
+        public List<usuario> BuscarUsuarioActivo(string criterio)
+        {
+            using (var db = new ProyectoTaller2Entities())
+            {
+                return db.usuario
+                         .Include("rol")
+                         .Where(u => u.estado == 1 &&
+                                     (u.dni_usuario.ToString().Contains(criterio) ||
+                                      u.nombre.Contains(criterio) ||
+                                      u.apellido.Contains(criterio) ||
+                                      u.email_usuario.Contains(criterio) ||
+                                      u.telefono.ToString().Contains(criterio)))
+                         .ToList();
+            }
+
+
+
+
+
+        }
+}
+
 }
