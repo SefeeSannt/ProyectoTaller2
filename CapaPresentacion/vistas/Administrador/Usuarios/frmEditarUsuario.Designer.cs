@@ -34,12 +34,6 @@
             this.txtUserList = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.dgvUsuarios = new System.Windows.Forms.DataGridView();
-            this.btnSeleccionar = new System.Windows.Forms.DataGridViewButtonColumn();
-            this.documento = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.nombreCompleto = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.correo = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.telefonoRegUsuario = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.rol = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.btnLimpiar = new FontAwesome.Sharp.IconButton();
             this.btnGuardar = new FontAwesome.Sharp.IconButton();
             this.label4 = new System.Windows.Forms.Label();
@@ -61,6 +55,8 @@
             this.btnBuscar = new FontAwesome.Sharp.IconButton();
             this.errIngresoDatos = new System.Windows.Forms.ErrorProvider(this.components);
             this.lblBuscarListUser = new System.Windows.Forms.Label();
+            this.label7 = new System.Windows.Forms.Label();
+            this.txtUsername = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.dgvUsuarios)).BeginInit();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.errIngresoDatos)).BeginInit();
@@ -80,7 +76,7 @@
             this.label2.BackColor = System.Drawing.Color.White;
             this.label2.Font = new System.Drawing.Font("Franklin Gothic Medium", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.ForeColor = System.Drawing.Color.Black;
-            this.label2.Location = new System.Drawing.Point(12, 65);
+            this.label2.Location = new System.Drawing.Point(12, 45);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(104, 17);
             this.label2.TabIndex = 1;
@@ -103,13 +99,6 @@
             dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
             this.dgvUsuarios.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle3;
             this.dgvUsuarios.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvUsuarios.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.btnSeleccionar,
-            this.documento,
-            this.nombreCompleto,
-            this.correo,
-            this.telefonoRegUsuario,
-            this.rol});
             this.dgvUsuarios.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dgvUsuarios.Location = new System.Drawing.Point(244, 42);
             this.dgvUsuarios.MultiSelect = false;
@@ -122,43 +111,7 @@
             this.dgvUsuarios.RowTemplate.Height = 28;
             this.dgvUsuarios.Size = new System.Drawing.Size(716, 496);
             this.dgvUsuarios.TabIndex = 56;
-            // 
-            // btnSeleccionar
-            // 
-            this.btnSeleccionar.HeaderText = "";
-            this.btnSeleccionar.Name = "btnSeleccionar";
-            this.btnSeleccionar.ReadOnly = true;
-            this.btnSeleccionar.Visible = false;
-            // 
-            // documento
-            // 
-            this.documento.HeaderText = "Nro Documento";
-            this.documento.Name = "documento";
-            this.documento.ReadOnly = true;
-            // 
-            // nombreCompleto
-            // 
-            this.nombreCompleto.HeaderText = "Nombre completo";
-            this.nombreCompleto.Name = "nombreCompleto";
-            this.nombreCompleto.ReadOnly = true;
-            // 
-            // correo
-            // 
-            this.correo.HeaderText = "Correo";
-            this.correo.Name = "correo";
-            this.correo.ReadOnly = true;
-            // 
-            // telefonoRegUsuario
-            // 
-            this.telefonoRegUsuario.HeaderText = "Telefono";
-            this.telefonoRegUsuario.Name = "telefonoRegUsuario";
-            this.telefonoRegUsuario.ReadOnly = true;
-            // 
-            // rol
-            // 
-            this.rol.HeaderText = "Rol";
-            this.rol.Name = "rol";
-            this.rol.ReadOnly = true;
+            this.dgvUsuarios.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvUsuarios_CellClick);
             // 
             // btnLimpiar
             // 
@@ -208,7 +161,7 @@
             this.label4.BackColor = System.Drawing.Color.White;
             this.label4.Font = new System.Drawing.Font("Franklin Gothic Medium", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label4.ForeColor = System.Drawing.Color.Black;
-            this.label4.Location = new System.Drawing.Point(15, 225);
+            this.label4.Location = new System.Drawing.Point(15, 243);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(48, 17);
             this.label4.TabIndex = 3;
@@ -216,14 +169,14 @@
             // 
             // txtCorreo
             // 
-            this.txtCorreo.Location = new System.Drawing.Point(15, 247);
+            this.txtCorreo.Location = new System.Drawing.Point(15, 265);
             this.txtCorreo.Name = "txtCorreo";
             this.txtCorreo.Size = new System.Drawing.Size(208, 20);
             this.txtCorreo.TabIndex = 7;
             // 
             // txtTelefono
             // 
-            this.txtTelefono.Location = new System.Drawing.Point(15, 299);
+            this.txtTelefono.Location = new System.Drawing.Point(15, 317);
             this.txtTelefono.Name = "txtTelefono";
             this.txtTelefono.Size = new System.Drawing.Size(208, 20);
             this.txtTelefono.TabIndex = 8;
@@ -235,7 +188,7 @@
             this.label6.BackColor = System.Drawing.Color.White;
             this.label6.Font = new System.Drawing.Font("Franklin Gothic Medium", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label6.ForeColor = System.Drawing.Color.Black;
-            this.label6.Location = new System.Drawing.Point(14, 331);
+            this.label6.Location = new System.Drawing.Point(14, 349);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(75, 17);
             this.label6.TabIndex = 9;
@@ -243,7 +196,7 @@
             // 
             // txtPassword
             // 
-            this.txtPassword.Location = new System.Drawing.Point(15, 351);
+            this.txtPassword.Location = new System.Drawing.Point(15, 369);
             this.txtPassword.Name = "txtPassword";
             this.txtPassword.Size = new System.Drawing.Size(208, 20);
             this.txtPassword.TabIndex = 10;
@@ -254,7 +207,7 @@
             this.label8.BackColor = System.Drawing.Color.White;
             this.label8.Font = new System.Drawing.Font("Franklin Gothic Medium", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label8.ForeColor = System.Drawing.Color.Black;
-            this.label8.Location = new System.Drawing.Point(15, 383);
+            this.label8.Location = new System.Drawing.Point(15, 401);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(29, 17);
             this.label8.TabIndex = 15;
@@ -268,7 +221,7 @@
             "vendedor",
             "repositor",
             "administrador"});
-            this.cboRol.Location = new System.Drawing.Point(15, 403);
+            this.cboRol.Location = new System.Drawing.Point(15, 421);
             this.cboRol.Name = "cboRol";
             this.cboRol.Size = new System.Drawing.Size(208, 21);
             this.cboRol.TabIndex = 13;
@@ -280,7 +233,7 @@
             this.label3.BackColor = System.Drawing.Color.White;
             this.label3.Font = new System.Drawing.Font("Franklin Gothic Medium", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label3.ForeColor = System.Drawing.Color.Black;
-            this.label3.Location = new System.Drawing.Point(15, 119);
+            this.label3.Location = new System.Drawing.Point(15, 99);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(55, 17);
             this.label3.TabIndex = 2;
@@ -288,7 +241,7 @@
             // 
             // txtNombre
             // 
-            this.txtNombre.Location = new System.Drawing.Point(15, 139);
+            this.txtNombre.Location = new System.Drawing.Point(15, 119);
             this.txtNombre.Name = "txtNombre";
             this.txtNombre.Size = new System.Drawing.Size(208, 20);
             this.txtNombre.TabIndex = 6;
@@ -298,7 +251,9 @@
             // 
             this.panel2.BackColor = System.Drawing.Color.White;
             this.panel2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel2.Controls.Add(this.label7);
             this.panel2.Controls.Add(this.lblApellido);
+            this.panel2.Controls.Add(this.txtUsername);
             this.panel2.Controls.Add(this.txtApellido);
             this.panel2.Controls.Add(this.btnLimpiar);
             this.panel2.Controls.Add(this.btnGuardar);
@@ -327,7 +282,7 @@
             this.lblApellido.BackColor = System.Drawing.Color.White;
             this.lblApellido.Font = new System.Drawing.Font("Franklin Gothic Medium", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblApellido.ForeColor = System.Drawing.Color.Black;
-            this.lblApellido.Location = new System.Drawing.Point(15, 173);
+            this.lblApellido.Location = new System.Drawing.Point(15, 153);
             this.lblApellido.Name = "lblApellido";
             this.lblApellido.Size = new System.Drawing.Size(56, 17);
             this.lblApellido.TabIndex = 58;
@@ -335,7 +290,7 @@
             // 
             // txtApellido
             // 
-            this.txtApellido.Location = new System.Drawing.Point(15, 193);
+            this.txtApellido.Location = new System.Drawing.Point(15, 173);
             this.txtApellido.Name = "txtApellido";
             this.txtApellido.Size = new System.Drawing.Size(208, 20);
             this.txtApellido.TabIndex = 59;
@@ -347,7 +302,7 @@
             this.label11.BackColor = System.Drawing.Color.White;
             this.label11.Font = new System.Drawing.Font("Franklin Gothic Medium", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label11.ForeColor = System.Drawing.Color.Black;
-            this.label11.Location = new System.Drawing.Point(10, 16);
+            this.label11.Location = new System.Drawing.Point(10, 9);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(133, 25);
             this.label11.TabIndex = 57;
@@ -359,7 +314,7 @@
             this.label5.BackColor = System.Drawing.Color.White;
             this.label5.Font = new System.Drawing.Font("Franklin Gothic Medium", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label5.ForeColor = System.Drawing.Color.Black;
-            this.label5.Location = new System.Drawing.Point(15, 279);
+            this.label5.Location = new System.Drawing.Point(15, 297);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(59, 17);
             this.label5.TabIndex = 4;
@@ -367,7 +322,7 @@
             // 
             // txtDocumento
             // 
-            this.txtDocumento.Location = new System.Drawing.Point(15, 85);
+            this.txtDocumento.Location = new System.Drawing.Point(15, 65);
             this.txtDocumento.Name = "txtDocumento";
             this.txtDocumento.Size = new System.Drawing.Size(210, 20);
             this.txtDocumento.TabIndex = 5;
@@ -417,6 +372,25 @@
             this.lblBuscarListUser.TabIndex = 59;
             this.lblBuscarListUser.Text = "Buscar:";
             // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.BackColor = System.Drawing.Color.White;
+            this.label7.Font = new System.Drawing.Font("Franklin Gothic Medium", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label7.ForeColor = System.Drawing.Color.Black;
+            this.label7.Location = new System.Drawing.Point(13, 200);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(116, 17);
+            this.label7.TabIndex = 60;
+            this.label7.Text = "Nombre de usuario:";
+            // 
+            // txtUsername
+            // 
+            this.txtUsername.Location = new System.Drawing.Point(15, 220);
+            this.txtUsername.Name = "txtUsername";
+            this.txtUsername.Size = new System.Drawing.Size(208, 20);
+            this.txtUsername.TabIndex = 61;
+            // 
             // frmEditarUsuario
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -431,6 +405,7 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "frmEditarUsuario";
             this.Text = "frmEditarUsuario";
+            this.Load += new System.EventHandler(this.frmEditarUsuario_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgvUsuarios)).EndInit();
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
@@ -462,15 +437,11 @@
         private System.Windows.Forms.Label label11;
         private System.Windows.Forms.Label label10;
         private FontAwesome.Sharp.IconButton btnBuscar;
-        private System.Windows.Forms.DataGridViewButtonColumn btnSeleccionar;
-        private System.Windows.Forms.DataGridViewTextBoxColumn documento;
-        private System.Windows.Forms.DataGridViewTextBoxColumn nombreCompleto;
-        private System.Windows.Forms.DataGridViewTextBoxColumn correo;
-        private System.Windows.Forms.DataGridViewTextBoxColumn telefonoRegUsuario;
-        private System.Windows.Forms.DataGridViewTextBoxColumn rol;
         private System.Windows.Forms.ErrorProvider errIngresoDatos;
         private System.Windows.Forms.Label lblApellido;
         private System.Windows.Forms.TextBox txtApellido;
         private System.Windows.Forms.Label lblBuscarListUser;
+        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.TextBox txtUsername;
     }
 }

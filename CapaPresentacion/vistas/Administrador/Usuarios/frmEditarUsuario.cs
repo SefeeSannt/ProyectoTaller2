@@ -8,7 +8,9 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Xml.Serialization;
+using CapaNegocio;
 using CapaPresentacion.Helpers;
+using CapaEntidad;
 
 namespace CapaPresentacion.vistas.Administrador.Usuarios
 {
@@ -18,6 +20,16 @@ namespace CapaPresentacion.vistas.Administrador.Usuarios
         {
             InitializeComponent();
         }
+
+        public void cargarUsuarioEnGrid()
+         {
+            var negocio = new CN_usuario();
+            var lista = negocio.ObtenerUsuariosActivos();
+            dgvUsuarios.DataSource = null;
+            dgvUsuarios.DataSource = lista;
+            dgvUsuarios.ClearSelection();
+        }
+
 
         private void onlyLetters(object sender, KeyPressEventArgs e)
         {
@@ -50,6 +62,7 @@ namespace CapaPresentacion.vistas.Administrador.Usuarios
             if (string.IsNullOrEmpty(txtApellido.Text))
             {
                 errIngresoDatos.SetError(txtApellido, "El campo Apellido es obligatorio");
+                return; 
             }
             if (string.IsNullOrEmpty(txtCorreo.Text))
             {
@@ -67,7 +80,47 @@ namespace CapaPresentacion.vistas.Administrador.Usuarios
                 return;
             }
 
-            MessageBox.Show("Usuario modificado con exito", "Modificacion exitosa", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            var usuarioModificado = new UsuarioModel
+            {
+                dni_usuario = long.Parse(txtDocumento.Text),
+                nombre = txtNombre.Text,
+                apellido = txtApellido.Text,
+                username = txtUsername.Text,
+                email_usuario = txtCorreo.Text,
+                telefono = long.Parse(txtTelefono.Text),
+                password = txtPassword.Text,
+                oRol = new Rol { id_rol = cboRol.SelectedIndex + 1 },
+                estado = 1
+            };
+
+     
+
+            try
+            {
+                var negocio = new CN_usuario();
+                negocio.ActualizarUsuario(usuarioModificado);
+                MessageBox.Show("Cliente modificado con éxito.", "Modificación Exitosa", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                cargarUsuarioEnGrid();
+            }
+            catch (System.Data.Entity.Validation.DbEntityValidationException dbEx)
+            {
+                StringBuilder sb = new StringBuilder();
+
+                foreach (var validationErrors in dbEx.EntityValidationErrors)
+                {
+                    foreach (var validationError in validationErrors.ValidationErrors)
+                    {
+                        sb.AppendLine($"Propiedad: {validationError.PropertyName} Error: {validationError.ErrorMessage}");
+                    }
+                }
+                MessageBox.Show(sb.ToString(), "Error de Validación DETALLADO", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error al modificar el cliente: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+
+
 
         }
 
@@ -93,6 +146,34 @@ namespace CapaPresentacion.vistas.Administrador.Usuarios
                 txtTelefono.Clear();
                 cboRol.SelectedIndex = -1;
             }
+        }
+
+        private void dgvUsuarios_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex >= 0)
+            {
+                UsuarioModel usuarioSeleccionado = dgvUsuarios.Rows[e.RowIndex].DataBoundItem as UsuarioModel;
+
+             
+                if (usuarioSeleccionado != null)
+                {
+                 
+                    txtDocumento.Text = usuarioSeleccionado.dni_usuario.ToString();
+                    txtNombre.Text = usuarioSeleccionado.nombre;
+                    txtApellido.Text = usuarioSeleccionado.apellido;
+                    txtUsername.Text = usuarioSeleccionado.username;
+                    txtCorreo.Text = usuarioSeleccionado.email_usuario;
+                    txtTelefono.Text = usuarioSeleccionado.telefono.ToString();
+                    txtPassword.Text = "";
+              
+                    cboRol.SelectedIndex = usuarioSeleccionado.oRol.id_rol - 1;
+                }
+            }
+        }
+
+        private void frmEditarUsuario_Load(object sender, EventArgs e)
+        {
+            cargarUsuarioEnGrid();
         }
     }
 }

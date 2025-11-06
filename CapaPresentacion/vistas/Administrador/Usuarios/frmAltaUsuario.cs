@@ -15,6 +15,8 @@ namespace CapaPresentacion.Vistas.Administrador.Usuarios
 {
     public partial class frmAltaUsuario : Form
     {
+
+
         public frmAltaUsuario()
         {
             InitializeComponent();
@@ -58,9 +60,24 @@ namespace CapaPresentacion.Vistas.Administrador.Usuarios
                 return;
             }
 
+            if (string.IsNullOrEmpty(txtApellido.Text))
+            {
+                errIngresoDatos.SetError(txtUsername, "El campo apellido es obligatorio");
+                return;
+            }
+
+            // ... (resto del código) ...
+            if (string.IsNullOrEmpty(txtUsername.Text))
+            {
+                errIngresoDatos.SetError(txtUsername, "El campo Username es obligatorio");
+                return;
+            }
+
+            // ... (resto del código) ...
+
             if (string.IsNullOrEmpty(txtEmail.Text))
             {
-                errIngresoDatos.SetError(txtEmail, "Debe ingresar un usuario");
+                errIngresoDatos.SetError(txtEmail, "Debe ingresar un email");
                 return;
             }
 
@@ -87,36 +104,40 @@ namespace CapaPresentacion.Vistas.Administrador.Usuarios
                 dni_usuario = long.Parse(txtDni_usuario.Text),
                 nombre = txtNombre.Text,
                 apellido = txtApellido.Text,
+                username = txtUsername.Text,
                 email_usuario = txtEmail.Text,
                 telefono = long.Parse(txtTelefono.Text),
                 password = txtPassword.Text,
-                oRol = new Rol { id_rol = cboRol.SelectedIndex + 1 }
+                oRol = new Rol { id_rol = cboRol.SelectedIndex + 1 },
+                estado = 1
             };
+
 
             try
             {
                 var negocio = new CN_usuario();
                 negocio.agregarUsuario(usuario);
-                MessageBox.Show("Usuario registrado con exito.", "Registro Exitoso", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show("Usuario registrado con éxito.", "Registro Exitoso", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 cargarGrid();
-                limpiarCampos();
+
+
+            }
+            catch (System.Data.Entity.Validation.DbEntityValidationException dbEx)
+            {
+                StringBuilder sb = new StringBuilder();
+
+                foreach (var validationErrors in dbEx.EntityValidationErrors)
+                {
+                    foreach (var validationError in validationErrors.ValidationErrors)
+                    {
+                        sb.AppendLine($"Propiedad: {validationError.PropertyName} Error: {validationError.ErrorMessage}");
+                    }
+                }
+                MessageBox.Show(sb.ToString(), "Error de Validación DETALLADO", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             catch (Exception ex)
             {
-                var baseMsg = ex.GetBaseException()?.Message ?? ex.Message;
-                var innerMsg = ex.InnerException != null ? ex.InnerException.Message : string.Empty;
-                var details = string.Concat(baseMsg,
-                                         string.IsNullOrEmpty(innerMsg) ? string.Empty : Environment.NewLine + "Inner: " + innerMsg,
-                                         Environment.NewLine + "Stack: " + ex.StackTrace);
-
-    #if DEBUG
-                MessageBox.Show("Error al registrar el usuario:" + Environment.NewLine + details, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-    #else
-                // En producción no mostrar detalles sensibles al usuario
-                MessageBox.Show("Error al registrar el usuario. Consulte al administrador.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                System.Diagnostics.Debug.WriteLine(details); // o usar un logger
-    #endif
-                return;
+                MessageBox.Show("Error al registrar el cliente: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -135,6 +156,8 @@ namespace CapaPresentacion.Vistas.Administrador.Usuarios
         {
             txtDni_usuario.Clear();
             txtNombre.Clear();
+            txtApellido.Clear();
+            txtUsername.Clear();
             txtEmail.Clear();
             txtTelefono.Clear();
             txtPassword.Clear();
@@ -152,14 +175,15 @@ namespace CapaPresentacion.Vistas.Administrador.Usuarios
             }
         }
 
-        private void cargarGrid()
+        public void cargarGrid()
         {
             var negocio = new CN_usuario();
-            var lista = negocio.Listar();
+            var lista = negocio.ObtenerUsuariosActivos();
             dgvAltaUsuario.DataSource = lista;
             dgvAltaUsuario.Columns["password"].Visible = false;
             dgvAltaUsuario.Columns["oRol"].Visible = false;
             dgvAltaUsuario.Columns["estado"].Visible = false;
+            dgvAltaUsuario.ClearSelection();
         }
 
         private void frmAltaUsuario_Load(object sender, EventArgs e)

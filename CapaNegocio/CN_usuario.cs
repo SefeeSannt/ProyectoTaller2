@@ -79,5 +79,48 @@ namespace CapaNegocio
         {
             oUsuario.BajaUsuario(dni);
         }
+
+
+        public void ActualizarUsuario(UsuarioModel usuario_Model)
+        {
+            var usuario = new usuario 
+            {
+                dni_usuario = usuario_Model.dni_usuario,
+                nombre = usuario_Model.nombre,
+                apellido = usuario_Model.apellido,
+                username = usuario_Model.username,
+                telefono = usuario_Model.telefono,
+                password = usuario_Model.password,
+                email_usuario = usuario_Model.email_usuario,
+                id_rol = usuario_Model.oRol.id_rol,
+                estado = usuario_Model.estado
+            };
+            oUsuario.ActualizarUsuario(usuario);
+        }
+
+
+        public List<UsuarioModel> ObtenerUsuariosActivos()
+        {
+            var listaDatos = oUsuario.ObtenerUsuariosActivos();
+
+            return listaDatos.Select(u => new UsuarioModel
+            {
+                dni_usuario = u.dni_usuario,
+                nombre = u.nombre,
+                apellido = u.apellido,
+                username = u.username,
+                telefono = u.telefono,
+                password = u.password,
+                email_usuario = u.email_usuario,
+                oRol = new Rol { id_rol = u.id_rol },
+
+
+            }).ToList();
+        }
+
+
+
+
+
     }
 }
