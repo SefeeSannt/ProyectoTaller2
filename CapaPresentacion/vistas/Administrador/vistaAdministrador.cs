@@ -255,7 +255,7 @@ namespace CapaPresentacion.Vistas.Administrador
                 form.Close();
             }
 
-            Form frm = new frmvistaBackup();
+            Form frm = new frmVistaBackup();
             frm.MdiParent = this;
             frm.Dock = DockStyle.Fill;
             frm.Show();
