@@ -5,6 +5,7 @@ using CapaPresentacion.Vistas.Administrador;
 using CapaPresentacion.Vistas.Administrador.Productos;
 using CapaPresentacion.Vistas.Administrador.Reportes;
 using CapaPresentacion.Vistas.Administrador.Usuarios;
+using CapaPresentacion.vistas.Administrador.Backup;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -221,15 +222,6 @@ namespace CapaPresentacion.Vistas.Administrador
             frm.Show();
         }
 
-        private void iconMenuItem3_Click(object sender, EventArgs e)
-        {
-            var result = MessageBox.Show("¿Está seguro que desea realizar un backup?", "Backup", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
-            if (result == DialogResult.Yes)
-            {
-                MessageBox.Show("Backup realizado con éxito", "Backup", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            }
-        }
-
         private void altaBajaToolStripMenuItem_Click(object sender, EventArgs e)
         {
             foreach (Form form in this.MdiChildren)
@@ -251,6 +243,19 @@ namespace CapaPresentacion.Vistas.Administrador
             }
 
             Form frm = new frmBajaProveedor();
+            frm.MdiParent = this;
+            frm.Dock = DockStyle.Fill;
+            frm.Show();
+        }
+
+        private void tsmiBackup_Click(object sender, EventArgs e)
+        {
+            foreach(Form form in this.MdiChildren)
+            {
+                form.Close();
+            }
+
+            Form frm = new frmvistaBackup();
             frm.MdiParent = this;
             frm.Dock = DockStyle.Fill;
             frm.Show();
