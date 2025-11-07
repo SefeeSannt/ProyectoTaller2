@@ -37,8 +37,8 @@
             this.btnBuscar = new FontAwesome.Sharp.IconButton();
             this.dgvConsultaProveedores = new System.Windows.Forms.DataGridView();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.errIngresoDatos = new System.Windows.Forms.ErrorProvider(this.components);
             this.btn_listar = new System.Windows.Forms.Button();
+            this.errIngresoDatos = new System.Windows.Forms.ErrorProvider(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.dgvConsultaProveedores)).BeginInit();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.errIngresoDatos)).BeginInit();
@@ -139,10 +139,6 @@
             this.panel1.Size = new System.Drawing.Size(469, 140);
             this.panel1.TabIndex = 9;
             // 
-            // errIngresoDatos
-            // 
-            this.errIngresoDatos.ContainerControl = this;
-            // 
             // btn_listar
             // 
             this.btn_listar.Location = new System.Drawing.Point(13, 112);
@@ -152,6 +148,10 @@
             this.btn_listar.Text = "LISTAR PROVEEDORES";
             this.btn_listar.UseVisualStyleBackColor = true;
             this.btn_listar.Click += new System.EventHandler(this.btn_listar_Click);
+            // 
+            // errIngresoDatos
+            // 
+            this.errIngresoDatos.ContainerControl = this;
             // 
             // frmConsultaProveedores
             // 
@@ -164,6 +164,7 @@
             this.Controls.Add(this.panel1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "frmConsultaProveedores";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "frmConsultaProveedores";
             ((System.ComponentModel.ISupportInitialize)(this.dgvConsultaProveedores)).EndInit();
             this.panel1.ResumeLayout(false);

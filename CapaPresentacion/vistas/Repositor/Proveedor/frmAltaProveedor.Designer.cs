@@ -78,9 +78,9 @@
             this.lblTituloProveedor.ForeColor = System.Drawing.Color.Black;
             this.lblTituloProveedor.Location = new System.Drawing.Point(13, 9);
             this.lblTituloProveedor.Name = "lblTituloProveedor";
-            this.lblTituloProveedor.Size = new System.Drawing.Size(175, 25);
+            this.lblTituloProveedor.Size = new System.Drawing.Size(138, 25);
             this.lblTituloProveedor.TabIndex = 27;
-            this.lblTituloProveedor.Text = "Registro proveedor";
+            this.lblTituloProveedor.Text = "Alta proveedor";
             // 
             // label10
             // 
@@ -365,6 +365,7 @@
             this.dgvProveedores.AllowUserToDeleteRows = false;
             this.dgvProveedores.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dgvProveedores.BackgroundColor = System.Drawing.Color.White;
+            this.dgvProveedores.BorderStyle = System.Windows.Forms.BorderStyle.None;
             dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Control;
             dataGridViewCellStyle3.Font = new System.Drawing.Font("Franklin Gothic Medium", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -375,7 +376,8 @@
             dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
             this.dgvProveedores.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle3;
             this.dgvProveedores.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvProveedores.Location = new System.Drawing.Point(261, 89);
+            this.dgvProveedores.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.dgvProveedores.Location = new System.Drawing.Point(244, 45);
             this.dgvProveedores.MultiSelect = false;
             this.dgvProveedores.Name = "dgvProveedores";
             this.dgvProveedores.ReadOnly = true;
@@ -384,12 +386,12 @@
             dataGridViewCellStyle4.SelectionForeColor = System.Drawing.Color.Black;
             this.dgvProveedores.RowsDefaultCellStyle = dataGridViewCellStyle4;
             this.dgvProveedores.RowTemplate.Height = 28;
-            this.dgvProveedores.Size = new System.Drawing.Size(687, 437);
+            this.dgvProveedores.Size = new System.Drawing.Size(716, 493);
             this.dgvProveedores.TabIndex = 29;
             // 
             // txtBuscarProveedor
             // 
-            this.txtBuscarProveedor.Location = new System.Drawing.Point(261, 64);
+            this.txtBuscarProveedor.Location = new System.Drawing.Point(697, 10);
             this.txtBuscarProveedor.Multiline = true;
             this.txtBuscarProveedor.Name = "txtBuscarProveedor";
             this.txtBuscarProveedor.Size = new System.Drawing.Size(197, 19);
@@ -398,9 +400,10 @@
             // lblBuscarListProv
             // 
             this.lblBuscarListProv.AutoSize = true;
+            this.lblBuscarListProv.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
             this.lblBuscarListProv.Font = new System.Drawing.Font("Franklin Gothic Medium", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblBuscarListProv.ForeColor = System.Drawing.Color.Black;
-            this.lblBuscarListProv.Location = new System.Drawing.Point(258, 48);
+            this.lblBuscarListProv.ForeColor = System.Drawing.Color.White;
+            this.lblBuscarListProv.Location = new System.Drawing.Point(642, 10);
             this.lblBuscarListProv.Name = "lblBuscarListProv";
             this.lblBuscarListProv.Size = new System.Drawing.Size(49, 17);
             this.lblBuscarListProv.TabIndex = 58;
@@ -415,7 +418,7 @@
             this.btnBuscarProveedor.IconColor = System.Drawing.Color.White;
             this.btnBuscarProveedor.IconFont = FontAwesome.Sharp.IconFont.Auto;
             this.btnBuscarProveedor.IconSize = 19;
-            this.btnBuscarProveedor.Location = new System.Drawing.Point(464, 64);
+            this.btnBuscarProveedor.Location = new System.Drawing.Point(900, 10);
             this.btnBuscarProveedor.Name = "btnBuscarProveedor";
             this.btnBuscarProveedor.Size = new System.Drawing.Size(41, 21);
             this.btnBuscarProveedor.TabIndex = 57;
