@@ -199,6 +199,18 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>ProyectoTaller2DataSet1.xsd</DependentUpon>
     </Compile>
+    <Compile Include="vistas\Administrador\Backup\frmBackupHistorial.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="vistas\Administrador\Backup\frmBackupHistorial.Designer.cs">
+      <DependentUpon>frmBackupHistorial.cs</DependentUpon>
+    </Compile>
+    <Compile Include="vistas\Administrador\Backup\frmvistaBackup.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="vistas\Administrador\Backup\frmvistaBackup.Designer.cs">
+      <DependentUpon>frmvistaBackup.cs</DependentUpon>
+    </Compile>
     <Compile Include="vistas\Administrador\Informes\frmInformeCompra.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -430,6 +442,12 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="vistas\Administrador\Backup\frmBackupHistorial.resx">
+      <DependentUpon>frmBackupHistorial.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="vistas\Administrador\Backup\frmvistaBackup.resx">
+      <DependentUpon>frmvistaBackup.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="vistas\Administrador\Informes\frmInformeCompra.resx">
       <DependentUpon>frmInformeCompra.cs</DependentUpon>
     </EmbeddedResource>

@@ -60,6 +60,7 @@ namespace CapaPresentacion.Vistas.Administrador
             this.tsmiInfCompra = new System.Windows.Forms.ToolStripMenuItem();
             this.tsmiInfVenta = new System.Windows.Forms.ToolStripMenuItem();
             this.iconMenuItem3 = new FontAwesome.Sharp.IconMenuItem();
+            this.tsmiBackup = new System.Windows.Forms.ToolStripMenuItem();
             this.Agregra.SuspendLayout();
             this.pntCabecera.SuspendLayout();
             this.menuStrip1.SuspendLayout();
@@ -356,6 +357,8 @@ namespace CapaPresentacion.Vistas.Administrador
             // 
             // iconMenuItem3
             // 
+            this.iconMenuItem3.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.tsmiBackup});
             this.iconMenuItem3.Font = new System.Drawing.Font("Segoe UI Variable Text Semibold", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.iconMenuItem3.ForeColor = System.Drawing.Color.White;
             this.iconMenuItem3.IconChar = FontAwesome.Sharp.IconChar.Database;
@@ -365,7 +368,13 @@ namespace CapaPresentacion.Vistas.Administrador
             this.iconMenuItem3.Name = "iconMenuItem3";
             this.iconMenuItem3.Size = new System.Drawing.Size(80, 38);
             this.iconMenuItem3.Text = "Backup";
-            this.iconMenuItem3.Click += new System.EventHandler(this.iconMenuItem3_Click);
+            // 
+            // tsmiBackup
+            // 
+            this.tsmiBackup.Name = "tsmiBackup";
+            this.tsmiBackup.Size = new System.Drawing.Size(180, 22);
+            this.tsmiBackup.Text = "Generar Backup";
+            this.tsmiBackup.Click += new System.EventHandler(this.tsmiBackup_Click);
             // 
             // frmVistaAdministrador
             // 
@@ -421,6 +430,7 @@ namespace CapaPresentacion.Vistas.Administrador
         private ToolStripMenuItem altaBajaToolStripMenuItem;
         private FontAwesome.Sharp.IconMenuItem iconMenuItem7;
         private ToolStripMenuItem altaBajaToolStripMenuItem1;
+        private ToolStripMenuItem tsmiBackup;
     }
 
 }
