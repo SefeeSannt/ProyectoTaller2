@@ -13,6 +13,7 @@ using System.Windows.Forms;
 using CapaPresentacion.vistas.Vendedor.Cliente;
 using CapaEntidad;
 using CapaPresentacion.Vistas.Repositor;
+using CapaPresentacion.Vistas.Administrador.Reportes;
 
 namespace CapaPresentacion.Vistas.Vendedor
 {
@@ -74,7 +75,7 @@ namespace CapaPresentacion.Vistas.Vendedor
                 form.Close();
             }
 
-            Form frm = new frmConsultaVenta();
+            Form frm = new frmDetalleVentas();
 
             frm.MdiParent = this;
             frm.Dock = DockStyle.Fill;

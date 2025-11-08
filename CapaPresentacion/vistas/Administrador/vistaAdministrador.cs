@@ -18,6 +18,8 @@ using System.Windows.Forms;
 using CapaEntidad;
 using CapaNegocio;
 using CapaPresentacion.vistas.Administrador.Productos;
+using CapaPresentacion.vistas.Repositor.Compra;
+using CapaPresentacion.Vistas.Repositor;
 
 namespace CapaPresentacion.Vistas.Administrador
 {
@@ -112,7 +114,7 @@ namespace CapaPresentacion.Vistas.Administrador
                 form.Close();
             }
 
-            Form frm = new frmDetalleCompras();
+            Form frm = new frmConsultaCompra();
             frm.MdiParent = this;
             frm.Dock = DockStyle.Fill;
             frm.Show();
@@ -255,7 +257,7 @@ namespace CapaPresentacion.Vistas.Administrador
                 form.Close();
             }
 
-            Form frm = new frmVistaBackup();
+            Form frm = new frmvistaBackup();
             frm.MdiParent = this;
             frm.Dock = DockStyle.Fill;
             frm.Show();

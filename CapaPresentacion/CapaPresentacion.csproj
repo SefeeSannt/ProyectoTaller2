@@ -265,11 +265,11 @@
     <Compile Include="vistas\Administrador\Productos\ListaProductos%28no uso%29.Designer.cs">
       <DependentUpon>ListaProductos%28no uso%29.cs</DependentUpon>
     </Compile>
-    <Compile Include="vistas\Administrador\Reportes\frmDetalleCompras.cs">
+    <Compile Include="vistas\Administrador\Reportes\frmDetalleCompras%28innecesario%29.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="vistas\Administrador\Reportes\frmDetalleCompras.Designer.cs">
-      <DependentUpon>frmDetalleCompras.cs</DependentUpon>
+    <Compile Include="vistas\Administrador\Reportes\frmDetalleCompras%28innecesario%29.Designer.cs">
+      <DependentUpon>frmDetalleCompras%28innecesario%29.cs</DependentUpon>
     </Compile>
     <Compile Include="vistas\Administrador\Reportes\frmDetalleVentas.cs">
       <SubType>Form</SubType>
@@ -421,11 +421,11 @@
     <Compile Include="vistas\Vendedor\Venta\frmConsultarListadoProductos.Designer.cs">
       <DependentUpon>frmConsultarListadoProductos.cs</DependentUpon>
     </Compile>
-    <Compile Include="vistas\Vendedor\Venta\frmConsultaVenta.cs">
+    <Compile Include="vistas\Vendedor\Venta\frmConsultaVenta%28no va%29.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="vistas\Vendedor\Venta\frmConsultaVenta.Designer.cs">
-      <DependentUpon>frmConsultaVenta.cs</DependentUpon>
+    <Compile Include="vistas\Vendedor\Venta\frmConsultaVenta%28no va%29.Designer.cs">
+      <DependentUpon>frmConsultaVenta%28no va%29.cs</DependentUpon>
     </Compile>
     <Compile Include="vistas\Vendedor\Venta\frmRegistrarVenta%28no uso%29.cs">
       <SubType>Form</SubType>
@@ -475,8 +475,8 @@
     <EmbeddedResource Include="vistas\Administrador\Productos\ListaProductos%28no uso%29.resx">
       <DependentUpon>ListaProductos%28no uso%29.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="vistas\Administrador\Reportes\frmDetalleCompras.resx">
-      <DependentUpon>frmDetalleCompras.cs</DependentUpon>
+    <EmbeddedResource Include="vistas\Administrador\Reportes\frmDetalleCompras%28innecesario%29.resx">
+      <DependentUpon>frmDetalleCompras%28innecesario%29.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="vistas\Administrador\Reportes\frmDetalleVentas.resx">
       <DependentUpon>frmDetalleVentas.cs</DependentUpon>
@@ -553,8 +553,8 @@
     <EmbeddedResource Include="vistas\Vendedor\Venta\frmConsultarListadoProductos.resx">
       <DependentUpon>frmConsultarListadoProductos.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="vistas\Vendedor\Venta\frmConsultaVenta.resx">
-      <DependentUpon>frmConsultaVenta.cs</DependentUpon>
+    <EmbeddedResource Include="vistas\Vendedor\Venta\frmConsultaVenta%28no va%29.resx">
+      <DependentUpon>frmConsultaVenta%28no va%29.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="vistas\Vendedor\Venta\frmRegistrarVenta%28no uso%29.resx">
       <DependentUpon>frmRegistrarVenta%28no uso%29.cs</DependentUpon>
