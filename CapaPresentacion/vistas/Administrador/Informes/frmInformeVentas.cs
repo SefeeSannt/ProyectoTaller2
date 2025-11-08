@@ -37,26 +37,16 @@ namespace CapaPresentacion.vistas.Administrador
             dtpFechaHasta.Value = DateTime.Now;
 
             ConfigurarGraficoInicial();
+
+            ConfigurarGraficoTopProductos();
+
+            CargarDatosInforme();
         }
 
         private void btnBuscar_Click(object sender, EventArgs e)
         {
-            try
-            {
-                DateTime fechaDesde = dtpFechaDesde.Value;
-                DateTime fechaHasta = dtpFechaHasta.Value;
+            CargarDatosInforme();
 
-                DataTable dtGrafico = cnVenta.ObtenerDashboardMontoPorDia(fechaDesde, fechaHasta);
-                int totalVentas = cnVenta.ObtenerTotalComprasFiltrado(fechaDesde, fechaHasta);
-
-                CargarGraficoVentas(dtGrafico);
-                CargarTarjetasResumen(dtGrafico, totalVentas);
-
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Error al cargar el informe: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
         }
 
         private void ConfigurarGraficoInicial()
@@ -120,7 +110,67 @@ namespace CapaPresentacion.vistas.Administrador
                 lblTotalProducto.Text = "Error";
                 MessageBox.Show("Error al cargar total de productos: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+
         }
+
+
+        private void ConfigurarGraficoTopProductos()
+        {
+           
+            chTopProductos.Series.Clear();
+            Series serie = chTopProductos.Series.Add("Top 5 Productos");
+            serie.ChartType = SeriesChartType.Bar; 
+            serie.IsValueShownAsLabel = true; 
+
+          
+            chTopProductos.Titles.Clear();
+            chTopProductos.Titles.Add("Top 5 Productos Más Vendidos");
+
+          
+            chTopProductos.ChartAreas[0].AxisX.Title = "Producto";
+            chTopProductos.ChartAreas[0].AxisY.Title = "Cantidad Vendida";
+            chTopProductos.ChartAreas[0].AxisX.MajorGrid.Enabled = false;
+            chTopProductos.ChartAreas[0].AxisY.MajorGrid.Enabled = true;
+        }
+
+        private void CargarGraficoTopProductos(DataTable dtTopProductos)
+        {
+            ConfigurarGraficoTopProductos();
+
+            if (dtTopProductos.Rows.Count == 0)
+            {
+
+                return;
+            }
+
+           
+            chTopProductos.Series["Top 5 Productos"].XValueMember = "Producto";
+            chTopProductos.Series["Top 5 Productos"].YValueMembers = "TotalVendido";
+            chTopProductos.DataSource = dtTopProductos;
+            chTopProductos.DataBind();
+        }
+
+        private void CargarDatosInforme()
+        {
+            try
+            {
+                DateTime fechaDesde = dtpFechaDesde.Value;
+                DateTime fechaHasta = dtpFechaHasta.Value;
+
+                DataTable dtGrafico = cnVenta.ObtenerDashboardMontoPorDia(fechaDesde, fechaHasta);
+                int totalVentas = cnVenta.ObtenerTotalComprasFiltrado(fechaDesde, fechaHasta);
+                CargarGraficoVentas(dtGrafico);
+                CargarTarjetasResumen(dtGrafico, totalVentas);
+
+                DataTable dtTopProductos = cnVenta.ObtenerTop5ProductosVendidos(fechaDesde, fechaHasta);
+                CargarGraficoTopProductos(dtTopProductos);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error al cargar el informe: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
     }
 
 

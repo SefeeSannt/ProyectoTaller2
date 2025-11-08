@@ -123,6 +123,11 @@ namespace CapaNegocio
             return objCD_Venta.ObtenerTotalProductosVendidosFiltrado(fechaDesde, fechaHasta);
         }
 
+        public DataTable ObtenerTop5ProductosVendidos(DateTime fechaDesde, DateTime fechaHasta)
+        {
+            return objCD_Venta.ObtenerTop5ProductosVendidos(fechaDesde, fechaHasta);
+        }
+
 
 
 

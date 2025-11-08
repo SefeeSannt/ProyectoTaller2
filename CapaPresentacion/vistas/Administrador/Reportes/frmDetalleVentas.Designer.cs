@@ -36,7 +36,6 @@ namespace CapaPresentacion.Vistas.Administrador.Reportes
             this.components = new System.ComponentModel.Container();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             this.Agregra = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.nuevoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.panel1 = new System.Windows.Forms.Panel();
@@ -64,6 +63,7 @@ namespace CapaPresentacion.Vistas.Administrador.Reportes
             this.txtDniCliente = new System.Windows.Forms.TextBox();
             this.btnBuscar = new System.Windows.Forms.Button();
             this.lblFechaDesde = new System.Windows.Forms.Label();
+            this.lblNombreVendedor = new System.Windows.Forms.Label();
             this.Agregra.SuspendLayout();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvConsultaVentas)).BeginInit();
@@ -177,21 +177,13 @@ namespace CapaPresentacion.Vistas.Administrador.Reportes
             this.dgvConsultaVentas.BackgroundColor = System.Drawing.Color.White;
             this.dgvConsultaVentas.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
             this.dgvConsultaVentas.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
-            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgvConsultaVentas.DefaultCellStyle = dataGridViewCellStyle1;
             this.dgvConsultaVentas.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
             this.dgvConsultaVentas.Location = new System.Drawing.Point(13, 245);
             this.dgvConsultaVentas.Name = "dgvConsultaVentas";
             this.dgvConsultaVentas.ReadOnly = true;
             this.dgvConsultaVentas.RowHeadersVisible = false;
-            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.Black;
-            this.dgvConsultaVentas.RowsDefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle1.ForeColor = System.Drawing.Color.Black;
+            this.dgvConsultaVentas.RowsDefaultCellStyle = dataGridViewCellStyle1;
             this.dgvConsultaVentas.Size = new System.Drawing.Size(451, 226);
             this.dgvConsultaVentas.TabIndex = 28;
             this.dgvConsultaVentas.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvConsultaVentas_CellContentClick);
@@ -234,6 +226,7 @@ namespace CapaPresentacion.Vistas.Administrador.Reportes
             // pnlConsultaVentas2
             // 
             this.pnlConsultaVentas2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.pnlConsultaVentas2.Controls.Add(this.lblNombreVendedor);
             this.pnlConsultaVentas2.Controls.Add(this.lblCodVenta);
             this.pnlConsultaVentas2.Controls.Add(this.lblDniCliente);
             this.pnlConsultaVentas2.Controls.Add(this.lblApellidoCliente);
@@ -268,7 +261,6 @@ namespace CapaPresentacion.Vistas.Administrador.Reportes
             this.lblDniCliente.Size = new System.Drawing.Size(65, 17);
             this.lblDniCliente.TabIndex = 21;
             this.lblDniCliente.Text = "dni cliente";
-            this.lblDniCliente.Click += new System.EventHandler(this.lblDatoDni_Click);
             // 
             // lblApellidoCliente
             // 
@@ -281,7 +273,6 @@ namespace CapaPresentacion.Vistas.Administrador.Reportes
             this.lblApellidoCliente.Size = new System.Drawing.Size(92, 17);
             this.lblApellidoCliente.TabIndex = 20;
             this.lblApellidoCliente.Text = "apellido cliente";
-            this.lblApellidoCliente.Click += new System.EventHandler(this.lblDatoApellido_Click);
             // 
             // lblNombreCliente
             // 
@@ -294,7 +285,6 @@ namespace CapaPresentacion.Vistas.Administrador.Reportes
             this.lblNombreCliente.Size = new System.Drawing.Size(91, 17);
             this.lblNombreCliente.TabIndex = 19;
             this.lblNombreCliente.Text = "nombre cliente";
-            this.lblNombreCliente.Click += new System.EventHandler(this.lblDatoNombre_Click);
             // 
             // lblTitulo
             // 
@@ -307,7 +297,6 @@ namespace CapaPresentacion.Vistas.Administrador.Reportes
             this.lblTitulo.Size = new System.Drawing.Size(97, 20);
             this.lblTitulo.TabIndex = 18;
             this.lblTitulo.Text = "Datos Cliente";
-            this.lblTitulo.Click += new System.EventHandler(this.lblTitulo_Click);
             // 
             // dgvDetalleVenta
             // 
@@ -316,14 +305,14 @@ namespace CapaPresentacion.Vistas.Administrador.Reportes
             this.dgvDetalleVenta.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dgvDetalleVenta.BackgroundColor = System.Drawing.Color.White;
             this.dgvDetalleVenta.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("Franklin Gothic Medium", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle3.ForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgvDetalleVenta.DefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Franklin Gothic Medium", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgvDetalleVenta.DefaultCellStyle = dataGridViewCellStyle2;
             this.dgvDetalleVenta.GridColor = System.Drawing.Color.CadetBlue;
             this.dgvDetalleVenta.Location = new System.Drawing.Point(-1, 106);
             this.dgvDetalleVenta.Name = "dgvDetalleVenta";
@@ -375,7 +364,6 @@ namespace CapaPresentacion.Vistas.Administrador.Reportes
             this.lblfechaHasta.Size = new System.Drawing.Size(80, 17);
             this.lblfechaHasta.TabIndex = 29;
             this.lblfechaHasta.Text = "Fecha Hasta:";
-            this.lblfechaHasta.Click += new System.EventHandler(this.lblfechaHasta_Click);
             // 
             // lblCliente
             // 
@@ -388,7 +376,6 @@ namespace CapaPresentacion.Vistas.Administrador.Reportes
             this.lblCliente.Size = new System.Drawing.Size(71, 17);
             this.lblCliente.TabIndex = 23;
             this.lblCliente.Text = "DNI cliente:";
-            this.lblCliente.Click += new System.EventHandler(this.lblVendedorConsVentas_Click);
             // 
             // txtDniCliente
             // 
@@ -421,7 +408,18 @@ namespace CapaPresentacion.Vistas.Administrador.Reportes
             this.lblFechaDesde.Size = new System.Drawing.Size(82, 17);
             this.lblFechaDesde.TabIndex = 24;
             this.lblFechaDesde.Text = "Fecha desde:";
-            this.lblFechaDesde.Click += new System.EventHandler(this.lblFechaDesde_Click);
+            // 
+            // lblNombreVendedor
+            // 
+            this.lblNombreVendedor.AutoSize = true;
+            this.lblNombreVendedor.BackColor = System.Drawing.Color.White;
+            this.lblNombreVendedor.Font = new System.Drawing.Font("Franklin Gothic Medium", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblNombreVendedor.ForeColor = System.Drawing.Color.Black;
+            this.lblNombreVendedor.Location = new System.Drawing.Point(13, 86);
+            this.lblNombreVendedor.Name = "lblNombreVendedor";
+            this.lblNombreVendedor.Size = new System.Drawing.Size(106, 17);
+            this.lblNombreVendedor.TabIndex = 23;
+            this.lblNombreVendedor.Text = "nombre vendedor";
             // 
             // frmDetalleVentas
             // 
@@ -476,6 +474,7 @@ namespace CapaPresentacion.Vistas.Administrador.Reportes
         private Panel panel2;
         private Button btnPDFventa;
         private Label lblCodVenta;
+        private Label lblNombreVendedor;
     }
 }
 
