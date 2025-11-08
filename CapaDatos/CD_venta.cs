@@ -502,5 +502,46 @@ namespace CapaDatos
             return total;
         }
 
+        public DataTable ObtenerTop5ProductosVendidos(DateTime fechaDesde, DateTime fechaHasta)
+        {
+            DataTable tabla = new DataTable();
+            using (SqlConnection con = new SqlConnection(conexion.cadena))
+            {
+                try
+                {
+                    con.Open();
+                    string query = @"
+                        SELECT TOP 5
+                            p.nombre AS Producto,
+                            SUM(dv.cantidad) AS TotalVendido
+                        FROM detalle_venta dv
+                        INNER JOIN producto p ON dv.cod_producto = p.cod_producto
+                        INNER JOIN venta v ON dv.cod_venta = v.cod_venta
+                        WHERE v.fecha_venta BETWEEN @fechaDesde AND @fechaHasta
+                        GROUP BY p.nombre
+                        ORDER BY TotalVendido DESC";
+
+                    using (SqlCommand cmd = new SqlCommand(query, con))
+                    {
+                        cmd.Parameters.AddWithValue("@fechaDesde", fechaDesde.Date);
+                        cmd.Parameters.AddWithValue("@fechaHasta", fechaHasta.Date.AddDays(1).AddSeconds(-1));
+                        cmd.CommandType = CommandType.Text;
+
+                        SqlDataAdapter da = new SqlDataAdapter(cmd);
+                        da.Fill(tabla);
+                    }
+                }
+                catch (Exception ex)
+                {
+                    throw new Exception("Error en CD_venta.ObtenerTop5ProductosVendidos: " + ex.Message, ex);
+                }
+            }
+            return tabla;
+        }
+
+
+
+
+
     }
 }

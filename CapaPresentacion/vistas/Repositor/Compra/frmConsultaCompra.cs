@@ -11,9 +11,11 @@ namespace CapaPresentacion.Vistas.Repositor
 {
     public partial class frmConsultaCompra : Form
     {
-        public frmConsultaCompra()
+        private CapaEntidad.Usuario usuarioActual;
+        public frmConsultaCompra(CapaEntidad.Usuario oUsuario)
         {
             InitializeComponent();
+            this.usuarioActual = oUsuario;
         }
 
         private void CargarGridCompras(DateTime fechaDesde, DateTime fechaHasta, string dniProveedor)
@@ -192,6 +194,17 @@ namespace CapaPresentacion.Vistas.Repositor
                         pdfDoc.Add(titulo);
                         pdfDoc.Add(Chunk.NEWLINE);
 
+                        var fontTienda = FontFactory.GetFont(FontFactory.HELVETICA, 10, BaseColor.GRAY);
+                        Paragraph nombreTienda = new Paragraph("Tienda ZonaFit", fontTienda);
+                        nombreTienda.Alignment = Element.ALIGN_CENTER;
+                        pdfDoc.Add(nombreTienda);
+
+                        Paragraph direccionTienda = new Paragraph("9 de Julio 1820", fontTienda);
+                        direccionTienda.Alignment = Element.ALIGN_CENTER;
+                        pdfDoc.Add(direccionTienda);
+                        pdfDoc.Add(Chunk.NEWLINE);
+
+
                         var fontHeader = FontFactory.GetFont(FontFactory.HELVETICA_BOLD, 12, BaseColor.BLACK);
                         Paragraph subtitulo = new Paragraph("Datos del Proveedor/Repositor", fontHeader);
                         pdfDoc.Add(subtitulo);
@@ -199,6 +212,16 @@ namespace CapaPresentacion.Vistas.Repositor
                         pdfDoc.Add(new Paragraph($"Nombre: {lblNombreProveedor.Text} {lblApellidoProveedor.Text}"));
                         pdfDoc.Add(new Paragraph($"DNI: {lblDniProveedor.Text}"));
                         pdfDoc.Add(Chunk.NEWLINE);
+
+                        Paragraph subtituloRep = new Paragraph("Datos del Repositor", fontHeader);
+                        pdfDoc.Add(subtituloRep);
+
+                       
+                        pdfDoc.Add(new Paragraph($"Nombre: {this.usuarioActual.nombre} {this.usuarioActual.apellido}"));
+                        pdfDoc.Add(new Paragraph($"DNI: {this.usuarioActual.dni_usuario.ToString()}"));
+                        pdfDoc.Add(Chunk.NEWLINE);
+
+
 
                         PdfPTable tabla = new PdfPTable(dgvDetalleCompra.Columns.Count);
                         tabla.WidthPercentage = 100;
@@ -215,8 +238,8 @@ namespace CapaPresentacion.Vistas.Repositor
                         {
                             tabla.AddCell(new Phrase(row.Cells["Producto"].Value.ToString()));
                             tabla.AddCell(new Phrase(Convert.ToDecimal(row.Cells["PrecioCompra"].Value).ToString("C2")));
-                            tabla.AddCell(new Phrase(row.Cells["cantidad"].Value.ToString()));
-                            tabla.AddCell(new Phrase(Convert.ToDecimal(row.Cells["subtotal"].Value).ToString("C2")));
+                            tabla.AddCell(new Phrase(row.Cells["Cantidad"].Value.ToString()));
+                            tabla.AddCell(new Phrase(Convert.ToDecimal(row.Cells["Subtotal"].Value).ToString("C2")));
                         }
 
                         pdfDoc.Add(tabla);

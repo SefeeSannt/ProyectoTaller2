@@ -25,10 +25,12 @@ namespace CapaPresentacion.Vistas.Administrador
 {
     public partial class frmVistaAdministrador : Form
     {
+        private Usuario usuarioLogueado;
         public frmVistaAdministrador(Usuario oUsuario)
         {
             InitializeComponent();
             lblNombre.Text = oUsuario.nombre + " " + oUsuario.apellido;
+            this.usuarioLogueado = oUsuario;
         }
 
         private void tsmiListarProd_Click(object sender, EventArgs e)
@@ -114,7 +116,7 @@ namespace CapaPresentacion.Vistas.Administrador
                 form.Close();
             }
 
-            Form frm = new frmConsultaCompra();
+            Form frm = new frmConsultaCompra(this.usuarioLogueado);
             frm.MdiParent = this;
             frm.Dock = DockStyle.Fill;
             frm.Show();

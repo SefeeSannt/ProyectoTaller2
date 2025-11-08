@@ -48,7 +48,7 @@ namespace CapaPresentacion.Vistas.Repositor
                 form.Close();
             }
 
-            Form frm = new frmConsultaCompra();
+            Form frm = new frmConsultaCompra(this.usuarioLogueado);
             frm.MdiParent = this;
             frm.Dock = DockStyle.Fill;
             frm.Show();
