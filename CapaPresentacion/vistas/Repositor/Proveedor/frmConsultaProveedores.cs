@@ -68,8 +68,9 @@ namespace CapaPresentacion.Vistas.Repositor
             txt_dni_proveedor.Clear();
         }
 
+        private void frmConsultaProveedores_Load(object sender, EventArgs e)
+        {
 
-
-
+        }
     }
 }
