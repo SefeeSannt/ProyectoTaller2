@@ -129,7 +129,7 @@ namespace CapaPresentacion.Vistas.Administrador
                 form.Close();
             }
 
-            Form frm = new frmDetalleVentas();
+            Form frm = new frmDetalleVentas(this.oUsuario);
             frm.MdiParent = this;
             frm.Dock = DockStyle.Fill;
             frm.Show();

@@ -134,6 +134,8 @@ namespace CapaPresentacion.Vistas.Repositor
                     lblNombreProveedor.Text = compra.dni_proveedor.nombre;
                     lblApellidoProveedor.Text = compra.dni_proveedor.apellido;
                     lblDniProveedor.Text = compra.dni_proveedor.dni_proveedor.ToString();
+                    lblNombreRepositor.Text = compra.dni_usuario.nombre;
+                    lblCodCompra.Text = compra.cod_compra.ToString();
                 }
 
                 DataTable dtDetalle = cn.ObtenerDetalleCompra(codCompra);
@@ -145,7 +147,7 @@ namespace CapaPresentacion.Vistas.Repositor
                     costoTotal += Convert.ToDecimal(row["Subtotal"]);
                 }
 
-                lblCostoTotal.Text = costoTotal.ToString("C"); // Formato Moneda
+                lblCostoTotal.Text = costoTotal.ToString("C");
             }
             catch (Exception ex)
             {
@@ -174,7 +176,7 @@ namespace CapaPresentacion.Vistas.Repositor
             }
 
             SaveFileDialog savefile = new SaveFileDialog();
-            savefile.FileName = $"Detalle_Compra_{DateTime.Now:ddMMyyyy}.pdf";
+            savefile.FileName = $"Compra_N°{lblCodCompra.Text}_{DateTime.Now:ddMMyyyy}.pdf";
             savefile.Filter = "Archivos PDF (*.pdf)|*.pdf";
 
             if (savefile.ShowDialog() == DialogResult.OK)
@@ -187,42 +189,59 @@ namespace CapaPresentacion.Vistas.Repositor
                         PdfWriter writer = PdfWriter.GetInstance(pdfDoc, stream);
                         pdfDoc.Open();
 
-                      
+
+                        // 1. Título
                         var fontTitulo = FontFactory.GetFont(FontFactory.HELVETICA_BOLD, 16, BaseColor.BLACK);
                         Paragraph titulo = new Paragraph("Detalle de Compra", fontTitulo);
                         titulo.Alignment = Element.ALIGN_CENTER;
                         pdfDoc.Add(titulo);
                         pdfDoc.Add(Chunk.NEWLINE);
 
+                        // Datos de la Empresa
                         var fontTienda = FontFactory.GetFont(FontFactory.HELVETICA, 10, BaseColor.GRAY);
-                        Paragraph nombreTienda = new Paragraph("Tienda ZonaFit", fontTienda);
+
+                        // CAMBIADO
+                        Paragraph nombreTienda = new Paragraph("MyFitt", fontTienda);
                         nombreTienda.Alignment = Element.ALIGN_CENTER;
                         pdfDoc.Add(nombreTienda);
 
-                        Paragraph direccionTienda = new Paragraph("9 de Julio 1820", fontTienda);
+                        // CAMBIADO
+                        Paragraph direccionTienda = new Paragraph("9 de julio 1432", fontTienda);
                         direccionTienda.Alignment = Element.ALIGN_CENTER;
                         pdfDoc.Add(direccionTienda);
+
+                        // AGREGADO
+                        Paragraph cuilTienda = new Paragraph("CUIL: 30-12345678-9", fontTienda); 
+                        cuilTienda.Alignment = Element.ALIGN_CENTER;
+                        pdfDoc.Add(cuilTienda);
+
+                        // AGREGADO
+                        Paragraph emailTienda = new Paragraph("myfitt@gmail.com", fontTienda);
+                        emailTienda.Alignment = Element.ALIGN_CENTER;
+                        pdfDoc.Add(emailTienda);
+
                         pdfDoc.Add(Chunk.NEWLINE);
+                        // --- FIN DE CAMBIOS ---
 
 
+                        // 2. Datos del Proveedor
                         var fontHeader = FontFactory.GetFont(FontFactory.HELVETICA_BOLD, 12, BaseColor.BLACK);
-                        Paragraph subtitulo = new Paragraph("Datos del Proveedor/Repositor", fontHeader);
+                        Paragraph subtitulo = new Paragraph("Datos del Proveedor", fontHeader);
                         pdfDoc.Add(subtitulo);
 
                         pdfDoc.Add(new Paragraph($"Nombre: {lblNombreProveedor.Text} {lblApellidoProveedor.Text}"));
                         pdfDoc.Add(new Paragraph($"DNI: {lblDniProveedor.Text}"));
                         pdfDoc.Add(Chunk.NEWLINE);
 
+                        // 3. Datos del Repositor 
                         Paragraph subtituloRep = new Paragraph("Datos del Repositor", fontHeader);
                         pdfDoc.Add(subtituloRep);
-
-                       
                         pdfDoc.Add(new Paragraph($"Nombre: {this.usuarioActual.nombre} {this.usuarioActual.apellido}"));
                         pdfDoc.Add(new Paragraph($"DNI: {this.usuarioActual.dni_usuario.ToString()}"));
                         pdfDoc.Add(Chunk.NEWLINE);
 
 
-
+                        // 4. Tabla de Detalles 
                         PdfPTable tabla = new PdfPTable(dgvDetalleCompra.Columns.Count);
                         tabla.WidthPercentage = 100;
 
@@ -230,7 +249,7 @@ namespace CapaPresentacion.Vistas.Repositor
                         {
                             PdfPCell cell = new PdfPCell(new Phrase(column.HeaderText, fontHeader));
                             cell.HorizontalAlignment = Element.ALIGN_CENTER;
-                            cell.BackgroundColor = new BaseColor(240, 240, 240); // Un gris claro
+                            cell.BackgroundColor = new BaseColor(240, 240, 240); 
                             tabla.AddCell(cell);
                         }
 
@@ -245,6 +264,7 @@ namespace CapaPresentacion.Vistas.Repositor
                         pdfDoc.Add(tabla);
                         pdfDoc.Add(Chunk.NEWLINE);
 
+                        // 5. Total
                         var fontTotal = FontFactory.GetFont(FontFactory.HELVETICA_BOLD, 14, BaseColor.BLACK);
                         Paragraph total = new Paragraph($"COSTO TOTAL: {lblCostoTotal.Text}", fontTotal);
                         total.Alignment = Element.ALIGN_RIGHT;
@@ -255,7 +275,7 @@ namespace CapaPresentacion.Vistas.Repositor
                         stream.Close();
 
                         MessageBox.Show("Documento PDF guardado exitosamente.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
-          
+
                     }
                 }
                 catch (Exception ex)
@@ -263,10 +283,8 @@ namespace CapaPresentacion.Vistas.Repositor
                     MessageBox.Show("Error al generar el PDF: " + ex.GetBaseException().Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
-
         }
+
     }
-
-
 }
 

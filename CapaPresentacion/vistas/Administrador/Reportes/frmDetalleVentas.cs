@@ -1,4 +1,5 @@
 ﻿using CapaNegocio;
+using CapaEntidad;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -16,9 +17,11 @@ namespace CapaPresentacion.Vistas.Administrador.Reportes
 {
     public partial class frmDetalleVentas : Form
     {
-        public frmDetalleVentas()
+        public Usuario usuarioActual;
+        public frmDetalleVentas(Usuario oUsuario)
         {
             InitializeComponent();
+
         }
 
 
@@ -189,7 +192,7 @@ namespace CapaPresentacion.Vistas.Administrador.Reportes
             }
 
             SaveFileDialog savefile = new SaveFileDialog();
-            savefile.FileName = $"Detalle_Venta_{DateTime.Now:ddMMyyyy}.pdf";
+            savefile.FileName = $"Venta_N°{lblCodVenta.Text}_{DateTime.Now:ddMMyyyy}.pdf";
             savefile.Filter = "Archivos PDF (*.pdf)|*.pdf";
 
             if (savefile.ShowDialog() == DialogResult.OK)
@@ -203,34 +206,58 @@ namespace CapaPresentacion.Vistas.Administrador.Reportes
                         pdfDoc.Open();
 
 
+                        // 1. Título
                         var fontTitulo = FontFactory.GetFont(FontFactory.HELVETICA_BOLD, 16, BaseColor.BLACK);
-                        Paragraph titulo = new Paragraph("Detalle de venta", fontTitulo);
+                        Paragraph titulo = new Paragraph("Detalle de Venta", fontTitulo);
                         titulo.Alignment = Element.ALIGN_CENTER;
                         pdfDoc.Add(titulo);
                         pdfDoc.Add(Chunk.NEWLINE);
 
+                        // Datos de la Empresa
                         var fontTienda = FontFactory.GetFont(FontFactory.HELVETICA, 10, BaseColor.GRAY);
-                        Paragraph nombreTienda = new Paragraph("Tienda ZonaFit", fontTienda);
+
+                        // CAMBIADO
+                        Paragraph nombreTienda = new Paragraph("MyFitt", fontTienda);
                         nombreTienda.Alignment = Element.ALIGN_CENTER;
                         pdfDoc.Add(nombreTienda);
 
-                        Paragraph direccionTienda = new Paragraph("9 de Julio 1820", fontTienda);
+                        // CAMBIADO
+                        Paragraph direccionTienda = new Paragraph("9 de julio 1432", fontTienda);
                         direccionTienda.Alignment = Element.ALIGN_CENTER;
                         pdfDoc.Add(direccionTienda);
+
+                        // AGREGADO
+                        Paragraph cuilTienda = new Paragraph("CUIL: 30-12345678-9", fontTienda);
+                        cuilTienda.Alignment = Element.ALIGN_CENTER;
+                        pdfDoc.Add(cuilTienda);
+
+                        // AGREGADO
+                        Paragraph emailTienda = new Paragraph("myfitt@gmail.com", fontTienda);
+                        emailTienda.Alignment = Element.ALIGN_CENTER;
+                        pdfDoc.Add(emailTienda);
+
                         pdfDoc.Add(Chunk.NEWLINE);
+                        // --- FIN DE CAMBIOS ---
 
 
+                        // 2. Datos del Proveedor
                         var fontHeader = FontFactory.GetFont(FontFactory.HELVETICA_BOLD, 12, BaseColor.BLACK);
-                        Paragraph subtitulo = new Paragraph("Datos del Cliente/Vendedor", fontHeader);
+                        Paragraph subtitulo = new Paragraph("Datos del Cliente", fontHeader);
                         pdfDoc.Add(subtitulo);
 
-                        pdfDoc.Add(new Paragraph($"Cliente: {lblNombreCliente.Text} {lblApellidoCliente.Text}"));
+                        pdfDoc.Add(new Paragraph($"Nombre: {lblCliente.Text} {lblApellidoCliente.Text}"));
                         pdfDoc.Add(new Paragraph($"DNI: {lblDniCliente.Text}"));
-                        pdfDoc.Add(new Paragraph($"Vendedor: {lblNombreVendedor.Text}"));
-                        pdfDoc.Add(new Paragraph($"Código de venta: {lblCodVenta.Text}"));
-
                         pdfDoc.Add(Chunk.NEWLINE);
 
+                        // 3. Datos del Repositor 
+                        Paragraph subtituloRep = new Paragraph("Datos del Vendedor", fontHeader);
+                        pdfDoc.Add(subtituloRep);
+                        pdfDoc.Add(new Paragraph($"Nombre: {this.usuarioActual.nombre} {this.usuarioActual.apellido}"));
+                        pdfDoc.Add(new Paragraph($"DNI: {this.usuarioActual.dni_usuario.ToString()}"));
+                        pdfDoc.Add(Chunk.NEWLINE);
+
+
+                        // 4. Tabla de Detalles 
                         PdfPTable tabla = new PdfPTable(dgvDetalleVenta.Columns.Count);
                         tabla.WidthPercentage = 100;
 
@@ -238,21 +265,22 @@ namespace CapaPresentacion.Vistas.Administrador.Reportes
                         {
                             PdfPCell cell = new PdfPCell(new Phrase(column.HeaderText, fontHeader));
                             cell.HorizontalAlignment = Element.ALIGN_CENTER;
-                            cell.BackgroundColor = new BaseColor(240, 240, 240); // Un gris claro
+                            cell.BackgroundColor = new BaseColor(240, 240, 240);
                             tabla.AddCell(cell);
                         }
 
                         foreach (DataGridViewRow row in dgvDetalleVenta.Rows)
                         {
                             tabla.AddCell(new Phrase(row.Cells["Producto"].Value.ToString()));
-                            tabla.AddCell(new Phrase(Convert.ToDecimal(row.Cells["PrecioVenta"].Value).ToString("C2")));
-                            tabla.AddCell(new Phrase(row.Cells["cantidad"].Value.ToString()));
-                            tabla.AddCell(new Phrase(Convert.ToDecimal(row.Cells["subtotal"].Value).ToString("C2")));
+                            tabla.AddCell(new Phrase(Convert.ToDecimal(row.Cells["PrecioCompra"].Value).ToString("C2")));
+                            tabla.AddCell(new Phrase(row.Cells["Cantidad"].Value.ToString()));
+                            tabla.AddCell(new Phrase(Convert.ToDecimal(row.Cells["Subtotal"].Value).ToString("C2")));
                         }
 
                         pdfDoc.Add(tabla);
                         pdfDoc.Add(Chunk.NEWLINE);
 
+                        // 5. Total
                         var fontTotal = FontFactory.GetFont(FontFactory.HELVETICA_BOLD, 14, BaseColor.BLACK);
                         Paragraph total = new Paragraph($"COSTO TOTAL: {lblCostoTotal.Text}", fontTotal);
                         total.Alignment = Element.ALIGN_RIGHT;
@@ -271,7 +299,6 @@ namespace CapaPresentacion.Vistas.Administrador.Reportes
                     MessageBox.Show("Error al generar el PDF: " + ex.GetBaseException().Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
-
         }
     }
 }
