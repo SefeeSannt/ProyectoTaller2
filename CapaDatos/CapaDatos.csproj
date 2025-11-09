@@ -54,9 +54,13 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="backup_logs.cs">
+      <DependentUpon>ProyectoTaller2Model.tt</DependentUpon>
+    </Compile>
     <Compile Include="categoria.cs">
       <DependentUpon>ProyectoTaller2Model.tt</DependentUpon>
     </Compile>
+    <Compile Include="CD_backup.cs" />
     <Compile Include="CD_cliente.cs" />
     <Compile Include="CD_compra.cs" />
     <Compile Include="CD_detalle_compra.cs" />
