@@ -52,10 +52,12 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ClienteModel.cs" />
+    <Compile Include="CN_backup.cs" />
     <Compile Include="CN_categoria.cs" />
     <Compile Include="CN_cliente.cs" />
     <Compile Include="CN_compra.cs" />
     <Compile Include="CN_compraDetalle.cs" />
+    <Compile Include="CN_logBackup.cs" />
     <Compile Include="CN_producto.cs" />
     <Compile Include="CN_proveedor.cs" />
     <Compile Include="CN_rol.cs" />
@@ -66,6 +68,7 @@
     <Compile Include="CompraRequest.cs" />
     <Compile Include="DetalleCompraModel.cs" />
     <Compile Include="DetalleVentaModel.cs" />
+    <Compile Include="LogBackupModel.cs" />
     <Compile Include="ProductoModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ProveedorModel.cs" />

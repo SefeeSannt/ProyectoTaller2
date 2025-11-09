@@ -1,4 +1,3 @@
-﻿using CapaPresentacion.vistas.Administrador;
 using CapaPresentacion.vistas.Administrador.Usuarios;
 using CapaPresentacion.vistas.Repositor.Proveedor;
 using CapaPresentacion.Vistas.Administrador;
@@ -25,12 +24,12 @@ namespace CapaPresentacion.Vistas.Administrador
 {
     public partial class frmVistaAdministrador : Form
     {
-        private Usuario usuarioLogueado;
+        private Usuario oUsuario;
         public frmVistaAdministrador(Usuario oUsuario)
         {
             InitializeComponent();
             lblNombre.Text = oUsuario.nombre + " " + oUsuario.apellido;
-            this.usuarioLogueado = oUsuario;
+            this.oUsuario = oUsuario;
         }
 
         private void tsmiListarProd_Click(object sender, EventArgs e)
@@ -259,7 +258,7 @@ namespace CapaPresentacion.Vistas.Administrador
                 form.Close();
             }
 
-            Form frm = new frmvistaBackup();
+            Form frm = new frmvistaBackup(oUsuario.email_usuario);
             frm.MdiParent = this;
             frm.Dock = DockStyle.Fill;
             frm.Show();

@@ -35,5 +35,6 @@ namespace CapaDatos
         public virtual DbSet<rol> rol { get; set; }
         public virtual DbSet<usuario> usuario { get; set; }
         public virtual DbSet<venta> venta { get; set; }
+        public virtual DbSet<backup_logs> backup_logs { get; set; }
     }
 }

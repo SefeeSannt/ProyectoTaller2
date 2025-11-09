@@ -25,6 +25,7 @@
         <AssociationConnector Association="ProyectoTaller2Model.FK_detalle_venta" ManuallyRouted="false" />
         <AssociationConnector Association="ProyectoTaller2Model.FK_usuario_rol" ManuallyRouted="false" />
         <AssociationConnector Association="ProyectoTaller2Model.FK_venta_usuario" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="ProyectoTaller2Model.backup_logs" Width="1.5" PointX="0.75" PointY="8.75" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

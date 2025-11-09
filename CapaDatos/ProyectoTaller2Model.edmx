@@ -4,7 +4,16 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="ProyectoTaller2Model.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="ProyectoTaller2Model.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="backup_logs">
+          <Key>
+            <PropertyRef Name="id_log" />
+          </Key>
+          <Property Name="id_log" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="archivo" Type="nvarchar" MaxLength="255" />
+          <Property Name="admin_email" Type="nvarchar" MaxLength="100" />
+          <Property Name="fecha" Type="datetime" />
+        </EntityType>
         <EntityType Name="categoria">
           <Key>
             <PropertyRef Name="id_categoria" />
@@ -231,6 +240,7 @@
           </ReferentialConstraint>
         </Association>
         <EntityContainer Name="ProyectoTaller2ModelStoreContainer">
+          <EntitySet Name="backup_logs" EntityType="Self.backup_logs" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="categoria" EntityType="Self.categoria" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="cliente" EntityType="Self.cliente" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="compra" EntityType="Self.compra" Schema="dbo" store:Type="Tables" />
@@ -282,8 +292,7 @@
             <End Role="venta" EntitySet="venta" />
           </AssociationSet>
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="ProyectoTaller2Model" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -583,7 +592,17 @@
             <End Role="usuario" EntitySet="usuario" />
             <End Role="venta" EntitySet="venta" />
           </AssociationSet>
+          <EntitySet Name="backup_logs" EntityType="ProyectoTaller2Model.backup_logs" />
         </EntityContainer>
+        <EntityType Name="backup_logs">
+          <Key>
+            <PropertyRef Name="id_log" />
+          </Key>
+          <Property Name="id_log" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="archivo" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="admin_email" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="fecha" Type="DateTime" Precision="3" />
+        </EntityType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -700,6 +719,16 @@
                 <ScalarProperty Name="cod_venta" ColumnName="cod_venta" />
                 <ScalarProperty Name="dni_cliente" ColumnName="dni_cliente" />
                 <ScalarProperty Name="dni_usuario" ColumnName="dni_usuario" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="backup_logs">
+            <EntityTypeMapping TypeName="ProyectoTaller2Model.backup_logs">
+              <MappingFragment StoreEntitySet="backup_logs">
+                <ScalarProperty Name="fecha" ColumnName="fecha" />
+                <ScalarProperty Name="admin_email" ColumnName="admin_email" />
+                <ScalarProperty Name="archivo" ColumnName="archivo" />
+                <ScalarProperty Name="id_log" ColumnName="id_log" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
