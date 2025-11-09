@@ -37,6 +37,10 @@
             // 
             // dgvListaProducto
             // 
+            this.dgvListaProducto.AllowUserToAddRows = false;
+            this.dgvListaProducto.AllowUserToDeleteRows = false;
+            this.dgvListaProducto.AllowUserToResizeColumns = false;
+            this.dgvListaProducto.AllowUserToResizeRows = false;
             this.dgvListaProducto.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dgvListaProducto.BackgroundColor = System.Drawing.Color.LightSteelBlue;
             this.dgvListaProducto.BorderStyle = System.Windows.Forms.BorderStyle.None;

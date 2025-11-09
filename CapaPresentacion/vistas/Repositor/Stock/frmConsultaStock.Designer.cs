@@ -30,7 +30,7 @@
         {
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.lblBuscarPor = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.txtBuscar = new System.Windows.Forms.TextBox();
             this.iconBtnBuscar = new FontAwesome.Sharp.IconButton();
             this.dgvStock = new System.Windows.Forms.DataGridView();
             this.lblBajaUsuario = new System.Windows.Forms.Label();
@@ -49,17 +49,20 @@
             this.lblBuscarPor.TabIndex = 1;
             this.lblBuscarPor.Text = "Buscar:";
             // 
-            // textBox1
+            // txtBuscar
             // 
-            this.textBox1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.textBox1.Location = new System.Drawing.Point(697, 16);
-            this.textBox1.Multiline = true;
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(166, 17);
-            this.textBox1.TabIndex = 3;
+            this.txtBuscar.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtBuscar.Location = new System.Drawing.Point(697, 16);
+            this.txtBuscar.Multiline = true;
+            this.txtBuscar.Name = "txtBuscar";
+            this.txtBuscar.Size = new System.Drawing.Size(166, 17);
+            this.txtBuscar.TabIndex = 3;
             // 
             // iconBtnBuscar
             // 
+            this.iconBtnBuscar.BackColor = System.Drawing.Color.White;
+            this.iconBtnBuscar.FlatAppearance.BorderSize = 0;
+            this.iconBtnBuscar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.iconBtnBuscar.IconChar = FontAwesome.Sharp.IconChar.MagnifyingGlass;
             this.iconBtnBuscar.IconColor = System.Drawing.Color.Black;
             this.iconBtnBuscar.IconFont = FontAwesome.Sharp.IconFont.Auto;
@@ -71,12 +74,15 @@
             this.iconBtnBuscar.Text = "Buscar";
             this.iconBtnBuscar.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.iconBtnBuscar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.iconBtnBuscar.UseVisualStyleBackColor = true;
+            this.iconBtnBuscar.UseVisualStyleBackColor = false;
+            this.iconBtnBuscar.Click += new System.EventHandler(this.iconBtnBuscar_Click);
             // 
             // dgvStock
             // 
             this.dgvStock.AllowUserToAddRows = false;
             this.dgvStock.AllowUserToDeleteRows = false;
+            this.dgvStock.AllowUserToResizeColumns = false;
+            this.dgvStock.AllowUserToResizeRows = false;
             this.dgvStock.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dgvStock.BackgroundColor = System.Drawing.Color.White;
             this.dgvStock.BorderStyle = System.Windows.Forms.BorderStyle.None;
@@ -118,7 +124,7 @@
             this.ClientSize = new System.Drawing.Size(960, 538);
             this.Controls.Add(this.dgvStock);
             this.Controls.Add(this.iconBtnBuscar);
-            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.txtBuscar);
             this.Controls.Add(this.lblBuscarPor);
             this.Controls.Add(this.lblBajaUsuario);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
@@ -133,7 +139,7 @@
 
         #endregion
         private System.Windows.Forms.Label lblBuscarPor;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox txtBuscar;
         private FontAwesome.Sharp.IconButton iconBtnBuscar;
         private System.Windows.Forms.DataGridView dgvStock;
         private System.Windows.Forms.Label lblBajaUsuario;

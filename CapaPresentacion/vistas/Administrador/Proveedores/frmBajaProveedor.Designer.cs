@@ -89,8 +89,11 @@
             // 
             this.dgvBajaProveedores.AllowUserToAddRows = false;
             this.dgvBajaProveedores.AllowUserToDeleteRows = false;
+            this.dgvBajaProveedores.AllowUserToResizeColumns = false;
+            this.dgvBajaProveedores.AllowUserToResizeRows = false;
             this.dgvBajaProveedores.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dgvBajaProveedores.BackgroundColor = System.Drawing.Color.White;
+            this.dgvBajaProveedores.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.dgvBajaProveedores.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleHorizontal;
             this.dgvBajaProveedores.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvBajaProveedores.Cursor = System.Windows.Forms.Cursors.Default;

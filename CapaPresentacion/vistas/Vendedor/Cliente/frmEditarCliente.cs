@@ -34,6 +34,7 @@ namespace CapaPresentacion.vistas.Vendedor.Cliente
             var negocio = new CN_cliente();
             var lista = negocio.ObtenerClientesActivos();
             dgvClientes.DataSource = lista;
+            FormatearGrilla();
             dgvClientes.ClearSelection();
         }
 
@@ -57,6 +58,7 @@ namespace CapaPresentacion.vistas.Vendedor.Cliente
             var criterio = txtBuscarCliente.Text;
             var lista = negocio.BuscarClientesActivos(criterio);
             dgvClientes.DataSource = lista;
+            FormatearGrilla();
         }
 
         private void btnLimpiar_Click(object sender, EventArgs e)
@@ -158,6 +160,34 @@ namespace CapaPresentacion.vistas.Vendedor.Cliente
                 txtTelefono.Text = fila.Cells["telefono"].Value?.ToString();
                 txtEmail.Text = fila.Cells["email"].Value?.ToString();
             }
+        }
+
+
+
+        private void FormatearGrilla()
+        {
+            if (dgvClientes.Columns.Count == 0) return;
+
+            if (dgvClientes.Columns.Contains("estado"))
+                dgvClientes.Columns["estado"].Visible = false;
+
+            if (dgvClientes.Columns.Contains("dni"))
+                dgvClientes.Columns["dni"].HeaderText = "DNI";
+
+            if (dgvClientes.Columns.Contains("nombre"))
+                dgvClientes.Columns["nombre"].HeaderText = "Nombre";
+
+            if (dgvClientes.Columns.Contains("apellido"))
+                dgvClientes.Columns["apellido"].HeaderText = "Apellido";
+
+            if (dgvClientes.Columns.Contains("domicilio"))
+                dgvClientes.Columns["domicilio"].HeaderText = "Domicilio";
+
+            if (dgvClientes.Columns.Contains("email"))
+                dgvClientes.Columns["email"].HeaderText = "Email";
+
+            if (dgvClientes.Columns.Contains("telefono"))
+                dgvClientes.Columns["telefono"].HeaderText = "Teléfono";
         }
     }
 }

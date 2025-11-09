@@ -124,6 +124,14 @@ namespace CapaPresentacion.Vistas.Administrador.Productos {
                     p.costo,
                     p.stock
                 }).ToList();
+
+                dgvRegistrarProducto.Columns["nombre"].HeaderText = "Nombre";
+                dgvRegistrarProducto.Columns["descripcion"].HeaderText = "Descripción";
+                dgvRegistrarProducto.Columns["categoria"].HeaderText = "Categoría";
+                dgvRegistrarProducto.Columns["precio_vta"].HeaderText = "Precio Venta";
+                dgvRegistrarProducto.Columns["costo"].HeaderText = "Costo";
+                dgvRegistrarProducto.Columns["stock"].HeaderText = "Stock";
+
             }
             catch (Exception ex)
             {
@@ -140,7 +148,6 @@ namespace CapaPresentacion.Vistas.Administrador.Productos {
         {
             errIngresoDatos.Clear();
 
-            // --- VALIDACIÓN 1: CÓDIGO DE PRODUCTO ---
             if (string.IsNullOrWhiteSpace(txtCodProducto.Text))
             {
                 errIngresoDatos.SetError(txtCodProducto, "Debe ingresar un código de producto.");
@@ -153,14 +160,12 @@ namespace CapaPresentacion.Vistas.Administrador.Productos {
                 return;
             }
 
-            // --- VALIDACIÓN 2: NOMBRE ---
             if (string.IsNullOrWhiteSpace(txtNombreProd.Text))
             {
                 errIngresoDatos.SetError(txtNombreProd, "Debe ingresar un nombre.");
                 return;
             }
 
-            // --- VALIDACIÓN 3: CATEGORÍA ---
             if (cboCategoriaProd.SelectedValue == null
                 || !int.TryParse(cboCategoriaProd.SelectedValue.ToString(), out int idCategoria)
                 || idCategoria == 0)
@@ -188,7 +193,8 @@ namespace CapaPresentacion.Vistas.Administrador.Productos {
                     precio_vta = 0m,
                     costo = 0m,
                     stock = 0,
-                    id_categoria = new Categoria { id_categoria = idCategoria }
+                    id_categoria = new Categoria { id_categoria = idCategoria },
+                    estado = 1
                 };
 
                 cn.AgregarProducto(productoModel);
@@ -199,6 +205,25 @@ namespace CapaPresentacion.Vistas.Administrador.Productos {
             {
                 MessageBox.Show("Error al registrar el producto: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+        }
+
+        private void iconBtnLupaDetalleUser_Click(object sender, EventArgs e)
+        {
+            var negocio = new CN_producto();
+            var criterio = txtProducto.Text;
+            var lista = negocio.BuscarProductosActivos(criterio);
+            dgvRegistrarProducto.DataSource = lista;
+
+            dgvRegistrarProducto.Columns["cod_producto"].Visible = false;
+            dgvRegistrarProducto.Columns["estado"].Visible = false;
+            dgvRegistrarProducto.Columns["id_categoria"].Visible = false; 
+
+          
+            dgvRegistrarProducto.Columns["nombre"].HeaderText = "Nombre";
+            dgvRegistrarProducto.Columns["descripcion"].HeaderText = "Descripción";
+            dgvRegistrarProducto.Columns["precio_vta"].HeaderText = "Precio Venta";
+            dgvRegistrarProducto.Columns["costo"].HeaderText = "Costo";
+            dgvRegistrarProducto.Columns["stock"].HeaderText = "Stock";
         }
     }
 }

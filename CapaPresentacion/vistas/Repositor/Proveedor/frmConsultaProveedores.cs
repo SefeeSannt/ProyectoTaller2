@@ -41,6 +41,7 @@ namespace CapaPresentacion.Vistas.Repositor
             var lista = negocio.BuscarProveedoresActivos(nombre, dni);
 
             dgvConsultaProveedores.DataSource = lista;
+            FormatearGrilla();
         }
 
         private void cargarProveedoresGrid()
@@ -50,6 +51,8 @@ namespace CapaPresentacion.Vistas.Repositor
             dgvConsultaProveedores.DataSource = lista;
             dgvConsultaProveedores.Columns["estado"].Visible = false;
 
+            FormatearGrilla();
+
         }
 
 
@@ -58,6 +61,7 @@ namespace CapaPresentacion.Vistas.Repositor
             var negocio = new CN_proveedor();
             var lista = negocio.ListarProveedoresActivos();
             dgvConsultaProveedores.DataSource = lista;
+            FormatearGrilla();
         }
 
         private void btn_listar_Click(object sender, EventArgs e)
@@ -71,6 +75,31 @@ namespace CapaPresentacion.Vistas.Repositor
         private void frmConsultaProveedores_Load(object sender, EventArgs e)
         {
 
+        }
+
+        private void FormatearGrilla()
+        {
+           
+            if (dgvConsultaProveedores.Columns.Count == 0) return;
+
+           
+            if (dgvConsultaProveedores.Columns.Contains("estado"))
+                dgvConsultaProveedores.Columns["estado"].Visible = false;
+
+            if (dgvConsultaProveedores.Columns.Contains("dni_proveedor"))
+                dgvConsultaProveedores.Columns["dni_proveedor"].HeaderText = "DNI";
+
+            if (dgvConsultaProveedores.Columns.Contains("nombre"))
+                dgvConsultaProveedores.Columns["nombre"].HeaderText = "Nombre";
+
+            if (dgvConsultaProveedores.Columns.Contains("apellido"))
+                dgvConsultaProveedores.Columns["apellido"].HeaderText = "Apellido";
+
+            if (dgvConsultaProveedores.Columns.Contains("email_proveedor"))
+                dgvConsultaProveedores.Columns["email_proveedor"].HeaderText = "Email";
+
+            if (dgvConsultaProveedores.Columns.Contains("telefono"))
+                dgvConsultaProveedores.Columns["telefono"].HeaderText = "Teléfono";
         }
     }
 }

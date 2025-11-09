@@ -69,6 +69,23 @@ namespace CapaNegocio
             }).ToList();
         }
 
+        public List<UsuarioModel> BuscarUsuariosActivos(string criterio)
+        {
+            var listaDatos = oUsuario.BuscarUsuariosActivos(criterio);
+            return listaDatos.Select(u => new UsuarioModel
+            {
+                dni_usuario = u.dni_usuario,
+                nombre = u.nombre,
+                apellido = u.apellido,
+                username = u.username,
+                telefono = u.telefono,
+                email_usuario = u.email_usuario,
+                estado = u.estado,
+                oRol = u.rol != null ? new Rol { id_rol = u.id_rol } : null,
+                rol_nombre = u.rol != null ? u.rol.descripcion : string.Empty
+            }).ToList();
+        }
+
         // Alta/Baja de usuario (actualiza int estado en BD)
         public void AltaUsuario(long dni)
         {

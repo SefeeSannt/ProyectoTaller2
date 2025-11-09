@@ -222,6 +222,31 @@ namespace CapaNegocio
             }).ToList();
         }
 
+        public List<ProductoModel> BuscarProductos(string criterio)
+        {
+          
+            var productos = oProducto.BuscarProductos(criterio);
+
+            var categorias = new CN_categoria().ObtenerCategorias()
+                                    .ToDictionary(c => c.id_categoria, c => c.descripcion ?? string.Empty);
+
+            return productos.Select(p => new ProductoModel
+            {
+                cod_producto = p.cod_producto,
+                nombre = p.nombre,
+                descripcion = p.descripcion,
+                precio_vta = p.precio_vta.HasValue ? (decimal)p.precio_vta.Value : 0m,
+                costo = p.costo.HasValue ? (decimal)p.costo.Value : 0m,
+                stock = p.stock.HasValue ? p.stock.Value : 0,
+                estado = p.estado, 
+                id_categoria = new Ent.Categoria
+                {
+                    id_categoria = p.id_categoria,
+                    descripcion = categorias.ContainsKey(p.id_categoria) ? categorias[p.id_categoria] : string.Empty
+                }
+            }).ToList();
+        }
+
 
         public object ObtenerProductosMasVendidos(DateTime fechaDesde, DateTime fechaHasta, string nombreProducto)
         {
@@ -305,7 +330,34 @@ namespace CapaNegocio
 
                 return total;
             }
+
+
         }
+
+        public List<ProductoModel> BuscarProductosActivosConStock(string criterio)
+        {
+            var productos = oProducto.BuscarProductosActivosConStock(criterio);
+
+            var categorias = new CN_categoria().ObtenerCategorias()
+                                   .ToDictionary(c => c.id_categoria, c => c.descripcion ?? string.Empty);
+
+            return productos.Select(p => new ProductoModel
+            {
+                cod_producto = p.cod_producto,
+                nombre = p.nombre,
+                descripcion = p.descripcion,
+                precio_vta = p.precio_vta.HasValue ? (decimal)p.precio_vta.Value : 0m,
+                costo = p.costo.HasValue ? (decimal)p.costo.Value : 0m,
+                stock = p.stock.HasValue ? p.stock.Value : 0,
+                estado = p.estado,
+                id_categoria = new Ent.Categoria
+                {
+                    id_categoria = p.id_categoria,
+                    descripcion = categorias.ContainsKey(p.id_categoria) ? categorias[p.id_categoria] : string.Empty
+                }
+            }).ToList();
+        }
+
 
 
 

@@ -164,5 +164,39 @@ namespace CapaPresentacion.vistas.Administrador.Productos
             else
                 row.DefaultCellStyle.BackColor = Color.White;
         }
+        
+        private void iconBtnLupaDetalleUser_Click(object sender, EventArgs e)
+        {
+            var negocio = new CN_producto();
+            var criterio = txtProducto.Text;
+
+            // 1. Obtenemos la lista filtrada (esto ya lo tenías)
+            var productos = negocio.BuscarProductos(criterio);
+
+            // 2. Aplicamos la MISMA transformación que en cargarDatosProducto
+            var lista = productos.Select(p => new
+            {
+                p.cod_producto,
+                p.nombre,
+                p.descripcion,
+                categoria = p.id_categoria != null ? p.id_categoria.descripcion : string.Empty,
+                p.precio_vta,
+                p.costo,
+                p.stock,
+                estado_raw = p.estado, // La columna que te faltaba
+                estado = p.estado == 1 ? "Activo" : "Inactivo",
+                accion = p.estado == 1 ? "Dar de baja" : "Dar de alta"
+            }).ToList();
+
+            // 3. Asignamos la lista transformada
+            dgvBajaProducto.DataSource = lista;
+
+            // 4. Rellenamos el texto de los botones (importante)
+            for (int i = 0; i < lista.Count; i++)
+            {
+                if (i < dgvBajaProducto.Rows.Count)
+                    dgvBajaProducto.Rows[i].Cells["AccionBtn"].Value = lista[i].accion;
+            }
+        }
     }
 }

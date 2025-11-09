@@ -180,9 +180,8 @@ namespace CapaPresentacion.Vistas.Administrador.Usuarios
             var negocio = new CN_usuario();
             var lista = negocio.ObtenerUsuariosActivos();
             dgvAltaUsuario.DataSource = lista;
-            dgvAltaUsuario.Columns["password"].Visible = false;
-            dgvAltaUsuario.Columns["oRol"].Visible = false;
-            dgvAltaUsuario.Columns["estado"].Visible = false;
+        
+            FormatearGrillaUsuarios(); 
             dgvAltaUsuario.ClearSelection();
         }
 
@@ -191,6 +190,47 @@ namespace CapaPresentacion.Vistas.Administrador.Usuarios
             this.rolTableAdapter1.Fill(this.proyectoTaller2DataSet1.rol);
         }
 
+        private void FormatearGrillaUsuarios()
+        {
         
+            if (dgvAltaUsuario.Columns.Count == 0) return;
+
+            if (dgvAltaUsuario.Columns.Contains("password"))
+                dgvAltaUsuario.Columns["password"].Visible = false;
+
+            if (dgvAltaUsuario.Columns.Contains("oRol"))
+                dgvAltaUsuario.Columns["oRol"].Visible = false;
+
+            if (dgvAltaUsuario.Columns.Contains("estado"))
+                dgvAltaUsuario.Columns["estado"].Visible = false;
+
+            if (dgvAltaUsuario.Columns.Contains("dni_usuario"))
+                dgvAltaUsuario.Columns["dni_usuario"].HeaderText = "DNI";
+
+            if (dgvAltaUsuario.Columns.Contains("nombre"))
+                dgvAltaUsuario.Columns["nombre"].HeaderText = "Nombre";
+
+            if (dgvAltaUsuario.Columns.Contains("apellido"))
+                dgvAltaUsuario.Columns["apellido"].HeaderText = "Apellido";
+
+            if (dgvAltaUsuario.Columns.Contains("username"))
+                dgvAltaUsuario.Columns["username"].HeaderText = "Usuario";
+
+            if (dgvAltaUsuario.Columns.Contains("email_usuario"))
+                dgvAltaUsuario.Columns["email_usuario"].HeaderText = "Email";
+
+            if (dgvAltaUsuario.Columns.Contains("telefono"))
+                dgvAltaUsuario.Columns["telefono"].HeaderText = "Teléfono";
+        }
+
+        private void btnBuscar_Click(object sender, EventArgs e)
+        {
+            var negocio = new CN_usuario();
+            var criterio = txtUserList.Text;
+            var lista = negocio.BuscarUsuariosActivos(criterio);
+
+            dgvAltaUsuario.DataSource = lista;
+            FormatearGrillaUsuarios();
+        }
     }
 }

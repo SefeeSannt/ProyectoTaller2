@@ -19,6 +19,7 @@ using CapaNegocio;
 using CapaPresentacion.vistas.Administrador.Productos;
 using CapaPresentacion.vistas.Repositor.Compra;
 using CapaPresentacion.Vistas.Repositor;
+using CapaPresentacion.vistas.Administrador;
 
 namespace CapaPresentacion.Vistas.Administrador
 {
@@ -115,7 +116,7 @@ namespace CapaPresentacion.Vistas.Administrador
                 form.Close();
             }
 
-            Form frm = new frmConsultaCompra(this.usuarioLogueado);
+            Form frm = new frmConsultaCompra(this.oUsuario);
             frm.MdiParent = this;
             frm.Dock = DockStyle.Fill;
             frm.Show();
@@ -141,7 +142,7 @@ namespace CapaPresentacion.Vistas.Administrador
                 form.Close();
             }
 
-            Form frm = new frmInformeProducto ();
+            Form frm = new frmInformeProducto();
             frm.MdiParent = this;
             frm.Dock = DockStyle.Fill;
             frm.Show();

@@ -123,6 +123,7 @@ namespace CapaPresentacion.Vistas.Repositor.Proveedor
             var negocio = new CN_proveedor();
             var lista = negocio.ObtenerProveedoresActivos();
             dgvProveedores.DataSource = lista;
+            FormatearGrillaProveedores();
         }
 
         private void frmAltaProveedor_Load(object sender, EventArgs e)
@@ -137,6 +138,32 @@ namespace CapaPresentacion.Vistas.Repositor.Proveedor
             var criterio = txtBuscarProveedor.Text;
             var lista = negocio.BuscarProveedores(criterio);
             dgvProveedores.DataSource = lista;
+            FormatearGrillaProveedores();
+        }
+
+
+        private void FormatearGrillaProveedores()
+        {
+            if (dgvProveedores.Columns.Count == 0) return;
+
+       
+            if (dgvProveedores.Columns.Contains("estado"))
+                dgvProveedores.Columns["estado"].Visible = false;
+
+            if (dgvProveedores.Columns.Contains("dni_proveedor"))
+                dgvProveedores.Columns["dni_proveedor"].HeaderText = "DNI";
+
+            if (dgvProveedores.Columns.Contains("nombre"))
+                dgvProveedores.Columns["nombre"].HeaderText = "Nombre";
+
+            if (dgvProveedores.Columns.Contains("apellido"))
+                dgvProveedores.Columns["apellido"].HeaderText = "Apellido";
+
+            if (dgvProveedores.Columns.Contains("email_proveedor"))
+                dgvProveedores.Columns["email_proveedor"].HeaderText = "Email";
+
+            if (dgvProveedores.Columns.Contains("telefono"))
+                dgvProveedores.Columns["telefono"].HeaderText = "Teléfono";
         }
     }
 }

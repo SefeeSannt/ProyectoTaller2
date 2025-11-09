@@ -28,6 +28,7 @@ namespace CapaPresentacion.vistas.Administrador.Usuarios
             var lista = negocio.ObtenerUsuariosActivos();
             dgvUsuarios.DataSource = null;
             dgvUsuarios.DataSource = lista;
+            FormatearGrillaUsuarios();
             dgvUsuarios.ClearSelection();
         }
 
@@ -195,6 +196,50 @@ namespace CapaPresentacion.vistas.Administrador.Usuarios
             cboRol.ValueMember = "id_rol";
             cboRol.DisplayMember = "descripcion";
             cboRol.SelectedIndex = -1;
+        }
+
+        private void FormatearGrillaUsuarios()
+        {
+       
+            if (dgvUsuarios.Columns.Count == 0) return;
+
+            
+            if (dgvUsuarios.Columns.Contains("password"))
+                dgvUsuarios.Columns["password"].Visible = false;
+
+            if (dgvUsuarios.Columns.Contains("oRol"))
+                dgvUsuarios.Columns["oRol"].Visible = false;
+
+            if (dgvUsuarios.Columns.Contains("estado"))
+                dgvUsuarios.Columns["estado"].Visible = false;
+
+           
+            if (dgvUsuarios.Columns.Contains("dni_usuario"))
+                dgvUsuarios.Columns["dni_usuario"].HeaderText = "DNI";
+
+            if (dgvUsuarios.Columns.Contains("nombre"))
+                dgvUsuarios.Columns["nombre"].HeaderText = "Nombre";
+
+            if (dgvUsuarios.Columns.Contains("apellido"))
+                dgvUsuarios.Columns["apellido"].HeaderText = "Apellido";
+
+            if (dgvUsuarios.Columns.Contains("username"))
+                dgvUsuarios.Columns["username"].HeaderText = "Usuario";
+
+            if (dgvUsuarios.Columns.Contains("email_usuario"))
+                dgvUsuarios.Columns["email_usuario"].HeaderText = "Email";
+
+            if (dgvUsuarios.Columns.Contains("telefono"))
+                dgvUsuarios.Columns["telefono"].HeaderText = "Teléfono";
+        }
+
+        private void btnBuscar_Click(object sender, EventArgs e)
+        {
+            var negocio = new CN_usuario();
+            var criterio = txtUserList.Text;
+            var lista = negocio.BuscarUsuariosActivos(criterio);
+            dgvUsuarios.DataSource = lista;
+            FormatearGrillaUsuarios();
         }
     }
 }

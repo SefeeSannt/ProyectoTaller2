@@ -32,13 +32,12 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             this.Agregra = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.nuevoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.panel1 = new System.Windows.Forms.Panel();
             this.txtUserList = new System.Windows.Forms.TextBox();
             this.lblBuscarListUser = new System.Windows.Forms.Label();
-            this.iconBtnLupaDetalleUser = new FontAwesome.Sharp.IconButton();
+            this.btnBuscar = new FontAwesome.Sharp.IconButton();
             this.label10 = new System.Windows.Forms.Label();
             this.dgvAltaUsuario = new System.Windows.Forms.DataGridView();
             this.panel2 = new System.Windows.Forms.Panel();
@@ -98,7 +97,7 @@
             this.panel1.BackColor = System.Drawing.Color.White;
             this.panel1.Controls.Add(this.txtUserList);
             this.panel1.Controls.Add(this.lblBuscarListUser);
-            this.panel1.Controls.Add(this.iconBtnLupaDetalleUser);
+            this.panel1.Controls.Add(this.btnBuscar);
             this.panel1.Controls.Add(this.label10);
             this.panel1.Controls.Add(this.dgvAltaUsuario);
             this.panel1.Controls.Add(this.panel2);
@@ -130,20 +129,21 @@
             this.lblBuscarListUser.TabIndex = 53;
             this.lblBuscarListUser.Text = "Buscar:";
             // 
-            // iconBtnLupaDetalleUser
+            // btnBuscar
             // 
-            this.iconBtnLupaDetalleUser.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
-            this.iconBtnLupaDetalleUser.FlatAppearance.BorderSize = 0;
-            this.iconBtnLupaDetalleUser.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.iconBtnLupaDetalleUser.IconChar = FontAwesome.Sharp.IconChar.MagnifyingGlass;
-            this.iconBtnLupaDetalleUser.IconColor = System.Drawing.Color.White;
-            this.iconBtnLupaDetalleUser.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            this.iconBtnLupaDetalleUser.IconSize = 19;
-            this.iconBtnLupaDetalleUser.Location = new System.Drawing.Point(916, 13);
-            this.iconBtnLupaDetalleUser.Name = "iconBtnLupaDetalleUser";
-            this.iconBtnLupaDetalleUser.Size = new System.Drawing.Size(41, 21);
-            this.iconBtnLupaDetalleUser.TabIndex = 52;
-            this.iconBtnLupaDetalleUser.UseVisualStyleBackColor = false;
+            this.btnBuscar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
+            this.btnBuscar.FlatAppearance.BorderSize = 0;
+            this.btnBuscar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnBuscar.IconChar = FontAwesome.Sharp.IconChar.MagnifyingGlass;
+            this.btnBuscar.IconColor = System.Drawing.Color.White;
+            this.btnBuscar.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            this.btnBuscar.IconSize = 19;
+            this.btnBuscar.Location = new System.Drawing.Point(916, 13);
+            this.btnBuscar.Name = "btnBuscar";
+            this.btnBuscar.Size = new System.Drawing.Size(41, 21);
+            this.btnBuscar.TabIndex = 52;
+            this.btnBuscar.UseVisualStyleBackColor = false;
+            this.btnBuscar.Click += new System.EventHandler(this.btnBuscar_Click);
             // 
             // label10
             // 
@@ -161,6 +161,8 @@
             // 
             this.dgvAltaUsuario.AllowUserToAddRows = false;
             this.dgvAltaUsuario.AllowUserToDeleteRows = false;
+            this.dgvAltaUsuario.AllowUserToResizeColumns = false;
+            this.dgvAltaUsuario.AllowUserToResizeRows = false;
             this.dgvAltaUsuario.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dgvAltaUsuario.BackgroundColor = System.Drawing.Color.White;
             this.dgvAltaUsuario.BorderStyle = System.Windows.Forms.BorderStyle.None;
@@ -174,14 +176,6 @@
             dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
             this.dgvAltaUsuario.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.dgvAltaUsuario.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Franklin Gothic Medium", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgvAltaUsuario.DefaultCellStyle = dataGridViewCellStyle2;
             this.dgvAltaUsuario.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.dgvAltaUsuario.GridColor = System.Drawing.SystemColors.ScrollBar;
             this.dgvAltaUsuario.Location = new System.Drawing.Point(244, 42);
@@ -189,18 +183,18 @@
             this.dgvAltaUsuario.Name = "dgvAltaUsuario";
             this.dgvAltaUsuario.ReadOnly = true;
             this.dgvAltaUsuario.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("Franklin Gothic Medium", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvAltaUsuario.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Franklin Gothic Medium", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvAltaUsuario.RowHeadersDefaultCellStyle = dataGridViewCellStyle2;
             this.dgvAltaUsuario.RowHeadersVisible = false;
-            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.Color.Black;
-            this.dgvAltaUsuario.RowsDefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.Black;
+            this.dgvAltaUsuario.RowsDefaultCellStyle = dataGridViewCellStyle3;
             this.dgvAltaUsuario.RowTemplate.Height = 28;
             this.dgvAltaUsuario.Size = new System.Drawing.Size(716, 496);
             this.dgvAltaUsuario.TabIndex = 20;
@@ -534,7 +528,7 @@
         private System.Windows.Forms.ErrorProvider errIngresoDatos;
         private System.Windows.Forms.TextBox txtUserList;
         private System.Windows.Forms.Label lblBuscarListUser;
-        private FontAwesome.Sharp.IconButton iconBtnLupaDetalleUser;
+        private FontAwesome.Sharp.IconButton btnBuscar;
         public System.Windows.Forms.TextBox txtDni_usuario;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TextBox txtApellido;

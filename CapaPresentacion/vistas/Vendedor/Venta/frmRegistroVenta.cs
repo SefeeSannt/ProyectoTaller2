@@ -232,6 +232,17 @@ namespace CapaPresentacion.Vistas.Repositor
             dgvRegistroVenta.Columns["colCodProducto"].Visible = false;
             dgvRegistroVenta.Columns["colPrecioVenta"].DefaultCellStyle.Format = "0.00";
             dgvRegistroVenta.Columns["colSubTotal"].DefaultCellStyle.Format = "0.00";
+
+
+            DataGridViewButtonColumn btnEliminar = new DataGridViewButtonColumn();
+
+            btnEliminar.Name = "btnEliminar";
+            btnEliminar.HeaderText = ""; 
+            btnEliminar.Text = "Eliminar";
+            btnEliminar.UseColumnTextForButtonValue = true; 
+            btnEliminar.Width = 60;
+
+            dgvRegistroVenta.Columns.Add(btnEliminar);
         }
 
         private void LimpiarCamposProducto()
@@ -338,5 +349,20 @@ namespace CapaPresentacion.Vistas.Repositor
         {
             btnRegistrar.Focus();
         }
+
+        private void dgvRegistroVenta_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex < 0) return;
+
+            if (dgvRegistroVenta.Columns[e.ColumnIndex].Name == "btnEliminar")
+            {
+                if (dgvRegistroVenta.Rows[e.RowIndex].IsNewRow) return;
+
+                dgvRegistroVenta.Rows.RemoveAt(e.RowIndex);
+
+                CalcularTotalPagar();
+            }
     }
+}
+
 }
