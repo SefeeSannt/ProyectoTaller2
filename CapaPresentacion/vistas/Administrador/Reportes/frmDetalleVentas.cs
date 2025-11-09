@@ -21,47 +21,6 @@ namespace CapaPresentacion.Vistas.Administrador.Reportes
             InitializeComponent();
         }
 
-        private void btnSalir_Click(object sender, EventArgs e)
-        {
-            this.Close();
-        }
-
-
-        private void lblVendedorConsVentas_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void lblfechaHasta_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void lblTitulo_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void lblDatoNombre_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void lblDatoApellido_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void lblFechaDesde_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void lblDatoDni_Click(object sender, EventArgs e)
-        {
-
-        }
-
 
         private void CargarGridVentas(DateTime fechaDesde, DateTime fechaHasta, string dniProveedor)
         {
@@ -183,6 +142,13 @@ namespace CapaPresentacion.Vistas.Administrador.Reportes
                     lblCodVenta.Text = venta.cod_venta.ToString();
                 }
 
+                if (venta.dni_usuario != null)
+                {
+                    lblNombreVendedor.Text = venta.dni_usuario.nombre;
+                }
+
+                lblCodVenta.Text = venta.cod_venta.ToString();
+
                 DataTable dtDetalle = cn.ObtenerDetalleVenta(codVenta);
                 dgvDetalleVenta.DataSource = dtDetalle;
 
@@ -208,6 +174,7 @@ namespace CapaPresentacion.Vistas.Administrador.Reportes
             lblApellidoCliente.Text = "";
             lblDniCliente.Text = "";
             lblCodVenta.Text = "";
+            lblNombreVendedor.Text = "";
 
 
             CargarGridVentas(dtpFechaDesde.Value, dtpFechaHasta.Value, txtDniCliente.Text);
@@ -242,13 +209,25 @@ namespace CapaPresentacion.Vistas.Administrador.Reportes
                         pdfDoc.Add(titulo);
                         pdfDoc.Add(Chunk.NEWLINE);
 
+                        var fontTienda = FontFactory.GetFont(FontFactory.HELVETICA, 10, BaseColor.GRAY);
+                        Paragraph nombreTienda = new Paragraph("Tienda ZonaFit", fontTienda);
+                        nombreTienda.Alignment = Element.ALIGN_CENTER;
+                        pdfDoc.Add(nombreTienda);
+
+                        Paragraph direccionTienda = new Paragraph("9 de Julio 1820", fontTienda);
+                        direccionTienda.Alignment = Element.ALIGN_CENTER;
+                        pdfDoc.Add(direccionTienda);
+                        pdfDoc.Add(Chunk.NEWLINE);
+
+
                         var fontHeader = FontFactory.GetFont(FontFactory.HELVETICA_BOLD, 12, BaseColor.BLACK);
                         Paragraph subtitulo = new Paragraph("Datos del Cliente/Vendedor", fontHeader);
                         pdfDoc.Add(subtitulo);
 
-                        pdfDoc.Add(new Paragraph($"Nombre: {lblNombreCliente.Text} {lblApellidoCliente.Text}"));
+                        pdfDoc.Add(new Paragraph($"Cliente: {lblNombreCliente.Text} {lblApellidoCliente.Text}"));
                         pdfDoc.Add(new Paragraph($"DNI: {lblDniCliente.Text}"));
-                        pdfDoc.Add(new Paragraph($"Codigo de venta: {lblCodVenta.Text}"));
+                        pdfDoc.Add(new Paragraph($"Vendedor: {lblNombreVendedor.Text}"));
+                        pdfDoc.Add(new Paragraph($"Código de venta: {lblCodVenta.Text}"));
 
                         pdfDoc.Add(Chunk.NEWLINE);
 

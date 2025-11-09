@@ -1,4 +1,3 @@
-﻿using CapaPresentacion.vistas.Administrador;
 using CapaPresentacion.vistas.Administrador.Usuarios;
 using CapaPresentacion.vistas.Repositor.Proveedor;
 using CapaPresentacion.Vistas.Administrador;
@@ -116,7 +115,7 @@ namespace CapaPresentacion.Vistas.Administrador
                 form.Close();
             }
 
-            Form frm = new frmConsultaCompra();
+            Form frm = new frmConsultaCompra(this.usuarioLogueado);
             frm.MdiParent = this;
             frm.Dock = DockStyle.Fill;
             frm.Show();

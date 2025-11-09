@@ -123,8 +123,48 @@ namespace CapaNegocio
             return objCD_Venta.ObtenerTotalProductosVendidosFiltrado(fechaDesde, fechaHasta);
         }
 
+        public DataTable ObtenerTop5ProductosVendidos(DateTime fechaDesde, DateTime fechaHasta)
+        {
+            return objCD_Venta.ObtenerTop5ProductosVendidos(fechaDesde, fechaHasta);
+        }
 
 
+        public int ObtenerTotalVentasFiltrado(DateTime fechaDesde, DateTime fechaHasta, string nombreProducto)
+        {
+            using (var db = new Dat.ProyectoTaller2Entities())
+            {
+                var fechaHastaAjustada = fechaHasta.Date.AddDays(1).AddSeconds(-1);
 
+                var query = db.venta
+                              .Where(v => v.fecha_venta >= fechaDesde &&
+                                          v.fecha_venta <= fechaHastaAjustada);
+
+                if (!string.IsNullOrEmpty(nombreProducto))
+                {
+                    query = query.Where(v => v.detalle_venta.Any(dv => dv.producto.nombre.StartsWith(nombreProducto)));
+                }
+
+                return query.Select(v => v.cod_venta).Distinct().Count();
+            }
+        }
+
+        public int ObtenerTotalProductosVendidosFiltrado(DateTime fechaDesde, DateTime fechaHasta, string nombreProducto)
+        {
+            using (var db = new Dat.ProyectoTaller2Entities())
+            {
+                var fechaHastaAjustada = fechaHasta.Date.AddDays(1).AddSeconds(-1);
+
+                var query = db.detalle_venta
+                              .Where(dv => dv.venta.fecha_venta >= fechaDesde &&
+                                           dv.venta.fecha_venta <= fechaHastaAjustada);
+
+                if (!string.IsNullOrEmpty(nombreProducto))
+                {
+                    query = query.Where(dv => dv.producto.nombre.StartsWith(nombreProducto));
+                }
+
+                return query.Sum(dv => (int?)dv.cantidad) ?? 0;
+            }
+        }
     }
 }

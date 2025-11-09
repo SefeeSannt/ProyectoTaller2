@@ -29,10 +29,15 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
             System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea2 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
             System.Windows.Forms.DataVisualization.Charting.Legend legend2 = new System.Windows.Forms.DataVisualization.Charting.Legend();
             System.Windows.Forms.DataVisualization.Charting.Series series2 = new System.Windows.Forms.DataVisualization.Charting.Series();
             this.pnlResumen = new System.Windows.Forms.Panel();
+            this.chTopProductos = new System.Windows.Forms.DataVisualization.Charting.Chart();
+            this.label1 = new System.Windows.Forms.Label();
             this.lblTotal = new System.Windows.Forms.Label();
             this.lblTitulo3 = new System.Windows.Forms.Label();
             this.iconPictureBox3 = new FontAwesome.Sharp.IconPictureBox();
@@ -55,6 +60,7 @@
             this.pnlVentas = new System.Windows.Forms.Panel();
             this.errIngresoDatos = new System.Windows.Forms.ErrorProvider(this.components);
             this.pnlResumen.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.chTopProductos)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.iconPictureBox3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.iconPictureBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.iconPictureBox1)).BeginInit();
@@ -67,27 +73,45 @@
             // pnlResumen
             // 
             this.pnlResumen.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.pnlResumen.Controls.Add(this.lblTotal);
-            this.pnlResumen.Controls.Add(this.lblTitulo3);
-            this.pnlResumen.Controls.Add(this.iconPictureBox3);
-            this.pnlResumen.Controls.Add(this.lblTotalProducto);
-            this.pnlResumen.Controls.Add(this.lblTitulo2);
-            this.pnlResumen.Controls.Add(this.iconPictureBox2);
-            this.pnlResumen.Controls.Add(this.lblTotalVentas);
-            this.pnlResumen.Controls.Add(this.lblTitulo1);
-            this.pnlResumen.Controls.Add(this.iconPictureBox1);
-            this.pnlResumen.Controls.Add(this.label6);
-            this.pnlResumen.Location = new System.Drawing.Point(599, 148);
+            this.pnlResumen.Controls.Add(this.chTopProductos);
+            this.pnlResumen.Controls.Add(this.label1);
+            this.pnlResumen.Location = new System.Drawing.Point(460, 148);
             this.pnlResumen.Name = "pnlResumen";
-            this.pnlResumen.Size = new System.Drawing.Size(344, 366);
+            this.pnlResumen.Size = new System.Drawing.Size(483, 262);
             this.pnlResumen.TabIndex = 18;
+            // 
+            // chTopProductos
+            // 
+            chartArea1.Name = "ChartArea1";
+            this.chTopProductos.ChartAreas.Add(chartArea1);
+            legend1.Name = "Legend1";
+            this.chTopProductos.Legends.Add(legend1);
+            this.chTopProductos.Location = new System.Drawing.Point(37, 43);
+            this.chTopProductos.Name = "chTopProductos";
+            series1.ChartArea = "ChartArea1";
+            series1.Legend = "Legend1";
+            series1.Name = "Series1";
+            this.chTopProductos.Series.Add(series1);
+            this.chTopProductos.Size = new System.Drawing.Size(441, 218);
+            this.chTopProductos.TabIndex = 14;
+            this.chTopProductos.Text = "chart1";
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Location = new System.Drawing.Point(3, 13);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(222, 25);
+            this.label1.TabIndex = 13;
+            this.label1.Text = "Producto con mas venta";
             // 
             // lblTotal
             // 
             this.lblTotal.AutoSize = true;
             this.lblTotal.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblTotal.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
-            this.lblTotal.Location = new System.Drawing.Point(95, 245);
+            this.lblTotal.Location = new System.Drawing.Point(512, 484);
             this.lblTotal.Name = "lblTotal";
             this.lblTotal.Size = new System.Drawing.Size(23, 25);
             this.lblTotal.TabIndex = 29;
@@ -97,7 +121,7 @@
             // 
             this.lblTitulo3.AutoSize = true;
             this.lblTitulo3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
-            this.lblTitulo3.Location = new System.Drawing.Point(95, 232);
+            this.lblTitulo3.Location = new System.Drawing.Point(512, 471);
             this.lblTitulo3.Name = "lblTitulo3";
             this.lblTitulo3.Size = new System.Drawing.Size(81, 13);
             this.lblTitulo3.TabIndex = 28;
@@ -111,7 +135,7 @@
             this.iconPictureBox3.IconColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
             this.iconPictureBox3.IconFont = FontAwesome.Sharp.IconFont.Auto;
             this.iconPictureBox3.IconSize = 72;
-            this.iconPictureBox3.Location = new System.Drawing.Point(6, 213);
+            this.iconPictureBox3.Location = new System.Drawing.Point(423, 452);
             this.iconPictureBox3.Name = "iconPictureBox3";
             this.iconPictureBox3.Size = new System.Drawing.Size(83, 72);
             this.iconPictureBox3.TabIndex = 27;
@@ -122,7 +146,7 @@
             this.lblTotalProducto.AutoSize = true;
             this.lblTotalProducto.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblTotalProducto.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
-            this.lblTotalProducto.Location = new System.Drawing.Point(95, 156);
+            this.lblTotalProducto.Location = new System.Drawing.Point(289, 486);
             this.lblTotalProducto.Name = "lblTotalProducto";
             this.lblTotalProducto.Size = new System.Drawing.Size(23, 25);
             this.lblTotalProducto.TabIndex = 20;
@@ -132,7 +156,7 @@
             // 
             this.lblTitulo2.AutoSize = true;
             this.lblTitulo2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
-            this.lblTitulo2.Location = new System.Drawing.Point(95, 143);
+            this.lblTitulo2.Location = new System.Drawing.Point(289, 473);
             this.lblTitulo2.Name = "lblTitulo2";
             this.lblTitulo2.Size = new System.Drawing.Size(137, 13);
             this.lblTitulo2.TabIndex = 19;
@@ -146,7 +170,7 @@
             this.iconPictureBox2.IconColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
             this.iconPictureBox2.IconFont = FontAwesome.Sharp.IconFont.Auto;
             this.iconPictureBox2.IconSize = 74;
-            this.iconPictureBox2.Location = new System.Drawing.Point(6, 122);
+            this.iconPictureBox2.Location = new System.Drawing.Point(200, 452);
             this.iconPictureBox2.Name = "iconPictureBox2";
             this.iconPictureBox2.Size = new System.Drawing.Size(83, 74);
             this.iconPictureBox2.TabIndex = 18;
@@ -157,7 +181,7 @@
             this.lblTotalVentas.AutoSize = true;
             this.lblTotalVentas.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblTotalVentas.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
-            this.lblTotalVentas.Location = new System.Drawing.Point(95, 62);
+            this.lblTotalVentas.Location = new System.Drawing.Point(112, 484);
             this.lblTotalVentas.Name = "lblTotalVentas";
             this.lblTotalVentas.Size = new System.Drawing.Size(23, 25);
             this.lblTotalVentas.TabIndex = 17;
@@ -167,7 +191,7 @@
             // 
             this.lblTitulo1.AutoSize = true;
             this.lblTitulo1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
-            this.lblTitulo1.Location = new System.Drawing.Point(95, 49);
+            this.lblTitulo1.Location = new System.Drawing.Point(112, 471);
             this.lblTitulo1.Name = "lblTitulo1";
             this.lblTitulo1.Size = new System.Drawing.Size(81, 13);
             this.lblTitulo1.TabIndex = 11;
@@ -181,7 +205,7 @@
             this.iconPictureBox1.IconColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
             this.iconPictureBox1.IconFont = FontAwesome.Sharp.IconFont.Auto;
             this.iconPictureBox1.IconSize = 74;
-            this.iconPictureBox1.Location = new System.Drawing.Point(6, 30);
+            this.iconPictureBox1.Location = new System.Drawing.Point(23, 452);
             this.iconPictureBox1.Name = "iconPictureBox1";
             this.iconPictureBox1.Size = new System.Drawing.Size(83, 74);
             this.iconPictureBox1.TabIndex = 16;
@@ -191,7 +215,7 @@
             // 
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.Location = new System.Drawing.Point(3, 9);
+            this.label6.Location = new System.Drawing.Point(20, 416);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(72, 18);
             this.label6.TabIndex = 14;
@@ -287,7 +311,7 @@
             series2.Legend = "Legend1";
             series2.Name = "Productos";
             this.chVentas.Series.Add(series2);
-            this.chVentas.Size = new System.Drawing.Size(517, 228);
+            this.chVentas.Size = new System.Drawing.Size(410, 202);
             this.chVentas.TabIndex = 9;
             this.chVentas.Text = "chart1";
             // 
@@ -308,7 +332,7 @@
             this.pnlVentas.Controls.Add(this.chVentas);
             this.pnlVentas.Location = new System.Drawing.Point(23, 148);
             this.pnlVentas.Name = "pnlVentas";
-            this.pnlVentas.Size = new System.Drawing.Size(570, 366);
+            this.pnlVentas.Size = new System.Drawing.Size(431, 262);
             this.pnlVentas.TabIndex = 16;
             // 
             // errIngresoDatos
@@ -321,16 +345,27 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(960, 538);
+            this.Controls.Add(this.lblTotal);
             this.Controls.Add(this.pnlResumen);
+            this.Controls.Add(this.lblTitulo3);
             this.Controls.Add(this.lblInformeVentas);
+            this.Controls.Add(this.iconPictureBox3);
             this.Controls.Add(this.pnlInfVentas);
+            this.Controls.Add(this.lblTotalProducto);
             this.Controls.Add(this.pnlVentas);
+            this.Controls.Add(this.lblTitulo2);
+            this.Controls.Add(this.label6);
+            this.Controls.Add(this.iconPictureBox2);
+            this.Controls.Add(this.iconPictureBox1);
+            this.Controls.Add(this.lblTotalVentas);
+            this.Controls.Add(this.lblTitulo1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "frmInformeVentas";
             this.Text = "frmInformeVentas";
             this.Load += new System.EventHandler(this.frmInformeVentas_Load);
             this.pnlResumen.ResumeLayout(false);
             this.pnlResumen.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.chTopProductos)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.iconPictureBox3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.iconPictureBox2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.iconPictureBox1)).EndInit();
@@ -369,5 +404,7 @@
         private System.Windows.Forms.Label lblFecha;
         private System.Windows.Forms.Button btnBuscar;
         private System.Windows.Forms.ErrorProvider errIngresoDatos;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.DataVisualization.Charting.Chart chTopProductos;
     }
 }

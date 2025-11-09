@@ -49,7 +49,7 @@
             this.lblConsultaProveedores.AutoSize = true;
             this.lblConsultaProveedores.BackColor = System.Drawing.Color.White;
             this.lblConsultaProveedores.Font = new System.Drawing.Font("Franklin Gothic Medium", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblConsultaProveedores.Location = new System.Drawing.Point(21, 30);
+            this.lblConsultaProveedores.Location = new System.Drawing.Point(683, 62);
             this.lblConsultaProveedores.Name = "lblConsultaProveedores";
             this.lblConsultaProveedores.Size = new System.Drawing.Size(205, 26);
             this.lblConsultaProveedores.TabIndex = 0;
@@ -121,7 +121,7 @@
             this.dgvConsultaProveedores.Name = "dgvConsultaProveedores";
             this.dgvConsultaProveedores.ReadOnly = true;
             this.dgvConsultaProveedores.RowHeadersVisible = false;
-            this.dgvConsultaProveedores.Size = new System.Drawing.Size(469, 356);
+            this.dgvConsultaProveedores.Size = new System.Drawing.Size(936, 356);
             this.dgvConsultaProveedores.TabIndex = 8;
             // 
             // panel1
@@ -129,6 +129,7 @@
             this.panel1.BackColor = System.Drawing.Color.White;
             this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.panel1.Controls.Add(this.btn_listar);
+            this.panel1.Controls.Add(this.lblConsultaProveedores);
             this.panel1.Controls.Add(this.lblNombreProveedor);
             this.panel1.Controls.Add(this.btnBuscar);
             this.panel1.Controls.Add(this.txt_nombre_proveedor);
@@ -136,12 +137,12 @@
             this.panel1.Controls.Add(this.lblDocumentoProveedor);
             this.panel1.Location = new System.Drawing.Point(12, 12);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(469, 140);
+            this.panel1.Size = new System.Drawing.Size(936, 140);
             this.panel1.TabIndex = 9;
             // 
             // btn_listar
             // 
-            this.btn_listar.Location = new System.Drawing.Point(13, 112);
+            this.btn_listar.Location = new System.Drawing.Point(13, 94);
             this.btn_listar.Name = "btn_listar";
             this.btn_listar.Size = new System.Drawing.Size(177, 23);
             this.btn_listar.TabIndex = 9;
@@ -158,20 +159,19 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(496, 538);
+            this.ClientSize = new System.Drawing.Size(960, 538);
             this.Controls.Add(this.dgvConsultaProveedores);
-            this.Controls.Add(this.lblConsultaProveedores);
             this.Controls.Add(this.panel1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "frmConsultaProveedores";
-            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "frmConsultaProveedores";
+            this.Load += new System.EventHandler(this.frmConsultaProveedores_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgvConsultaProveedores)).EndInit();
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.errIngresoDatos)).EndInit();
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
