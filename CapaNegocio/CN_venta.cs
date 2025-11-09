@@ -12,11 +12,15 @@ namespace CapaNegocio
     public class CN_venta
     {
         private CD_venta objCD_Venta = new CD_venta();
-        public DataTable ListarVentas(DateTime fechaDesde, DateTime fechaHasta, string dniProveedor)
+        /*public DataTable ListarVentas(DateTime fechaDesde, DateTime fechaHasta, string dniProveedor)
         {
             return objCD_Venta.ListarVentas(fechaDesde, fechaHasta, dniProveedor);
-        }
+        }*/
 
+        public DataTable ListarVentas(DateTime fechaDesde, DateTime fechaHasta, string nombreCliente) // Parámetro renombrado
+        {
+            return objCD_Venta.ListarVentas(fechaDesde, fechaHasta, nombreCliente);
+        }
         public int RegistrarVenta(VentaRequest request)
         {
             if (request == null) throw new ArgumentNullException(nameof(request));

@@ -22,32 +22,72 @@ namespace CapaPresentacion.Vistas.Administrador.Reportes
         }
 
 
-        private void CargarGridVentas(DateTime fechaDesde, DateTime fechaHasta, string dniProveedor)
+        private void CargarGridVentas(DateTime fechaDesde, DateTime fechaHasta, string nombreCliente)
         {
+            /* try
+             {
+                 dgvConsultaVentas.Columns.Clear();
+                 dgvConsultaVentas.DataSource = null;
+
+                 CN_venta objCN = new CN_venta();
+                 DataTable tablaVenta = objCN.ListarVentas(fechaDesde, fechaHasta, dniProveedor); // Obtenemos los datos
+
+                 dgvConsultaVentas.DataSource = tablaVenta;
+
+                 DataGridViewButtonColumn btnVer = new DataGridViewButtonColumn();
+                 btnVer.Name = "btnVer";
+                 btnVer.HeaderText = "";
+                 btnVer.Text = "Ver";
+                 btnVer.UseColumnTextForButtonValue = true;
+                 btnVer.Width = 40;
+                 dgvConsultaVentas.Columns.Add(btnVer);
+
+                 if (dgvConsultaVentas.Columns.Contains("cod_venta"))
+                     dgvConsultaVentas.Columns["cod_venta"].Visible = false;
+
+                 if (dgvConsultaVentas.Columns.Contains("Vendedor"))
+                     dgvConsultaVentas.Columns["Vendedor"].HeaderText = "Vendedor";
+
+                 decimal totalFiltrado = 0;
+                 if (tablaVenta != null && tablaVenta.Rows.Count > 0)
+                 {
+                     foreach (DataRow row in tablaVenta.Rows)
+                     {
+                         totalFiltrado += Convert.ToDecimal(row["monto_total"]);
+                     }
+                 }
+
+                 lblTotalVentaFilt.Text = totalFiltrado.ToString("C2");
+             }
+             catch (Exception ex)
+             {
+                 MessageBox.Show("Error al cargar las compras: " + ex.GetBaseException().Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+             }*/
             try
             {
                 dgvConsultaVentas.Columns.Clear();
                 dgvConsultaVentas.DataSource = null;
 
                 CN_venta objCN = new CN_venta();
-                DataTable tablaVenta = objCN.ListarVentas(fechaDesde, fechaHasta, dniProveedor); // Obtenemos los datos
+
+                // --- MODIFICADO (pasamos el 'nombreCliente') ---
+                DataTable tablaVenta = objCN.ListarVentas(fechaDesde, fechaHasta, nombreCliente);
 
                 dgvConsultaVentas.DataSource = tablaVenta;
 
+                // (Tu código para añadir el botón 'btnVer'...)
                 DataGridViewButtonColumn btnVer = new DataGridViewButtonColumn();
                 btnVer.Name = "btnVer";
-                btnVer.HeaderText = "";
-                btnVer.Text = "Ver";
-                btnVer.UseColumnTextForButtonValue = true;
-                btnVer.Width = 40;
+                // ... etc ...
                 dgvConsultaVentas.Columns.Add(btnVer);
 
+                // (Tu código para ocultar 'cod_venta' y renombrar 'Vendedor'...)
                 if (dgvConsultaVentas.Columns.Contains("cod_venta"))
                     dgvConsultaVentas.Columns["cod_venta"].Visible = false;
-
                 if (dgvConsultaVentas.Columns.Contains("Vendedor"))
                     dgvConsultaVentas.Columns["Vendedor"].HeaderText = "Vendedor";
 
+                // (Tu código para sumar el total...)
                 decimal totalFiltrado = 0;
                 if (tablaVenta != null && tablaVenta.Rows.Count > 0)
                 {
@@ -56,12 +96,11 @@ namespace CapaPresentacion.Vistas.Administrador.Reportes
                         totalFiltrado += Convert.ToDecimal(row["monto_total"]);
                     }
                 }
-
                 lblTotalVentaFilt.Text = totalFiltrado.ToString("C2");
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Error al cargar las compras: " + ex.GetBaseException().Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Error al cargar las ventas: " + ex.GetBaseException().Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
 
         }
@@ -70,7 +109,7 @@ namespace CapaPresentacion.Vistas.Administrador.Reportes
         {
             dtpFechaDesde.Value = DateTime.Now.AddDays(-30);
             dtpFechaHasta.Value = DateTime.Now;
-            CargarGridVentas(dtpFechaDesde.Value, dtpFechaHasta.Value, txtDniCliente.Text);
+            CargarGridVentas(dtpFechaDesde.Value, dtpFechaHasta.Value, txtNombreCliente.Text);
        //     ConfigurarGridDetalle();
         }
 
@@ -177,7 +216,7 @@ namespace CapaPresentacion.Vistas.Administrador.Reportes
             lblNombreVendedor.Text = "";
 
 
-            CargarGridVentas(dtpFechaDesde.Value, dtpFechaHasta.Value, txtDniCliente.Text);
+            CargarGridVentas(dtpFechaDesde.Value, dtpFechaHasta.Value, txtNombreCliente.Text);
         }
 
         private void btnPDFventa_Click(object sender, EventArgs e)
@@ -226,8 +265,9 @@ namespace CapaPresentacion.Vistas.Administrador.Reportes
 
                         pdfDoc.Add(new Paragraph($"Cliente: {lblNombreCliente.Text} {lblApellidoCliente.Text}"));
                         pdfDoc.Add(new Paragraph($"DNI: {lblDniCliente.Text}"));
-                        pdfDoc.Add(new Paragraph($"Vendedor: {lblNombreVendedor.Text}"));
                         pdfDoc.Add(new Paragraph($"Código de venta: {lblCodVenta.Text}"));
+
+                        pdfDoc.Add(new Paragraph($"Vendedor: {lblNombreVendedor.Text}"));
 
                         pdfDoc.Add(Chunk.NEWLINE);
 

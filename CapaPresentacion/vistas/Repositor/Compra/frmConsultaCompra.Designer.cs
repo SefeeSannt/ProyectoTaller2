@@ -28,8 +28,8 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             this.dgvDetalleCompra = new System.Windows.Forms.DataGridView();
             this.lblTotalVentaFilt = new System.Windows.Forms.Label();
             this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
@@ -43,7 +43,7 @@
             this.btnBuscar = new System.Windows.Forms.Button();
             this.dtpFechaDesde = new System.Windows.Forms.DateTimePicker();
             this.lblFechaDesde = new System.Windows.Forms.Label();
-            this.txtDniProv = new System.Windows.Forms.TextBox();
+            this.txtNombreProv = new System.Windows.Forms.TextBox();
             this.lblClienteConsVentas = new System.Windows.Forms.Label();
             this.lblDniProveedor = new System.Windows.Forms.Label();
             this.lblApellidoProveedor = new System.Windows.Forms.Label();
@@ -65,14 +65,14 @@
             this.dgvDetalleCompra.AllowUserToDeleteRows = false;
             this.dgvDetalleCompra.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dgvDetalleCompra.BackgroundColor = System.Drawing.Color.White;
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Franklin Gothic Medium", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvDetalleCompra.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Franklin Gothic Medium", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvDetalleCompra.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle3;
             this.dgvDetalleCompra.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvDetalleCompra.EnableHeadersVisualStyles = false;
             this.dgvDetalleCompra.Location = new System.Drawing.Point(-1, 106);
@@ -155,14 +155,14 @@
             this.dgvConsultaCompra.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dgvConsultaCompra.BackgroundColor = System.Drawing.Color.White;
             this.dgvConsultaCompra.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Franklin Gothic Medium", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvConsultaCompra.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle4.Font = new System.Drawing.Font("Franklin Gothic Medium", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvConsultaCompra.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle4;
             this.dgvConsultaCompra.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvConsultaCompra.EnableHeadersVisualStyles = false;
             this.dgvConsultaCompra.Location = new System.Drawing.Point(15, 252);
@@ -224,12 +224,12 @@
             this.lblFechaDesde.TabIndex = 9;
             this.lblFechaDesde.Text = "Fecha desde:";
             // 
-            // txtDniProv
+            // txtNombreProv
             // 
-            this.txtDniProv.Location = new System.Drawing.Point(11, 95);
-            this.txtDniProv.Name = "txtDniProv";
-            this.txtDniProv.Size = new System.Drawing.Size(159, 20);
-            this.txtDniProv.TabIndex = 11;
+            this.txtNombreProv.Location = new System.Drawing.Point(11, 95);
+            this.txtNombreProv.Name = "txtNombreProv";
+            this.txtNombreProv.Size = new System.Drawing.Size(159, 20);
+            this.txtNombreProv.TabIndex = 11;
             // 
             // lblClienteConsVentas
             // 
@@ -238,9 +238,9 @@
             this.lblClienteConsVentas.Font = new System.Drawing.Font("Franklin Gothic Medium", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblClienteConsVentas.Location = new System.Drawing.Point(10, 79);
             this.lblClienteConsVentas.Name = "lblClienteConsVentas";
-            this.lblClienteConsVentas.Size = new System.Drawing.Size(90, 17);
+            this.lblClienteConsVentas.Size = new System.Drawing.Size(114, 17);
             this.lblClienteConsVentas.TabIndex = 8;
-            this.lblClienteConsVentas.Text = "DNI proveedor:";
+            this.lblClienteConsVentas.Text = "Nombre proveedor:";
             // 
             // lblDniProveedor
             // 
@@ -305,7 +305,7 @@
             this.panel1.Controls.Add(this.btnBuscar);
             this.panel1.Controls.Add(this.dtpFechaDesde);
             this.panel1.Controls.Add(this.lblFechaDesde);
-            this.panel1.Controls.Add(this.txtDniProv);
+            this.panel1.Controls.Add(this.txtNombreProv);
             this.panel1.Controls.Add(this.lblClienteConsVentas);
             this.panel1.Location = new System.Drawing.Point(15, 63);
             this.panel1.Name = "panel1";
@@ -383,7 +383,7 @@
         private System.Windows.Forms.Button btnBuscar;
         private System.Windows.Forms.DateTimePicker dtpFechaDesde;
         private System.Windows.Forms.Label lblFechaDesde;
-        private System.Windows.Forms.TextBox txtDniProv;
+        private System.Windows.Forms.TextBox txtNombreProv;
         private System.Windows.Forms.Label lblClienteConsVentas;
         private System.Windows.Forms.Label lblDniProveedor;
         private System.Windows.Forms.Label lblApellidoProveedor;

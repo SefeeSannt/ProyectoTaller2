@@ -10,11 +10,11 @@ namespace CapaNegocio
     public class CN_compra
     {
         private CD_compra objCD_Compra = new CD_compra();
-
+        /*
         public DataTable ListarCompras(DateTime fechaDesde, DateTime fechaHasta, string dniProveedor)
         {
             return objCD_Compra.ListarCompras(fechaDesde, fechaHasta, dniProveedor);
-        }
+        }*/
 
         public int RegistrarCompra(CompraRequest request)
         {
@@ -61,6 +61,12 @@ namespace CapaNegocio
         public DataTable ObtenerDetalleCompra(int codCompra)
         {
             return objCD_Compra.ObtenerDetalleCompra(codCompra);
+        }
+
+        public DataTable ListarCompras(DateTime fechaDesde, DateTime fechaHasta, string nombreProveedor) 
+        {
+            
+            return objCD_Compra.ListarCompras(fechaDesde, fechaHasta, nombreProveedor);
         }
 
 

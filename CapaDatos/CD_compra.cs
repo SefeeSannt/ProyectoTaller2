@@ -11,7 +11,7 @@ namespace CapaDatos
 {
     public class CD_compra
     {
-
+        /*
         public DataTable ListarCompras(DateTime fechaDesde, DateTime fechaHasta, string dniProveedor)
         {
             DataTable tabla = new DataTable();
@@ -43,6 +43,59 @@ namespace CapaDatos
                             whereClause += " AND p.dni_proveedor = @dniProveedor";
                             cmd.Parameters.AddWithValue("@dniProveedor", dniProveedor);
                         }
+
+                        cmd.CommandText = queryBase + whereClause + " ORDER BY c.fecha_compra DESC";
+                        cmd.Connection = con;
+                        cmd.CommandType = CommandType.Text;
+
+                        SqlDataAdapter da = new SqlDataAdapter(cmd);
+                        da.Fill(tabla);
+                    }
+                }
+                catch (Exception ex)
+                {
+                    throw new Exception("Error en CD_compra.ListarCompras: " + ex.Message, ex);
+                }
+            }
+            return tabla;
+        }*/
+
+        // EN: CD_compra.cs
+
+        public DataTable ListarCompras(DateTime fechaDesde, DateTime fechaHasta, string nombreProveedor) // Parámetro renombrado
+        {
+            DataTable tabla = new DataTable();
+            using (SqlConnection con = new SqlConnection(conexion.cadena))
+            {
+                try
+                {
+                    con.Open();
+
+                    string queryBase = @"
+                SELECT  
+                    c.cod_compra, 
+                    (ISNULL(p.nombre,'') + ' ' + ISNULL(p.apellido,'')) AS Proveedor,
+                    c.fecha_compra AS Fecha, -- Renombrado en la consulta
+                    c.monto_total AS monto_total -- Mantenido para el cálculo
+                FROM compra c
+                INNER JOIN proveedor p ON c.dni_proveedor = p.dni_proveedor";
+
+                    string whereClause = " WHERE c.fecha_compra BETWEEN @fechaDesde AND @fechaHasta";
+
+                    using (SqlCommand cmd = new SqlCommand())
+                    {
+                        cmd.Parameters.AddWithValue("@fechaDesde", fechaDesde.Date);
+                        cmd.Parameters.AddWithValue("@fechaHasta", fechaHasta.Date.AddDays(1).AddSeconds(-1));
+
+                        // --- ¡ESTA ES LA LÓGICA MODIFICADA! ---
+                        if (!string.IsNullOrEmpty(nombreProveedor))
+                        {
+                            // Buscamos por nombre O apellido
+                            whereClause += " AND (p.nombre LIKE @nombreProv OR p.apellido LIKE @nombreProv)";
+                            // Añadimos '%' para que busque coincidencias (ej: "Juan" encuentra "Juan Kiki")
+                            cmd.Parameters.AddWithValue("@nombreProv", "%" + nombreProveedor + "%");
+                        }
+                        // --- FIN DE LA MODIFICACIÓN ---
 
                         cmd.CommandText = queryBase + whereClause + " ORDER BY c.fecha_compra DESC";
                         cmd.Connection = con;
