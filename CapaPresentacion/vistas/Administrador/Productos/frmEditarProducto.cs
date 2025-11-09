@@ -33,6 +33,7 @@ namespace CapaPresentacion.vistas.Repositor.Proveedor
             var negocio = new CN_producto();
             var lista = negocio.ObtenerProductos();
             dgvProductos.DataSource = lista;
+            FormatearGrillaProductos();
         }
 
         // Carga las categorías desde la capa de negocio y las enlaza al ComboBox
@@ -65,7 +66,12 @@ namespace CapaPresentacion.vistas.Repositor.Proveedor
 
         private void btnBuscar_Click(object sender, EventArgs e)
         {
-            // Implementa búsqueda si hace falta
+            var negocio = new CN_producto();
+            var criterio = txtProducto.Text;
+            var lista = negocio.BuscarProductosActivos(criterio);
+            dgvProductos.DataSource = lista;
+
+            FormatearGrillaProductos();
         }
 
         private void frmEditarProducto_Load(object sender, EventArgs e)
@@ -199,6 +205,39 @@ namespace CapaPresentacion.vistas.Repositor.Proveedor
                 // En caso de que la categoría no exista en la lista, seleccionamos el primer elemento
                 cboCategoriaProd.SelectedIndex = 0;
             }
+        }
+
+
+
+        private void FormatearGrillaProductos()
+        {
+            if (dgvProductos.Columns.Count == 0) return;
+
+            // --- Ocultamos las columnas que no queremos ver ---
+            // Usamos 'Contains' para evitar errores si la columna no existe
+            if (dgvProductos.Columns.Contains("cod_producto"))
+                dgvProductos.Columns["cod_producto"].Visible = false;
+
+            if (dgvProductos.Columns.Contains("estado"))
+                dgvProductos.Columns["estado"].Visible = false;
+
+            if (dgvProductos.Columns.Contains("id_categoria"))
+                dgvProductos.Columns["id_categoria"].Visible = false;
+
+            if (dgvProductos.Columns.Contains("nombre"))
+                dgvProductos.Columns["nombre"].HeaderText = "Nombre";
+
+            if (dgvProductos.Columns.Contains("descripcion"))
+                dgvProductos.Columns["descripcion"].HeaderText = "Descripción";
+
+            if (dgvProductos.Columns.Contains("precio_vta"))
+                dgvProductos.Columns["precio_vta"].HeaderText = "Precio Venta";
+
+            if (dgvProductos.Columns.Contains("costo"))
+                dgvProductos.Columns["costo"].HeaderText = "Costo";
+
+            if (dgvProductos.Columns.Contains("stock"))
+                dgvProductos.Columns["stock"].HeaderText = "Stock";
         }
     }
 }

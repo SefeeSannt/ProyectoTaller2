@@ -50,7 +50,8 @@ namespace CapaPresentacion.Vistas.Repositor
             {
                 Name = "colCategoria",
                 HeaderText = "Categoría",
-                DataPropertyName = "id_categoria.descripcion"
+                DataPropertyName = "id_categoria.descripcion",
+                Visible = false
             });
 
             dgvStock.Columns.Add(new DataGridViewTextBoxColumn
@@ -74,6 +75,15 @@ namespace CapaPresentacion.Vistas.Repositor
         {
             var cnProducto = new CN_producto();
             dgvStock.DataSource = cnProducto.ListarProductosActivosConStock();
+        }
+
+        private void iconBtnBuscar_Click(object sender, EventArgs e)
+        {
+            var negocio = new CN_producto();
+            var criterio = txtBuscar.Text;
+            var lista = negocio.BuscarProductosActivosConStock(criterio);
+            dgvStock.DataSource = lista;
+            
         }
     }
 }

@@ -88,6 +88,23 @@ namespace CapaDatos
             }
         }
 
+        public List<usuario> BuscarUsuariosActivos(string criterio)
+        {
+                       using (var db = new ProyectoTaller2Entities())
+            {
+                return db.usuario
+                         .Include("rol")
+                         .Where(p => p.estado == 1 &&
+                                     (p.dni_usuario.ToString().Contains(criterio) ||
+                                      p.nombre.Contains(criterio) ||
+                                      p.apellido.Contains(criterio) ||
+                                      p.email_usuario.Contains(criterio) ||
+                                      p.telefono.ToString().Contains(criterio)))
+                         .ToList();
+
+            }
+        }
+
         // Nuevos métodos para actualizar el int 'estado' en tabla usuario
         public void AltaUsuario(long dni)
         {

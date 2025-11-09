@@ -112,6 +112,8 @@
             // 
             this.dgvConsultaProveedores.AllowUserToAddRows = false;
             this.dgvConsultaProveedores.AllowUserToDeleteRows = false;
+            this.dgvConsultaProveedores.AllowUserToResizeColumns = false;
+            this.dgvConsultaProveedores.AllowUserToResizeRows = false;
             this.dgvConsultaProveedores.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dgvConsultaProveedores.BackgroundColor = System.Drawing.Color.White;
             this.dgvConsultaProveedores.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleHorizontal;

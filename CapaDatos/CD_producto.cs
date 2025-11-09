@@ -60,5 +60,30 @@ namespace CapaDatos
                          .ToList();
             }
         }
+
+        public List<producto> BuscarProductosActivosConStock(string criterio)
+        {
+            using (var db = new ProyectoTaller2Entities())
+            {
+                return db.producto
+                         .Where(p => p.estado == 1 &&
+                                     p.stock > 0 && 
+                                     (p.nombre.Contains(criterio) ||
+                                      p.descripcion.Contains(criterio)))
+                         .ToList();
+            }
+        }
+
+        public List<producto> BuscarProductos(string criterio)
+        {
+            using (var db = new ProyectoTaller2Entities())
+            {
+                return db.producto
+                         .Where(p => p.nombre.Contains(criterio) || 
+                                     p.descripcion.Contains(criterio))
+                         .ToList();
+            }
+        }
+
     }
 }

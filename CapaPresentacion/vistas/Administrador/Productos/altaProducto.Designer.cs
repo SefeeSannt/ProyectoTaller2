@@ -54,7 +54,7 @@ namespace CapaPresentacion.Vistas.Administrador.Productos
             this.errIngresoDatos = new System.Windows.Forms.ErrorProvider(this.components);
             this.txtDescripcionProd = new System.Windows.Forms.TextBox();
             this.txtCostoProd = new System.Windows.Forms.TextBox();
-            this.txtProdList = new System.Windows.Forms.TextBox();
+            this.txtProducto = new System.Windows.Forms.TextBox();
             this.lblBuscarListProd = new System.Windows.Forms.Label();
             this.iconBtnLupaDetalleUser = new FontAwesome.Sharp.IconButton();
             this.txtCodProducto = new System.Windows.Forms.TextBox();
@@ -91,6 +91,8 @@ namespace CapaPresentacion.Vistas.Administrador.Productos
             // 
             this.dgvRegistrarProducto.AllowUserToAddRows = false;
             this.dgvRegistrarProducto.AllowUserToDeleteRows = false;
+            this.dgvRegistrarProducto.AllowUserToResizeColumns = false;
+            this.dgvRegistrarProducto.AllowUserToResizeRows = false;
             this.dgvRegistrarProducto.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dgvRegistrarProducto.BackgroundColor = System.Drawing.Color.White;
             this.dgvRegistrarProducto.BorderStyle = System.Windows.Forms.BorderStyle.None;
@@ -307,13 +309,13 @@ namespace CapaPresentacion.Vistas.Administrador.Productos
             this.txtCostoProd.TabIndex = 45;
             this.txtCostoProd.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.onlyNumbers_KeyPress);
             // 
-            // txtProdList
+            // txtProducto
             // 
-            this.txtProdList.Location = new System.Drawing.Point(704, 12);
-            this.txtProdList.Multiline = true;
-            this.txtProdList.Name = "txtProdList";
-            this.txtProdList.Size = new System.Drawing.Size(197, 19);
-            this.txtProdList.TabIndex = 50;
+            this.txtProducto.Location = new System.Drawing.Point(704, 12);
+            this.txtProducto.Multiline = true;
+            this.txtProducto.Name = "txtProducto";
+            this.txtProducto.Size = new System.Drawing.Size(197, 19);
+            this.txtProducto.TabIndex = 50;
             // 
             // lblBuscarListProd
             // 
@@ -341,6 +343,7 @@ namespace CapaPresentacion.Vistas.Administrador.Productos
             this.iconBtnLupaDetalleUser.Size = new System.Drawing.Size(41, 21);
             this.iconBtnLupaDetalleUser.TabIndex = 47;
             this.iconBtnLupaDetalleUser.UseVisualStyleBackColor = false;
+            this.iconBtnLupaDetalleUser.Click += new System.EventHandler(this.iconBtnLupaDetalleUser_Click);
             // 
             // txtCodProducto
             // 
@@ -369,7 +372,7 @@ namespace CapaPresentacion.Vistas.Administrador.Productos
             this.ClientSize = new System.Drawing.Size(960, 538);
             this.Controls.Add(this.txtCodProducto);
             this.Controls.Add(this.lblCodigoProdRegistro);
-            this.Controls.Add(this.txtProdList);
+            this.Controls.Add(this.txtProducto);
             this.Controls.Add(this.lblBuscarListProd);
             this.Controls.Add(this.iconBtnLupaDetalleUser);
             this.Controls.Add(this.txtCostoProd);
@@ -424,7 +427,7 @@ namespace CapaPresentacion.Vistas.Administrador.Productos
         private ErrorProvider errIngresoDatos;
         private TextBox txtCostoProd;
         private TextBox txtDescripcionProd;
-        private TextBox txtProdList;
+        private TextBox txtProducto;
         private Label lblBuscarListProd;
         private FontAwesome.Sharp.IconButton iconBtnLupaDetalleUser;
         private TextBox txtCodProducto;
