@@ -222,5 +222,92 @@ namespace CapaNegocio
             }).ToList();
         }
 
+
+        public object ObtenerProductosMasVendidos(DateTime fechaDesde, DateTime fechaHasta, string nombreProducto)
+        {
+            using (var db = new Dat.ProyectoTaller2Entities())
+            {
+                var fechaHastaAjustada = fechaHasta.Date.AddDays(1).AddSeconds(-1);
+
+                var query = db.detalle_venta
+                              .Where(dv => dv.venta.fecha_venta >= fechaDesde &&
+                                           dv.venta.fecha_venta <= fechaHastaAjustada);
+
+                if (!string.IsNullOrEmpty(nombreProducto))
+                {
+                    query = query.Where(dv => dv.producto.nombre.StartsWith(nombreProducto));
+                }
+
+                var resultado = query
+                    .GroupBy(dv => dv.producto.nombre)
+                    .Select(g => new
+                    {
+                        Producto = g.Key,
+                        TotalVendido = g.Sum(x => x.cantidad)
+                    })
+                    .Where(x => x.TotalVendido > 0)
+                    .OrderByDescending(x => x.TotalVendido)
+                    .Take(10) 
+                    .ToList();
+
+                return resultado;
+            }
+        }
+
+        public object ObtenerDistribucionCategoria(DateTime fechaDesde, DateTime fechaHasta, string nombreProducto)
+        {
+            using (var db = new Dat.ProyectoTaller2Entities())
+            {
+                var fechaHastaAjustada = fechaHasta.Date.AddDays(1).AddSeconds(-1);
+
+                var query = db.detalle_venta
+                              .Where(dv => dv.venta.fecha_venta >= fechaDesde &&
+                                           dv.venta.fecha_venta <= fechaHastaAjustada);
+
+                if (!string.IsNullOrEmpty(nombreProducto))
+                {
+                    query = query.Where(dv => dv.producto.nombre.StartsWith(nombreProducto));
+                }
+
+                var resultado = query
+                    .GroupBy(dv => dv.producto.categoria.descripcion) 
+                    .Select(g => new
+                    {
+                        Categoria = g.Key,
+                        TotalVendido = g.Sum(x => x.cantidad)
+                    })
+                    .Where(x => x.TotalVendido > 0)
+                    .ToList();
+
+                return resultado;
+            }
+        }
+
+        public int ObtenerTotalCategoriasVendidas(DateTime fechaDesde, DateTime fechaHasta, string nombreProducto)
+        {
+            using (var db = new Dat.ProyectoTaller2Entities())
+            {
+                var fechaHastaAjustada = fechaHasta.Date.AddDays(1).AddSeconds(-1);
+
+                var query = db.detalle_venta
+                              .Where(dv => dv.venta.fecha_venta >= fechaDesde &&
+                                           dv.venta.fecha_venta <= fechaHastaAjustada);
+
+                if (!string.IsNullOrEmpty(nombreProducto))
+                {
+                    query = query.Where(dv => dv.producto.nombre.StartsWith(nombreProducto));
+                }
+
+                int total = query
+                    .Select(dv => dv.producto.id_categoria)
+                    .Distinct()
+                    .Count();
+
+                return total;
+            }
+        }
+
+
+
     }
 }
