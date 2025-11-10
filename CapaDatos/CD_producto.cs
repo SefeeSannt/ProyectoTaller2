@@ -3,7 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using CapaEntidad; 
+using CapaEntidad;
+using CapaDatos;
 
 namespace CapaDatos
 {
@@ -26,11 +27,26 @@ namespace CapaDatos
             }
         }
 
-        public List<producto> ObtenerProductosActivos()
+        public List<producto> ObtenerProductosActivos(bool conStock)
         {
-            using (var db = new ProyectoTaller2Entities())
+            try
             {
-                return db.producto.Where(p => p.estado == 1).ToList();
+                using (var db = new ProyectoTaller2Entities()) {
+                    IQueryable<producto> consulta = db.producto.Where(p => p.estado == 1);
+
+                    // Si el parámetro es true, agregamos el filtro de stock
+                    if (conStock)
+                    {
+                        consulta = consulta.Where(p => p.stock > 0);
+                    }
+
+                    return consulta.ToList();
+                }
+
+            }
+            catch (Exception)
+            {
+                return new List<producto>();
             }
         }
 

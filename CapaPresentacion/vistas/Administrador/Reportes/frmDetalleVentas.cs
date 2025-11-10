@@ -113,9 +113,9 @@ namespace CapaPresentacion.Vistas.Administrador.Reportes
                 AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill
             });
 
-            // (Asumo que tu SQL de detalle de venta devuelve "PrecioCompra")
+            // (Asumo que tu SQL de detalle de venta devuelve "PrecioVenta")
             dgvDetalleVenta.Columns.Add(new DataGridViewTextBoxColumn
-            {   //se modificio de PrecioCompra a PrecioVenta
+            {   //se modificio de PrecioVenta a PrecioVenta
                 Name = "PrecioVenta",
                 DataPropertyName = "PrecioVenta", 
                 HeaderText = "Precio Venta",
@@ -290,7 +290,7 @@ namespace CapaPresentacion.Vistas.Administrador.Reportes
                         foreach (DataGridViewRow row in dgvDetalleVenta.Rows)
                         {
                             tablaDetalles.AddCell(new Phrase(row.Cells["Producto"].Value.ToString()));
-                            tablaDetalles.AddCell(new Phrase(Convert.ToDecimal(row.Cells["PrecioCompra"].Value).ToString("C2")));
+                            tablaDetalles.AddCell(new Phrase(Convert.ToDecimal(row.Cells["PrecioVenta"].Value).ToString("C2")));
                             tablaDetalles.AddCell(new Phrase(row.Cells["Cantidad"].Value.ToString()));
                             tablaDetalles.AddCell(new Phrase(Convert.ToDecimal(row.Cells["Subtotal"].Value).ToString("C2")));
                         }
