@@ -67,9 +67,9 @@ namespace CapaNegocio
             }).ToList();
         }
 
-        public List<ProductoModel> ObtenerProductosActivos()
+        public List<ProductoModel> ObtenerProductosActivos(bool conStock)
         {
-            var productos = oProducto.ObtenerProductosActivos();
+            var productos = oProducto.ObtenerProductosActivos(conStock);
 
             var categorias = new CN_categoria().ObtenerCategorias()
                               .ToDictionary(c => c.id_categoria, c => c.descripcion ?? string.Empty);

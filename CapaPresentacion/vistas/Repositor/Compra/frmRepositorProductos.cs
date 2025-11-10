@@ -15,17 +15,19 @@ namespace CapaPresentacion.vistas.Repositor.Compra
     {
         public ProductoModel ProductoSeleccionado { get; private set; }
         private List<int> idsAExcluir;
+        private bool _conStock = false;
 
-        public frmRepositorProductos(List<int> idsYaEnCarrito)
+        public frmRepositorProductos(List<int> idsYaEnCarrito,bool conStock)
         {
             InitializeComponent();
             this.idsAExcluir = idsYaEnCarrito;
+            this._conStock = conStock;
         }
 
         private void cargarListaProductoGrid()
         {
             var negocio = new CN_producto();
-            var listaCompleta = negocio.ObtenerProductosActivos() ?? new List<ProductoModel>();
+            var listaCompleta = negocio.ObtenerProductosActivos(this._conStock) ?? new List<ProductoModel>();
 
             var listaFiltrada = listaCompleta
                 .Where(p => !this.idsAExcluir.Contains(p.cod_producto))

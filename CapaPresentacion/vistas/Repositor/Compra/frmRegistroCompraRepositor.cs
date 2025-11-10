@@ -130,14 +130,12 @@ namespace CapaPresentacion.Vistas.Repositor
             List<int> idsEnCarrito = new List<int>();
             foreach (DataGridViewRow row in dgvRegistroCompras.Rows)
             {
-                // Ignoramos la fila "nueva" si existe
                 if (row.IsNewRow) continue;
 
-                // (Asegúrate que el nombre "colCodProducto" sea el correcto)
                 idsEnCarrito.Add(Convert.ToInt32(row.Cells["colCodProducto"].Value));
             }
 
-            using (frmRepositorProductos frm = new frmRepositorProductos(idsEnCarrito)) // <-- ¡PARÁMETRO AÑADIDO!
+            using (frmRepositorProductos frm = new frmRepositorProductos(idsEnCarrito,false))
             {
                 DialogResult resultado = frm.ShowDialog();
                 if (resultado == DialogResult.OK)
@@ -207,8 +205,8 @@ namespace CapaPresentacion.Vistas.Repositor
         {
             CalcularPrecioVenta();
         }
-
-        private void CargarProductoEnGrid()
+        /*
+                private void CargarProductoEnGrid()
         {
             var negocio = new CN_producto();
             var lista = negocio.ObtenerProductosActivos() ?? new List<ProductoModel>();
@@ -217,7 +215,9 @@ namespace CapaPresentacion.Vistas.Repositor
             {
                 dgvRegistroCompras.Columns["id_estado"].Visible = false;
             }
-        }
+        } 
+         */
+
 
         private void frmRegitroCompraRepositor_Load(object sender, EventArgs e)
         {

@@ -230,6 +230,7 @@
             this.txtApellido.Name = "txtApellido";
             this.txtApellido.Size = new System.Drawing.Size(210, 20);
             this.txtApellido.TabIndex = 55;
+            this.txtApellido.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.onlyLetters);
             // 
             // label1
             // 

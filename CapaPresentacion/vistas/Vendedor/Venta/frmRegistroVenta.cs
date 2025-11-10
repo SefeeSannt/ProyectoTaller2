@@ -143,7 +143,7 @@ namespace CapaPresentacion.Vistas.Repositor
                 idsEnCarrito.Add(Convert.ToInt32(row.Cells["colCodProducto"].Value));
             }
 
-            using (frmRepositorProductos frm = new frmRepositorProductos(idsEnCarrito)) 
+            using (frmRepositorProductos frm = new frmRepositorProductos(idsEnCarrito,true)) 
             {
                 DialogResult resultado = frm.ShowDialog();
                 if (resultado == DialogResult.OK)
@@ -155,6 +155,9 @@ namespace CapaPresentacion.Vistas.Repositor
                     txtPrecio.Text = productoElegido.precio_vta.ToString("0.00");
 
                     this.idCategoriaTemporal = productoElegido.id_categoria.id_categoria;
+
+                    numUpDCantidad.Value = 1; // Resetea a 1
+                    numUpDCantidad.Maximum = productoElegido.stock;
                 }
             }
 
@@ -199,7 +202,7 @@ namespace CapaPresentacion.Vistas.Repositor
         private void CargarProductoEnGrid()
         {
             var negocio = new CN_producto();
-            var lista = negocio.ObtenerProductosActivos() ?? new List<ProductoModel>();
+            var lista = negocio.ObtenerProductosActivos(true) ?? new List<ProductoModel>();
             dgvRegistroVenta.DataSource = lista;
             if (dgvRegistroVenta.Columns.Contains("id_estado"))
             {

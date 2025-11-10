@@ -29,7 +29,7 @@ namespace CapaPresentacion.Vistas.Vendedor.Venta
         private void cargarProductosEnGrid()
         {
             var negocio = new CN_producto();
-            var lista = negocio.ObtenerProductosActivos() ?? new List<ProductoModel>();
+            var lista = negocio.ObtenerProductosActivos(false) ?? new List<ProductoModel>();
             dgvListaProductos.DataSource = lista;
             if (dgvListaProductos.Columns.Contains("estado"))
             {
