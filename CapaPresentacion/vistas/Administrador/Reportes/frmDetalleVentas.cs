@@ -21,7 +21,7 @@ namespace CapaPresentacion.Vistas.Administrador.Reportes
         public frmDetalleVentas(Usuario oUsuario)
         {
             InitializeComponent();
-
+            this.usuarioActual = oUsuario;
         }
 
         /*cambios*/
@@ -75,6 +75,7 @@ namespace CapaPresentacion.Vistas.Administrador.Reportes
             {
                 MessageBox.Show("Error al cargar las ventas: " + ex.GetBaseException().Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+
         }
 
         private void frmDetalleVentas_Load(object sender, EventArgs e)
@@ -98,7 +99,7 @@ namespace CapaPresentacion.Vistas.Administrador.Reportes
                 MostrarDetalle(codVenta);
             }
         }
-
+        /*Se realizaron cambios*/
         private void ConfigurarGridDetalle()
         {
             dgvDetalleVenta.AutoGenerateColumns = false;
@@ -138,6 +139,7 @@ namespace CapaPresentacion.Vistas.Administrador.Reportes
                 Width = 100,
                 DefaultCellStyle = { Format = "C" }
             });
+
 
         }
 
@@ -186,6 +188,7 @@ namespace CapaPresentacion.Vistas.Administrador.Reportes
             catch (Exception ex)
             {
                 MessageBox.Show("Error al mostrar detalle: " + ex.GetBaseException().Message, "Error");
+
             }
         }
 
@@ -225,78 +228,71 @@ namespace CapaPresentacion.Vistas.Administrador.Reportes
                         PdfWriter writer = PdfWriter.GetInstance(pdfDoc, stream);
                         pdfDoc.Open();
 
-
-                        // 1. Título
+                        // 1. Título y Datos de la Empresa (Tu código)
                         var fontTitulo = FontFactory.GetFont(FontFactory.HELVETICA_BOLD, 16, BaseColor.BLACK);
                         Paragraph titulo = new Paragraph("Detalle de Venta", fontTitulo);
                         titulo.Alignment = Element.ALIGN_CENTER;
                         pdfDoc.Add(titulo);
                         pdfDoc.Add(Chunk.NEWLINE);
 
-                        // Datos de la Empresa
                         var fontTienda = FontFactory.GetFont(FontFactory.HELVETICA, 10, BaseColor.GRAY);
-
-                        // CAMBIADO
                         Paragraph nombreTienda = new Paragraph("MyFitt", fontTienda);
                         nombreTienda.Alignment = Element.ALIGN_CENTER;
                         pdfDoc.Add(nombreTienda);
-
-                        // CAMBIADO
                         Paragraph direccionTienda = new Paragraph("9 de julio 1432", fontTienda);
                         direccionTienda.Alignment = Element.ALIGN_CENTER;
                         pdfDoc.Add(direccionTienda);
-
-                        // AGREGADO
                         Paragraph cuilTienda = new Paragraph("CUIL: 30-12345678-9", fontTienda);
                         cuilTienda.Alignment = Element.ALIGN_CENTER;
                         pdfDoc.Add(cuilTienda);
-
-                        // AGREGADO
                         Paragraph emailTienda = new Paragraph("myfitt@gmail.com", fontTienda);
                         emailTienda.Alignment = Element.ALIGN_CENTER;
                         pdfDoc.Add(emailTienda);
-
                         pdfDoc.Add(Chunk.NEWLINE);
-                        // --- FIN DE CAMBIOS ---
 
-
-                        // 2. Datos del Proveedor
                         var fontHeader = FontFactory.GetFont(FontFactory.HELVETICA_BOLD, 12, BaseColor.BLACK);
+
+                        // 2. Datos del Cliente
                         Paragraph subtitulo = new Paragraph("Datos del Cliente", fontHeader);
                         pdfDoc.Add(subtitulo);
 
-                        pdfDoc.Add(new Paragraph($"Nombre: {lblCliente.Text} {lblApellidoCliente.Text}"));
+                        // --- ¡ERROR CORREGIDO! ---
+                        // El label se llama 'lblNombreCliente', no 'lblCliente'
+                        pdfDoc.Add(new Paragraph($"Nombre: {lblNombreCliente.Text} {lblApellidoCliente.Text}"));
                         pdfDoc.Add(new Paragraph($"DNI: {lblDniCliente.Text}"));
-                        pdfDoc.Add(Chunk.NEWLINE);
+                        pdfDoc.Add(new Paragraph($"Código de venta: {lblCodVenta.Text}"));
+                        pdfDoc.Add(Chunk.NEWLINE); // Movido aquí
 
-                        // 3. Datos del Repositor 
+                        // 3. Datos del Vendedor
                         Paragraph subtituloRep = new Paragraph("Datos del Vendedor", fontHeader);
                         pdfDoc.Add(subtituloRep);
+                        // Esta línea ahora funciona porque 'usuarioActual' SÍ se guarda en el constructor
                         pdfDoc.Add(new Paragraph($"Nombre: {this.usuarioActual.nombre} {this.usuarioActual.apellido}"));
                         pdfDoc.Add(new Paragraph($"DNI: {this.usuarioActual.dni_usuario.ToString()}"));
                         pdfDoc.Add(Chunk.NEWLINE);
 
-
-                        // 4. Tabla de Detalles 
-                        PdfPTable tabla = new PdfPTable(dgvDetalleVenta.Columns.Count);
-                        tabla.WidthPercentage = 100;
+                        // --- ¡ERROR CORREGIDO! ---
+                        // 4. Tabla de Detalles
+                        // No puedes declarar 'tabla' dos veces
+                        PdfPTable tablaDetalles = new PdfPTable(dgvDetalleVenta.Columns.Count);
+                        tablaDetalles.WidthPercentage = 100;
 
                         foreach (DataGridViewColumn column in dgvDetalleVenta.Columns)
                         {
                             PdfPCell cell = new PdfPCell(new Phrase(column.HeaderText, fontHeader));
                             cell.HorizontalAlignment = Element.ALIGN_CENTER;
                             cell.BackgroundColor = new BaseColor(240, 240, 240);
-                            tabla.AddCell(cell);
+                            tablaDetalles.AddCell(cell);
                         }
 
                         // --- ¡ERROR CORREGIDO! (Mayúsculas) ---
                         // Nombres deben coincidir con 'ConfigurarGridDetalle'
                         foreach (DataGridViewRow row in dgvDetalleVenta.Rows)
                         {
-                            tabla.AddCell(new Phrase(row.Cells["Producto"].Value.ToString()));
-                            tabla.AddCell(new Phrase(Convert.ToDecimal(row.Cells["PrecioCompra"].Value).ToString("C2")));
-                            tabla.AddCell(new Phrase(row.Cells["Cantidad"].Value.ToString()));
-                            tabla.AddCell(new Phrase(Convert.ToDecimal(row.Cells["Subtotal"].Value).ToString("C2")));
+                            tablaDetalles.AddCell(new Phrase(row.Cells["Producto"].Value.ToString()));
+                            tablaDetalles.AddCell(new Phrase(Convert.ToDecimal(row.Cells["PrecioCompra"].Value).ToString("C2")));
+                            tablaDetalles.AddCell(new Phrase(row.Cells["Cantidad"].Value.ToString()));
+                            tablaDetalles.AddCell(new Phrase(Convert.ToDecimal(row.Cells["Subtotal"].Value).ToString("C2")));
                         }
 
                         pdfDoc.Add(tablaDetalles);
@@ -319,6 +315,8 @@ namespace CapaPresentacion.Vistas.Administrador.Reportes
                     MessageBox.Show("Error al generar el PDF: " + ex.GetBaseException().Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
+
+
         }
     }
 }
