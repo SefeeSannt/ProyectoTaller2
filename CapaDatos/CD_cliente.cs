@@ -71,11 +71,11 @@ namespace CapaDatos
             }
         }
 
-        public bool EmailExiste(string email)
+        public bool EmailExiste(string email,int id)
         {
             using (var db = new ProyectoTaller2Entities())
             {
-                return db.cliente.Any(c => c.email_cliente == email);
+                return db.cliente.Any(c => c.email_cliente == email && c.dni_cliente != id);
             }
         }
 

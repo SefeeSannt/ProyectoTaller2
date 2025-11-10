@@ -89,9 +89,9 @@ namespace CapaNegocio
             return oCliente.ClienteExiste(dni);
         }
 
-        public bool EmailExiste(string email)
+        public bool EmailExiste(string email,int id)
         {
-            return oCliente.EmailExiste(email);
+            return oCliente.EmailExiste(email,id);
         }
 
         public void ActualizarCliente(ClienteModel clienteModel)
