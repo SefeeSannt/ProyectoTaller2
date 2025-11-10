@@ -53,6 +53,8 @@
             this.panel1 = new System.Windows.Forms.Panel();
             this.pnlConsultaVentas2 = new System.Windows.Forms.Panel();
             this.button1 = new System.Windows.Forms.Button();
+            this.lblNombreRepositor = new System.Windows.Forms.Label();
+            this.lblCodCompra = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dgvDetalleCompra)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvConsultaCompra)).BeginInit();
             this.panel1.SuspendLayout();
@@ -319,6 +321,8 @@
             // pnlConsultaVentas2
             // 
             this.pnlConsultaVentas2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.pnlConsultaVentas2.Controls.Add(this.lblCodCompra);
+            this.pnlConsultaVentas2.Controls.Add(this.lblNombreRepositor);
             this.pnlConsultaVentas2.Controls.Add(this.lblDniProveedor);
             this.pnlConsultaVentas2.Controls.Add(this.lblApellidoProveedor);
             this.pnlConsultaVentas2.Controls.Add(this.lblNombreProveedor);
@@ -340,6 +344,29 @@
             this.button1.Text = "Imprimir detalle";
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
+            // lblNombreRepositor
+            // 
+            this.lblNombreRepositor.AutoSize = true;
+            this.lblNombreRepositor.BackColor = System.Drawing.Color.White;
+            this.lblNombreRepositor.Font = new System.Drawing.Font("Franklin Gothic Medium", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblNombreRepositor.Location = new System.Drawing.Point(13, 86);
+            this.lblNombreRepositor.Name = "lblNombreRepositor";
+            this.lblNombreRepositor.Size = new System.Drawing.Size(107, 17);
+            this.lblNombreRepositor.TabIndex = 22;
+            this.lblNombreRepositor.Text = "nombre Repositor";
+            // 
+            // lblCodCompra
+            // 
+            this.lblCodCompra.AutoSize = true;
+            this.lblCodCompra.BackColor = System.Drawing.Color.White;
+            this.lblCodCompra.Font = new System.Drawing.Font("Franklin Gothic Medium", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblCodCompra.ForeColor = System.Drawing.Color.Black;
+            this.lblCodCompra.Location = new System.Drawing.Point(362, 86);
+            this.lblCodCompra.Name = "lblCodCompra";
+            this.lblCodCompra.Size = new System.Drawing.Size(95, 17);
+            this.lblCodCompra.TabIndex = 23;
+            this.lblCodCompra.Text = "Codigo compra:";
             // 
             // frmConsultaCompra
             // 
@@ -397,5 +424,7 @@
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Panel pnlConsultaVentas2;
         private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Label lblNombreRepositor;
+        private System.Windows.Forms.Label lblCodCompra;
     }
 }
