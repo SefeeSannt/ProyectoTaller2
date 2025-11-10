@@ -115,9 +115,9 @@ namespace CapaPresentacion.Vistas.Administrador.Reportes
 
             // (Asumo que tu SQL de detalle de venta devuelve "PrecioCompra")
             dgvDetalleVenta.Columns.Add(new DataGridViewTextBoxColumn
-            {
-                Name = "PrecioCompra",
-                DataPropertyName = "PrecioCompra",
+            {   //se modificio de PrecioCompra a PrecioVenta
+                Name = "PrecioVenta",
+                DataPropertyName = "PrecioVenta", 
                 HeaderText = "Precio Venta",
                 Width = 100,
                 DefaultCellStyle = { Format = "C" }
