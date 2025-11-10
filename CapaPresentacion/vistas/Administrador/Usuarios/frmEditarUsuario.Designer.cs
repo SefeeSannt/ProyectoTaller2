@@ -179,6 +179,7 @@
             // txtTelefono
             // 
             this.txtTelefono.Location = new System.Drawing.Point(15, 317);
+            this.txtTelefono.MaxLength = 10;
             this.txtTelefono.Name = "txtTelefono";
             this.txtTelefono.Size = new System.Drawing.Size(208, 20);
             this.txtTelefono.TabIndex = 8;
@@ -341,6 +342,7 @@
             // 
             this.txtDocumento.Location = new System.Drawing.Point(15, 65);
             this.txtDocumento.Name = "txtDocumento";
+            this.txtDocumento.ReadOnly = true;
             this.txtDocumento.Size = new System.Drawing.Size(210, 20);
             this.txtDocumento.TabIndex = 5;
             this.txtDocumento.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.onlyInteger);

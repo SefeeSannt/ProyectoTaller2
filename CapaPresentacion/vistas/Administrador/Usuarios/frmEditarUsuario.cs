@@ -71,9 +71,22 @@ namespace CapaPresentacion.vistas.Administrador.Usuarios
                 errIngresoDatos.SetError(txtCorreo, "El campo Correo es obligatorio");
                 return;
             }
+
+            if (string.IsNullOrEmpty(txtCorreo.Text) ||
+                !txtCorreo.Text.Contains("@") ||
+                !txtCorreo.Text.Contains("."))
+            {
+                errIngresoDatos.SetError(txtCorreo, "El email debe tener un formato válido (ejemplo: usuario@dominio.com)");
+                return;
+            }
             if (string.IsNullOrEmpty(txtTelefono.Text))
             {
                 errIngresoDatos.SetError(txtTelefono, "El campo Telefono es obligatorio");
+                return;
+            }
+            if (txtTelefono.Text.Length != 10)
+            {
+                errIngresoDatos.SetError(txtTelefono, "El teléfono debe tener 10 caracteres.");
                 return;
             }
             if (cboRol.SelectedIndex == -1)

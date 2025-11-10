@@ -53,6 +53,11 @@ namespace CapaPresentacion.Vistas.Administrador.Usuarios
                 errIngresoDatos.SetError(txtDni_usuario, "Debe ingresar un documento");
                 return;
             }
+            if (txtDni_usuario.Text.Length < 8)
+            {
+                errIngresoDatos.SetError(txtDni_usuario, "El DNI debe tener 8 caracteres");
+                return;
+            }
 
             if (string.IsNullOrEmpty(txtNombre.Text))
             {
@@ -62,18 +67,15 @@ namespace CapaPresentacion.Vistas.Administrador.Usuarios
 
             if (string.IsNullOrEmpty(txtApellido.Text))
             {
-                errIngresoDatos.SetError(txtUsername, "El campo apellido es obligatorio");
+                errIngresoDatos.SetError(txtApellido, "El campo apellido es obligatorio");
                 return;
             }
 
-            // ... (resto del código) ...
             if (string.IsNullOrEmpty(txtUsername.Text))
             {
                 errIngresoDatos.SetError(txtUsername, "El campo Username es obligatorio");
                 return;
             }
-
-            // ... (resto del código) ...
 
             if (string.IsNullOrEmpty(txtEmail.Text))
             {
@@ -81,9 +83,22 @@ namespace CapaPresentacion.Vistas.Administrador.Usuarios
                 return;
             }
 
+            if (string.IsNullOrEmpty(txtEmail.Text) ||
+                !txtEmail.Text.Contains("@") ||
+                !txtEmail.Text.Contains("."))
+            {
+                errIngresoDatos.SetError(txtEmail, "El email debe tener un formato válido (ejemplo: usuario@dominio.com)");
+                return;
+            }
+
             if (string.IsNullOrEmpty(txtTelefono.Text))
             {
                 errIngresoDatos.SetError(txtTelefono, "Debe ingresar una clave");
+                return;
+            }
+            if (txtTelefono.Text.Length < 10)
+            {
+                errIngresoDatos.SetError(txtTelefono, "Teléfono incorrecto. Debe tener 10 caracteres.");
                 return;
             }
 
@@ -137,9 +152,37 @@ namespace CapaPresentacion.Vistas.Administrador.Usuarios
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Error al registrar el cliente: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                string mensajeError = ex.GetBaseException().Message;
+
+                if (mensajeError.Contains("UNIQUE KEY constraint") || mensajeError.Contains("Violation of UNIQUE KEY constraint"))
+                {
+                    if (mensajeError.Contains("dni_usuario"))
+                    {
+                        MessageBox.Show("El DNI ingresado ya se encuentra registrado.", "Error: DNI Duplicado", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        errIngresoDatos.SetError(txtDni_usuario, "Este DNI ya existe");
+                    }
+                    else if (mensajeError.Contains("email_usuario"))
+                    {
+                        MessageBox.Show("El Email ingresado ya se encuentra registrado.", "Error: Email Duplicado", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        errIngresoDatos.SetError(txtEmail, "Este Email ya existe");
+                    }
+                    else if (mensajeError.Contains("telefono"))
+                    {
+                        MessageBox.Show("El Teléfono ingresado ya se encuentra registrado.", "Error: Teléfono Duplicado", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        errIngresoDatos.SetError(txtTelefono, "Este Teléfono ya existe");
+                    }
+                    else
+                    {
+                        MessageBox.Show("Un dato ingresado ya existe en la base de datos.\n" + mensajeError, "Error de Duplicado", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("Error al registrar el cliente: " + mensajeError, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
             }
         }
+        
 
         private void btnLimpiar_Click(object sender, EventArgs e)
         {

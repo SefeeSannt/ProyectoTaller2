@@ -49,6 +49,11 @@ namespace CapaPresentacion.Vistas.Repositor.Proveedor
                 errIngresoDatos.SetError(txtTelefono, "El campo Telefono es obligatorio");
                 return;
             }
+            if (txtTelefono.Text.Length < 10)
+            {
+                errIngresoDatos.SetError(txtTelefono, "Teléfono incorrecto. Debe tener 10 caracteres.");
+                return;
+            }
 
             if (string.IsNullOrEmpty(txtEmail.Text) ||
                 !txtEmail.Text.Contains("@") ||
