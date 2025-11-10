@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using CapaPresentacion.Helpers;
 using CapaNegocio;
+using System.Data.Entity.Core.Common.EntitySql;
 
 namespace CapaPresentacion.Vistas.Vendedor
 {
@@ -84,7 +85,7 @@ namespace CapaPresentacion.Vistas.Vendedor
                 return;
             }
 
-            if (CN_cliente.EmailExiste(txtEmail.Text))
+            if (CN_cliente.EmailExiste(txtEmail.Text,int.Parse(txtBuscarDni.Text)))
             {
                 errIngresoDatos.SetError(txtEmail, "Ya existe un cliente con este email registrado");
                 return;
@@ -107,6 +108,13 @@ namespace CapaPresentacion.Vistas.Vendedor
                 negocio.AgregarCliente(nuevoCliente);
                 MessageBox.Show("Cliente registrado con éxito.", "Registro Exitoso", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 CargarClientesEnGrid();
+
+                txtDocumento.Clear();
+                txtNombre.Clear();
+                txtApellido.Clear();
+                txtDomicilio.Clear();
+                txtTelefono.Clear();
+                txtEmail.Clear();
             }
             catch (Exception ex)
             {

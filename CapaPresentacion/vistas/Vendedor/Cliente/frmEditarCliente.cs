@@ -117,7 +117,7 @@ namespace CapaPresentacion.vistas.Vendedor.Cliente
                 errIngresoDatos.SetError(txtEmail, "El campo Email no es válido");
                 return;
             }
-            if (CN_cliente.EmailExiste(txtEmail.Text))
+            if (CN_cliente.EmailExiste(txtEmail.Text,int.Parse(txtDocumento.Text)))
             {
                 errIngresoDatos.SetError(txtEmail, "El email ya está registrado");
                 return;
