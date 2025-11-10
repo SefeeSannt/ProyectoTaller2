@@ -10,52 +10,8 @@ namespace CapaDatos
 {
     public class CD_venta
     {
-        public DataTable ListarVentas(DateTime fechaDesde, DateTime fechaHasta, string dniCliente)
-        {/*
-            DataTable tabla = new DataTable();
-            using (SqlConnection con = new SqlConnection(conexion.cadena))
-            {
-                try
-                {
-                    con.Open();
-                    string queryBase = @"
-                        SELECT 
-                            v.cod_venta,
-                            (ISNULL(c.nombre,'') + ' ' + ISNULL(c.apellido,'')) AS cliente,
-                            v.fecha_venta AS fecha_venta,
-                            v.monto_total AS monto_total
-                        FROM venta v
-                        INNER JOIN cliente c ON v.dni_cliente = c.dni_cliente";
-
-
-                    string whereClause = " WHERE v.fecha_venta BETWEEN @fechaDesde AND @fechaHasta";
-
-                    using (SqlCommand cmd = new SqlCommand())
-                    {
-
-                        cmd.Parameters.AddWithValue("@fechaDesde", fechaDesde.Date);
-                        cmd.Parameters.AddWithValue("@fechaHasta", fechaHasta.Date.AddDays(1).AddSeconds(-1));
-
-                        if (!string.IsNullOrEmpty(dniCliente))
-                        {
-                            whereClause += " AND c.dni_cliente = @dniCliente";
-                            cmd.Parameters.AddWithValue("@dniCliente", dniCliente);
-                        }
-
-                        cmd.CommandText = queryBase + whereClause + " ORDER BY v.fecha_venta DESC";
-                        cmd.Connection = con;
-                        cmd.CommandType = CommandType.Text;
-
-                        SqlDataAdapter da = new SqlDataAdapter(cmd);
-                        da.Fill(tabla);
-                    }
-                }
-                catch (Exception ex)
-                {
-                    throw new Exception("Error en CD_venta.ListarVentas: " + ex.Message, ex);
-                }
-            }
-            return tabla;*/
+        public DataTable ListarVentas(DateTime fechaDesde, DateTime fechaHasta, string nombreCliente)
+        {
 
             DataTable tabla = new DataTable();
             using (SqlConnection con = new SqlConnection(conexion.cadena))
@@ -83,7 +39,6 @@ namespace CapaDatos
                         cmd.Parameters.AddWithValue("@fechaDesde", fechaDesde.Date);
                         cmd.Parameters.AddWithValue("@fechaHasta", fechaHasta.Date.AddDays(1).AddSeconds(-1));
 
-                        // --- 4. ¡LÓGICA MODIFICADA! ---
                         // Buscamos por nombre O apellido del CLIENTE
                         if (!string.IsNullOrEmpty(nombreCliente))
                         {
@@ -105,6 +60,7 @@ namespace CapaDatos
                     throw new Exception("Error en CD_venta.ListarVentas: " + ex.Message, ex);
                 }
             }
+            return tabla;
         }
 
         public DataTable ObtenerDetalleVenta(int codVenta)

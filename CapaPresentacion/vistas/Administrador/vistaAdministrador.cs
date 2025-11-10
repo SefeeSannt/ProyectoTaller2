@@ -26,6 +26,7 @@ namespace CapaPresentacion.Vistas.Administrador
     public partial class frmVistaAdministrador : Form
     {
         private Usuario oUsuario;
+     //   private Usuario usuarioLogueado;
         public frmVistaAdministrador(Usuario oUsuario)
         {
             InitializeComponent();
@@ -128,8 +129,8 @@ namespace CapaPresentacion.Vistas.Administrador
             {
                 form.Close();
             }
-
-            Form frm = new frmDetalleVentas();
+            Form frm = new frmDetalleVentas(this.oUsuario);
+       //     Form frm = new frmDetalleVentas();
             frm.MdiParent = this;
             frm.Dock = DockStyle.Fill;
             frm.Show();

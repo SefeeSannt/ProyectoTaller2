@@ -74,8 +74,8 @@ namespace CapaPresentacion.Vistas.Vendedor
             {
                 form.Close();
             }
-
-            Form frm = new frmDetalleVentas();
+            Form frm = new frmDetalleVentas(this.usuarioLogueado);
+       //     Form frm = new frmDetalleVentas();
 
             frm.MdiParent = this;
             frm.Dock = DockStyle.Fill;
