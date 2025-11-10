@@ -18,15 +18,57 @@ namespace CapaPresentacion.Vistas.Repositor
             this.usuarioActual = oUsuario;
         }
 
-        private void CargarGridCompras(DateTime fechaDesde, DateTime fechaHasta, string dniProveedor)
+        private void CargarGridCompras(DateTime fechaDesde, DateTime fechaHasta, string nombreProveedor)
         {
+            /*  try
+              {
+                  dgvConsultaCompra.Columns.Clear();
+                  dgvConsultaCompra.DataSource = null;
+
+                  CN_compra objCN = new CN_compra();
+                  DataTable tablaCompras = objCN.ListarCompras(fechaDesde, fechaHasta, dniProveedor); // Obtenemos los datos
+
+                  dgvConsultaCompra.DataSource = tablaCompras;
+
+                  DataGridViewButtonColumn btnVer = new DataGridViewButtonColumn();
+                  btnVer.Name = "btnVer";
+                  btnVer.HeaderText = "";
+                  btnVer.Text = "Ver";
+                  btnVer.UseColumnTextForButtonValue = true;
+                  btnVer.Width = 40;
+                  dgvConsultaCompra.Columns.Add(btnVer);
+
+                  if (dgvConsultaCompra.Columns.Contains("cod_compra"))
+                      dgvConsultaCompra.Columns["cod_compra"].Visible = false;
+
+                  if (dgvConsultaCompra.Columns.Contains("Proveedor"))
+                      dgvConsultaCompra.Columns["Proveedor"].HeaderText = "Proveedor";
+
+                  decimal totalFiltrado = 0;
+                  if (tablaCompras != null && tablaCompras.Rows.Count > 0)
+                  {
+                      foreach (DataRow row in tablaCompras.Rows)
+                      {
+                          totalFiltrado += Convert.ToDecimal(row["monto_total"]);
+                      }
+                  }
+
+                  lblTotalVentaFilt.Text = totalFiltrado.ToString("C2");
+              }
+              catch (Exception ex)
+              {
+                  MessageBox.Show("Error al cargar las compras: " + ex.GetBaseException().Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+              }*/
+
+
             try
             {
                 dgvConsultaCompra.Columns.Clear();
                 dgvConsultaCompra.DataSource = null;
 
                 CN_compra objCN = new CN_compra();
-                DataTable tablaCompras = objCN.ListarCompras(fechaDesde, fechaHasta, dniProveedor); // Obtenemos los datos
+                // --- MODIFICADO ---
+                DataTable tablaCompras = objCN.ListarCompras(fechaDesde, fechaHasta, nombreProveedor);
 
                 dgvConsultaCompra.DataSource = tablaCompras;
 
@@ -41,8 +83,15 @@ namespace CapaPresentacion.Vistas.Repositor
                 if (dgvConsultaCompra.Columns.Contains("cod_compra"))
                     dgvConsultaCompra.Columns["cod_compra"].Visible = false;
 
+                // --- CORRECCIÓN DE ALIAS (de tu código anterior) ---
                 if (dgvConsultaCompra.Columns.Contains("Proveedor"))
                     dgvConsultaCompra.Columns["Proveedor"].HeaderText = "Proveedor";
+
+                if (dgvConsultaCompra.Columns.Contains("Fecha"))
+                    dgvConsultaCompra.Columns["Fecha"].HeaderText = "Fecha de Registro"; // Asumo que el alias es 'Fecha'
+
+                if (dgvConsultaCompra.Columns.Contains("monto_total"))
+                    dgvConsultaCompra.Columns["monto_total"].HeaderText = "Monto Total"; // Asumo que el alias es 'monto_total'
 
                 decimal totalFiltrado = 0;
                 if (tablaCompras != null && tablaCompras.Rows.Count > 0)
@@ -65,7 +114,8 @@ namespace CapaPresentacion.Vistas.Repositor
         {
             dtpFechaDesde.Value = DateTime.Now.AddDays(-30);
             dtpFechaHasta.Value = DateTime.Now;
-            CargarGridCompras(dtpFechaDesde.Value, dtpFechaHasta.Value, txtDniProv.Text);
+            // CargarGridCompras(dtpFechaDesde.Value, dtpFechaHasta.Value, txtDniProv.Text);
+            CargarGridCompras(dtpFechaDesde.Value, dtpFechaHasta.Value, txtNombreProv.Text);
             ConfigurarGridDetalle();
         }
 
@@ -76,7 +126,6 @@ namespace CapaPresentacion.Vistas.Repositor
             if (dgvConsultaCompra.Columns[e.ColumnIndex].Name == "btnVer")
             {
                 int codCompra = Convert.ToInt32(dgvConsultaCompra.Rows[e.RowIndex].Cells["cod_compra"].Value);
-
                 MostrarDetalle(codCompra);
             }
 
@@ -162,9 +211,8 @@ namespace CapaPresentacion.Vistas.Repositor
             lblNombreProveedor.Text = "";
             lblApellidoProveedor.Text = "";
             lblDniProveedor.Text = "";
-          
-         
-            CargarGridCompras(dtpFechaDesde.Value, dtpFechaHasta.Value, txtDniProv.Text);
+
+            CargarGridCompras(dtpFechaDesde.Value, dtpFechaHasta.Value, txtNombreProv.Text);
         }
 
         private void button1_Click(object sender, EventArgs e)

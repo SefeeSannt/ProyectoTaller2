@@ -10,36 +10,40 @@ namespace CapaDatos
 {
     public class CD_venta
     {
-        public DataTable ListarVentas(DateTime fechaDesde, DateTime fechaHasta, string dniCliente)
+        public DataTable ListarVentas(DateTime fechaDesde, DateTime fechaHasta, string nombreCliente)
         {
+
             DataTable tabla = new DataTable();
             using (SqlConnection con = new SqlConnection(conexion.cadena))
             {
                 try
                 {
                     con.Open();
+
+                    // 2. Modificamos la consulta base para UNIR con la tabla 'cliente'
                     string queryBase = @"
-                        SELECT 
-                            v.cod_venta,
-                            (ISNULL(c.nombre,'') + ' ' + ISNULL(c.apellido,'')) AS cliente,
-                            v.fecha_venta AS fecha_venta,
-                            v.monto_total AS monto_total
-                        FROM venta v
-                        INNER JOIN cliente c ON v.dni_cliente = c.dni_cliente";
+                SELECT 
+                    v.cod_venta, 
+                    (u.nombre + ' ' + u.apellido) AS Vendedor,
+                    v.fecha_venta, 
+                    v.monto_total
+                FROM venta v
+                INNER JOIN usuario u ON v.dni_usuario = u.dni_usuario
+                INNER JOIN cliente c ON v.dni_cliente = c.dni_cliente"; // <-- ¡JOIN IMPORTANTE!
 
-
+                    // 3. El filtro de fecha sigue igual
                     string whereClause = " WHERE v.fecha_venta BETWEEN @fechaDesde AND @fechaHasta";
 
                     using (SqlCommand cmd = new SqlCommand())
                     {
-
                         cmd.Parameters.AddWithValue("@fechaDesde", fechaDesde.Date);
                         cmd.Parameters.AddWithValue("@fechaHasta", fechaHasta.Date.AddDays(1).AddSeconds(-1));
 
-                        if (!string.IsNullOrEmpty(dniCliente))
+                        // Buscamos por nombre O apellido del CLIENTE
+                        if (!string.IsNullOrEmpty(nombreCliente))
                         {
-                            whereClause += " AND c.dni_cliente = @dniCliente";
-                            cmd.Parameters.AddWithValue("@dniCliente", dniCliente);
+                            whereClause += " AND (c.nombre LIKE @nombreCli OR c.apellido LIKE @nombreCli)";
+                            cmd.Parameters.AddWithValue("@nombreCli", "%" + nombreCliente + "%");
                         }
 
                         cmd.CommandText = queryBase + whereClause + " ORDER BY v.fecha_venta DESC";
@@ -52,6 +56,7 @@ namespace CapaDatos
                 }
                 catch (Exception ex)
                 {
+               
                     throw new Exception("Error en CD_venta.ListarVentas: " + ex.Message, ex);
                 }
             }

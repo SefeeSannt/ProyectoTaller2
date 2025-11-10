@@ -43,7 +43,7 @@
             this.btnBuscar = new System.Windows.Forms.Button();
             this.dtpFechaDesde = new System.Windows.Forms.DateTimePicker();
             this.lblFechaDesde = new System.Windows.Forms.Label();
-            this.txtDniProv = new System.Windows.Forms.TextBox();
+            this.txtNombreProv = new System.Windows.Forms.TextBox();
             this.lblClienteConsVentas = new System.Windows.Forms.Label();
             this.lblDniProveedor = new System.Windows.Forms.Label();
             this.lblApellidoProveedor = new System.Windows.Forms.Label();
@@ -65,6 +65,8 @@
             // 
             this.dgvDetalleCompra.AllowUserToAddRows = false;
             this.dgvDetalleCompra.AllowUserToDeleteRows = false;
+            this.dgvDetalleCompra.AllowUserToResizeColumns = false;
+            this.dgvDetalleCompra.AllowUserToResizeRows = false;
             this.dgvDetalleCompra.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dgvDetalleCompra.BackgroundColor = System.Drawing.Color.White;
             dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
@@ -154,6 +156,8 @@
             // 
             this.dgvConsultaCompra.AllowUserToAddRows = false;
             this.dgvConsultaCompra.AllowUserToDeleteRows = false;
+            this.dgvConsultaCompra.AllowUserToResizeColumns = false;
+            this.dgvConsultaCompra.AllowUserToResizeRows = false;
             this.dgvConsultaCompra.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dgvConsultaCompra.BackgroundColor = System.Drawing.Color.White;
             this.dgvConsultaCompra.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
@@ -226,12 +230,12 @@
             this.lblFechaDesde.TabIndex = 9;
             this.lblFechaDesde.Text = "Fecha desde:";
             // 
-            // txtDniProv
+            // txtNombreProv
             // 
-            this.txtDniProv.Location = new System.Drawing.Point(11, 95);
-            this.txtDniProv.Name = "txtDniProv";
-            this.txtDniProv.Size = new System.Drawing.Size(159, 20);
-            this.txtDniProv.TabIndex = 11;
+            this.txtNombreProv.Location = new System.Drawing.Point(11, 95);
+            this.txtNombreProv.Name = "txtNombreProv";
+            this.txtNombreProv.Size = new System.Drawing.Size(159, 20);
+            this.txtNombreProv.TabIndex = 11;
             // 
             // lblClienteConsVentas
             // 
@@ -240,9 +244,9 @@
             this.lblClienteConsVentas.Font = new System.Drawing.Font("Franklin Gothic Medium", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblClienteConsVentas.Location = new System.Drawing.Point(10, 79);
             this.lblClienteConsVentas.Name = "lblClienteConsVentas";
-            this.lblClienteConsVentas.Size = new System.Drawing.Size(90, 17);
+            this.lblClienteConsVentas.Size = new System.Drawing.Size(114, 17);
             this.lblClienteConsVentas.TabIndex = 8;
-            this.lblClienteConsVentas.Text = "DNI proveedor:";
+            this.lblClienteConsVentas.Text = "Nombre proveedor:";
             // 
             // lblDniProveedor
             // 
@@ -307,7 +311,7 @@
             this.panel1.Controls.Add(this.btnBuscar);
             this.panel1.Controls.Add(this.dtpFechaDesde);
             this.panel1.Controls.Add(this.lblFechaDesde);
-            this.panel1.Controls.Add(this.txtDniProv);
+            this.panel1.Controls.Add(this.txtNombreProv);
             this.panel1.Controls.Add(this.lblClienteConsVentas);
             this.panel1.Location = new System.Drawing.Point(15, 63);
             this.panel1.Name = "panel1";
@@ -410,7 +414,7 @@
         private System.Windows.Forms.Button btnBuscar;
         private System.Windows.Forms.DateTimePicker dtpFechaDesde;
         private System.Windows.Forms.Label lblFechaDesde;
-        private System.Windows.Forms.TextBox txtDniProv;
+        private System.Windows.Forms.TextBox txtNombreProv;
         private System.Windows.Forms.Label lblClienteConsVentas;
         private System.Windows.Forms.Label lblDniProveedor;
         private System.Windows.Forms.Label lblApellidoProveedor;

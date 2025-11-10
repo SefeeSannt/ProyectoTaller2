@@ -26,6 +26,7 @@ namespace CapaPresentacion.Vistas.Administrador
     public partial class frmVistaAdministrador : Form
     {
         private Usuario oUsuario;
+     //   private Usuario usuarioLogueado;
         public frmVistaAdministrador(Usuario oUsuario)
         {
             InitializeComponent();

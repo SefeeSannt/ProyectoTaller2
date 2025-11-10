@@ -1,4 +1,4 @@
-﻿using CapaNegocio;
+using CapaNegocio;
 using CapaEntidad;
 using System;
 using System.Collections.Generic;
@@ -24,8 +24,8 @@ namespace CapaPresentacion.Vistas.Administrador.Reportes
 
         }
 
-
-        private void CargarGridVentas(DateTime fechaDesde, DateTime fechaHasta, string dniProveedor)
+        /*cambios*/
+        private void CargarGridVentas(DateTime fechaDesde, DateTime fechaHasta, string nombreCliente)
         {
             try
             {
@@ -33,24 +33,34 @@ namespace CapaPresentacion.Vistas.Administrador.Reportes
                 dgvConsultaVentas.DataSource = null;
 
                 CN_venta objCN = new CN_venta();
-                DataTable tablaVenta = objCN.ListarVentas(fechaDesde, fechaHasta, dniProveedor); // Obtenemos los datos
+                DataTable tablaVenta = objCN.ListarVentas(fechaDesde, fechaHasta, nombreCliente);
 
                 dgvConsultaVentas.DataSource = tablaVenta;
 
+                // Añadir botón "Ver"
                 DataGridViewButtonColumn btnVer = new DataGridViewButtonColumn();
-                btnVer.Name = "btnVer";
+                btnVer.Name = "btnVer"; // Solo se necesita una vez
                 btnVer.HeaderText = "";
                 btnVer.Text = "Ver";
                 btnVer.UseColumnTextForButtonValue = true;
                 btnVer.Width = 40;
                 dgvConsultaVentas.Columns.Add(btnVer);
 
+                // Ocultar y renombrar columnas
                 if (dgvConsultaVentas.Columns.Contains("cod_venta"))
                     dgvConsultaVentas.Columns["cod_venta"].Visible = false;
 
+                // (Asegúrate de que tu SQL en CD_venta devuelva estos alias)
                 if (dgvConsultaVentas.Columns.Contains("Vendedor"))
                     dgvConsultaVentas.Columns["Vendedor"].HeaderText = "Vendedor";
+                if (dgvConsultaVentas.Columns.Contains("Cliente"))
+                    dgvConsultaVentas.Columns["Cliente"].HeaderText = "Cliente";
+                if (dgvConsultaVentas.Columns.Contains("fecha_venta"))
+                    dgvConsultaVentas.Columns["fecha_venta"].HeaderText = "Fecha Venta";
+                if (dgvConsultaVentas.Columns.Contains("monto_total"))
+                    dgvConsultaVentas.Columns["monto_total"].HeaderText = "Monto Total";
 
+                // Sumar total
                 decimal totalFiltrado = 0;
                 if (tablaVenta != null && tablaVenta.Rows.Count > 0)
                 {
@@ -59,22 +69,22 @@ namespace CapaPresentacion.Vistas.Administrador.Reportes
                         totalFiltrado += Convert.ToDecimal(row["monto_total"]);
                     }
                 }
-
                 lblTotalVentaFilt.Text = totalFiltrado.ToString("C2");
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Error al cargar las compras: " + ex.GetBaseException().Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Error al cargar las ventas: " + ex.GetBaseException().Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-
         }
 
         private void frmDetalleVentas_Load(object sender, EventArgs e)
         {
             dtpFechaDesde.Value = DateTime.Now.AddDays(-30);
             dtpFechaHasta.Value = DateTime.Now;
-            CargarGridVentas(dtpFechaDesde.Value, dtpFechaHasta.Value, txtDniCliente.Text);
-       //     ConfigurarGridDetalle();
+
+            // --- ORDEN CORREGIDO ---
+            ConfigurarGridDetalle(); // 1. Configura el grid de la derecha
+            CargarGridVentas(dtpFechaDesde.Value, dtpFechaHasta.Value, txtNombreCliente.Text); // 2. Carga el grid de la izquierda
         }
 
         private void dgvConsultaVentas_CellContentClick(object sender, DataGridViewCellEventArgs e)
@@ -91,10 +101,10 @@ namespace CapaPresentacion.Vistas.Administrador.Reportes
 
         private void ConfigurarGridDetalle()
         {
-            dgvConsultaVentas.AutoGenerateColumns = false;
-            dgvConsultaVentas.Columns.Clear();
+            dgvDetalleVenta.AutoGenerateColumns = false;
+            dgvDetalleVenta.Columns.Clear();
 
-            dgvConsultaVentas.Columns.Add(new DataGridViewTextBoxColumn
+            dgvDetalleVenta.Columns.Add(new DataGridViewTextBoxColumn
             {
                 Name = "Producto",
                 DataPropertyName = "Producto",
@@ -102,16 +112,17 @@ namespace CapaPresentacion.Vistas.Administrador.Reportes
                 AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill
             });
 
-            dgvConsultaVentas.Columns.Add(new DataGridViewTextBoxColumn
+            // (Asumo que tu SQL de detalle de venta devuelve "PrecioCompra")
+            dgvDetalleVenta.Columns.Add(new DataGridViewTextBoxColumn
             {
-                Name = "PrecioVenta",
-                DataPropertyName = "PrecioVenta",
+                Name = "PrecioCompra",
+                DataPropertyName = "PrecioCompra",
                 HeaderText = "Precio Venta",
                 Width = 100,
                 DefaultCellStyle = { Format = "C" }
             });
 
-            dgvConsultaVentas.Columns.Add(new DataGridViewTextBoxColumn
+            dgvDetalleVenta.Columns.Add(new DataGridViewTextBoxColumn
             {
                 Name = "Cantidad",
                 DataPropertyName = "Cantidad",
@@ -119,7 +130,7 @@ namespace CapaPresentacion.Vistas.Administrador.Reportes
                 Width = 60
             });
 
-            dgvConsultaVentas.Columns.Add(new DataGridViewTextBoxColumn
+            dgvDetalleVenta.Columns.Add(new DataGridViewTextBoxColumn
             {
                 Name = "Subtotal",
                 DataPropertyName = "Subtotal",
@@ -127,7 +138,7 @@ namespace CapaPresentacion.Vistas.Administrador.Reportes
                 Width = 100,
                 DefaultCellStyle = { Format = "C" }
             });
-        
+
         }
 
         private void MostrarDetalle(int codVenta)
@@ -137,20 +148,30 @@ namespace CapaPresentacion.Vistas.Administrador.Reportes
                 CN_venta cn = new CN_venta();
 
                 var venta = cn.ObtenerVentaPorId(codVenta);
-                if (venta != null && venta.dni_cliente!= null)
+
+                // --- ¡CORREGIDO! ---
+                if (venta != null)
                 {
-                    lblNombreCliente.Text = venta.dni_cliente.nombre;
-                    lblApellidoCliente.Text = venta.dni_cliente.apellido;
-                    lblDniCliente.Text = venta.dni_cliente.dni_cliente.ToString();
+                    if (venta.dni_cliente != null)
+                    {
+                        lblNombreCliente.Text = venta.dni_cliente.nombre;
+                        lblApellidoCliente.Text = venta.dni_cliente.apellido;
+                        lblDniCliente.Text = venta.dni_cliente.dni_cliente.ToString();
+                    }
+                    if (venta.dni_usuario != null)
+                    {
+                        lblNombreVendedor.Text = venta.dni_usuario.nombre;
+                    }
                     lblCodVenta.Text = venta.cod_venta.ToString();
                 }
-
-                if (venta.dni_usuario != null)
+                else
                 {
-                    lblNombreVendedor.Text = venta.dni_usuario.nombre;
+                    lblNombreCliente.Text = "";
+                    lblApellidoCliente.Text = "";
+                    lblDniCliente.Text = "";
+                    lblCodVenta.Text = "";
+                    lblNombreVendedor.Text = "";
                 }
-
-                lblCodVenta.Text = venta.cod_venta.ToString();
 
                 DataTable dtDetalle = cn.ObtenerDetalleVenta(codVenta);
                 dgvDetalleVenta.DataSource = dtDetalle;
@@ -160,8 +181,7 @@ namespace CapaPresentacion.Vistas.Administrador.Reportes
                 {
                     costoTotal += Convert.ToDecimal(row["Subtotal"]);
                 }
-
-                lblCostoTotal.Text = costoTotal.ToString("C"); // Formato Moneda
+                lblCostoTotal.Text = costoTotal.ToString("C");
             }
             catch (Exception ex)
             {
@@ -180,9 +200,9 @@ namespace CapaPresentacion.Vistas.Administrador.Reportes
             lblNombreVendedor.Text = "";
 
 
-            CargarGridVentas(dtpFechaDesde.Value, dtpFechaHasta.Value, txtDniCliente.Text);
+            CargarGridVentas(dtpFechaDesde.Value, dtpFechaHasta.Value, txtNombreCliente.Text);
         }
-
+        /*cambios en el modelo. Datos y estructura incosistentes. Se cambio*/
         private void btnPDFventa_Click(object sender, EventArgs e)
         {
             if (dgvDetalleVenta.Rows.Count == 0)
@@ -269,6 +289,8 @@ namespace CapaPresentacion.Vistas.Administrador.Reportes
                             tabla.AddCell(cell);
                         }
 
+                        // --- ¡ERROR CORREGIDO! (Mayúsculas) ---
+                        // Nombres deben coincidir con 'ConfigurarGridDetalle'
                         foreach (DataGridViewRow row in dgvDetalleVenta.Rows)
                         {
                             tabla.AddCell(new Phrase(row.Cells["Producto"].Value.ToString()));
@@ -277,7 +299,7 @@ namespace CapaPresentacion.Vistas.Administrador.Reportes
                             tabla.AddCell(new Phrase(Convert.ToDecimal(row.Cells["Subtotal"].Value).ToString("C2")));
                         }
 
-                        pdfDoc.Add(tabla);
+                        pdfDoc.Add(tablaDetalles);
                         pdfDoc.Add(Chunk.NEWLINE);
 
                         // 5. Total
@@ -286,12 +308,10 @@ namespace CapaPresentacion.Vistas.Administrador.Reportes
                         total.Alignment = Element.ALIGN_RIGHT;
                         pdfDoc.Add(total);
 
-
                         pdfDoc.Close();
                         stream.Close();
 
                         MessageBox.Show("Documento PDF guardado exitosamente.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
-
                     }
                 }
                 catch (Exception ex)
