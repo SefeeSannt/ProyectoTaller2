@@ -96,6 +96,7 @@
             // txtTelefono_proveedor
             // 
             this.txtTelefono_proveedor.Location = new System.Drawing.Point(17, 281);
+            this.txtTelefono_proveedor.MaxLength = 10;
             this.txtTelefono_proveedor.Name = "txtTelefono_proveedor";
             this.txtTelefono_proveedor.Size = new System.Drawing.Size(208, 20);
             this.txtTelefono_proveedor.TabIndex = 114;
@@ -236,6 +237,7 @@
             // 
             this.txtDni_proveedor.Location = new System.Drawing.Point(16, 82);
             this.txtDni_proveedor.Name = "txtDni_proveedor";
+            this.txtDni_proveedor.ReadOnly = true;
             this.txtDni_proveedor.Size = new System.Drawing.Size(210, 20);
             this.txtDni_proveedor.TabIndex = 101;
             // 

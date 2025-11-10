@@ -45,9 +45,22 @@ namespace CapaPresentacion.vistas.Repositor.Proveedor
                 errIngresoDatos.SetError(txtEmail_proveedor, "El campo Correo es obligatorio");
                 return;
             }
+            if (string.IsNullOrEmpty(txtEmail_proveedor.Text) ||
+                !txtEmail_proveedor.Text.Contains("@") ||
+                !txtEmail_proveedor.Text.Contains("."))
+            {
+                errIngresoDatos.SetError(txtEmail_proveedor, "El email debe tener un formato válido (ejemplo: usuario@dominio.com)");
+                return;
+            }
+
             if (string.IsNullOrEmpty(txtTelefono_proveedor.Text))
             {
                 errIngresoDatos.SetError(txtTelefono_proveedor, "El campo Teléfono es obligatorio");
+                return;
+            }
+            if (txtTelefono_proveedor.Text.Length < 10)
+            {
+                errIngresoDatos.SetError(txtTelefono_proveedor, "Teléfono incorrecto. Debe tener 10 caracteres.");
                 return;
             }
 
@@ -113,13 +126,20 @@ namespace CapaPresentacion.vistas.Repositor.Proveedor
 
         private void btnLimpiar_Click(object sender, EventArgs e)
         {
-            var result = MessageBox.Show("¿Está seguro que desea limpiar la búsqueda?", "Confirmar Limpieza", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            errIngresoDatos.Clear();
+
+            var result = MessageBox.Show("¿Está seguro que desea limpiar los campos de edición?", "Confirmar Limpieza", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+
             if (result == DialogResult.Yes)
             {
-                txtProveedor.Clear();
-                CargarProveedoresEnGrid();
+                txtDni_proveedor.Clear();
+                txtNombre_proveedor.Clear();
+                txtApellido_proveedor.Clear();
+                txtEmail_proveedor.Clear();
+                txtTelefono_proveedor.Clear();
 
-                MessageBox.Show("Campos limpiados exitosamente.", "Limpieza Exitosa", MessageBoxButtons.OK, MessageBoxIcon.Information);
+         
+                txtDni_proveedor.ReadOnly = false;
             }
         }
 
