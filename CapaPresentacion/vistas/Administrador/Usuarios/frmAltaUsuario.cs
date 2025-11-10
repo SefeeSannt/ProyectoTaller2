@@ -134,6 +134,7 @@ namespace CapaPresentacion.Vistas.Administrador.Usuarios
                 negocio.agregarUsuario(usuario);
                 MessageBox.Show("Usuario registrado con éxito.", "Registro Exitoso", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 cargarGrid();
+                limpiarCampos();
 
 
             }

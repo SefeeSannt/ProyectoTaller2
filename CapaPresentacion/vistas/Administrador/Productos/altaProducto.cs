@@ -43,18 +43,11 @@ namespace CapaPresentacion.Vistas.Administrador.Productos {
 
         private void btnLimpiar_Click(object sender, EventArgs e)
         {
-            errIngresoDatos.Clear();
-
             var result = MessageBox.Show("¿Está seguro que desea limpiar el registro del producto?", "Confirmar Cancelación", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
 
             if (result == DialogResult.Yes)
             {
-                txtNombreProd.Clear();
-                txtDescripcionProd.Clear();
-                cboCategoriaProd.SelectedIndex = 0; 
-                txtPrecioVentaProd.Clear();
-                txtCostoProd.Clear();
-                txtStockProd.Clear();
+                limpiarCampos(); 
             }
 
         }
@@ -200,6 +193,7 @@ namespace CapaPresentacion.Vistas.Administrador.Productos {
                 cn.AgregarProducto(productoModel);
                 MessageBox.Show("Producto registrado con éxito.", "Registro Exitoso", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 cargarProductosEnGrid();
+                limpiarCampos();
             }
             catch (Exception ex)
             {
@@ -225,5 +219,23 @@ namespace CapaPresentacion.Vistas.Administrador.Productos {
             dgvRegistrarProducto.Columns["costo"].HeaderText = "Costo";
             dgvRegistrarProducto.Columns["stock"].HeaderText = "Stock";
         }
+
+
+        private void limpiarCampos()
+        {
+            errIngresoDatos.Clear();
+            txtCodProducto.Clear(); 
+            txtNombreProd.Clear();
+            txtDescripcionProd.Clear();
+            cboCategoriaProd.SelectedIndex = 0;
+            txtPrecioVentaProd.Clear();
+            txtCostoProd.Clear();
+            txtStockProd.Clear();
+
+           
+            txtCodProducto.Focus();
+        }
+
+
     }
 }
